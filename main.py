@@ -2,7 +2,7 @@ from packages.SScraping import SScraping as Sigaa
 
 # paa = Sigaa(headless=True)
 paa = Sigaa()
-paa.login(user='', password='')
+paa.login(user='12638891665', password='Sigaa*0223')
 
 paa.set_codCurso('0202010')
 paa.get_Grid('xml')
