@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<Grade>
+  <Curso> Engenharia de Computa&#195;&#167;&#195;&#163;o</Curso>
+  <SiglaCurso> ECO </SiglaCurso>
+  <Ano> 2012 </Ano>
+  <NDisciplinas>40</NDisciplinas>
+  
+  <Disciplinas>
+      <Disciplina>
+            <Nome> Matem&#195;&#161;tica 0 </Nome>
+            <Sigla> BAC000  </Sigla>
+            <Periodo> 1 </Periodo>
+      </Disciplina>
+      
+      <Disciplina>
+            <Nome> ALGORITMOS e ESTRUTURAS de DADOS 1 </Nome>
+            <Sigla> ECO010  </Sigla>
+            <Periodo> 2 </Periodo>
+            <PreRequisitoTotal>
+                <Sigla> BAC004 </Sigla>
+            </PreRequisitoTotal>
+            
+            <PreRequisitoParcial>
+                <Sigla> </Sigla>
+            </PreRequisitoParcial>
+            <CoRequisito>
+                <Sigla> </Sigla>
+            </CoRequisito>
+      </Disciplina>
+      
+       <Disciplina>
+            <Nome> MODELAGEM E ANALISE DE SISTEMAS DINAMICOS </Nome>
+            <Sigla> ECO018  </Sigla>
+            <Periodo> 6 </Periodo>
+            <PreRequisitoTotal>
+                <Sigla> BAC022 </Sigla>
+                <Sigla> BAC020 </Sigla>
+                <Sigla> BAC006 </Sigla>
+            </PreRequisitoTotal>
+            
+            <CoRequisito>
+                <Sigla> </Sigla>
+            </CoRequisito>
+      </Disciplina>
+      
+       <Disciplina>
+            <Nome> COMPUTACAO GRAFICA E PROCESSAMENTO DE IMAGENS </Nome>
+            <Sigla> ECO034  </Sigla>
+            <Periodo> 9 </Periodo>
+            <PreRequisitoParcial>
+                <Sigla> ECO027 </Sigla>
+                <Sigla> ECA023 </Sigla>
+            </PreRequisitoParcial>
+            <CoRequisito>
+                <Sigla> </Sigla>
+            </CoRequisito>
+      </Disciplina>
+      
+      <Disciplina>
+            <Nome> Eletr&#195;&#180;nica Digital </Nome>
+            <Sigla> ECO001  </Sigla>
+            <Periodo> 7 </Periodo>
+            <CoRequisito>
+                <Sigla> ECO002</Sigla>
+            </CoRequisito>
+      </Disciplina>
+      
+  </Disciplinas>
+</Grade>
+

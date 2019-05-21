@@ -1,0 +1,12 @@
+digraph "packages.SScraping.BasicXml.create_tag"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node10 [label="packages.SScraping.Basic\lXml.create_tag",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node10 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="packages.SScraping.Basic\lXml.__indent__",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpackages_1_1_s_scraping_1_1_basic_xml.html#acb382264381f99fe33d0634256c51d1a"];
+  Node10 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="packages.SScraping.Basic\lXml.end_tag",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpackages_1_1_s_scraping_1_1_basic_xml.html#a192e6870e478c2ad079abc25bbd262ef"];
+  Node12 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

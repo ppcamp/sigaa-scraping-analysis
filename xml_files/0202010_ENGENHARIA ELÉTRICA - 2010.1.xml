@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Grade>
+	<Curso>ENGENHARIA ELÉTRICA</Curso>
+	<Ano>2010.1</Ano>
+	<NDisciplinas>128</NDisciplinas>
+	<Disciplinas>
+		<Disciplina>
+			<Nome>EFICIÊNCIA ENERGÉTICA NOS USOS FINAIS DE ENERGIA</Nome>
+			<Sigla>EAMI27</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>INSTRUMENTAÇÃO INDUSTRIAL II</Nome>
+			<Sigla>ECA002</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ALGORITMOS E ESTRUTURAS DE DADOS I</Nome>
+			<Sigla>ECO010</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>PROJETO E ANÁLISE DE ALGORITMOS</Nome>
+			<Sigla>ECO027</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ALGORITMOS E ESTRUTURA DE DADOS II</Nome>
+			<Sigla>ECO029</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>FUTEBOL DE SALÃO</Nome>
+			<Sigla>EDF001</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>VOLEIBOL</Nome>
+			<Sigla>EDF005</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>BASQUETEBOL</Nome>
+			<Sigla>EDF011</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Corrida de Rua</Nome>
+			<Sigla>EDF014</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Aperfeiçoamento de Basquetebol</Nome>
+			<Sigla>EDF017</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Aperfeiçoamento de Voleibol</Nome>
+			<Sigla>EDF018</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Atividade Física e Esportes Coletivos</Nome>
+			<Sigla>EDF022</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>HANDEBOL</Nome>
+			<Sigla>EDF023</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ATIVIDADE FÍSICA E ESPORTES COLETIVOS</Nome>
+			<Sigla>EDFI22</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>CONFIABILIDADE DE SISTEMAS ELÉTRICOS</Nome>
+			<Sigla>EELI46</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>CONVERSORES ESTÁTICOS PARA CONDICIONADORES DE ENERGIA</Nome>
+			<Sigla>EELI47</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>SISTEMAS DE COMUNICAÇÃO</Nome>
+			<Sigla>ELT038</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>PLANEJAMENTO LOGÍSTICO</Nome>
+			<Sigla>EMO026</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>SISTEMAS DE INFORMAÇÃO</Nome>
+			<Sigla>EPR013</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>CUSTOS E CONTABILIDADE</Nome>
+			<Sigla>EPR023</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>GEOMETRIA ANALÍTICA E ÁLGEBRA LINEAR</Nome>
+			<Sigla>MAT011</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Educação Física I</Nome>
+			<Sigla>EDF101</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Educação Física III</Nome>
+			<Sigla>EDF103</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Educação Física IV</Nome>
+			<Sigla>EDF104</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MATEMÁTICA III</Nome>
+			<Sigla>BAC021</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>LIBRAS - LÍNGUA BRASILEIRA DE SINAIS</Nome>
+			<Sigla>LET007</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Programação para Simulações</Nome>
+			<Sigla>CCO017</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ENERGIA SOLAR E EÓLICA</Nome>
+			<Sigla>EAMI20</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Tópicos em Engenharia Elétrica I</Nome>
+			<Sigla>EEL100</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>CIRCUITOS INTEGRADOS ANALÓGICOS</Nome>
+			<Sigla>ELT036</Sigla>
+			<Periodo>Optativa</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ELT010</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>GESTÃO DA QUALIDADE</Nome>
+			<Sigla>EPR006</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MICROCONTROLADORES</Nome>
+			<Sigla>ECA003</Sigla>
+			<Periodo>Optativa</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>BAC004</Sigla>
+				<Sigla>ELT013</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Tópicos em Engenharia Elétrica II</Nome>
+			<Sigla>EEL200</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>CIRCUITOS INTEGRADOS DIGITAIS</Nome>
+			<Sigla>ELT017</Sigla>
+			<Periodo>Optativa</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ELT010</Sigla>
+				<Sigla>ELT013</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>SISTEMAS DE GESTÃO DA QUALIDADE</Nome>
+			<Sigla>EPR009</Sigla>
+			<Periodo>Optativa</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>EPR006</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>INICIAÇÃO CIENTÍFICA, TECNOLÓGICA E EMPREENDEDORA II</Nome>
+			<Sigla>CTE002</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>AUTOMAÇÃO E SUPERVISÃO DE PROCESSOS II</Nome>
+			<Sigla>ECA022</Sigla>
+			<Periodo>Optativa</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ECA007</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>PROCESSAMENTO DIGITAL DE SINAIS</Nome>
+			<Sigla>ECA023</Sigla>
+			<Periodo>Optativa</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ELT010</Sigla>
+				<Sigla>BAC024</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>REDES DE COMPUTADORES</Nome>
+			<Sigla>ECO021</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>SISTEMAS EMBARCADOS</Nome>
+			<Sigla>ECO033</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>TÓPICOS EM ENGENHARIA ELÉTRICA III</Nome>
+			<Sigla>EEL300</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ESTABILIDADE DE SISTEMAS ELÉTRICOS</Nome>
+			<Sigla>EELI44</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>INICIAÇÃO CIENTÍFICA TECNOLÓGICA E EMPREENDEDORA III</Nome>
+			<Sigla>CTE003</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>INTELIGÊNCIA ARTIFICIAL</Nome>
+			<Sigla>ECA012</Sigla>
+			<Periodo>Optativa</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>BAC004</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Robótica</Nome>
+			<Sigla>ECA024</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>IDENTIFICAÇÃO DE SISTEMAS E TÓPICOS EM CONTROLE</Nome>
+			<Sigla>ECA025</Sigla>
+			<Periodo>Optativa</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>BAC011</Sigla>
+				<Sigla>EEL032</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>CONTROLE MULTIVARIÁVEL</Nome>
+			<Sigla>ECA026</Sigla>
+			<Periodo>Optativa</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ECA004</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>REDES INDUSTRIAIS</Nome>
+			<Sigla>ECA027</Sigla>
+			<Periodo>Optativa</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ECA022</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>GESTÃO DA MANUTENÇÃO</Nome>
+			<Sigla>EPR015</Sigla>
+			<Periodo>Optativa</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>DESENHO APLICADO</Nome>
+			<Sigla>BAC003</Sigla>
+			<Periodo>1</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>INFORMÁTICA</Nome>
+			<Sigla>BAC004</Sigla>
+			<Periodo>1</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>CIÊNCIA, TECNOLOGIA E SOCIEDADE</Nome>
+			<Sigla>BACI01</Sigla>
+			<Periodo>1</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>COMUNICAÇÃO E EXPRESSÃO</Nome>
+			<Sigla>BACI02</Sigla>
+			<Periodo>1</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>CIÊNCIAS DO AMBIENTE</Nome>
+			<Sigla>EAMI30</Sigla>
+			<Periodo>1</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>GEOMETRIA ANALÍTICA E ÁLGEBRA LINEAR</Nome>
+			<Sigla>MAT011</Sigla>
+			<Periodo>1</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ELETRICIDADE</Nome>
+			<Sigla>BAC006</Sigla>
+			<Periodo>2</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>FÍSICA</Nome>
+			<Sigla>BAC007</Sigla>
+			<Periodo>2</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>QUÍMICA</Nome>
+			<Sigla>BAC009</Sigla>
+			<Periodo>2</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MATEMÁTICA I</Nome>
+			<Sigla>BAC019</Sigla>
+			<Periodo>2</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MATEMÁTICA II</Nome>
+			<Sigla>BAC020</Sigla>
+			<Periodo>2</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>PRINCÍPIOS DE SAÚDE E SEGURANÇA</Nome>
+			<Sigla>ESSI03</Sigla>
+			<Periodo>2</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Educação Física I</Nome>
+			<Sigla>EDF101</Sigla>
+			<Periodo>2</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Educação Física III</Nome>
+			<Sigla>EDF103</Sigla>
+			<Periodo>2</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Educação Física IV</Nome>
+			<Sigla>EDF104</Sigla>
+			<Periodo>2</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ESTATÍSTICA</Nome>
+			<Sigla>BAC011</Sigla>
+			<Periodo>3</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ENGENHARIA DE FLUIDOS</Nome>
+			<Sigla>BAC014</Sigla>
+			<Periodo>3</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MATEMÁTICA IV</Nome>
+			<Sigla>BAC022</Sigla>
+			<Periodo>3</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>METODOLOGIA DA PESQUISA CIENTÍFICA</Nome>
+			<Sigla>BAC025</Sigla>
+			<Periodo>3</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MATEMÁTICA III</Nome>
+			<Sigla>BACI21</Sigla>
+			<Periodo>3</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ELETRÔNICA ANALÓGICA I</Nome>
+			<Sigla>ELT009</Sigla>
+			<Periodo>3</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>BAC006</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MATEMÁTICA III</Nome>
+			<Sigla>BAC021</Sigla>
+			<Periodo>3</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>LIBRAS - LÍNGUA BRASILEIRA DE SINAIS</Nome>
+			<Sigla>LET007</Sigla>
+			<Periodo>3</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ENGENHARIA DE SÓLIDOS</Nome>
+			<Sigla>BAC010</Sigla>
+			<Periodo>4</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MATEMÁTICA V</Nome>
+			<Sigla>BAC023</Sigla>
+			<Periodo>4</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ELETROTÉCNICA GERAL</Nome>
+			<Sigla>EEL025</Sigla>
+			<Periodo>4</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>BAC006</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ELETRÔNICA ANALÓGICA II</Nome>
+			<Sigla>ELT010</Sigla>
+			<Periodo>4</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ELT009</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ELETROMAGNETISMO</Nome>
+			<Sigla>FIS001</Sigla>
+			<Periodo>4</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MATEMÁTICA VI</Nome>
+			<Sigla>BAC024</Sigla>
+			<Periodo>5</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>BAC022</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>INSTRUMENTAÇÃO INDUSTRIAL I</Nome>
+			<Sigla>ECA001</Sigla>
+			<Periodo>5</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ELT010</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MODELAGEM E ANÁLISE DE SISTEMAS DINÂMICOS</Nome>
+			<Sigla>ECO018</Sigla>
+			<Periodo>5</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>BAC006</Sigla>
+				<Sigla>BAC020</Sigla>
+				<Sigla>BAC022</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MÁQUINAS ELÉTRICAS I</Nome>
+			<Sigla>EEL027</Sigla>
+			<Periodo>5</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ELETRÔNICA DIGITAL I</Nome>
+			<Sigla>ELT012</Sigla>
+			<Periodo>5</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Programação para Simulações</Nome>
+			<Sigla>CCO017</Sigla>
+			<Periodo>5</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>SISTEMAS DE CONTROLE CLÁSSICO</Nome>
+			<Sigla>ECA004</Sigla>
+			<Periodo>6</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ECO018</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>INSTALAÇÕES ELÉTRICAS PREDIAIS</Nome>
+			<Sigla>EEL018</Sigla>
+			<Periodo>6</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>BAC006</Sigla>
+				<Sigla>BAC003</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MÁQUINAS ELÉTRICAS II</Nome>
+			<Sigla>EEL028</Sigla>
+			<Periodo>6</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ELETRÔNICA DE POTÊNCIA</Nome>
+			<Sigla>EEL031</Sigla>
+			<Periodo>6</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>EEL025</Sigla>
+				<Sigla>ELT010</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ELETRÔNICA DIGITAL II</Nome>
+			<Sigla>ELT013</Sigla>
+			<Periodo>6</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ELT012</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ENERGIA SOLAR E EÓLICA</Nome>
+			<Sigla>EAMI20</Sigla>
+			<Periodo>6</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Tópicos em Engenharia Elétrica I</Nome>
+			<Sigla>EEL100</Sigla>
+			<Periodo>6</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>CIRCUITOS INTEGRADOS ANALÓGICOS</Nome>
+			<Sigla>ELT036</Sigla>
+			<Periodo>6</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ELT010</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>GESTÃO DA QUALIDADE</Nome>
+			<Sigla>EPR006</Sigla>
+			<Periodo>6</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>CIDADANIA E RESPONSABILIDADE SOCIAL</Nome>
+			<Sigla>BAC013</Sigla>
+			<Periodo>7</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>INICIAÇÃO CIENTÍFICA, TECNOLÓGICA E EMPREENDEDORA I</Nome>
+			<Sigla>CTE001</Sigla>
+			<Periodo>7</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ANÁLISE DE SISTEMAS ELÉTRICOS</Nome>
+			<Sigla>EEL022</Sigla>
+			<Periodo>7</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>CONTROLE DIGITAL</Nome>
+			<Sigla>EEL032</Sigla>
+			<Periodo>7</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ECA004</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>INSTALAÇÕES ELÉTRICAS INDUSTRIAIS</Nome>
+			<Sigla>EEL038</Sigla>
+			<Periodo>7</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>EEL027</Sigla>
+				<Sigla>ECA029</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MANUTENÇÃO MECÂNICA</Nome>
+			<Sigla>EME021</Sigla>
+			<Periodo>7</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MICROCONTROLADORES</Nome>
+			<Sigla>ECA003</Sigla>
+			<Periodo>7</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>BAC004</Sigla>
+				<Sigla>ELT013</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Tópicos em Engenharia Elétrica II</Nome>
+			<Sigla>EEL200</Sigla>
+			<Periodo>7</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>CIRCUITOS INTEGRADOS DIGITAIS</Nome>
+			<Sigla>ELT017</Sigla>
+			<Periodo>7</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ELT010</Sigla>
+				<Sigla>ELT013</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>SISTEMAS DE GESTÃO DA QUALIDADE</Nome>
+			<Sigla>EPR009</Sigla>
+			<Periodo>7</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>EPR006</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ACIONAMENTOS CONTROLADOS</Nome>
+			<Sigla>ECA005</Sigla>
+			<Periodo>8</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>EEL031</Sigla>
+				<Sigla>ECA004</Sigla>
+				<Sigla>EEL028</Sigla>
+				<Sigla>ECA029</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>AUTOMAÇÃO E SUPERVISÃO DE PROCESSOS I</Nome>
+			<Sigla>ECA007</Sigla>
+			<Periodo>8</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ELT012</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>QUALIDADE DE ENERGIA ELÉTRICA</Nome>
+			<Sigla>EEL021</Sigla>
+			<Periodo>8</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MANUTENÇÃO ELÉTRICA</Nome>
+			<Sigla>EEL042</Sigla>
+			<Periodo>8</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>TRANSMISSÃO E DISTRIBUIÇÃO DE ENERGIA ELÉTRICA</Nome>
+			<Sigla>ENR007</Sigla>
+			<Periodo>8</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>INICIAÇÃO CIENTÍFICA, TECNOLÓGICA E EMPREENDEDORA II</Nome>
+			<Sigla>CTE002</Sigla>
+			<Periodo>8</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>AUTOMAÇÃO E SUPERVISÃO DE PROCESSOS II</Nome>
+			<Sigla>ECA022</Sigla>
+			<Periodo>8</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ECA007</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>PROCESSAMENTO DIGITAL DE SINAIS</Nome>
+			<Sigla>ECA023</Sigla>
+			<Periodo>8</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ELT010</Sigla>
+				<Sigla>BAC024</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>REDES DE COMPUTADORES</Nome>
+			<Sigla>ECO021</Sigla>
+			<Periodo>8</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>SISTEMAS EMBARCADOS</Nome>
+			<Sigla>ECO033</Sigla>
+			<Periodo>8</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>TÓPICOS EM ENGENHARIA ELÉTRICA III</Nome>
+			<Sigla>EEL300</Sigla>
+			<Periodo>8</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ESTABILIDADE DE SISTEMAS ELÉTRICOS</Nome>
+			<Sigla>EELI44</Sigla>
+			<Periodo>8</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ECONOMIA E ADMINISTRAÇÃO</Nome>
+			<Sigla>BAC016</Sigla>
+			<Periodo>9</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>PROTEÇÃO DE SISTEMAS ELÉTRICOS</Nome>
+			<Sigla>EEL029</Sigla>
+			<Periodo>9</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>SUBESTAÇÕES</Nome>
+			<Sigla>EEL033</Sigla>
+			<Periodo>9</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>MANUTENÇÃO PREDITIVA</Nome>
+			<Sigla>EME041</Sigla>
+			<Periodo>9</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>GERAÇÃO DE ENERGIA ELÉTRICA</Nome>
+			<Sigla>ENR005</Sigla>
+			<Periodo>9</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>INICIAÇÃO CIENTÍFICA TECNOLÓGICA E EMPREENDEDORA III</Nome>
+			<Sigla>CTE003</Sigla>
+			<Periodo>9</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>INTELIGÊNCIA ARTIFICIAL</Nome>
+			<Sigla>ECA012</Sigla>
+			<Periodo>9</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>BAC004</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>Robótica</Nome>
+			<Sigla>ECA024</Sigla>
+			<Periodo>9</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>IDENTIFICAÇÃO DE SISTEMAS E TÓPICOS EM CONTROLE</Nome>
+			<Sigla>ECA025</Sigla>
+			<Periodo>9</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>BAC011</Sigla>
+				<Sigla>EEL032</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>CONTROLE MULTIVARIÁVEL</Nome>
+			<Sigla>ECA026</Sigla>
+			<Periodo>9</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ECA004</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>REDES INDUSTRIAIS</Nome>
+			<Sigla>ECA027</Sigla>
+			<Periodo>9</Periodo>
+			<PreRequisitoTotal>
+				<Sigla>ECA022</Sigla>
+			</PreRequisitoTotal>
+		</Disciplina>
+		<Disciplina>
+			<Nome>GESTÃO DA MANUTENÇÃO</Nome>
+			<Sigla>EPR015</Sigla>
+			<Periodo>9</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>ESTÁGIO SUPERVISIONADO</Nome>
+			<Sigla>ESTSUPERV_020_160</Sigla>
+			<Periodo>10</Periodo>
+		</Disciplina>
+		<Disciplina>
+			<Nome>TRABALHO FINAL DE GRADUAÇÃO</Nome>
+			<Sigla>PROJETOFINAL_020_128</Sigla>
+			<Periodo>10</Periodo>
+		</Disciplina>
+	</Disciplinas>
+</Grade>
