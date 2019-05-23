@@ -55,15 +55,14 @@ sudo pip uninstall bs4 html5lib textract
 
 * Versão 2.1
 > Integração com parte gráfica
-
-
->> Removido bug que era causado pelas optativas no meio do semestre
+> Removido bug que era causado pelas optativas no meio do semestre
 
 <hr>
 
 ## To-Do
 ### Implementações:
 1. Desabilitar botões
+2. Mostrar 'progresso'
 
 ### Bugs:
 1. Na grade de 0702015 tem o código ESTSUPERV_070_160_01, quando na verdade é ESTSUPERV_070_160
