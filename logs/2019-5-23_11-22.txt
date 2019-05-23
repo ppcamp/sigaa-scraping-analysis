@@ -1,0 +1,12 @@
+[set_user]: Success!
+[set_psswd]: Success!
+[login]: Failure! NoSuchElementException: ('no such element: Unable to locate element: {"method":"name","selector":"user.login"}\n  (Session info: chrome=74.0.3729.169)\n  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Linux 5.0.0-15-generic x86_64)', None, None)
+[set_user]: Success!
+[set_psswd]: Success!
+[login]: Success!
+[set_codCurso]: Success!
+[get_Grid]->Buscando: Success!
+[get_History]->PDF: Failure! NoSuchElementException: ('no such element: Unable to locate element: {"method":"xpath","selector":"//th[text()[contains(.,\'Pré-Requisitos:\')]]/                        following-sibling::td"}\n  (Session info: chrome=74.0.3729.169)\n  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Linux 5.0.0-15-generic x86_64)', None, None)!
+[xml_Grid]: Success!
+[Quit_webdriver]: Success!
+[Quit_webdriver]: Success!
