@@ -1,5 +1,5 @@
 # Geração do XML para histórico e grade do aluno.
-Version: 2.0
+Version: 2.1
 Gato de Schrodinger
 
 <br>
@@ -9,19 +9,19 @@ Gato de Schrodinger
 * selenium    → Automatiza o navegador
 * bs4         → Html
 * html5lib    → 'parser' necessário para o bs4
-* textract    → PDF 
+* textract    → PDF
 ```bash
  sudo apt install swig          # dependencia do textract (instalacao)
  sudo apt install libpulse-dev  # dependencia do textract (pulseaudio)
 ```
 #### Instalação:
 ```bash
- sudo apt install swig libpulse-dev 
+ sudo apt install swig libpulse-dev
  sudo pip install bs4 html5lib textract
  ```
 #### Remoção:
 ```bash
-sudo apt autoremove swig libpulse-dev 
+sudo apt autoremove swig libpulse-dev
 sudo pip uninstall bs4 html5lib textract
 ```
 #### Configurações:
@@ -36,7 +36,7 @@ sudo pip uninstall bs4 html5lib textract
 * **xml_files:** respostas, ou seja, os arquivos gerados em xml, tanto para a grade, quanto para o histórico.
 * **doc:** documentação em doxygen do código e arquivos auxiliares.
 * **.temp_files:** usada para guardar o arquivo do histórico.
-* **logs:** pasta que contém os arquivos de log da classe `SScraping`
+* **logs:** pasta que contém os arquivos de log do sistema
 > Caso não tenha todas essas pastas (geralmente vazias):
 > ```bash
 > mkdir xml_files .temp_files logs
@@ -44,14 +44,27 @@ sudo pip uninstall bs4 html5lib textract
 
 <br>
 
-## Arquivos:
+***
 
-#### **/packages**
-**SScraping**
-1. *BasicXml*, classe para gerar o XML
-2. *SScraping*, classe para fazer a raspagem
+## Updates
+* Versão 1.0
+> Geração da grade e histórico em arquivos *.ipynb
 
-**\_\_init\_\_.py**, configura para que entenda a pasta como um módulo do python
+* Versão 2.0
+> Conversão para POO
 
-#### **/webdriver**
-    *chromedriver*, ferramenta necessária para rodar o teste 'automatizado'
+* Versão 2.1
+> Integração com parte gráfica
+> Removido bug que era causado pelas optativas no meio do semestre
+
+<hr>
+
+## To-Do
+### Implementações:
+1. Desabilitar botões
+2. Mostrar 'progresso'
+
+### Bugs:
+1. Na grade de 0702015 tem o código ESTSUPERV_070_160_01, quando na verdade é ESTSUPERV_070_160
+Portanto, encontra erro na página
+2. O sistema não faz tratamento quando o sigaa dá *Error 404*

@@ -1,0 +1,7 @@
+[set_user]: Success!
+[set_psswd]: Success!
+[login]: Success!
+[set_codCurso]: Success!
+[get_Grid]->Buscando: Success!
+[get_Grid]->Requisitos: Success!
+[xml_Grid]: Success!
