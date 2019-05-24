@@ -1,8 +1,0 @@
-[set_user]: Success!
-[set_psswd]: Success!
-[login]: Success!
-[set_codCurso]: Success!
-[get_Grid]->Buscando: Success!
-[get_History]->PDF: Failure! Exception: ('searchError', 'File already exist')!
-[xml_Grid]: Failure! File already exist
-[Quit_webdriver]: Success!

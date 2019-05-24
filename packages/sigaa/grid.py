@@ -32,7 +32,7 @@ class GridScraping(sigaaBase):
         >> get_Grid() # mount grid internal var
         >> get_Grid('xml') # also generates a file.
         """
-        # Used in get_Grid() and get_History()
+        # Used in get_Grid()
         import re as regex
 
         try:
