@@ -58,9 +58,9 @@ sudo pip uninstall bs4 html5lib textract
 > Conversão para POO
 
 * Versão 2.1
-> Integração com parte gráfica (pyQt5) do módulo de grade
-> Removido bug que era causado pelas optativas no meio do semestre **bug\#45**
-> Historico e Grade separados, herdando parâmetros de login da classe sigaaBase
+> * Integração com parte gráfica (pyQt5) do módulo de grade
+> * Removido bug que era causado pelas optativas no meio do semestre **bug\#45**
+> * Historico e Grade separados, herdando parâmetros de login da classe sigaaBase
 >
 
 ***
