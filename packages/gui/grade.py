@@ -5,14 +5,14 @@ class Ui_gradeWindow(object):
     def gerarGrade(self):
         self.paa.set_codCurso(self.inputNumeroGrade.text())
         self.paa.get_Grid()
+        self.btnSalvarGrade.setEnabled(True)
 
     def salvarGrade(self):
         self.paa.xml_Grid()
 
-    def cancelar(self):
+    def gerarDiagrama(self):
         self.paa.quit_webdriver()
         Main.close()
-
 
     def setupUi(self, gradeWindow, paa):
         # Fil
@@ -61,9 +61,12 @@ class Ui_gradeWindow(object):
         gradeWindow.setCentralWidget(self.centralwidget)
         self.retranslateUi(gradeWindow)
 
+        self.btnGerarDiagrama.setEnabled(False)
+        self.btnSalvarGrade.setEnabled(False)
+
         self.btnGerarGrade.clicked.connect(self.gerarGrade)
         self.btnSalvarGrade.clicked.connect(self.salvarGrade)
-        self.btnGerarDiagrama.clicked.connect(self.cancelar)
+        self.btnGerarDiagrama.clicked.connect(self.gerarDiagrama)
 
         QtCore.QMetaObject.connectSlotsByName(gradeWindow)
 
@@ -76,6 +79,7 @@ class Ui_gradeWindow(object):
         self.btnSalvarGrade.setText(_translate("gradeWindow", "Salvar Grade"))
         self.btnGerarDiagrama.setText(
             _translate("gradeWindow", "Gerar Diagrama"))
+
 
 if __name__ == "__main__":
     import sys

@@ -6,10 +6,11 @@ Gato de Schrodinger
 
 ## Info:
 #### Libs:
+* pyqt5       → Interface
 * selenium    → Automatiza o navegador
 * bs4         → Html
 * html5lib    → 'parser' necessário para o bs4
-* textract    → PDF
+* textract    → PDF (GridScraping)
 ```bash
  sudo apt install swig          # dependencia do textract (instalacao)
  sudo apt install libpulse-dev  # dependencia do textract (pulseaudio)
@@ -17,7 +18,7 @@ Gato de Schrodinger
 #### Instalação:
 ```bash
  sudo apt install swig libpulse-dev
- sudo pip install bs4 html5lib textract
+ sudo pip install bs4 html5lib textract pyqt5
  ```
 #### Remoção:
 ```bash
@@ -36,7 +37,10 @@ sudo pip uninstall bs4 html5lib textract
 * **xml_files:** respostas, ou seja, os arquivos gerados em xml, tanto para a grade, quanto para o histórico.
 * **doc:** documentação em doxygen do código e arquivos auxiliares.
 * **.temp_files:** usada para guardar o arquivo do histórico.
-* **logs:** pasta que contém os arquivos de log do sistema
+* **logs:** pasta que contém os arquivos de log do sistema.
+* **ui:** pasta com designs (xml's) das telas da gui.
+* **others:** arquivos sem classificação sobre as pastas anteriores.
+
 > Caso não tenha todas essas pastas (geralmente vazias):
 > ```bash
 > mkdir xml_files .temp_files logs
@@ -54,17 +58,27 @@ sudo pip uninstall bs4 html5lib textract
 > Conversão para POO
 
 * Versão 2.1
-> Integração com parte gráfica
-> Removido bug que era causado pelas optativas no meio do semestre
+> Integração com parte gráfica (pyQt5) do módulo de grade
+> Removido bug que era causado pelas optativas no meio do semestre **bug\#45**
+> Historico e Grade separados, herdando parâmetros de login da classe sigaaBase
+>
 
-<hr>
+***
 
 ## To-Do
 ### Implementações:
-1. Desabilitar botões
-2. Mostrar 'progresso'
+- [ ] Interface da parte do Histórico.
+- [x] Desabilitar botões.
+- [ ] Mostrar 'progresso'.
+- [ ] Obrigar o Qt esperar antes de considerar o processo como preso em loop.
 
 ### Bugs:
 1. Na grade de 0702015 tem o código ESTSUPERV_070_160_01, quando na verdade é ESTSUPERV_070_160
 Portanto, encontra erro na página
 2. O sistema não faz tratamento quando o sigaa dá *Error 404*
+
+***
+
+## Comentários
+
+> @ppcamp É interessante remover os arquivos de caching do python, antes de dar um 'restart' nas buscas.
