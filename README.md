@@ -64,21 +64,5 @@ sudo pip uninstall bs4 html5lib textract
 >
 
 ***
-
-## To-Do
-### Implementações:
-- [ ] Interface da parte do Histórico.
-- [x] Desabilitar botões.
-- [ ] Mostrar 'progresso'.
-- [ ] Obrigar o Qt esperar antes de considerar o processo como preso em loop.
-
-### Bugs:
-1. Na grade de 0702015 tem o código ESTSUPERV_070_160_01, quando na verdade é ESTSUPERV_070_160
-Portanto, encontra erro na página
-2. O sistema não faz tratamento quando o sigaa dá *Error 404*
-
-***
-
 ## Comentários
-
 > @ppcamp É interessante remover os arquivos de caching do python, antes de dar um 'restart' nas buscas.
