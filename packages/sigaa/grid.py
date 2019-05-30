@@ -18,7 +18,7 @@ class GridScraping(sigaaBase):
         self._grid_Corequisite = None
         self._courseName = None
 
-    def get_Grid(self, selfUigrid):
+    def get_Grid(self, **argv):
         """
         Get informations to mount grid.
 
@@ -133,9 +133,9 @@ class GridScraping(sigaaBase):
 
                 # Couting percentile
                 percentile = int((countPreCo*100)/len(self._grid_Cod))
-
-                selfUigrid.updateProgress(percentile)
-                # selfUigrid.updateLabel("{}".format(i))
+                if (len(argv) > 0):
+                    argv[0].updateProgress(percentile)
+                # argv[0].updateLabel("{}".format(i))
 
             self._logFile.write('[get_Grid]->Requisitos: Success!\n')
         except Exception as ex:
@@ -158,8 +158,8 @@ class GridScraping(sigaaBase):
         # XML
         from xml.etree import ElementTree as ET
 
-        nameFile = '{}{}_{}.xml'.format(
-            self._folder_xmlFiles, self._courseCode, self._courseName)
+        nameFile = '{}{}.xml'.format(
+            self._folder_xmlFiles, self._courseCode)
 
         if not self.fileExist(nameFile):
             root = ET.Element('A{}'.format(self._courseCode))

@@ -1,4 +1,5 @@
 from packages.sigaa.base import sigaaBase
+from packages.sigaa.grid import GridScraping
 # ==============================================================
 # History
 # ==============================================================
@@ -262,3 +263,19 @@ class HistoryScraping(sigaaBase):
                     type(ex).__name__, ex.args))
         else:
             self._logFile.write('[xml_History]: Failure! File already exist\n')
+
+    def diagram_History(self):
+        # XML parser
+        import xml.etree.ElementTree as ET
+
+        nameFile = self._folder_xmlFiles + self._courseCode
+        # If grid doesn't exist, download it
+        if not self.fileExist(nameFile):
+            searchGrid = GridScraping()
+            searchGrid.login(user=self._userName, password=self._userPsswd)
+            searchGrid.set_codCurso(self._courseCode)
+            searchGrid.get_Grid()
+            searchGrid.xml_Grid()
+            searchGrid.quit_webdriver()
+
+        # Construct a tree with xml grid

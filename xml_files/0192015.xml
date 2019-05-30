@@ -1,0 +1,776 @@
+<A0192015>
+    <Curso>ENGENHARIA DE COMPUTA&#199;&#195;O</Curso>
+    <Ano>2015.1</Ano>
+    <NDisciplinas>107</NDisciplinas>
+    <Disciplinas>
+        <Disciplina>
+            <Nome>MATEM&#193;TICA III</Nome>
+            <Sigla>BAC021</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>SEMIN&#193;RIOS DE INTERNACIONALIZA&#199;&#195;O &#8211; PA&#205;SES ANGLOF&#212;NICOS</Nome>
+            <Sigla>CEI038</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>SEMIN&#193;RIOS DE INTERNACIONALIZA&#199;&#195;O &#8211; FRAN&#199;A</Nome>
+            <Sigla>CEI039</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>Instrumenta&#231;&#227;o Industrial II</Nome>
+            <Sigla>ECA020</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>Rob&#243;tica</Nome>
+            <Sigla>ECA024</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>MEDIDAS EL&#201;TRICAS E INSTRUMENTA&#199;&#195;O</Nome>
+            <Sigla>ECAI08</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>Compiladores</Nome>
+            <Sigla>ECO019</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>MARATONA DE PROGRAMA&#199;&#195;O</Nome>
+            <Sigla>ECO038</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>T&#243;picos Especiais em Engenharia de Software</Nome>
+            <Sigla>ECO041</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>T&#243;picos Especiais em Microeletr&#244;nica</Nome>
+            <Sigla>ECO042</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>Vis&#227;o Computacional</Nome>
+            <Sigla>ECO043</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>PROGRAMA&#199;&#195;O PARA DISPOSITIVOS M&#211;VEIS</Nome>
+            <Sigla>ECO044</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>Minera&#231;&#227;o e Armazenamento de Dados</Nome>
+            <Sigla>ECO045</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>Recupera&#231;&#227;o de Informa&#231;&#227;o</Nome>
+            <Sigla>ECO046</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>T&#243;picos Especiais em Engenharia de Computa&#231;&#227;o</Nome>
+            <Sigla>ECO047</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>T&#243;picos Especiais em Matem&#225;tica</Nome>
+            <Sigla>ECO049</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>T&#243;picos Especiais em F&#237;sica</Nome>
+            <Sigla>ECO050</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>NATURAL COMPUTING</Nome>
+            <Sigla>ECOI27</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>Maratona de Programa&#231;&#227;o I</Nome>
+            <Sigla>ECOI28</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>MARATONA DE PROGRAMA&#199;&#195;O II</Nome>
+            <Sigla>ECOI29</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>MARATONA DE PROGRAMA&#199;&#195;O III</Nome>
+            <Sigla>ECOI30</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>Maratona de Programa&#231;&#227;o IV</Nome>
+            <Sigla>ECOI31</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>CIRCUITO CMOS EM INVERS&#195;O FRACA</Nome>
+            <Sigla>ECOI34</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>DESENVOLVIMENTO DE SISTEMAS WEB</Nome>
+            <Sigla>ECOI35</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>FLUXO DE PROJETO DE CIRCUITOS INTEGRADOS</Nome>
+            <Sigla>ECOI36</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>MINERA&#199;&#195;O DE DADOS</Nome>
+            <Sigla>ECOI37</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>Educa&#231;&#227;o F&#237;sica I</Nome>
+            <Sigla>EDF101</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>M&#193;QUINAS EL&#201;TRICAS I</Nome>
+            <Sigla>EEL027</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>SISTEMAS DE INFORMA&#199;&#195;O</Nome>
+            <Sigla>EPR013</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>GEST&#195;O DE ONG'S</Nome>
+            <Sigla>EPRI47</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>LIBRAS - L&#205;NGUA BRASILEIRA DE SINAIS</Nome>
+            <Sigla>LET007</Sigla>
+            <Periodo>Optativa</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>INTRODU&#199;&#195;O &#192; ENGENHARIA DE COMPUTA&#199;&#195;O</Nome>
+            <Sigla>ECOI01</Sigla>
+            <Periodo>1</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>L&#211;GICA DE PROGRAMA&#199;&#195;O</Nome>
+            <Sigla>ECOI02</Sigla>
+            <Periodo>1</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>MATEM&#193;TICA DISCRETA</Nome>
+            <Sigla>ECOI03</Sigla>
+            <Periodo>1</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>DESENHO APLICADO</Nome>
+            <Sigla>EMEI02</Sigla>
+            <Periodo>1</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>FUNDAMENTOS DE MEC&#194;NICA</Nome>
+            <Sigla>FISI01</Sigla>
+            <Periodo>1</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>CI&#202;NCIA TECNOLOGIA E SOCIEDADE</Nome>
+            <Sigla>HUMI01</Sigla>
+            <Periodo>1</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>L&#205;NGUA PORTUGUESA I</Nome>
+            <Sigla>HUMI02</Sigla>
+            <Periodo>1</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>C&#193;LCULO DIFERENCIAL E INTEGRAL I</Nome>
+            <Sigla>MATI01</Sigla>
+            <Periodo>1</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>GEOMETRIA ANAL&#205;TICA E &#193;LGEBRA LINEAR</Nome>
+            <Sigla>MATI02</Sigla>
+            <Periodo>1</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>ALGORITMOS E ESTRUTURA DE DADOS I</Nome>
+            <Sigla>ECOI04</Sigla>
+            <Periodo>2</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECOI02</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>CIRCUITOS L&#211;GICOS</Nome>
+            <Sigla>EELI02</Sigla>
+            <Periodo>2</Periodo>
+            <CoRequisito>
+                <Sigla>EELI03</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>LABORAT&#211;RIO DE CIRCUITOS L&#211;GICOS</Nome>
+            <Sigla>EELI03</Sigla>
+            <Periodo>2</Periodo>
+            <CoRequisito>
+                <Sigla>EELI02</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>MEC&#194;NICA EST&#193;TICA</Nome>
+            <Sigla>EMEI06</Sigla>
+            <Periodo>2</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>FISI01</Sigla>
+                <Sigla>MATI01</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>QU&#205;MICA GERAL</Nome>
+            <Sigla>EMTI02</Sigla>
+            <Periodo>2</Periodo>
+            <CoRequisito>
+                <Sigla>EMTI03</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>LABORAT&#211;RIO DE QU&#205;MICA GERAL</Nome>
+            <Sigla>EMTI03</Sigla>
+            <Periodo>2</Periodo>
+            <CoRequisito>
+                <Sigla>EMTI02</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>FUNDAMENTOS DE MEC&#194;NICA ONDULAT&#211;RIA E TERMODIN&#194;MICA</Nome>
+            <Sigla>FISI02</Sigla>
+            <Periodo>2</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>LABORAT&#211;RIO DE F&#205;SICA A</Nome>
+            <Sigla>FISI03</Sigla>
+            <Periodo>2</Periodo>
+            <CoRequisito>
+                <Sigla>FISI02</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>C&#193;LCULO DIFERENCIAL E INTEGRAL II</Nome>
+            <Sigla>MATI03</Sigla>
+            <Periodo>2</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>MATI01</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>ALGORITMOS E ESTRUTURA DE DADOS II</Nome>
+            <Sigla>ECOI08</Sigla>
+            <Periodo>3</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECOI04</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>METODOLOGIA CIENT&#205;FICA PARA ENGENHARIA DA COMPUTA&#199;&#195;O</Nome>
+            <Sigla>ECOI61</Sigla>
+            <Periodo>3</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>HUMI02</Sigla>
+            </PreRequisitoTotal>
+            <CoRequisito>
+                <Sigla>HUMI06</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>RESIST&#202;NCIA DOS MATERIAIS I</Nome>
+            <Sigla>EMBI02</Sigla>
+            <Periodo>3</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>EMEI06</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>FEN&#212;MENOS DE TRANSPORTE</Nome>
+            <Sigla>EMEI07</Sigla>
+            <Periodo>3</Periodo>
+            <CoRequisito>
+                <Sigla>EMEI08</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>LABORAT&#211;RIO DE FEN&#212;MENOS DE TRANSPORTE</Nome>
+            <Sigla>EMEI08</Sigla>
+            <Periodo>3</Periodo>
+            <CoRequisito>
+                <Sigla>EMEI07</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>FUNDAMENTOS DE ELETROMAGNETISMO</Nome>
+            <Sigla>FISI04</Sigla>
+            <Periodo>3</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>MATI03</Sigla>
+                <Sigla>BACI21</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>METODOLOGIA CIENT&#205;FICA</Nome>
+            <Sigla>HUMI06</Sigla>
+            <Periodo>3</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>HUMI02</Sigla>
+            </PreRequisitoTotal>
+            <CoRequisito>
+                <Sigla>EAMI61</Sigla>
+                <Sigla>ECAI61</Sigla>
+                <Sigla>ECOI61</Sigla>
+                <Sigla>EELI61</Sigla>
+                <Sigla>EMBI61</Sigla>
+                <Sigla>EMTI61</Sigla>
+                <Sigla>EMEI04</Sigla>
+                <Sigla>EPRI61</Sigla>
+                <Sigla>ESSI61</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>C&#193;LCULO DIFERENCIAL E INTEGRAL III</Nome>
+            <Sigla>MATI06</Sigla>
+            <Periodo>3</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>MATI02</Sigla>
+                <Sigla>MATI03</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>EQUA&#199;&#213;ES DIFERENCIAIS I</Nome>
+            <Sigla>MATI07</Sigla>
+            <Periodo>3</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>MATI02</Sigla>
+                <Sigla>MATI03</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>LINGUAGENS DE PROGRAMA&#199;&#195;O</Nome>
+            <Sigla>ECOI09</Sigla>
+            <Periodo>4</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECOI04</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>CIRCUITOS EL&#201;TRICOS I</Nome>
+            <Sigla>EELI07</Sigla>
+            <Periodo>4</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>FUNDAMENTOS DE &#211;TICA E F&#205;SICA MODERNA</Nome>
+            <Sigla>FISI05</Sigla>
+            <Periodo>4</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>ELETROMAGNETISMO CL&#193;SSICO</Nome>
+            <Sigla>FISI07</Sigla>
+            <Periodo>4</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>FISI04</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>&#193;LGEBRA LINEAR</Nome>
+            <Sigla>MATI04</Sigla>
+            <Periodo>4</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>MATI02</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>ESTAT&#205;STICA</Nome>
+            <Sigla>MATI05</Sigla>
+            <Periodo>4</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>MATI01</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>C&#193;LCULO NUM&#201;RICO</Nome>
+            <Sigla>MATI08</Sigla>
+            <Periodo>4</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>MATI01</Sigla>
+                <Sigla>MATI02</Sigla>
+                <Sigla>MATI03</Sigla>
+                <Sigla>MATI07</Sigla>
+                <Sigla>BAC019</Sigla>
+                <Sigla>BAC000</Sigla>
+                <Sigla>BAC005</Sigla>
+                <Sigla>BAC020</Sigla>
+                <Sigla>BACI21</Sigla>
+                <Sigla>BAC022</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>SINAIS E SISTEMAS</Nome>
+            <Sigla>ECAI26</Sigla>
+            <Periodo>5</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>MATI07</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>LABORAT&#211;RIO DE CIRCUITOS EL&#201;TRICOS I</Nome>
+            <Sigla>ECOI10</Sigla>
+            <Periodo>5</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>EELI07</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>PROJETO E AN&#193;LISE DE ALGORITMOS</Nome>
+            <Sigla>ECOI11</Sigla>
+            <Periodo>5</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECOI04</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>ARQUITETURA DE COMPUTADORES</Nome>
+            <Sigla>ECOI12</Sigla>
+            <Periodo>5</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>EELI02</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>BANCO DE DADOS</Nome>
+            <Sigla>ECOI14</Sigla>
+            <Periodo>5</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>ELETR&#212;NICA B&#193;SICA I</Nome>
+            <Sigla>EELI10</Sigla>
+            <Periodo>5</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>EELI07</Sigla>
+            </PreRequisitoTotal>
+            <CoRequisito>
+                <Sigla>EELI11</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>LABORAT&#211;RIO DE ELETR&#212;NICA B&#193;SICA I</Nome>
+            <Sigla>EELI11</Sigla>
+            <Periodo>5</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>EELI07</Sigla>
+            </PreRequisitoTotal>
+            <CoRequisito>
+                <Sigla>EELI10</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>LABORAT&#211;RIO F&#205;SICA B (ELETROMAGNETISMO, &#211;TICA E F&#205;SICA MODERNA)</Nome>
+            <Sigla>FISI06</Sigla>
+            <Periodo>5</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>MODELAGEM E AN&#193;LISE DE SISTEMAS DIN&#194;MICOS</Nome>
+            <Sigla>ECAI29</Sigla>
+            <Periodo>6</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECAI26</Sigla>
+                <Sigla>EELI07</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>SISTEMAS OPERACIONAIS</Nome>
+            <Sigla>ECOI15</Sigla>
+            <Periodo>6</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>ENGENHARIA DE SOFTWARE</Nome>
+            <Sigla>ECOI16</Sigla>
+            <Periodo>6</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECOI14</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>CIRCUITOS INTEGRADOS ANAL&#211;GICOS</Nome>
+            <Sigla>ECOI32</Sigla>
+            <Periodo>6</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>EELI10</Sigla>
+                <Sigla>EELI11</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>ELETR&#212;NICA B&#193;SICA II</Nome>
+            <Sigla>EELI12</Sigla>
+            <Periodo>6</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>EELI10</Sigla>
+                <Sigla>ECAI02</Sigla>
+                <Sigla>EELI10</Sigla>
+                <Sigla>ECAI26</Sigla>
+            </PreRequisitoTotal>
+            <CoRequisito>
+                <Sigla>EELI13</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>LABORAT&#211;RIO DE ELETR&#212;NICA B&#193;SICA II</Nome>
+            <Sigla>EELI13</Sigla>
+            <Periodo>6</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECAI02</Sigla>
+                <Sigla>EELI10</Sigla>
+                <Sigla>ECAI26</Sigla>
+                <Sigla>EELI10</Sigla>
+            </PreRequisitoTotal>
+            <CoRequisito>
+                <Sigla>EELI12</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>ELETR&#212;NICA DIGITAL</Nome>
+            <Sigla>EELI14</Sigla>
+            <Periodo>6</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>EELI02</Sigla>
+                <Sigla>EELI10</Sigla>
+                <Sigla>EELI26</Sigla>
+                <Sigla>EELI10</Sigla>
+            </PreRequisitoTotal>
+            <CoRequisito>
+                <Sigla>EELI15</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>LABORAT&#211;RIO DE ELETR&#212;NICA DIGITAL</Nome>
+            <Sigla>EELI15</Sigla>
+            <Periodo>6</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>EELI02</Sigla>
+                <Sigla>EELI10</Sigla>
+                <Sigla>EELI26</Sigla>
+                <Sigla>EELI10</Sigla>
+            </PreRequisitoTotal>
+            <CoRequisito>
+                <Sigla>EELI14</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>INTRODU&#199;&#195;O AOS SISTEMAS DE CONTROLE</Nome>
+            <Sigla>ECAI04</Sigla>
+            <Periodo>7</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECAI03</Sigla>
+                <Sigla>MATI04</Sigla>
+                <Sigla>ECAI29</Sigla>
+                <Sigla>MATI04</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>MICROCONTROLADORES</Nome>
+            <Sigla>ECAI11</Sigla>
+            <Periodo>7</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>EELI14</Sigla>
+                <Sigla>ECOI04</Sigla>
+                <Sigla>BAC004</Sigla>
+                <Sigla>ELT013</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>LABORAT&#211;RIO DE PROCESSAMENTO DIGITAL DE SINAIS</Nome>
+            <Sigla>ECAI13</Sigla>
+            <Periodo>7</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECAI03</Sigla>
+                <Sigla>EELI12</Sigla>
+                <Sigla>ECAI29</Sigla>
+                <Sigla>EELI12</Sigla>
+            </PreRequisitoTotal>
+            <CoRequisito>
+                <Sigla>ECAI44</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>PROCESSAMENTO DIGITAL DE SINAIS</Nome>
+            <Sigla>ECAI44</Sigla>
+            <Periodo>7</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECAI29</Sigla>
+                <Sigla>EELI12</Sigla>
+            </PreRequisitoTotal>
+            <CoRequisito>
+                <Sigla>ECAI13</Sigla>
+            </CoRequisito>
+        </Disciplina>
+        <Disciplina>
+            <Nome>TEORIA DA COMPUTA&#199;&#195;O</Nome>
+            <Sigla>ECOI13</Sigla>
+            <Periodo>7</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECOI03</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>PRINC&#205;PIOS DE COMUNICA&#199;&#195;O</Nome>
+            <Sigla>ECOI18</Sigla>
+            <Periodo>7</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>LABORAT&#211;RIOS DE PRINC&#205;PIOS DE COMUNICA&#199;&#195;O</Nome>
+            <Sigla>ECOI19</Sigla>
+            <Periodo>7</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>CIRCUITOS INTEGRADOS DIGITAIS</Nome>
+            <Sigla>ECOI33</Sigla>
+            <Periodo>7</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>EELI14</Sigla>
+                <Sigla>EELI15</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>LABORAT&#211;RIO DE SISTEMAS DE CONTROLE I</Nome>
+            <Sigla>ECAI05</Sigla>
+            <Periodo>8</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECAI04</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>AUTOMA&#199;&#195;O DE SISTEMAS INDUSTRIAIS</Nome>
+            <Sigla>ECAI07</Sigla>
+            <Periodo>8</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>EELI14</Sigla>
+                <Sigla>EELI15</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>SISTEMAS EMBARCADOS E DE TEMPO REAL</Nome>
+            <Sigla>ECOI07</Sigla>
+            <Periodo>8</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECAI11</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>REDES DE COMPUTADORES</Nome>
+            <Sigla>ECOI21</Sigla>
+            <Periodo>8</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>COMPUTA&#199;&#195;O GR&#193;FICA E PROCESSAMENTO DIGITAL DE IMAGENS</Nome>
+            <Sigla>ECOI24</Sigla>
+            <Periodo>8</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECOI04</Sigla>
+                <Sigla>MATI02</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>COMPILADORES</Nome>
+            <Sigla>ECOI26</Sigla>
+            <Periodo>8</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECOI13</Sigla>
+                <Sigla>ECOI09</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>PESQUISA OPERACIONAL</Nome>
+            <Sigla>EPRI30</Sigla>
+            <Periodo>8</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>MATI02</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>CI&#202;NCIAS DO AMBIENTE</Nome>
+            <Sigla>EAMI30</Sigla>
+            <Periodo>9</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>GEST&#195;O DE PROJETOS</Nome>
+            <Sigla>ECOI20</Sigla>
+            <Periodo>9</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>INTELIG&#202;NCIA ARTIFICIAL</Nome>
+            <Sigla>ECOI22</Sigla>
+            <Periodo>9</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECOI04</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>SISTEMAS PARALELOS E DISTRIBUIDOS</Nome>
+            <Sigla>ECOI23</Sigla>
+            <Periodo>9</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>ECOI12</Sigla>
+                <Sigla>ECOI21</Sigla>
+                <Sigla>ECOI15</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>INTERFACE HOMEM-COMPUTADOR</Nome>
+            <Sigla>ECOI25</Sigla>
+            <Periodo>9</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>ADMINISTRA&#199;&#195;O</Nome>
+            <Sigla>EPRI02</Sigla>
+            <Periodo>9</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>INTRODU&#199;&#195;O &#192; ECONOMIA</Nome>
+            <Sigla>EPRI04</Sigla>
+            <Periodo>9</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>HUMI01</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+        <Disciplina>
+            <Nome>CIDADANIA E RESPONSABILIDADE SOCIAL</Nome>
+            <Sigla>HUMI04</Sigla>
+            <Periodo>9</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>TRABALHO DE CONCLUS&#195;O DE CURSO</Nome>
+            <Sigla>TCCI01</Sigla>
+            <Periodo>9</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>EST&#193;GIO SUPERVISIONADO</Nome>
+            <Sigla>ESTSUPERV_019_160</Sigla>
+            <Periodo>10</Periodo>
+        </Disciplina>
+        <Disciplina>
+            <Nome>TRABALHO DE CONCLUS&#195;O DE CURSO</Nome>
+            <Sigla>TCCI02</Sigla>
+            <Periodo>10</Periodo>
+            <PreRequisitoTotal>
+                <Sigla>TCCI01</Sigla>
+            </PreRequisitoTotal>
+        </Disciplina>
+    </Disciplinas>
+</A0192015>
