@@ -2,7 +2,7 @@ from packages.sigaa.base import sigaaBase
 # ==============================================================
 # Grid
 # ==============================================================
-
+# from packages.gui.grade import *
 
 class GridScraping(sigaaBase):
 
@@ -18,7 +18,7 @@ class GridScraping(sigaaBase):
         self._grid_Corequisite = None
         self._courseName = None
 
-    def get_Grid(self, *argv):
+    def get_Grid(self, selfUigrid):
         """
         Get informations to mount grid.
 
@@ -90,11 +90,11 @@ class GridScraping(sigaaBase):
                 raise Exception('searchError', 'File already exist')
 
             # Starting counting
-            # countPreCo = 0
+            countPreCo = 0
 
             # Searching pre and co requisites
             for i, j in zip(self._grid_Cod, self._grid_Period):
-                # countPreCo += 1
+                countPreCo += 1
                 # Don't search 'Optativa' pre requisite
                 if j == "Optativa":
                     continue
@@ -132,8 +132,10 @@ class GridScraping(sigaaBase):
                 self._grid_Corequisite[i] = co
 
                 # Couting percentile
-                # percentile = int((countPreCo*100)/len(self._grid_Cod))
-                # print('Percent: {}%'.format(percentile))
+                percentile = int((countPreCo*100)/len(self._grid_Cod))
+
+                selfUigrid.updateProgress(percentile)
+                # selfUigrid.updateLabel("{}".format(i))
 
             self._logFile.write('[get_Grid]->Requisitos: Success!\n')
         except Exception as ex:
@@ -141,9 +143,9 @@ class GridScraping(sigaaBase):
                 type(ex).__name__, ex.args))
 
         # GENERATE XML
-        if (len(argv) > 0):
-            if argv[0] == 'xml':
-                self.xml_Grid()
+        # if (len(argv) > 0):
+        #    if argv[0] == 'xml':
+        #        self.xml_Grid()
 
     def xml_Grid(self):
         """

@@ -2,12 +2,10 @@
 # ===========================================================
 # Grade main
 # ===========================================================
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-from packages.gui.grade import Ui_gradeWindow
 
+from packages.gui.gridUi import Ui_gradeWindow
 from packages.sigaa.grid import GridScraping
-
 
 class Ui_Main(object):
 

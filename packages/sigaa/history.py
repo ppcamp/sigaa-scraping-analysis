@@ -16,7 +16,7 @@ class HistoryScraping(sigaaBase):
         self._courseName = None
         self._studentId = None
 
-    def get_History(self, *argv):
+    def get_History(self):
         """
         Set the history. This method assumes that
         you did _login with student account.\n
@@ -178,9 +178,9 @@ class HistoryScraping(sigaaBase):
                 type(ex).__name__, ex.args))
 
         # GENERATE XML
-        if len(argv) > 0:
-            if argv[0] == 'xml':
-                self.xml_History()
+        # if len(argv) > 0:
+            # if argv[0] == 'xml':
+                # self.xml_History()
 
     def xml_History(self):
         """
@@ -203,7 +203,9 @@ class HistoryScraping(sigaaBase):
             s) if s[-1] == '2' else incrementsem(s))
 
         nano = self._yearInPeriod
-        for i in range(1, int(self._yearActualPeriod)):
+
+        # repeat function with no iterator used
+        for _ in range(int(self._yearActualPeriod)-1):
             nano = aplus(nano)
         # change to show in style 20XX.Y instead of K
         self._yearActualPeriod = nano
