@@ -1,0 +1,30 @@
+[set_user]: Success!
+[set_psswd]: Success!
+[login]: Failure! WebDriverException: ('chrome not reachable\n  (Session info: chrome=74.0.3729.169)\n  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Linux 5.0.0-15-generic x86_64)', None, None)
+[set_codCurso]: Success!
+[get_Grid]->Buscando: Failure! WebDriverException: ('chrome not reachable\n  (Session info: chrome=74.0.3729.169)\n  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Linux 5.0.0-15-generic x86_64)', None, None)
+[get_History]->PDF: Failure! UnboundLocalError: ("local variable 'soup' referenced before assignment",)!
+[xml_Grid]: Failure! File already exist
+[Quit_webdriver]: Success!
+[set_user]: Success!
+[set_psswd]: Success!
+[login]: Success!
+[set_codCurso]: Success!
+[get_Grid]->Buscando: Success!
+[get_History]->PDF: Failure! AttributeError: ("'NoneType' object has no attribute 'text'",)!
+[xml_Grid]: Failure! File already exist
+[Quit_webdriver]: Success!
+[set_user]: Success!
+[set_psswd]: Success!
+[login]: Failure! Exception: ('loginError', 'Wrong _userName or password')
+[set_codCurso]: Success!
+[get_Grid]->Buscando: Failure! NoSuchWindowException: ('no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome=74.0.3729.169)\n  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Linux 5.0.0-15-generic x86_64)', None, None)
+[get_History]->PDF: Failure! UnboundLocalError: ("local variable 'soup' referenced before assignment",)!
+[xml_Grid]: Failure! File already exist
+[Quit_webdriver]: Success!
+[set_user]: Success!
+[set_psswd]: Success!
+[login]: Failure! Exception: ('loginError', 'Wrong _userName or password')
+[get_History]->HeadersInfo: Failure! NoSuchWindowException: ('no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome=74.0.3729.169)\n  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Linux 5.0.0-15-generic x86_64)', None, None)!
+[get_History]->Basis: Failure! NoSuchWindowException: ('no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome=74.0.3729.169)\n  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Linux 5.0.0-15-generic x86_64)', None, None)!
+[get_History]->InfosHistory: Failure! NoSuchWindowException: ('no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome=74.0.3729.169)\n  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Linux 5.0.0-15-generic x86_64)', None, None)!

@@ -181,7 +181,7 @@ class HistoryScraping(sigaaBase):
         # GENERATE XML
         # if len(argv) > 0:
             # if argv[0] == 'xml':
-                # self.xml_History()
+            # self.xml_History()
 
     def xml_History(self):
         """
@@ -265,10 +265,8 @@ class HistoryScraping(sigaaBase):
             self._logFile.write('[xml_History]: Failure! File already exist\n')
 
     def diagram_History(self):
-        # XML parser
-        import xml.etree.ElementTree as ET
+        nameFile = self._folder_xmlFiles + self._courseCode + '.xml'
 
-        nameFile = self._folder_xmlFiles + self._courseCode
         # If grid doesn't exist, download it
         if not self.fileExist(nameFile):
             searchGrid = GridScraping()
@@ -279,3 +277,71 @@ class HistoryScraping(sigaaBase):
             searchGrid.quit_webdriver()
 
         # Construct a tree with xml grid
+        # XML parser
+        import xml.etree.ElementTree as ET
+        from os.path import abspath as abs
+        from graphviz import Digraph
+
+        studentId = '2016001942'
+        # Construct a tree with xml grid
+        root = ET.parse(nameFile).getroot()
+        nameFile = studentId + '.dot'  # 2016001942.dot
+        # Setting up digraph plot
+        graphDotOutput = Digraph(
+            engine='neato',  # force position
+            name=nameFile,
+            filename=nameFile+'.dot',
+            directory=abs(''),
+            format='png',
+            graph_attr={
+                'rankdir': 'BT',
+                'overlap': 'scale',  # force position
+                'splines': 'true',  # edge uppon vertix
+                # 'margin': '0.5,0.5',
+                'sep': '1'
+            }
+        )
+
+        auxX = ''
+        incX = -1
+        incY = None
+
+        for disciplinas in root.findall('Disciplinas/'):
+            # Searching for Disciplinas
+            for disciplina in disciplinas.findall('.'):
+                # Creating vertix
+                if (auxX != disciplina.find('Periodo').text):
+                    auxX = disciplina.find('Periodo').text
+                    print(auxX)
+                    incX += 1
+                    incY = 0
+                if (auxX == 'Optativa'):
+                    continue
+                auxSigla = disciplina.find('Sigla').text
+                strPos = '{0:.3}'.format(str(incX)) + ',' + "-{}!".format(incY)
+
+                nodeColor = '#ff0000'
+                #if(self._history[semestre][sigla]['situacao'] == 'APROVADO'):
+                #    nodeColor = 'green'
+
+
+                graphDotOutput.node(
+                    auxSigla,
+                    auxSigla,
+                    color='black',
+                    fillcolor=nodeColor,
+                    style='filled',  # 'striped',
+                    shape='rectangle',
+                    pos=strPos,
+                    # len='0.5'
+                    # weight='.5',
+                )
+                incY += 1
+
+                # Creating edges
+                # print("Disciplina: {}".format(auxSigla))
+                for pre in disciplina.findall('PreRequisitoTotal/Sigla'):
+                    auxPre = pre.text
+                    graphDotOutput.edge(auxPre, auxSigla, color='black')
+
+        graphDotOutput.render(view=True)
