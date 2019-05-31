@@ -1,3 +1,0 @@
-[set_user]: Success!
-[set_psswd]: Success!
-[login]: Success!
