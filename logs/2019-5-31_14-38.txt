@@ -1,0 +1,9 @@
+[set_user]: Success!
+[set_psswd]: Success!
+[login]: Success!
+[get_History]->HeadersInfo: Success!
+[get_History]->Basis: Success!
+[get_History]->InfosHistory: Success!
+[get_History]->PDF: Success!
+[Quit_webdriver]: Success!
+[xml_History]: Success!

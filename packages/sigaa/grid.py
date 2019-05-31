@@ -18,7 +18,7 @@ class GridScraping(sigaaBase):
         self._grid_Corequisite = None
         self._courseName = None
 
-    def get_Grid(self, **argv):
+    def get_Grid(self, *argv):
         """
         Get informations to mount grid.
 
@@ -125,8 +125,8 @@ class GridScraping(sigaaBase):
                         following-sibling::td')).text
 
                 # Minimum word's size its |OU|
-                pre = regex.findall(r'[\w\d]{3,}', pre)
-                co = regex.findall(r'[\w\d]{3,}', co)
+                pre = set(regex.findall(r'[\w\d]{3,}', pre))
+                co = set(regex.findall(r'[\w\d]{3,}', co))
 
                 self._grid_Prerequisite[i] = pre
                 self._grid_Corequisite[i] = co

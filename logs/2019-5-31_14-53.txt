@@ -1,0 +1,5 @@
+[set_user]: Success!
+[set_psswd]: Success!
+[login]: Success!
+[get_History]: Failure! File already exist[Quit_webdriver]: Success!
+[xml_History]: Failure! File already exist
