@@ -1,4 +1,5 @@
 from packages.sigaa.base import sigaaBase
+from packages.sigaa.grid import GridScraping
 # ==============================================================
 # History
 # ==============================================================
@@ -28,7 +29,7 @@ class HistoryScraping(sigaaBase):
         import re as regex
 
         # Need to download pdf's file only to search
-        # for Getting grid and currently period
+        # for Getting grid
         import textract
 
         # Header's info
@@ -39,6 +40,8 @@ class HistoryScraping(sigaaBase):
                 '#agenda-docente > table > tbody > tr:nth-child(1) > td:nth-of-type(2)').text
             self._yearInPeriod = self._chrome_webdriver.find_element_by_css_selector(
                 '#agenda-docente > table > tbody > tr:nth-child(6) > td:nth-child(2)').text
+            self._yearActualPeriod = self._chrome_webdriver.find_element_by_css_selector(
+                '#info-usuario > p.periodo-atual > strong').text
 
             nameFile = self._folder_xmlFiles + \
                 'historico_{}.xml'.format(self._studentId)
@@ -81,7 +84,6 @@ class HistoryScraping(sigaaBase):
                             'ch': ch
                         }
                     }
-
                 else:
                     self._history[periodo].update({
                         itsigla: {
@@ -90,6 +92,15 @@ class HistoryScraping(sigaaBase):
                             'ch': ch
                         }
                     })
+
+                # adicionando DISCIPLINA do bloco
+                if itsigla[-1] == '1' and itsigla[-2] == '.':
+                    self._history[periodo].update({
+                        itsigla[:-2]: {
+                            'nome': itnome,
+                        }
+                    })
+
             self._logFile.write('[get_History]->Basis: Success!\n')
         except Exception as ex:
             self._logFile.write('[get_History]->Basis: Failure! {}: {}!\n'.format(
@@ -104,6 +115,8 @@ class HistoryScraping(sigaaBase):
             self._chrome_webdriver.execute_script(js_script)
             soup = self.BeautifulSoup(
                 self._chrome_webdriver.page_source, 'html5lib')
+
+            # mont
             for i in soup.find_all_next('tr', class_='linha'):
                 sigla = i.find_next('td')
                 resultado = sigla.find_next('td').find_next(
@@ -147,7 +160,7 @@ class HistoryScraping(sigaaBase):
             js_script = "try{cmItemMouseUp('menu_form_menu_discente_j_id_jsp_275447739_49_menu',4);}catch(e){}"
             self._chrome_webdriver.execute_script(js_script)
 
-        # PDF (Getting grid and currently period)
+        # PDF (Getting grid)
         try:
             pt = textract.process(
                 '{}historico_{}.pdf'.format(
@@ -169,8 +182,8 @@ class HistoryScraping(sigaaBase):
             search = pt.find('Currículo:\n') + 11
             self.grade = ''.join(
                 [i for i in pt[search:pt.find('\n', search)] if i.isdigit()])
-            search = pt.find('Período Letivo Atual:\n') + 22
-            self._yearActualPeriod = pt[search:pt.find('\n', search)]
+            # search = pt.find('Período Letivo Atual:\n') + 22
+            # self._yearActualPeriod = pt[search:pt.find('\n', search)]
 
             self._logFile.write('[get_History]->PDF: Success!\n')
         except Exception as ex:
@@ -180,7 +193,7 @@ class HistoryScraping(sigaaBase):
         # GENERATE XML
         # if len(argv) > 0:
             # if argv[0] == 'xml':
-                # self.xml_History()
+            # self.xml_History()
 
     def xml_History(self):
         """
@@ -196,19 +209,21 @@ class HistoryScraping(sigaaBase):
         nameFile = self._folder_xmlFiles + \
             'historico_{}.xml'.format(self._studentId)
 
-        def incrementyear(s): return (str(int(s[:-2]) + 1) + '.1')
-        def incrementsem(s): return (s[:-1] + '2')
         # increase every six months
-        def aplus(s): return (incrementyear(
-            s) if s[-1] == '2' else incrementsem(s))
+        def aplus(j):
+            def incrementyear(s): return (str(int(s[:-2]) + 1) + '.1')
+            def incrementsem(s): return (s[:-1] + '2')
+            return (incrementyear(j) if j[-1] == '2' else incrementsem(j))
 
-        nano = self._yearInPeriod
-
+        # removed, search in grid
         # repeat function with no iterator used
-        for _ in range(int(self._yearActualPeriod)-1):
-            nano = aplus(nano)
+        # these codes above is only need to convert
+        # 7 to 2019.1
+        # nano = self._yearInPeriod # Periodo de entrada '2016.1'
+        # for _ in range(int(self._yearActualPeriod)-1): # period '7' → ERRO none in yearActualPeriod
+        #    nano = aplus(nano)
         # change to show in style 20XX.Y instead of K
-        self._yearActualPeriod = nano
+        #self._yearActualPeriod = nano
 
         if not self.fileExist(nameFile):
             root = ET.Element('HistoricoCurricular')
@@ -226,7 +241,7 @@ class HistoryScraping(sigaaBase):
             def freq(c, s): return str(round((int(c)-int(s))/int(c)*100))
 
             semestre = self._yearInPeriod
-            while True:  # Do ...while
+            while semestre != self._yearActualPeriod:  # Do ...while
                 sndLevel = ET.SubElement(fstLevel, 'A{}'.format(semestre))
 
                 for sigla in self._history[semestre]:
@@ -236,21 +251,19 @@ class HistoryScraping(sigaaBase):
 
                     ET.SubElement(trdLevel, 'Sigla').text = sigla
 
-                    ET.SubElement(trdLevel, 'Frequencia').text = freq(
-                        self._history[semestre][sigla]['ch'],
-                        self._history[semestre][sigla]['faltas'])
+                    if 'ch' in self._history[semestre][sigla]:
+                        ET.SubElement(trdLevel, 'Frequencia').text = freq(
+                            self._history[semestre][sigla]['ch'],
+                            self._history[semestre][sigla]['faltas'])
+                        ET.SubElement(
+                            trdLevel, 'CH').text = self._history[semestre][sigla]['ch']
 
                     ET.SubElement(
                         trdLevel, 'Nota').text = self._history[semestre][sigla]['resultado']
 
                     ET.SubElement(
-                        trdLevel, 'CH').text = self._history[semestre][sigla]['ch']
-
-                    ET.SubElement(
                         trdLevel, 'Situacao').text = self._history[semestre][sigla]['situacao']
 
-                if (semestre == self._yearActualPeriod):
-                    break
                 semestre = aplus(semestre)
 
             try:
@@ -262,3 +275,117 @@ class HistoryScraping(sigaaBase):
                     type(ex).__name__, ex.args))
         else:
             self._logFile.write('[xml_History]: Failure! File already exist\n')
+
+    def diagram_History(self):
+        nameFile = self._folder_xmlFiles + self._courseCode + '.xml'
+        # If grid doesn't exist, download it
+        if not self.fileExist(nameFile):
+            searchGrid = GridScraping()
+            searchGrid.login(user=self._userName, password=self._userPsswd)
+            searchGrid.set_codCurso(self._courseCode)
+            searchGrid.get_Grid()
+            searchGrid.xml_Grid()
+            searchGrid.quit_webdriver()
+
+        # Construct a tree with xml grid
+        # XML parser
+        import xml.etree.ElementTree as ET
+        from os.path import abspath as abs
+        from graphviz import Digraph
+
+        # Construct a tree with xml grid
+        root = ET.parse(nameFile).getroot()
+        nameFile = self._studentId + '.dot'  # 2016001942.dot
+        # Setting up digraph plot
+        graphDotOutput = Digraph(
+            engine='neato',  # force position
+            name=nameFile,
+            filename=nameFile,
+            directory=abs(''),
+            format='png',
+            graph_attr={
+                # 'concentrate': 'true',
+                'rankdir': 'BT',
+                'overlap': 'scale',  # force position
+                # splines → polyline, ortho, true/spline, curved
+                'splines': 'ortho',  # edge uppon vertix
+                # 'margin': '0.5,0.5',
+                'sep': '0.5',
+            },
+            node_attr={
+                'pad':'1',
+                'nodesep':'2',
+                'ranksep':'2'
+            }
+        )
+
+        # edge pre color vector
+        colorVectorEdge = [
+            '#FA5F6E', '#FA3246', '#FA253B', '#FA142B', '#BD1C32',
+            '#BD0D25', '#AF0019', '#850014', '#840019', '#BB0019'
+        ]
+
+        auxX = ''
+        incX = -1
+        incY = None
+
+        includedNodes = set()
+
+        # Loop for nodes
+        for disciplinas in root.findall('Disciplinas/'):
+            # Searching for Disciplinas
+            for disciplina in disciplinas.findall('.'):
+                # Creating vertix
+                if (auxX != disciplina.find('Periodo').text):
+                    auxX = disciplina.find('Periodo').text
+                    incX += 1
+                    incY = 0
+                if (auxX == 'Optativa'):
+                    continue
+
+                auxSigla = disciplina.find('Sigla').text
+                nodeColor = '#BDC3C7'  # Wet asphalt default color
+
+                # Percorre, procurando a disciplina
+                for itPeriodo, _ in reversed(list(self._history.items())):
+                    # skip if don't find in dict
+                    if auxSigla not in self._history[itPeriodo]:
+                        continue
+                    situacaoMateria = self._history[itPeriodo][auxSigla]['situacao']
+                    if (situacaoMateria == 'APROVADO'):
+                        nodeColor = '#2ECC71' # EMERALD
+                    elif (situacaoMateria == 'REPROVADO'):
+                        nodeColor = '#E74C3C' #ALIZARIN
+                    elif (situacaoMateria == '--'):
+                        nodeColor = '#9B59B6' # Amethyst
+
+                strPos = '{0:.3}'.format(str(incX)) + ',' + "-{}!".format(incY)
+
+                graphDotOutput.node(
+                    auxSigla,
+                    auxSigla,
+                    color='none',
+                    style='filled',  # 'striped',
+                    shape='rectangle',
+                    fillcolor='{}'.format(nodeColor),
+                    pos=strPos,
+                    **{  # Node atributes fixed size
+                        'fixedsize': 'true',
+                        'width': '2',
+                        'height': '1'
+                    }
+                    # len='0.5'
+                    # weight='.5',
+                )
+                includedNodes.add(auxSigla)
+                incY += 1
+
+                # Creating edges
+                for pre in disciplina.findall('PreRequisitoTotal/Sigla'):
+                    auxPre = pre.text
+                    if auxPre in includedNodes:
+                        graphDotOutput.edge(
+                            auxPre, auxSigla, color=colorVectorEdge[int(auxX)-1])
+
+            # end disciplina loop
+        graphDotOutput.render(view=True)
