@@ -5,8 +5,9 @@ from packages.sigaa.history import HistoryScraping
 paa = HistoryScraping()
 
 # Login with RA and psswd
-paa.login(user='USER', password='PSSWD')
+paa.login(user='RA', password='SENHA')
 
 # DO fluxogram
 paa.toDiagram(nsgrid='0192015')
+paa.toXmlFile()
 paa.quit_webdriver()

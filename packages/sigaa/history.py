@@ -1,5 +1,6 @@
 from packages.sigaa.base import sigaaBase
 from packages.sigaa.grid import GridScraping
+
 # ==============================================================
 # History
 # ==============================================================
@@ -363,6 +364,9 @@ class HistoryScraping(sigaaBase):
                 return False
         else:
             self._gridNumber = ngrid
+
+        # Create tree
+        self.__getTree()
 
         # GENERATE XML
         if xml:
