@@ -37,7 +37,7 @@ class HistoryScraping(sigaaBase):
         self._studentId = None  # RA
         self._gridNumer = None  # 0192015 ECO2015
 
-    def _getHeaderInfo(self, check):
+    def __getHeaderInfo(self, check):
         """
         (Private method): provides a way to get the following
         values:courseName,studentId,yearInPeriod,yearActualPeriod
@@ -50,7 +50,7 @@ class HistoryScraping(sigaaBase):
 
         Example
         -------
-        > self._getHeaderInfo('check') # won't search.
+        > self.__getHeaderInfo('check') # won't search.
         """
         try:
             self._courseName = self._chrome_webdriver.find_element_by_css_selector(
@@ -83,7 +83,7 @@ class HistoryScraping(sigaaBase):
                 type(ex).__name__, ex.args))
             return False
 
-    def _getBasicsInfos(self, addBlock):
+    def __getBasicsInfos(self, addBlock):
         """
         (Private method): it creates the columns in
         history dict. It will put values in:
@@ -98,7 +98,7 @@ class HistoryScraping(sigaaBase):
 
         Example
         -------
-        > self._getBasicsInfos('addBlock') # create block
+        > self.__getBasicsInfos('addBlock') # create block
         """
         try:
             self._chrome_webdriver.get(self._url_discipline)
@@ -141,6 +141,7 @@ class HistoryScraping(sigaaBase):
                         self._history[periodo].update({
                             itsigla[:-2]: {
                                 'nome': itnome,
+                                'situacao': '--',
                             }
                         })
 
@@ -151,14 +152,14 @@ class HistoryScraping(sigaaBase):
                 type(ex).__name__, ex.args))
             return False
 
-    def _getOthersInfos(self):
+    def __getOthersInfos(self):
         """
         (Private method): search for 'resultados','faltas'
         and 'situacao'
 
         Example
         -------
-        > self._getOthersInfos()
+        > self.__getOthersInfos()
         """
         # clean string
         import re as regex
@@ -208,13 +209,67 @@ class HistoryScraping(sigaaBase):
                 type(ex).__name__, ex.args))
             return False
 
-    def _getPdfInfo(self):
+    def __getPdfInfo(self):
         """
         (Private method): only used to get student's grid number
 
         Example
         -------
-        > self._getPdfInfo()
+        > self.__getPdfInfo()
+
+        Note
+        ----
+        This method will probably be disabled. The cost to got grid number
+        is too high, need too much libraries, and isn't optimum solution.
+        """
+        # check if file (pdf) exist in temp files, otherwise download it
+        nameFile = self._folder_temp + \
+            'historico_{}.pdf'.format(self._studentId)
+        if not self.fileExist(nameFile):
+            self._chrome_webdriver.get(self._url_default)
+            # script found that download the pdf file
+            js_script = "try{cmItemMouseUp('menu_form_menu_discente_j_id_jsp_275447739_49_menu',4);}catch(e){}"
+            self._chrome_webdriver.execute_script(js_script)
+
+        # Lib needed to scrap from pdf
+        import textract
+        # PDF (Getting grid)
+
+        try:
+            pt = textract.process(
+                '{}historico_{}.pdf'.format(
+                    self._folder_temp, self._studentId),
+                method='pdftotext'
+            )
+            pt = pt.decode("UTF-8")
+            pt = str(pt)
+            pt = pt.split('\n')
+            n = []
+
+            for i in pt:
+                if not i.strip():
+                    continue
+                else:
+                    n.append(i)
+            pt = '\n'.join(n)
+
+            search = pt.find('Currículo:\n') + 11
+            self._gridNumber = ''.join(
+                [i for i in pt[search:pt.find('\n', search)] if i.isdigit()])
+            # search = pt.find('Período Letivo Atual:\n') + 22
+            # self._yearActualPeriod = pt[search:pt.find('\n', search)]
+
+            self._logFile.write('[get_History]->PDF: Success!\n')
+        except Exception as ex:
+            self._logFile.write('[get_History]->PDF: Failure! {}: {}!\n'.format(
+                type(ex).__name__, ex.args))
+
+        """
+        (Private method): only used to get student's grid number
+
+        Example
+        -------
+        > self.__getPdfInfo()
 
         Note
         ----
@@ -288,26 +343,26 @@ class HistoryScraping(sigaaBase):
         """
 
         # Header's info
-        if not self._getHeaderInfo(check):
+        if not self.__getHeaderInfo(check):
             return False
 
         # Create basis with (Nome, sigla, CH, Turma)
-        if not self._getBasicsInfos(addBlock):
+        if not self.__getBasicsInfos(addBlock):
             return False
 
         # Adding info to history (notas, faltas, situacao)
-        if not self._getOthersInfos():
+        if not self.__getOthersInfos():
             return False
 
         # Searching for grid number
-        if not self._getPdfInfo():
+        if not self.__getPdfInfo():
             return False
 
         # GENERATE XML
         if xml:
             self.toXmlFile(True)
 
-    def _getTree(self):
+    def __getTree(self):
         # XML
         from xml.etree import ElementTree as ET
 
@@ -368,7 +423,7 @@ class HistoryScraping(sigaaBase):
         """
 
         if createTree:
-            self._getTree()
+            self.__getTree()
 
         nameFile = self._folder_xmlFiles + \
             'historico_{}.xml'.format(self._studentId)
