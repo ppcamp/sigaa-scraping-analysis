@@ -1,0 +1,4 @@
+[set_user]: Success!
+[set_psswd]: Success!
+[login]: Failure. It must have an _userName and psswd
+[get_History]->HeadersInfo: Failure! NoSuchElementException: ('no such element: Unable to locate element: {"method":"css selector","selector":"#agenda-docente > table > tbody > tr:nth-child(2) > td:nth-child(2)"}\n  (Session info: chrome=74.0.3729.169)\n  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Linux 5.0.0-15-generic x86_64)', None, None)!
