@@ -5,10 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: teste",
+            "name": "Python: testHistory",
             "type": "python",
             "request": "launch",
-            "program": "/home/ppcamp/Documents/Git/projects/sig-scraping/teste.py",
+            "program": "/home/ppcamp/Documents/Git/projects/sig-scraping/testHistory.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: testCoord",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/ppcamp/Documents/Git/projects/sig-scraping/testCoord.py",
             "console": "integratedTerminal"
         }
     ]
