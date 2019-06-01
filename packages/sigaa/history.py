@@ -318,7 +318,7 @@ class HistoryScraping(sigaaBase):
             self._logFile.write('[get_History]->PDF: Failure! {}: {}!\n'.format(
                 type(ex).__name__, ex.args))
 
-    def getHistory(self, check=False, addBlock=True, xml=False):
+    def getHistory(self, check=False, addBlock=True, ngrid='', xml=False):
         """
         Set the history. This method assumes that
         you did _login with student account.\n
@@ -333,6 +333,8 @@ class HistoryScraping(sigaaBase):
             When pass 'True' will create a block
             discipline that will contain only name from
             XXXX.1.
+        ngrid: string
+            Pass grid number to program
         xml: boolean value
             'True' to execute method 'toXmlFile'
 
@@ -354,9 +356,13 @@ class HistoryScraping(sigaaBase):
         if not self.__getOthersInfos():
             return False
 
-        # Searching for grid number
-        if not self.__getPdfInfo():
-            return False
+        # passing manually grid number
+        if ngrid == '':
+            # Searching for grid number
+            if not self.__getPdfInfo():
+                return False
+        else:
+            self._gridNumber = ngrid
 
         # GENERATE XML
         if xml:
@@ -438,7 +444,7 @@ class HistoryScraping(sigaaBase):
         else:
             self._logFile.write('[toXmlFile]: Failure! File already exists.\n')
 
-    def toDiagram(self, search=True):
+    def toDiagram(self, search=True, nsgrid=''):
         """
         Get a student view of grid fluxogram.
 
@@ -456,7 +462,7 @@ class HistoryScraping(sigaaBase):
         """
 
         if search:
-            self.getHistory()
+            self.getHistory(ngrid=nsgrid)
 
         # Check if course grid exist in xml folder
         # If grid doesn't exist, download it
