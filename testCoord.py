@@ -1,4 +1,12 @@
+# ===========================================
+# Coordenator view
+#
+# Note: this view consider also when you got
+# reproved once, before pass through.
+# ===========================================
 
+from graphviz import Digraph  # fluxogram
+from os.path import abspath as abs  # path
 import lxml.etree as ET  # XML parser
 from os.path import abspath
 from os import listdir
@@ -8,7 +16,8 @@ _folder_project = abspath('') + '/'
 _folder_temp = _folder_project + 'xml_files/'
 
 # get all histories in xml folder
-histories = [i for i in listdir(_folder_temp) if regex.match('[historico_]', i)]
+histories = [i for i in listdir(
+    _folder_temp) if regex.match('[historico_]', i)]
 
 # dict that will hold the grids numbers
 gridsNumbers = {}
@@ -30,8 +39,6 @@ for i in histories:
 
 # Construct a tree with xml grid
 
-from os.path import abspath as abs  # path
-from graphviz import Digraph  # fluxogram
 
 for grid in gridsNumbers:
     # Construct a tree with xml grid
@@ -101,19 +108,26 @@ for grid in gridsNumbers:
                 n = "//Sigla[text()[contains(.,'{}')]]/../Situacao".format(auxSigla)
                 for i in studentsData[studentId].xpath(n):
                     if (i.text == 'APROVADO'):
-                        percentApproved+=1
+                        percentApproved += 1
                     elif (i.text == 'REPROVADO'):
-                        percentReproved+=1
+                        percentReproved += 1
                     elif (i.text == '--'):
-                        percentDoing+=1
+                        percentDoing += 1
 
-                    percent100+=1
-
+                    percent100 += 1
 
             strPos = '{0:.3}'.format(str(incX)) + ',' + "-{}!".format(incY)
 
-            def getPercent(p,n):
-                return str(p/n) if n>0 else '0'
+            def getPercent(p, n):
+                return str(p/n) if n > 0 else '0'
+
+            if percent100 == 0:
+                sfillcolor = nodeColor
+            else:
+                sfillcolor = '{};{}:{};{}:{};{}'.format(
+                    '#2ECC71', getPercent(percentApproved, percent100),
+                    '#E74C3C', getPercent(percentReproved, percent100),
+                    '#9B59B6', getPercent(percentDoing, percent100))
 
             graphDotOutput.node(
                 auxSigla,
@@ -121,13 +135,8 @@ for grid in gridsNumbers:
                 color='none',
                 style='striped',
                 shape='rectangle',
-                fillcolor='{};{}:{};{}:{};{}:{}'.format(
-                    '#2ECC71',getPercent(percentApproved, percent100),
-                    '#E74C3C',getPercent(percentReproved, percent100),
-                    '#9B59B6',getPercent(percentDoing, percent100),
-                    nodeColor
-                ),
-                pos=strPos,
+                fillcolor=sfillcolor,
+                pos = strPos,
                 **{  # Node atributes fixed size
                     'fixedsize': 'true',
                     'width': '2',
@@ -142,17 +151,17 @@ for grid in gridsNumbers:
 
             # Creating pre edges
             for pre in disciplina.findall('PreRequisitoTotal/Sigla'):
-                auxPre = pre.text
+                auxPre=pre.text
                 if auxPre in includedNodes:
                     graphDotOutput.edge(
-                        auxPre, auxSigla, color=colorVectorEdge[int(auxX)-1])
+                        auxPre, auxSigla, color = colorVectorEdge[int(auxX)-1])
             # Creating co edges
             for pre in disciplina.findall('CoRequisito/Sigla'):
-                auxPre = pre.text
+                auxPre=pre.text
                 if auxPre in includedNodes:
                     graphDotOutput.edge(
-                        auxPre, auxSigla, color='black')
+                        auxPre, auxSigla, color = 'black')
 
         # end disciplina loop
     # end disciplinas loop
-    graphDotOutput.render(view=True)
+    graphDotOutput.render(view = True)
