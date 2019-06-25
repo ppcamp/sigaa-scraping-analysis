@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<perfil>
+    <grade_referencia> 2015 </grade_referencia>
+	<competencia>
+		<nome>Matem&#195;&#161;tica e Estat&#195;&#173;stica</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>C&#195;&#129;LCULO DIFERENCIAL E INTEGRAL I</nome>
+		        <sigla>MATI01</sigla>
+		    </disciplina>    
+		    <disciplina>
+		        <nome>GEOMETRIA ANAL&#195;&#141;TICA E &#195;&#129;LGEBRA LINEAR</nome>
+		        <sigla>MATI02</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>MEC&#195;&#130;NICA EST&#195;&#129;TICA</nome>
+		        <sigla>EMEI06</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>C&#195;&#129;LCULO DIFERENCIAL E INTEGRAL II</nome>
+		        <sigla>MATI03</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>C&#195;&#129;LCULO DIFERENCIAL E INTEGRAL III</nome>
+		        <sigla>MATI06</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>EQUA&#195;&#135;&#195;&#149;ES DIFERENCIAIS I</nome>
+		        <sigla>MATI07</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>&#195;&#129;LGEBRA LINEAR</nome>
+		        <sigla>MATI04</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>ESTAT&#195;&#141;STICA</nome>
+		        <sigla>MATI05</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>C&#195;&#129;LCULO NUM&#195;&#137;RICO</nome>
+		        <sigla>MATI08</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>
+	<competencia>
+		<nome>F&#195;&#173;sica e Ci&#195;&#170;ncia dos Materiais</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>FUNDAMENTOS DE MEC&#195;&#130;NICA</nome>
+		        <sigla>FISI01</sigla>
+		    </disciplina>    
+		    <disciplina>
+		        <nome>QU&#195;&#141;MICA GERAL</nome>
+		        <sigla>EMTI02</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>LABORAT&#195;&#147;RIO DE QU&#195;&#141;MICA</nome>
+		        <sigla>EMTI03</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>FUNDAMENTOS DE MEC&#195;&#130;NICA ONDULAT&#195;&#147;RIA E TERMODIN&#195;&#130;MICA</nome>
+		        <sigla>FISI02</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>LABORAT&#195;&#147;RIO DE F&#195;&#141;SICA A</nome>
+		        <sigla>FISI03</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>RESIST&#195;&#138;NCIA DOS MATERIAIS I</nome>
+		        <sigla>EMBI02</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>FEN&#195;&#148;MENOS DE TRANSPORTE</nome>
+		        <sigla>EMEI07</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>LABORAT&#195;&#147;RIO DE FEN&#195;&#148;MENOS DE TRANSPORTE</nome>
+		        <sigla>EMEI08</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>FUNDAMENTOS DE ELETROMAGNETISMO</nome>
+		        <sigla>FISI04</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>FUNDAMENTOS DE &#195;&#147;TICA E F&#195;&#141;SICA MODERNA</nome>
+		        <sigla>FISI05</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>ELETROMAGNETISMO CL&#195;&#129;SSICO</nome>
+		        <sigla>FISI07</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>LABORAT&#195;&#147;RIO F&#195;&#141;SICA B (ELETROMAGNETISMO, &#195;&#147;TICA E F&#195;&#141;SICA MODERNA)</nome>
+		        <sigla>FISI06</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>
+	<competencia>
+		<nome>Matem&#195;&#161;tica discreta e teoria dos grafos</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>MATEM&#195;&#129;TICA DISCRETA</nome>
+		        <sigla>ECOI03</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>
+	<competencia>
+		<nome>Pesquisa operacional e otimiza&#195;&#167;&#195;&#163;o</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>PESQUISA OPERACIONAL</nome>
+		        <sigla>EPRI30</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>
+	<competencia>
+		<nome>Fundamentos de programa&#195;&#167;&#195;&#163;o e linguagens de programa&#195;&#167;&#195;&#163;o</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>L&#195;&#147;GICA DE PROGRAMA&#195;&#135;&#195;&#131;O</nome>
+		        <sigla>ECOI02</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>LINGUAGENS DE PROGRAMA&#195;&#135;&#195;&#131;O</nome>
+		        <sigla>ECOI09</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>
+	<competencia>
+		<nome>Algoritmos e estruturas de dados</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>ALGORITMOS E ESTRUTURA DE DADOS I</nome>
+		        <sigla>ECOI04</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>ALGORITMOS E ESTRUTURA DE DADOS II</nome>
+		        <sigla>ECOI08</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>PROJETO E AN&#195;&#129;LISE DE ALGORITMOS</nome>
+		        <sigla>ECOI11</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>
+	<competencia>
+		<nome>Linguagens formais e aut&#195;&#180;matos</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>TEORIA DA COMPUTA&#195;&#135;&#195;&#131;O</nome>
+		        <sigla>ECOI13</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>
+	<competencia>
+		<nome>Engenharia de software</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>ENGENHARIA DE SOFTWARE</nome>
+		        <sigla>ECOI16</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>  
+	<competencia>
+		<nome>Intera&#195;&#167;&#195;&#163;o humano-computador</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>INTERFACE HOMEM-COMPUTADOR</nome>
+		        <sigla>ECOI25</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>  
+	
+	<competencia>
+		<nome>Banco de dados</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>BANCO DE DADOS</nome>
+		        <sigla>ECOI14</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>  
+	
+	<competencia>
+		<nome>Circuitos el&#195;&#169;tricos e eletr&#195;&#180;nicos</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>CIRCUITOS EL&#195;&#137;TRICOS I</nome>
+		        <sigla>EELI07</sigla>
+		    </disciplina>    
+		    <disciplina>
+		        <nome>LABORAT&#195;&#147;RIO DE CIRCUITOS EL&#195;&#137;TRICOS I</nome>
+		        <sigla>ECOI10</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>ELETR&#195;&#148;NICA B&#195;&#129;SICA I</nome>
+		        <sigla>EELI10</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>LABORAT&#195;&#147;RIO DE ELETR&#195;&#148;NICA B&#195;&#129;SICA I</nome>
+		        <sigla>EELI11</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>CIRCUITOS INTEGRADOS ANAL&#195;&#147;GICOS</nome>
+		        <sigla>ECOI32</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>ELETR&#195;&#148;NICA B&#195;&#129;SICA II</nome>
+		        <sigla>EELI12</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>LABORAT&#195;&#147;RIO DE ELETR&#195;&#148;NICA B&#195;&#129;SICA II</nome>
+		        <sigla>EELI13</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>CIRCUITOS INTEGRADOS DIGITAIS</nome>
+		        <sigla>ECOI33</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>
+	
+	
+	<competencia>
+		<nome>Sistemas digitais e sistemas embarcados</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>CIRCUITOS L&#195;&#147;GICOS</nome>
+		        <sigla>EELI02</sigla>
+		    </disciplina>    
+		    <disciplina>
+		        <nome>LABORAT&#195;&#147;RIO DE CIRCUITOS L&#195;&#147;GICOS</nome>
+		        <sigla>EELI03</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>MICROCONTROLADORES</nome>
+		        <sigla>ECAI11</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>ELETR&#195;&#148;NICA DIGITAL</nome>
+		        <sigla>EELI14</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>LABORAT&#195;&#147;RIO DE ELETR&#195;&#148;NICA DIGITAL</nome>
+		        <sigla>EELI15</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>SISTEMAS EMBARCADOS E DE TEMPO REAL</nome>
+		        <sigla>ECOI07</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>
+	
+	<competencia>
+		<nome>Arquitetura de computadores</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>ARQUITETURA DE COMPUTADORES</nome>
+		        <sigla>ECOI12</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>  
+	
+	<competencia>
+		<nome>Sistemas operacionais</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>SISTEMAS OPERACIONAIS</nome>
+		        <sigla>ECOI15</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>  
+	
+	
+	<competencia>
+		<nome>An&#195;&#161;lise de dados e processamento de sinais</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>SINAIS E SISTEMAS</nome>
+		        <sigla>ECAI26</sigla>
+		    </disciplina>    
+		    <disciplina>
+		        <nome>PROCESSAMENTO DIGITAL DE SINAIS</nome>
+		        <sigla>ECAI44</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>LABORAT&#195;&#147;RIO DE PROCESSAMENTO DIGITAL DE
+SINAIS</nome>
+		        <sigla>ECAI13</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>
+
+	
+	<competencia>
+		<nome>Intelig&#195;&#170;ncia artificial</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>INTELIG&#195;&#138;NCIA ARTIFICIAL</nome>
+		        <sigla>ECOI22</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>  
+	
+	
+	<competencia>
+		<nome>Automa&#195;&#167;&#195;&#163;o industrial e sistemas de controle</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>MODELAGEM E AN&#195;&#129;LISE DE SISTEMAS DIN&#195;&#130;MICOS</nome>
+		        <sigla>ECAI29</sigla>
+		    </disciplina>    
+		    <disciplina>
+		        <nome>INTRODU&#195;&#135;&#195;&#131;O AOS SISTEMAS DE CONTROLE</nome>
+		        <sigla>ECAI04</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>LABORAT&#195;&#147;RIO DE SISTEMAS DE CONTROLE I</nome>
+		        <sigla>ECAI05</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>AUTOMA&#195;&#135;&#195;&#131;O DE SISTEMAS INDUSTRIAIS</nome>
+		        <sigla>ECAI07</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>
+
+	
+	<competencia>
+		<nome>Sistemas de comunica&#195;&#167;&#195;&#163;o e redes de computadores</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>PRINC&#195;&#141;PIOS DE COMUNICA&#195;&#135;&#195;&#131;O</nome>
+		        <sigla>ECOI18</sigla>
+		    </disciplina>    
+		    <disciplina>
+		        <nome>LABORAT&#195;&#147;RIOS DE PRINC&#195;&#141;PIOS DE COMUNICA&#195;&#135;&#195;&#131;O</nome>
+		        <sigla>ECOI19</sigla>
+		    </disciplina>
+		    <disciplina>
+		        <nome>REDES DE COMPUTADORES</nome>
+		        <sigla>ECOI21</sigla>
+		    </disciplina>
+		</disciplinas>
+	</competencia>
+
+	<competencia>
+		<nome>Seguran&#195;&#167;a de sistemas de computa&#195;&#167;&#195;&#163;o</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome></nome>
+		        <sigla></sigla>
+		    </disciplina>    
+		</disciplinas>
+	</competencia>
+
+	<competencia>
+		<nome>Sistemas distribu&#195;&#173;dos e processamento paralelo.</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>SISTEMAS PARALELOS E DISTRIBUIDOS</nome>
+		        <sigla>ECOI23</sigla>
+		    </disciplina>    
+		</disciplinas>
+	</competencia>	
+	
+	<competencia>
+		<nome>N&#195;&#163;o Categorizado</nome>
+		<disciplinas>
+		    <disciplina>
+		        <nome>INTRODU&#195;&#135;&#195;&#131;O &#195;&#128; ENGENHARIA DE COMPUTA&#195;&#135;&#195;&#131;O </nome>
+		        <sigla>ECOI01</sigla>
+		    </disciplina>    
+		    <disciplina>
+		        <nome>DESENHO APLICADO </nome>
+		        <sigla>EMEI02</sigla>
+		    </disciplina>  
+		    <disciplina>
+		        <nome>CI&#195;&#138;NCIA TECNOLOGIA E SOCIEDADE</nome>
+		        <sigla>HUMI01</sigla>
+		    </disciplina>  
+		    <disciplina>
+		        <nome>L&#195;&#141;NGUA PORTUGUESA I  </nome>
+		        <sigla>HUMI02</sigla>
+		    </disciplina>  
+		    <disciplina>
+		        <nome>METODOLOGIA CIENT&#195;&#141;FICA PARA ENGENHARIA DA COMPUTA&#195;&#135;&#195;&#131;O</nome>
+		        <sigla>ECOI61</sigla>
+		    </disciplina>  
+		    <disciplina>
+		        <nome>METODOLOGIA CIENT&#195;&#141;FICA  </nome>
+		        <sigla>HUMI06</sigla>
+		    </disciplina>  
+		    <disciplina>
+		        <nome>COMPUTA&#195;&#135;&#195;&#131;O GR&#195;&#129;FICA E PROCESSAMENTO DIGITAL DE IMAGENS </nome>
+		        <sigla>ECOI24</sigla>
+		    </disciplina>  
+		    <disciplina>
+		        <nome>COMPILADORES </nome>
+		        <sigla>ECOI26</sigla>
+		    </disciplina>  
+		    <disciplina>
+		        <nome>CI&#195;&#138;NCIAS DO AMBIENTE  </nome>
+		        <sigla>EAMI30</sigla>
+		    </disciplina>  
+		     <disciplina>
+		        <nome>GEST&#195;&#131;O DE PROJETOS </nome>
+		        <sigla>ECOI20</sigla>
+		    </disciplina>  
+		     <disciplina>
+		        <nome>ADMINISTRA&#195;&#135;&#195;&#131;O </nome>
+		        <sigla>EPRI02</sigla>
+		    </disciplina>  
+		     <disciplina>
+		        <nome>INTRODU&#195;&#135;&#195;&#131;O &#195;&#128; ECONOMIA </nome>
+		        <sigla>EPRI04</sigla>
+		    </disciplina>  
+		     <disciplina>
+		        <nome>CIDADANIA E RESPONSABILIDADE SOCIAL </nome>
+		        <sigla>HUMI04</sigla>
+		    </disciplina>  
+		</disciplinas>
+	</competencia>	
+</perfil>  

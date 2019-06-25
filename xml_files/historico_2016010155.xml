@@ -1,0 +1,525 @@
+<HistoricoCurricular>
+    <Curso>ENGENHARIA DE COMPUTA&#199;&#195;O/ICT - Itabira - BACHARELADO - MTN</Curso>
+    <Grade>0192015</Grade>
+    <Matricula>2016010155</Matricula>
+    <AnoPeriodoInicial>2016.1</AnoPeriodoInicial>
+    <AnoPeriodoAtual>2019.1</AnoPeriodoAtual>
+    <Semestre>
+        <A2016.1>
+            <Disciplina>
+                <Nome>CI&#202;NCIA TECNOLOGIA E SOCIEDADE</Nome>
+                <Sigla>HUMI01</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>16</CH>
+                <Nota>7,0</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>C&#193;LCULO DIFERENCIAL E INTEGRAL I</Nome>
+                <Sigla>MATI01</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>96</CH>
+                <Nota>8,7</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>DESENHO APLICADO</Nome>
+                <Sigla>EMEI02</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>9,5</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>FUNDAMENTOS DE MEC&#194;NICA</Nome>
+                <Sigla>FISI01</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>64</CH>
+                <Nota>6,9</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>GEOMETRIA ANAL&#205;TICA E &#193;LGEBRA LINEAR</Nome>
+                <Sigla>MATI02</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>64</CH>
+                <Nota>7,3</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>INTRODU&#199;&#195;O &#192; ENGENHARIA DE COMPUTA&#199;&#195;O</Nome>
+                <Sigla>ECOI01</Sigla>
+                <Frequencia>94</Frequencia>
+                <CH>16</CH>
+                <Nota>7,9</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>L&#205;NGUA PORTUGUESA I</Nome>
+                <Sigla>HUMI02</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>8,4</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>L&#211;GICA DE PROGRAMA&#199;&#195;O</Nome>
+                <Sigla>ECOI02.1</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>64</CH>
+                <Nota>9,0</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>L&#211;GICA DE PROGRAMA&#199;&#195;O</Nome>
+                <Sigla>ECOI02</Sigla>
+                <Nota>8,6</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>L&#211;GICA DE PROGRAMA&#199;&#195;O (PR&#193;TICA)</Nome>
+                <Sigla>ECOI02.2</Sigla>
+                <Frequencia>94</Frequencia>
+                <CH>32</CH>
+                <Nota>7,9</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>MATEM&#193;TICA DISCRETA</Nome>
+                <Sigla>ECOI03</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>7,3</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+        </A2016.1>
+        <A2016.2>
+            <Disciplina>
+                <Nome>ALGORITMOS E ESTRUTURA DE DADOS I</Nome>
+                <Sigla>ECOI04</Sigla>
+                <Frequencia>91</Frequencia>
+                <CH>64</CH>
+                <Nota>8,4</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>CIRCUITOS L&#211;GICOS</Nome>
+                <Sigla>EELI02</Sigla>
+                <Frequencia>97</Frequencia>
+                <CH>64</CH>
+                <Nota>8,6</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>C&#193;LCULO DIFERENCIAL E INTEGRAL II</Nome>
+                <Sigla>MATI03</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>64</CH>
+                <Nota>3,6</Nota>
+                <Situacao>REPROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>ESTAT&#205;STICA</Nome>
+                <Sigla>MATI05</Sigla>
+                <Frequencia>91</Frequencia>
+                <CH>64</CH>
+                <Nota>7,5</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>FUNDAMENTOS DE MEC&#194;NICA ONDULAT&#211;RIA E TERMODIN&#194;MICA</Nome>
+                <Sigla>FISI02</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>6,8</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>LABORAT&#211;RIO DE CIRCUITOS L&#211;GICOS</Nome>
+                <Sigla>EELI03</Sigla>
+                <Frequencia>94</Frequencia>
+                <CH>32</CH>
+                <Nota>9,4</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>LABORAT&#211;RIO DE F&#205;SICA A</Nome>
+                <Sigla>FISI03</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>7,1</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>LABORAT&#211;RIO DE QU&#205;MICA GERAL</Nome>
+                <Sigla>EMTI03</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>16</CH>
+                <Nota>7,8</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>MARATONA DE PROGRAMA&#199;&#195;O</Nome>
+                <Sigla>ECO038</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>6,8</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>MEC&#194;NICA EST&#193;TICA</Nome>
+                <Sigla>EMEI06</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>7,2</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>QU&#205;MICA GERAL</Nome>
+                <Sigla>EMTI02</Sigla>
+                <Frequencia>94</Frequencia>
+                <CH>64</CH>
+                <Nota>7,6</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+        </A2016.2>
+        <A2017.1>
+            <Disciplina>
+                <Nome>ALGORITMOS E ESTRUTURA DE DADOS II</Nome>
+                <Sigla>ECOI08</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>64</CH>
+                <Nota>7,6</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>ARQUITETURA DE COMPUTADORES</Nome>
+                <Sigla>ECOI12</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>64</CH>
+                <Nota>10,0</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>BANCO DE DADOS</Nome>
+                <Sigla>ECOI14.1</Sigla>
+                <Frequencia>94</Frequencia>
+                <CH>32</CH>
+                <Nota>7,0</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>BANCO DE DADOS</Nome>
+                <Sigla>ECOI14</Sigla>
+                <Nota>8,5</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>BANCO DE DADOS (PR&#193;TICA)</Nome>
+                <Sigla>ECOI14.2</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>10,0</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>FEN&#212;MENOS DE TRANSPORTE</Nome>
+                <Sigla>EMEI07</Sigla>
+                <Frequencia>91</Frequencia>
+                <CH>64</CH>
+                <Nota>6,4</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>LABORAT&#211;RIO DE FEN&#212;MENOS DE TRANSPORTE</Nome>
+                <Sigla>EMEI08</Sigla>
+                <Frequencia>88</Frequencia>
+                <CH>16</CH>
+                <Nota>6,5</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>MARATONA DE PROGRAMA&#199;&#195;O II</Nome>
+                <Sigla>ECOI29</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>10,0</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>METODOLOGIA CIENT&#205;FICA</Nome>
+                <Sigla>HUMI06</Sigla>
+                <Frequencia>94</Frequencia>
+                <CH>32</CH>
+                <Nota>8,5</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>METODOLOGIA CIENT&#205;FICA PARA ENGENHARIA DA COMPUTA&#199;&#195;O</Nome>
+                <Sigla>ECOI61</Sigla>
+                <Frequencia>94</Frequencia>
+                <CH>16</CH>
+                <Nota>8,5</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>NATURAL COMPUTING</Nome>
+                <Sigla>ECOI27</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>16</CH>
+                <Nota>8,5</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>RESIST&#202;NCIA DOS MATERIAIS I</Nome>
+                <Sigla>EMBI02</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>64</CH>
+                <Nota>0,8</Nota>
+                <Situacao>REPROVADO</Situacao>
+            </Disciplina>
+        </A2017.1>
+        <A2017.2>
+            <Disciplina>
+                <Nome>CIRCUITOS EL&#201;TRICOS I</Nome>
+                <Sigla>EELI07</Sigla>
+                <Frequencia>88</Frequencia>
+                <CH>64</CH>
+                <Nota>7,2</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>CI&#202;NCIAS DO AMBIENTE</Nome>
+                <Sigla>EAMI30</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>8,5</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>C&#193;LCULO DIFERENCIAL E INTEGRAL II</Nome>
+                <Sigla>MATI03</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>64</CH>
+                <Nota>6,7</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>ENGENHARIA DE SOFTWARE</Nome>
+                <Sigla>ECOI16</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>64</CH>
+                <Nota>6,5</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>Maratona de Programa&#231;&#227;o IV</Nome>
+                <Sigla>ECOI31</Sigla>
+                <Frequencia>94</Frequencia>
+                <CH>48</CH>
+                <Nota>10,0</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>RESIST&#202;NCIA DOS MATERIAIS I</Nome>
+                <Sigla>EMBI02</Sigla>
+                <Frequencia>97</Frequencia>
+                <CH>64</CH>
+                <Nota>6,6</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>&#193;LGEBRA LINEAR</Nome>
+                <Sigla>MATI04</Sigla>
+                <Frequencia>94</Frequencia>
+                <CH>64</CH>
+                <Nota>6,9</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+        </A2017.2>
+        <A2018.1>
+            <Disciplina>
+                <Nome>C&#193;LCULO DIFERENCIAL E INTEGRAL III</Nome>
+                <Sigla>MATI06</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>9,5</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>EDUCA&#199;&#195;O FINANCEIRA</Nome>
+                <Sigla>PGYI052</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>10,0</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>ELETR&#212;NICA B&#193;SICA I</Nome>
+                <Sigla>EELI10</Sigla>
+                <Frequencia>94</Frequencia>
+                <CH>64</CH>
+                <Nota>6,4</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>EQUA&#199;&#213;ES DIFERENCIAIS I</Nome>
+                <Sigla>MATI07</Sigla>
+                <Frequencia>97</Frequencia>
+                <CH>64</CH>
+                <Nota>6,0</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>FUNDAMENTOS DE ELETROMAGNETISMO</Nome>
+                <Sigla>FISI04</Sigla>
+                <Frequencia>94</Frequencia>
+                <CH>64</CH>
+                <Nota>6,8</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>INTERFACE HUMANO-COMPUTADOR</Nome>
+                <Sigla>ECO037</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>48</CH>
+                <Nota>8,6</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>LABORAT&#211;RIO DE CIRCUITOS EL&#201;TRICOS I</Nome>
+                <Sigla>ECOI10</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>16</CH>
+                <Nota>9,1</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>LABORAT&#211;RIO DE ELETR&#212;NICA B&#193;SICA I</Nome>
+                <Sigla>EELI11</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>7,1</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>MARATONA DE PROGRAMA&#199;&#195;O III</Nome>
+                <Sigla>ECOI30</Sigla>
+                <Frequencia>81</Frequencia>
+                <CH>32</CH>
+                <Nota>10,0</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>PROJETO E AN&#193;LISE DE ALGORITMOS</Nome>
+                <Sigla>ECOI11</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>64</CH>
+                <Nota>6,9</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+        </A2018.1>
+        <A2018.2>
+            <Disciplina>
+                <Nome>CIRCUITOS INTEGRADOS ANAL&#211;GICOS</Nome>
+                <Sigla>ECOI32.1</Sigla>
+                <Frequencia>94</Frequencia>
+                <CH>32</CH>
+                <Nota>6,7</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>CIRCUITOS INTEGRADOS ANAL&#211;GICOS</Nome>
+                <Sigla>ECOI32</Sigla>
+                <Nota>7,0</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>CIRCUITOS INTEGRADOS ANAL&#211;GICOS (PR&#193;TICA)</Nome>
+                <Sigla>ECOI32.2</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>7,2</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>C&#193;LCULO NUM&#201;RICO</Nome>
+                <Sigla>MATI08</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>64</CH>
+                <Nota>8,0</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>DESENVOLVIMENTO DE SISTEMAS WEB</Nome>
+                <Sigla>ECOI35.1</Sigla>
+                <Frequencia>91</Frequencia>
+                <CH>32</CH>
+                <Nota>7,4</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>DESENVOLVIMENTO DE SISTEMAS WEB</Nome>
+                <Sigla>ECOI35</Sigla>
+                <Nota>7,4</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>DESENVOLVIMENTO DE SISTEMAS WEB (PR&#193;TICA)</Nome>
+                <Sigla>ECOI35.2</Sigla>
+                <Frequencia>88</Frequencia>
+                <CH>32</CH>
+                <Nota>7,4</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>ELETROMAGNETISMO CL&#193;SSICO</Nome>
+                <Sigla>FISI07</Sigla>
+                <Frequencia>81</Frequencia>
+                <CH>64</CH>
+                <Nota>0,5</Nota>
+                <Situacao>REPROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>ELETR&#212;NICA DIGITAL</Nome>
+                <Sigla>EELI14</Sigla>
+                <Frequencia>94</Frequencia>
+                <CH>32</CH>
+                <Nota>7,1</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>FUNDAMENTOS DE &#211;TICA E F&#205;SICA MODERNA</Nome>
+                <Sigla>FISI05</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>6,2</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>LABORAT&#211;RIO DE ELETR&#212;NICA DIGITAL</Nome>
+                <Sigla>EELI15</Sigla>
+                <Frequencia>100</Frequencia>
+                <CH>32</CH>
+                <Nota>9,8</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>LINGUAGENS DE PROGRAMA&#199;&#195;O</Nome>
+                <Sigla>ECOI09</Sigla>
+                <Frequencia>89</Frequencia>
+                <CH>64</CH>
+                <Nota>9,4</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+            <Disciplina>
+                <Nome>SINAIS E SISTEMAS</Nome>
+                <Sigla>ECAI26</Sigla>
+                <Frequencia>94</Frequencia>
+                <CH>64</CH>
+                <Nota>6,8</Nota>
+                <Situacao>APROVADO</Situacao>
+            </Disciplina>
+        </A2018.2>
+    </Semestre>
+</HistoricoCurricular>
