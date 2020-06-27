@@ -1,10 +1,4 @@
-# Geração do XML para histórico e grade do aluno.
-Version: 2.1
-Gato de Schrodinger
+# Sigaa Scrapping
 
-***
-Para mais informações veja a [wiki](https://github.com/ppcamp/sigaaScraping/wiki)
+> The objective of this repo it's create an system that authenticates with [sigaa](https://sig.unifei.edu.br/sigaa/verTelaLogin.do) and get infos about of yourself. After that, it creates diagrams and analysis of it.
 
-***
-## Comentários
-> @ppcamp É interessante remover os arquivos de caching do python, antes de dar um 'restart' nas buscas.
