@@ -1,3 +1,7 @@
 # Jupyter notebooks
 .ipynb_checkpoints/*
-
+# Ignore this file
+.gitignore
+sigaa/__pycache__
+sigaa/test.json
+sigaa/spiders/__pycache__
