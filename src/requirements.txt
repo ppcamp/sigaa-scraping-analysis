@@ -4,3 +4,4 @@ numpy=1.19.3
 matplotlib
 pymongo
 dnspython
+graphviz

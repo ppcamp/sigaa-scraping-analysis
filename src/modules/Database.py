@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Convert Graph to json
 from networkx.readwrite import json_graph
 # Convert json to string
@@ -28,9 +29,12 @@ class Grids(object):
         Convert graphs to json, then, to string. After that, store it
         in database.
         """
-        # To store the graph (Seariallized)
-        pre = dumps(json_graph.node_link_data(GraphPreReq))
-        co = dumps(json_graph.node_link_data(GraphCoReq))
+        pre = json_graph.node_link_data(GraphPreReq)
+        co = json_graph.node_link_data(GraphCoReq)
+
+        # To store the graph (Seariallized -- as string)
+        # pre, co = dumps(pre), dumps(co)
+
         value = {"pre": pre, "co": co}
         try:
             self.db.Grids.insert_one({"grid": grid, "values": value})
@@ -61,9 +65,14 @@ class Grids(object):
             # print(f'This object don\'t exists.')
             return None, None
 
+        # Extract those params
+        pre = obj["values"]["pre"]
+        co = obj["values"]["co"]
+
         # Otherwise, convert it into graph again
-        pre = loads(obj["values"]["pre"])
-        co = loads(obj["values"]["co"])
+        # pre = loads(obj["values"]["pre"])
+        # co = loads(obj["values"]["co"])
+
         # To get back the graph
         pre = json_graph.node_link_graph(pre)
         co = json_graph.node_link_graph(co)
