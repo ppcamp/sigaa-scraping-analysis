@@ -6,3 +6,5 @@ pymongo
 dnspython
 graphviz
 pandas
+ipykernel
+networkx

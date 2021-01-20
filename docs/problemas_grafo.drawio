@@ -1,0 +1,19 @@
+<mxfile host="65bd71144e" modified="2021-01-20T20:04:57.285Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" version="13.10.0" etag="c37pCLl0UCLwwMxXHIdg" type="embed">
+    <diagram id="_tIYx7DQSYHOJ-bCo76K" name="Page-1">
+        <mxGraphModel dx="695" dy="564" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="ECOI03" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fa6800;strokeColor=#C73500;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="180" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="ECOI03" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fa6800;strokeColor=#C73500;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="160" y="170" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;h1&gt;Problema de perca de competência durante a grade&lt;/h1&gt;&lt;p&gt;Os vértices são montados&amp;nbsp;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="30" y="30" width="630" height="120" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
