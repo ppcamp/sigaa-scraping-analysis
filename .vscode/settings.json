@@ -1,5 +1,9 @@
 {
   "python.pythonPath": "C:\\Python39\\python.exe",
   "jupyter.jupyterServerType": "local",
-  "python.autoComplete.extraPaths": ["src"]
+  "python.autoComplete.extraPaths": ["src"],
+  "files.exclude": {
+    "**/.gitignore": false,
+    "**/__pycache__": true
+  }
 }

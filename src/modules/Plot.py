@@ -42,7 +42,7 @@ class Colors(object):
         return randHex(urandom(6))
 
 
-def only_grid(nodes, edges, filename='grid'):
+def weighted_graph(nodes, edges, filename='grid'):
     """
     Get a student view of grid fluxogram.
 
@@ -147,108 +147,109 @@ def only_grid(nodes, edges, filename='grid'):
     # Remove old file
     unlink(input)
 
-# def only_grid(nodes, pre, co, filename='grid'):
-#     """
-#     Get a student view of grid fluxogram.
 
-#     Note
-#     ----
-#     The nodes must ne ordered by period of the class.
-#     """
+def only_grid(nodes, pre, co, filename='grid'):
+    """
+    Get a student view of grid fluxogram.
 
-#     # Construct a tree with xml grid
-#     nameFile = f"{filename}.dot"
-#     outputDir = "out"
+    Note
+    ----
+    The nodes must ne ordered by period of the class.
+    """
 
-#     # Setting up digraph plot
-#     output = Digraph(
-#         engine='dot',  # 'neato',  # force position
-#         name=nameFile,
-#         filename=nameFile,
-#         directory=outputDir,
-#         format='svg',
-#         graph_attr={
-#             # 'concentrate': 'true',
-#             'rankdir': 'BT',
-#             'overlap': 'scale',  # force position
-#             # splines → polyline, ortho, true/spline, curved
-#             'splines': 'ortho',  # edge uppon vertix
-#             # 'margin': '0.5,0.5',
-#             'sep': '0.5',
-#         },
-#         node_attr={
-#             'pad': '1',
-#             'nodesep': '2',
-#             'ranksep': '2'
-#         }
-#     )
+    # Construct a tree with xml grid
+    nameFile = f"{filename}.dot"
+    outputDir = "out"
 
-#     # Set a variable that will be responsable to increment x or y variables
-#     oldPeriod = 1
-#     incX = incY = 0
-#     # Insert nodes
-#     for initials in nodes:
-#         # Get node
-#         node = nodes[initials]
+    # Setting up digraph plot
+    output = Digraph(
+        engine='dot',  # 'neato',  # force position
+        name=nameFile,
+        filename=nameFile,
+        directory=outputDir,
+        format='svg',
+        graph_attr={
+            # 'concentrate': 'true',
+            'rankdir': 'BT',
+            'overlap': 'scale',  # force position
+            # splines → polyline, ortho, true/spline, curved
+            'splines': 'ortho',  # edge uppon vertix
+            # 'margin': '0.5,0.5',
+            'sep': '0.5',
+        },
+        node_attr={
+            'pad': '1',
+            'nodesep': '2',
+            'ranksep': '2'
+        }
+    )
 
-#         # Get period
-#         period = node['period']
-#         if period == 'Optativa':
-#             continue
+    # Set a variable that will be responsable to increment x or y variables
+    oldPeriod = 1
+    incX = incY = 0
+    # Insert nodes
+    for initials in nodes:
+        # Get node
+        node = nodes[initials]
 
-#         # Check if changed the period.
-#         if oldPeriod != period:
-#             incY = 0
-#             # Increment x padding
-#             incX += 1
-#             oldPeriod = period
+        # Get period
+        period = node['period']
+        if period == 'Optativa':
+            continue
 
-#         # default color
-#         nodeColor = Colors.node
-#         # Set node position
-#         strPos = '{0:.3}'.format(str(incX)) + ',' + "-{}!".format(incY)
+        # Check if changed the period.
+        if oldPeriod != period:
+            incY = 0
+            # Increment x padding
+            incX += 1
+            oldPeriod = period
 
-#         output.node(
-#             initials,
-#             initials,
-#             color='none',
-#             style='filled',  # 'striped',
-#             shape='rectangle',
-#             fillcolor=nodeColor,
-#             pos=strPos,
-#             **{  # Node atributes fixed size
-#                  'fixedsize': 'true',
-#                 'width': '2',
-#                 'height': '1'
-#             }
-#             # len='0.5'
-#             # weight='.5',
-#         )
-#         # Increment y padding
-#         incY += 1
+        # default color
+        nodeColor = Colors.node
+        # Set node position
+        strPos = '{0:.3}'.format(str(incX)) + ',' + "-{}!".format(incY)
 
-#     # In edges you can add other parameters like
-#     # > edge.attr['label'] = '5'
-#     # > edge.attr['weight'] = 5
+        output.node(
+            initials,
+            initials,
+            color='none',
+            style='filled',  # 'striped',
+            shape='rectangle',
+            fillcolor=nodeColor,
+            pos=strPos,
+            **{  # Node atributes fixed size
+                 'fixedsize': 'true',
+                'width': '2',
+                'height': '1'
+            }
+            # len='0.5'
+            # weight='.5',
+        )
+        # Increment y padding
+        incY += 1
 
-#     # Creating the edges for pre requisite graph
-#     for origin, destination in pre:
-#         output.edge(origin, destination, color=Colors.RedBased['wine'])
+    # In edges you can add other parameters like
+    # > edge.attr['label'] = '5'
+    # > edge.attr['weight'] = 5
 
-#     # Creating the edges for co requisite graph
-#     for origin, destination in co:
-#         output.edge(origin, destination, color='black')
+    # Creating the edges for pre requisite graph
+    for origin, destination in pre:
+        output.edge(origin, destination, color=Colors.RedBased['wine'])
 
-#     # ! Due to an windows problem with the binaries you must to save and then, run
-#     # output.render(view=True, filename="output.svg", renderer='neato')
-#     output.save(directory="out")
-#     input = path.join(path.abspath(getcwd()), outputDir, f"{filename}.dot")
-#     output = path.join(path.abspath(getcwd()), outputDir, filename)
+    # Creating the edges for co requisite graph
+    for origin, destination in co:
+        output.edge(origin, destination, color='black')
 
-#     RUN(f"dot -Kneato -Tsvg {input} -o {output}.svg")
+    # ! Due to an windows problem with the binaries you must to save and then, run
+    # output.render(view=True, filename="output.svg", renderer='neato')
+    output.save(directory="out")
+    input = path.join(path.abspath(getcwd()), outputDir, f"{filename}.dot")
+    output = path.join(path.abspath(getcwd()), outputDir, filename)
 
-#     # Remove old file
-#     unlink(input)
+    RUN(f"dot -Kneato -Tsvg {input} -o {output}.svg")
+
+    # Remove old file
+    unlink(input)
 
 
 class DotFile(object):
