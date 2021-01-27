@@ -3,4 +3,4 @@ src/modules/__pycache__
 
 
 # Sigaa
-credentials.json
+**/credentials.json
