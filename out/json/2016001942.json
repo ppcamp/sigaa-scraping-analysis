@@ -1,0 +1,434 @@
+{
+  "2016.2": {
+    "ENADE": {
+      "scores": "--",
+      "situation": "--",
+      "freq": "--"
+    },
+    "ECO038": {
+      "scores": 7.9,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI04": {
+      "scores": 8.4,
+      "situation": "APR",
+      "freq": 96.9
+    },
+    "EELI02": {
+      "scores": 6.0,
+      "situation": "APR",
+      "freq": 81.3
+    },
+    "EELI03": {
+      "scores": 7.7,
+      "situation": "APR",
+      "freq": 93.8
+    },
+    "EMTI02": {
+      "scores": 6.2,
+      "situation": "APR",
+      "freq": 93.8
+    },
+    "EMTI03": {
+      "scores": 7.2,
+      "situation": "APR",
+      "freq": 87.5
+    },
+    "FISI02": {
+      "scores": 6.2,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "FISI03": {
+      "scores": 7.6,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "MATI03": {
+      "scores": 4.0,
+      "situation": "REP",
+      "freq": 100.0
+    },
+    "MATI05": {
+      "scores": 6.3,
+      "situation": "APR",
+      "freq": 75.0
+    }
+  },
+  "2016.1": {
+    "ECOI01": {
+      "scores": 7.1,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI02": {
+      "scores": 9.0,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI03": {
+      "scores": 8.3,
+      "situation": "APR",
+      "freq": 93.8
+    },
+    "EMEI02": {
+      "scores": 10.0,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "FISI01": {
+      "scores": 5.2,
+      "situation": "REP",
+      "freq": 100.0
+    },
+    "HUMI01": {
+      "scores": 7.0,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "HUMI02": {
+      "scores": 7.4,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "MATI01": {
+      "scores": 7.2,
+      "situation": "APR",
+      "freq": 97.9
+    },
+    "MATI02": {
+      "scores": 7.3,
+      "situation": "APR",
+      "freq": 100.0
+    }
+  },
+  "2017.1": {
+    "ECOI08": {
+      "scores": 6.4,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI12": {
+      "scores": 8.0,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI14": {
+      "scores": 7.8,
+      "situation": "REP",
+      "freq": 100.0
+    },
+    "ECOI61": {
+      "scores": 8.5,
+      "situation": "APR",
+      "freq": 93.8
+    },
+    "EMEI07": {
+      "scores": 2.5,
+      "situation": "REP",
+      "freq": 96.9
+    },
+    "EMEI08": {
+      "scores": 6.5,
+      "situation": "APR",
+      "freq": 75.0
+    },
+    "EPRI04": {
+      "scores": 7.9,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "FISI01": {
+      "scores": 9.0,
+      "situation": "APR",
+      "freq": 93.8
+    },
+    "HUMI06": {
+      "scores": 8.5,
+      "situation": "APR",
+      "freq": 93.8
+    }
+  },
+  "2017.2": {
+    "EAMI30": {
+      "scores": 8.3,
+      "situation": "APR",
+      "freq": 93.8
+    },
+    "EELI07": {
+      "scores": 4.7,
+      "situation": "REP",
+      "freq": 96.9
+    },
+    "EMEI06": {
+      "scores": 7.0,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "EMEI07": {
+      "scores": 6.0,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "HUMI04": {
+      "scores": 8.5,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "MATI03": {
+      "scores": 6.4,
+      "situation": "APR",
+      "freq": 96.9
+    },
+    "MATI04": {
+      "scores": 6.8,
+      "situation": "APR",
+      "freq": 90.6
+    }
+  },
+  "2018.1": {
+    "ECOI14": {
+      "scores": 8.7,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI30": {
+      "scores": 7.4,
+      "situation": "APR",
+      "freq": 87.5
+    },
+    "EELI07": {
+      "scores": 7.9,
+      "situation": "APR",
+      "freq": 96.9
+    },
+    "EMBI02": {
+      "scores": 6.0,
+      "situation": "APR",
+      "freq": 93.8
+    },
+    "EPRI30": {
+      "scores": 8.3,
+      "situation": "APR",
+      "freq": 96.9
+    },
+    "FISI04": {
+      "scores": 4.2,
+      "situation": "REP",
+      "freq": 96.9
+    },
+    "MATI06": {
+      "scores": 10.0,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "MATI07": {
+      "scores": 7.4,
+      "situation": "APR",
+      "freq": 100.0
+    }
+  },
+  "2018.2": {
+    "ECAI26": {
+      "scores": 6.6,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI15": {
+      "scores": 8.2,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI16": {
+      "scores": 8.2,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "EELI10": {
+      "scores": 6.1,
+      "situation": "APR",
+      "freq": 93.8
+    },
+    "EELI11": {
+      "scores": 8.0,
+      "situation": "APR",
+      "freq": 93.8
+    },
+    "EPRI02": {
+      "scores": 10.0,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "FISI04": {
+      "scores": 8.9,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "FISI05": {
+      "scores": 6.7,
+      "situation": "APR",
+      "freq": 100.0
+    }
+  },
+  "2019.1": {
+    "ECAI29": {
+      "scores": 6.8,
+      "situation": "APR",
+      "freq": 93.0
+    },
+    "ECOI10": {
+      "scores": 6.5,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI11": {
+      "scores": 6.3,
+      "situation": "APR",
+      "freq": 93.0
+    },
+    "ECOI13": {
+      "scores": 6.4,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI22": {
+      "scores": 6.8,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI25": {
+      "scores": 9.8,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "EELI12": {
+      "scores": 6.2,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "EELI13": {
+      "scores": 7.5,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "EELI14": {
+      "scores": 6.2,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "EELI15": {
+      "scores": 8.9,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "FISI06": {
+      "scores": 7.3,
+      "situation": "APR",
+      "freq": 100.0
+    }
+  },
+  "2019.2": {
+    "ECAI04": {
+      "scores": 2.2,
+      "situation": "REP",
+      "freq": 100.0
+    },
+    "ECOI09": {
+      "scores": 7.3,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI21": {
+      "scores": 7.6,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "FISI07": {
+      "scores": 9.5,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "MATI08": {
+      "scores": 6.4,
+      "situation": "APR",
+      "freq": 100.0
+    }
+  },
+  "2020.1": {
+    "ECAI04": {
+      "scores": 6.0,
+      "situation": "APR",
+      "freq": 85.0
+    },
+    "ECAI11": {
+      "scores": 3.6,
+      "situation": "REP",
+      "freq": 100.0
+    },
+    "ECAI44": {
+      "scores": 7.9,
+      "situation": "APR",
+      "freq": 75.0
+    },
+    "ECOI18": {
+      "scores": 8.4,
+      "situation": "APR",
+      "freq": 75.0
+    },
+    "ECOI23": {
+      "scores": 7.5,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI33": {
+      "scores": 10.0,
+      "situation": "APR",
+      "freq": 100.0
+    }
+  },
+  "2020.2": {
+    "ECAI05": {
+      "scores": 7.4,
+      "situation": "APR",
+      "freq": 87.0
+    },
+    "ECAI13": {
+      "scores": 8.9,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI07": {
+      "scores": 10.0,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI24": {
+      "scores": 7.8,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI26": {
+      "scores": 8.7,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ECOI32": {
+      "scores": 6.7,
+      "situation": "APR",
+      "freq": 100.0
+    },
+    "ESTSUPER": {
+      "scores": "--",
+      "situation": "--",
+      "freq": "--"
+    }
+  },
+  "2020.4": {
+    "ECOI19": {
+      "scores": "--",
+      "situation": "MATR",
+      "freq": 100.0
+    }
+  }
+}

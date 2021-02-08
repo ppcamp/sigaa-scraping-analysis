@@ -1,12 +1,17 @@
 {
-  "python.pythonPath": "/usr/bin/python3",
+  "python.pythonPath": "/bin/python3",
   "jupyter.jupyterServerType": "local",
   "python.autoComplete.extraPaths": ["src"],
   "files.exclude": {
     "**/.gitignore": false,
-    "**/__pycache__": true
+    "**/__pycache__": true,
+    "**/*.ipynb_checkpoints":true
   },
   "python.analysis.extraPaths": [
     "src"
-  ]
+  ],
+  "terminal.integrated.env.windows": {
+    "PYTHONPATH": "${workspaceFolder}/src;"
+},
+  "python.envFile": "${workspaceFolder}/.env"
 }

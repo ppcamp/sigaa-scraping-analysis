@@ -1,6 +1,17 @@
 # Python
 src/modules/__pycache__
 
-
 # Sigaa
 **/credentials.json
+
+# PDFS
+assets/scores
+
+# AHP
+assets/ahp
+
+# Skillset
+assets/sheets
+
+# Graphs
+graphs
