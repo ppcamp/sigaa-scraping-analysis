@@ -1,0 +1,251 @@
+"""
+Module that contains some common functions to handle with ahp data
+"""
+
+from copy import deepcopy
+import json
+from typing import Any, List
+
+
+"""
+Inconsistency index (Random Index, RI) mapping.
+The index is equivalent to matrix cols (n) -1
+
+JS_Index | cols |Random index  (calculated by Saaty)
+---------|------|----------------------------------
+  0     |   1  | there's only one question. Therefore, you can't apply AHP
+  1     |   2  | there's only two questions. Therefore, you can't apply AHP, since that you just have two possible choices.
+  2^    |  3^  | there's at least three questions. Therefore, you use the value
+"""
+__RI = [
+    0,
+    0,
+    0.58,
+    0.9,
+    1.12,
+    1.24,
+    1.32,
+    1.41,
+    1.45,
+    1.49,
+    1.51,
+    1.48,
+    1.56,
+    1.57,
+    1.59
+]
+
+
+def getAHPindex(obj: List[List[float]], matrix: List[List[float]] = None) -> float:
+    """
+    Verifies if AHP is valid.
+
+    @note This method not change the current value of object. So we can use it later if not pass through test.
+    @param {[Float64Array]} obj The matrix(NxN) that holds the ahp values
+    @param {[Float64Array]} matrix OPTIONAL. If pass some value, we'll gonna change the object passed. Usually is the same object as the first param
+    @see A reference to AHP: {@link https://www.youtube.com/watch?v=J4T70o8gjlk&ab_channel=ManojMathew}
+    @returns {[Boolean, Number]} It returns a tuple/vector, where the first element is if the obj satisfies the ahp, and the second one, is the proper index.
+    """
+
+    """
+    The AHP work as follows:
+
+    1) Developing a hierarchical structure with a goal at the top level, the attributes/criteria at
+        the second level and the alternatives at the third level
+    2) Determine the relative importance of different attributes or Criteria with respect to the goal
+        Pairwise comparation matrix. Bellow follows the example of relative scaling:
+                1           - Equal importance
+                3           - Moderate importance
+                5           - Strong importance
+                7           - Very strong importance
+                9           - Extreme importance
+            2,4,5,8        - Intermediate values
+        1/3, 1/5, 1/7, 1/9  - Are values for inverse comparison
+    3) Calculate the consistency
+
+
+    Therefore, to this form:
+    1) The Main objective is get the discrepance bettween answers, the alternatives are the questions
+    """
+
+    # the length of my matrix
+    length = len(obj)
+
+    # If exist only 2 questions, ahp is not needed
+    if (length <= 2):
+        return 1
+
+    # If we don't pass matrix object, we'll ...
+    # ... copy the matrix, doing so, we don't change the current value of matrix stored in "obj"
+    if matrix is None:
+        matrix = list(map(lambda row: deepcopy(row), obj))
+
+    """
+    This is the Pair-wise comparasion matrix
+
+    @description Object that will be modified in ahp.
+         At this point it will be the copy of `obj`, which is something like this:
+    @example
+    ________| Price | Storage | Camera | Looks
+    Price   |   1   |    5    |   4    | 7
+    Storage |  1/5  |    1    |   1/2  | 3
+    Camera  |  1/4  |    2    |   1    | 3
+    Looks   |  1/7  |   1/3   |  1/3   | 1
+    """
+    pair_wise_comp_matrix = list(map(lambda row: deepcopy(row), obj))
+
+    # Normalize the pair-wise matrix
+    for col in range(length):
+        """
+        Sum each column
+
+        ________| Price | Storage | Camera | Looks
+        Price   |   1   |    5    |   4    | 7
+        Storage |  1/5  |    1    |   1/2  | 3
+        Camera  |  1/4  |    2    |   1    | 3
+        Looks   |  1/7  |   1/3   |  1/3   | 1
+        --------|-------|---------|--------|--------
+        Sum     |  1.59 |   8.33  |5.83    | 14
+        """
+        column_sum = 0
+        for row in range(length):
+            column_sum += matrix[row][col]
+
+        """
+        Normalize the copied table
+
+        ________|     Price    |   Storage   |    Camera    | Looks
+        Price   |   (1)/1.59   |  (5)/8.33   |   (4)/5.83   | (7)/14
+        Storage |  (1/5)/1.59  |  (1)/8.33   |  (1/2)/5.83  | (3)/14
+        Camera  |  (1/4)/1.59  |  (2)/8.33   |   (1)/5.83   | (3)/14
+        Looks   |  (1/7)/1.59  | (1/3)/8.33  |  (1/3)/5.83  | (1)/14
+        --------|--------------|-------------|--------------|--------
+        Sum     |     1.59     |    8.33     |     5.83     |   14
+        """
+        for row in range(length):
+            pair_wise_comp_matrix[row][col] /= column_sum
+
+    """
+    Priority vector (sum of row / row length). Also named as criteria weights
+    ________|     Price    |   Storage   |    Camera    | Looks  | SUM(row)/cols -> criteria weights
+    Price   |    0.6289    |   0.6002    |    0.6891    |  0.500 | (
+        0.6289+0.6002+0.6891+0.500)/4
+    Storage |  (1/5)/1.59  |  (1)/8.33   |  (1/2)/5.83  | (3)/14 |
+    Camera  |  (1/4)/1.59  |  (2)/8.33   |   (1)/5.83   | (3)/14 |
+    Looks   |  (1/7)/1.59  | (1/3)/8.33  |  (1/3)/5.83  | (1)/14 |
+    --------|--------------|-------------|--------------|--------|
+    Sum     |     1.59     |    8.33     |     5.83     |   14
+    """
+    priorityVec = [0]*length
+    for row in range(length):
+        priorityVec[row] = sum(pair_wise_comp_matrix[row])/length
+
+    """
+    Apply the (priorityVec) into column values
+
+    Criteria|
+     weights|    0.6038    |      0.1365     |    0.1957      | 0.0646
+    --------|--------------|-----------------|----------------|-----------
+            |     Price    |     Storage     |     Camera     | Looks
+    Price   |   1 * 0.6038 |    5 * 0.1365   |   4 * 0.1957   | 7 * 0.0646
+    Storage |  1/5 * 0.6038|    1 * 0.1365   |   1/2 * 0.1957 | 3 * 0.0646
+    Camera  |  1/4 * 0.6038|    2 * 0.1365   |   1 * 0.1957   | 3 * 0.0646
+    Looks   |  1/7 * 0.6038|   1/3 * 0.1365  |  1/3 * 0.1957  | 1 * 0.0646
+    """
+    for col in range(length):
+        for row in range(length):
+            matrix[row][col] = round(priorityVec[col] * matrix[row][col], 2)
+
+    """
+    Weight vector
+
+    Criteria|              |                 |                |           | Weigth
+        weights|    0.6038    |      0.1365     |    0.1957      | 0.0646    | vector
+    --------|--------------|-----------------|----------------|-----------|--------
+            |     Price    |     Storage     |     Camera     | Looks     | SUM(row)
+    Price   |   1 * 0.6038 |    5 * 0.1365   |   4 * 0.1957   | 7 * 0.0646| 0.6038 + 0.6825 + 0.7832 + 0.4522 = 2.517
+    Storage |  1/5 * 0.6038|    1 * 0.1365   |   1/2 * 0.1957 | 3 * 0.0646|
+    Camera  |  1/4 * 0.6038|    2 * 0.1365   |   1 * 0.1957   | 3 * 0.0646|
+    Looks   |  1/7 * 0.6038|   1/3 * 0.1365  |  1/3 * 0.1957  | 1 * 0.0646|
+    """
+    weightVec = [0]*length
+    for row in range(length):
+        weightVec[row] = sum(matrix[row])
+
+    """
+    Check consistency
+
+    Criteria|              |                |            |           | Weigth  | Result
+        weights|    0.6038    |      0.1365    |   0.1957   |  0.0646   | vector  |
+    --------|--------------|----------------|------------|-----------|---------|-------------
+            |     Price    |    Storage     |   Camera   |   Looks   | SUM(row)| weightVec/priorityVec
+    Price   |    0.6038    |     0.6825     |   0.7832   |   0.4522  |  2.517  | 2.517/0.6038
+    Storage |    0.1208    |    0.1365      |   0.0979   |   0.1938  |  0.5490 | 0.5490/0.1365
+    Camera  |    0.1510    |    0.2730      |   0.1958   |   0.1938  |  0.8136 | 0.8136/0.1957
+    Looks   |    0.0863    |    0.0455      |   0.0653   |   0.0646  |  0.2616 | 0.2616/0.0646
+    --------|--------------|----------------|------------|-----------|---------|-------------
+    ->  lambda_max =>  [ (2.517/0.6038) + (0.5490/0.1365) + (0.8136/0.1957) + (0.2616/0.0646) ] / 4
+    ->  CI => [lambda_max - n]/n - 1, where n is the number of cols
+    """
+    # We must use a function because lambda doesn't suppor tuple anymore
+    def divide(icurr):
+        # unpack
+        i, curr = icurr
+        return curr/priorityVec[i]
+    lambda_max = sum(
+        list(map(divide, enumerate(weightVec)))) / length
+    ci = (lambda_max - length) / (length-1)
+
+    """
+    Calculate the consistency ratio CR, which is given by the formula:
+    CR = CI/RI, where RI is the random index calculated by Saaty
+    """
+    cr = ci / __RI[length-1]
+
+    # to compare, it must be less than 0.1 by Saaty
+    return cr
+
+
+class AhpResponse:
+    def __init__(self, filepath: str):
+        with open(filepath, 'r') as obj:
+            self.json = json.loads(obj.read())
+        if ('name' not in self.json):
+            raise Exception("There's no name in this json obj")
+        self.name = self.json['name']
+        if ('email' not in self.json):
+            raise Exception("There's no email in this json obj")
+        self.email = self.json['email']
+        if ('date' not in self.json):
+            raise Exception("There's no date in this json obj")
+        self.date = self.json['date']
+        if ('matrixes' not in self.json):
+            raise Exception("There's no matrixes in this json obj")
+        self.matrixes = self.json['matrixes'][0]
+        if ('rootMatrix' not in self.matrixes):
+            raise Exception("There's no rootMatrix inside matrixes object")
+        if ('matrixQ1S2' not in self.matrixes):
+            raise Exception("There's no matrixQ1S2 inside matrixes object")
+        if ('matrixQ1S3' not in self.matrixes):
+            raise Exception("There's no matrixQ1S3 inside matrixes object")
+        if ('Q1S5' not in self.matrixes):
+            raise Exception("There's no Q1S5 inside matrixes object")
+        if ('matrixQ2' not in self.matrixes):
+            raise Exception("There's no matrixQ2 inside matrixes object")
+        if ('matrixQ3' not in self.matrixes):
+            raise Exception("There's no matrixQ3 inside matrixes object")
+
+    def __repr__(self) -> str:
+        return json.dumps(self.json, indent=3)
+
+    def getMatrixByName(self, matrixName: str) -> Any:
+        return self.matrixes[matrixName]
+
+    def getMatrixesNames(self) -> List[str]:
+        return list(self.matrixes.keys())
+
+    def getIC(self, matrixName: str) -> int:
+        """
+        it must return the IC passed through each object
+        """
+        pass
