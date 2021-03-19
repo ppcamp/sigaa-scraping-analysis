@@ -1,4 +1,21 @@
-**Packages needed**
+# Student's competency analisis: An graph approach
+
+This repository contains some codes used in the article that will be published later.
+
+---
+
+- [Student's competency analisis: An graph approach](#students-competency-analisis-an-graph-approach)
+  - [How to run](#how-to-run)
+    - [Packages needed](#packages-needed)
+    - [Running](#running)
+    - [Sphinx themes:](#sphinx-themes)
+
+----
+
+## How to run
+
+### Packages needed
+
 * To install the python packages type (*inside src directory*)
 ```bash
 python install -r requirements.txt
@@ -16,7 +33,7 @@ python install -r requirements.txt
   ```
 
 
-**Running**
+### Running
 To run this code you must execute:
 ```bash
 # Otherwise, it'll throw an error in windows
@@ -26,7 +43,7 @@ python src/main.py
 ```
 
 
-**Sphinx themes:**
+### Sphinx themes:
 - furo (black)
 - read the docs (default)
 - asteroid

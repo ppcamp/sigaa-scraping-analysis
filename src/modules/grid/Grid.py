@@ -11,7 +11,15 @@ from networkx import DiGraph
 # Module responsable to get grid
 def get_grid(grid: str, connection: str) -> Tuple[DiGraph, DiGraph]:
     """
-    Get this grid. If the grid is not in database. Got it and then, store in database
+    Get this grid.
+    If the grid is not in database. Got it and then, store in database
+
+    :Parameters:
+        - `grid`: The grid id. E.g, '0192015'
+        - `connection`: The connection string needed to access mongodb
+
+    :Returns:
+        - A `tuple` containing the pre and co requisite (networkx.DiGraph)
     """
     # Store in mongodb those two graphs
     # Create a mongoclient

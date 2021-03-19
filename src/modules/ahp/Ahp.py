@@ -36,7 +36,7 @@ __RI = [
 ]
 
 
-def getAHPindex(obj: List[List[float]], matrix: List[List[float]] = None) -> float:
+def calculate(obj: List[List[float]], matrix: List[List[float]] = None) -> float:
     """
     Verifies if AHP is valid.
 
@@ -176,7 +176,7 @@ def getAHPindex(obj: List[List[float]], matrix: List[List[float]] = None) -> flo
     Check consistency
 
     Criteria|              |                |            |           | Weigth  | Result
-        weights|    0.6038    |      0.1365    |   0.1957   |  0.0646   | vector  |
+     weights|    0.6038    |      0.1365    |   0.1957   |  0.0646   | vector  |
     --------|--------------|----------------|------------|-----------|---------|-------------
             |     Price    |    Storage     |   Camera   |   Looks   | SUM(row)| weightVec/priorityVec
     Price   |    0.6038    |     0.6825     |   0.7832   |   0.4522  |  2.517  | 2.517/0.6038
@@ -203,49 +203,4 @@ def getAHPindex(obj: List[List[float]], matrix: List[List[float]] = None) -> flo
     cr = ci / __RI[length-1]
 
     # to compare, it must be less than 0.1 by Saaty
-    return cr
-
-
-class AhpResponse:
-    def __init__(self, filepath: str):
-        with open(filepath, 'r') as obj:
-            self.json = json.loads(obj.read())
-        if ('name' not in self.json):
-            raise Exception("There's no name in this json obj")
-        self.name = self.json['name']
-        if ('email' not in self.json):
-            raise Exception("There's no email in this json obj")
-        self.email = self.json['email']
-        if ('date' not in self.json):
-            raise Exception("There's no date in this json obj")
-        self.date = self.json['date']
-        if ('matrixes' not in self.json):
-            raise Exception("There's no matrixes in this json obj")
-        self.matrixes = self.json['matrixes'][0]
-        if ('rootMatrix' not in self.matrixes):
-            raise Exception("There's no rootMatrix inside matrixes object")
-        if ('matrixQ1S2' not in self.matrixes):
-            raise Exception("There's no matrixQ1S2 inside matrixes object")
-        if ('matrixQ1S3' not in self.matrixes):
-            raise Exception("There's no matrixQ1S3 inside matrixes object")
-        if ('Q1S5' not in self.matrixes):
-            raise Exception("There's no Q1S5 inside matrixes object")
-        if ('matrixQ2' not in self.matrixes):
-            raise Exception("There's no matrixQ2 inside matrixes object")
-        if ('matrixQ3' not in self.matrixes):
-            raise Exception("There's no matrixQ3 inside matrixes object")
-
-    def __repr__(self) -> str:
-        return json.dumps(self.json, indent=3)
-
-    def getMatrixByName(self, matrixName: str) -> Any:
-        return self.matrixes[matrixName]
-
-    def getMatrixesNames(self) -> List[str]:
-        return list(self.matrixes.keys())
-
-    def getIC(self, matrixName: str) -> int:
-        """
-        it must return the IC passed through each object
-        """
-        pass
+    return cr, priorityVec

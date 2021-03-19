@@ -10,6 +10,22 @@ from pandas import DataFrame
 import json
 
 
+def read_json(filepath: str) -> json:
+    """
+    Read a json file equivalent to student's grid.
+
+    :Parameters:
+        - `filepath`: path where to load the json file
+
+    :Returns:
+        - The equivalent json representation
+    """
+    out = NotImplemented
+    with open(filepath) as f:
+        out = json.loads(f.read())
+    return out
+
+
 def save_analysis(out: dict, filename: str, dirname: str) -> None:
     """
     Save the score into a json object
