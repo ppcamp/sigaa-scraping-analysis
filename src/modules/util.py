@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import Dict
 
 # MongoDB
 from pymongo import MongoClient
@@ -55,3 +56,12 @@ def average(*args):
                 mean([m[row][col] for m in args]), 2)
 
     return output_matrix
+
+
+def normalize_vectors(vet: Dict[str, float]):
+    maior_valor = max(vet.values())
+
+    for competencia, resultado in vet.items():
+        vet[competencia] = round(resultado/maior_valor, 2)
+
+    return vet

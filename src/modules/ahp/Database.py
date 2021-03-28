@@ -7,11 +7,11 @@ from bson.objectid import ObjectId
 class AhpForm(SigaaDatabase):
     def findById(self, id: str) -> FormData:
         element = self._db.AhpForm.find_one(ObjectId(id))
-        return FormData(element)
+        return FormData(element)  # type:ignore
 
     def findByDict(self, args: Dict) -> FormData:
         element = self._db.AhpForm.find_one(args)
-        return FormData(element)
+        return FormData(element)  # type:ignore
 
     def getAll(self) -> List[FormData]:
         # iterate and get all elements
@@ -21,7 +21,7 @@ class AhpForm(SigaaDatabase):
 
     def insert(self, args) -> FormData:
         element = self._db.AhpForm.insert_one(args)
-        return FormData(element)
+        return FormData(element)  # type:ignore
 
     def delete(self, id: str) -> FormData:
         """
@@ -31,6 +31,6 @@ class AhpForm(SigaaDatabase):
             - `id`: An unique identifier to this json object
 
         """
-        element = self.findById(ObjectId(id))
+        element = self.findById(ObjectId(id))  # type:ignore
         self._db.AhpForm.delete_one(ObjectId(id))
         return element

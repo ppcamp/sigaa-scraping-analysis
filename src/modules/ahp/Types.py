@@ -96,8 +96,6 @@ class FormData:
 
         return pprint.pformat(local_obj, indent=1)
 
-    # def getters
-
     def getEmail(self) -> str:
         return self._obj['email']
 
