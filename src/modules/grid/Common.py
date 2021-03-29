@@ -91,7 +91,7 @@ def get_nota(notas: Dict[str, float], materia: str, peso: float, acumulado: floa
 
 
     TODO:
-        - increase this documentation
+        - Update and understand better this documentation HERE
 
     """
     # Caso o aluno não tenha feito a matéria ainda, propaga o acumulado pelo peso

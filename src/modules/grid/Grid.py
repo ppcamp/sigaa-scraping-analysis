@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+
+"""
+This module contains the functions which check for existency and,
+if didn't found, scrap it from sigaa's systems.
+"""
+
+
 from .Scrapping import _scrapping_grid as scrapping
 # Import database connection
 from .Database import Grids
@@ -37,4 +44,4 @@ def get_grid(grid: str, connection: str) -> Tuple[DiGraph, DiGraph]:
         print("[Debug] Storing in database")
         # Database.set(grid, GraphPre, GraphCo)
 
-    return GraphPre, GraphCo
+    return GraphPre, GraphCo  # type: ignore

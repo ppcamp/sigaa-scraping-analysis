@@ -8,7 +8,7 @@ It performs the ahp calculations.
 """
 
 from copy import deepcopy
-from typing import List, Optional, Tuple
+from typing import List, Tuple
 
 
 """

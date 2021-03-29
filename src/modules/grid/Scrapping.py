@@ -1,7 +1,15 @@
 # -*- coding: utf-8 -*-
+
+"""
+This module is responsable to open the sigaa system and then scrapy if don't find the course in mongodb database.
+"""
+
+
 # Debug
 # from IPython.core.display import display, HTML
 # Handle cookie and requests
+from typing import Tuple
+from networkx.classes.digraph import DiGraph
 from requests import Session
 # Parse html file
 from lxml import html
@@ -15,16 +23,21 @@ import json
 import networkx as nx
 
 
-def _scrapping_grid(courseCode):
+def _scrapping_grid(courseCode: str) -> Tuple[DiGraph, DiGraph]:
     """
-    Parameters
-    ----------
-    courseCode: (str) Course number
+    Load the credentials under `src/certs/credentials.json` file,
+    logon into sigaa's system and then, scrap it, retriving a new graph to a certain
+    grid string
 
-    Notes
-    -----
-    - We only add the graph the connection
-    - When we'll check the history, we must check for equivalency (based on student's history) too.
+    :Parameters:
+        - `courseCode`: Course number, e.g, "0192015"
+
+    :Returns:
+        A tuple with (pre,co) requisite graphs equivalents to this courseCode
+
+    :Notes:
+        - We only add the graph the connection
+        - This graph ain't check for equivalency. It means that when using student's history, you'll problably need to check for equivalency too.
     """
     # Load credentials json
     with open('./certs/credentials.json') as file:
@@ -40,7 +53,7 @@ def _scrapping_grid(courseCode):
     }
 
     # Create a graph
-    Graph = nx.DiGraph()
+    Graph: DiGraph = nx.DiGraph()
 
     #S = Session()
     with Session() as S:
@@ -112,9 +125,9 @@ def _scrapping_grid(courseCode):
             # Filter: Check if is a divider or a row itself (class or period)
             if it.xpath('@class')[0] == 'tituloRelatorio':
                 # Get period
-                period = it.find('td').text
+                period: str = it.find('td').text
                 # Removing spaces
-                period = re.sub(r'[\t\n]', '', period)
+                period: str = re.sub(r'[\t\n]', '', period)
                 # Change the text
                 if period == 'Componentes Optativos':
                     period = 'Optativa'
@@ -122,7 +135,7 @@ def _scrapping_grid(courseCode):
                     period = 'Complementar'
                 else:
                     # Get number only
-                    period = period[:period.find('º')].strip()
+                    period: str = period[:period.find('º')].strip()
                 # skip to avoid programming issues
                 continue
 
@@ -155,20 +168,20 @@ def _scrapping_grid(courseCode):
             # Add into graph
             Graph.add_node(initials,
                            # Create a node with those extra informations
-                           period=period,
+                           period=period,  # type: ignore
                            className=className,
                            # Laboratory (Practical and Theory)
                            time=time,
                            labTime=labTime)
 
         # * Create a graph for pre and co requisite
-        GraphCoReq = Graph.copy()
-        GraphPreReq = Graph
+        GraphCoReq: DiGraph = Graph.copy()  # type:ignore
+        GraphPreReq: DiGraph = Graph
 
         # * Get edges
         # Search for pre and co requisite. They will be used to generate two graphs of connections
         # Iterate over graph elements
-        for initials, data in GraphPreReq.nodes(data=True):
+        for initials, data in GraphPreReq.nodes(data=True):  # type: ignore
             # Skip if is a optional discipline
             if data['period'] == 'Optativa':
                 continue
@@ -257,8 +270,3 @@ def _scrapping_grid(courseCode):
                     GraphCoReq.add_edge(i, initials)
 
     return GraphPreReq, GraphCoReq
-
-
-# Grid Scrapping
-# This script is responsable to open the sigaa system and then scrapy if don't find the course in sqlite database.
-# Debugging library
