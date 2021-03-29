@@ -1,5 +1,13 @@
 # -*- coding: utf-8 -*-
 
+"""
+This module contains methods to:
+
+- Read a given student history (pdf), and parse it into a dataframe. :meth:`parse_pdf`
+- Save the dataframe into a json. :meth:`save_analysis`
+- Load the json equivalent to a dataframe object. :meth:`read_json`
+"""
+
 from os import path
 from typing import List
 # Tabula also needs the java installed
@@ -26,41 +34,37 @@ def read_json(filepath: str) -> json:
     return out
 
 
-def save_analysis(out: dict, filename: str, dirname: str) -> None:
+def save_analysis(out: DataFrame, filename: str, dirname: str) -> None:
     """
-    Save the score into a json object
+    Save the score loaded into a json object.
+    Usually, this methods depends of :meth:`parse_pdf`.
 
-    Args:
-        filename: the name of generated file
-        dirname: place to put the output file
-
-    Returns:
-        Returns nothing
+    :Args:
+        - `filename`: the name of generated file
+        - `dirname`: place to put the output file
     """
     with open(path.join('..', dirname, filename + '.json'), 'w') as outfile:
         outfile.write(json.dumps(out))
 
 
-def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> dict:
+def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> DataFrame:
     """
     Read a student score and parse it to a json file
 
-    Args:
-      studentId: The student unique id
-      inputDir: Directory where are placed the input files
-      outDir: Where to save the json objects
+    :Args:
+      - `studentId`: The student unique id
+      - `inputDir`: Directory where are placed the input files
+      - `outDir`: Where to save the json objects
 
-    Returns:
-      Returns nothing
-
-    FIXME: Problem wiht columns in '2016015901' -:> SOLVED
+    :Returns:
+      Returns a dataframe containing the parsed value
     """
 
     # Read pdf file
-    df = tabula.read_pdf(
+    df: List[DataFrame] = tabula.read_pdf(
         path.join(inputDir, f'historico_{studentId}.pdf'),
         pages='all'
-    )
+    )  # type: ignore
 
     # Internal function
     def get_before(dataframe: DataFrame, currentline: int, columname: str) -> str:
@@ -68,19 +72,19 @@ def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> dict:
         Search for lines above to get an non NaN value
         (Only work for string)
 
-        Args:
-            dataframe: Pandas dataframe containing
-            currentline: The number that represetns the current line to search before
-            columnname: Column's name to search for
+        :Args:
+            - `dataframe`: Pandas dataframe containing
+            - `currentline`: The number that represetns the current line to search before
+            - `columnname`: Column's name to search for
 
-        Returns:
+        :Returns:
             A string containing the usable value
         """
         i, value = currentline, ''
         while True:
             if i < 0:
                 raise Exception(f'Ultrapassou o limite. Verifique o código.')
-            value = dataframe.loc[i, columname]
+            value = dataframe.loc[i, columname]  # type: ignore
 
             if type(value) is str:
                 return value
@@ -92,10 +96,10 @@ def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> dict:
         """
         Merge the multiples dataframes into a only one
 
-        Args:
+        :Args:
             dflist: A list of dataframes to search for
 
-        Returns:
+        :Returns:
             A unique merged dataframe
         """
         scores = {}
@@ -103,38 +107,40 @@ def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> dict:
         # ==
         def change_number(number: str) -> str:
             """
-            Args:
-                number: A value to convert the float format
+            Change "," to "." character
 
-            Returns:
+            :Args:
+                - `number`: A value to convert the float format
+
+            :Returns:
                 A new string that represents this value in '.' format
             """
             return number.replace(',', '.')
 
         # ==
-        def change_key(val) -> str:
+        def change_key(val) -> str or float:
             """
             Check if type is string, if so, convert it and return (or just return)
 
-            Args:
-                val: a object that will be checked for its properties
+            :Args:
+                - `val`: a object that will be checked for its properties
 
-            Returns:
-                A new string
+            :Returns:
+                A new string or a float equivalent
             """
             if (type(val) is str) and ('--' not in val):
-                return float(change_number(val))
+                return float(change_number(val))  # type:ignore
             else:
                 return '--'
 
         # Itera sobre cada um dos dataframes de saída -> len == 7
         for table in dflist:
             # Pula se não for uma tabela de matérias concluídas/cursando
-            if 'Ano/Período' not in table.columns.to_list():
+            if 'Ano/Período' not in table.columns.to_list():  # type: ignore
                 continue
 
             # Renaming columns
-            cols = table.columns.to_list()
+            cols = table.columns.to_list()  # type: ignore
             fstRow = table.iloc[0]
             for i in range(len(cols)):
                 if type(fstRow[i]) is str:
@@ -148,7 +154,7 @@ def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> dict:
 
                 # Fix the case when there's another column
                 if 'Unnamed: 1' in table.columns:
-                    sigla = table.loc[turma, 'Unnamed: 1']
+                    sigla = table.loc[turma, 'Unnamed: 1']  # type: ignore
                 else:
                     sigla = table.iloc[turma, 1]
 
@@ -157,9 +163,9 @@ def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> dict:
                     continue
                 # Resolve o problema caso não apareça os elementos corretos
                 periodo = get_before(table, turma, 'Ano/Período')
-                freq = change_key(table.loc[turma, 'Freq %'])
-                nota = change_key(table.loc[turma, 'Média'])
-                sit = table.loc[turma, 'Situação']
+                freq = change_key(table.loc[turma, 'Freq %'])  # type: ignore
+                nota = change_key(table.loc[turma, 'Média'])  # type: ignore
+                sit = table.loc[turma, 'Situação']  # type: ignore
                 if type(sit) is not str:
                     sit = '--'
 
@@ -173,7 +179,7 @@ def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> dict:
                 }
 
         # Return the output dict
-        return scores
+        return scores  # type: ignore
 
     # Run the file scrapping
     out = fix_scores(df)

@@ -16,15 +16,15 @@ from typing import List
 DataFrames = List[pd.DataFrame]
 
 
-def read_csv(sheetsDir: str) -> DataFrames:
+def read_csv(sheetsDir: str) -> List[DataFrames]:
     """
     Open a directory and read all csv files inside.
     This function clean some unusefull elements based on researches models.
 
-    Args:
-        sheetsDir: Directory to search for csv files.
+    :Args:
+        - `sheetsDir`: Directory to search for csv files.
 
-    Returns:
+    :Returns:
         A list of pandas dataframes
     """
     # Get form's infos
@@ -56,13 +56,16 @@ def read_csv(sheetsDir: str) -> DataFrames:
 def merge_data(dataframes: DataFrames) -> pd.DataFrame:
     """
     It performs the join of multiple dataframes objects into a single one,
-    basing on a specified method.
+    basing on a specified method. By default, it does a mean operation,
+    ie.:
 
-    Args:
-        dataframes: A list of dataframes to be merged.
+    .. math:: \\frac{\\sum_{i=0}^N \\text{dataframes}_i}{N}
 
-    Returns:
-        A single dataframe based on values passed through
+    :Args:
+        - `dataframes`: A list of dataframes to be merged.
+
+    :Returns:
+        A single dataframe based on values passed through. mean(dataframes)
     """
     # Juntando os arquivos num único dataframe
     out = pd.concat(dataframes)

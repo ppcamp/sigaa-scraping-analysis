@@ -1,5 +1,13 @@
+# -*- coding: utf-8 -*-
+
+"""
+A module containing some usefull functions that can be shared with another modules
+"""
+
 from __future__ import annotations
-from typing import Dict
+from typing import Any, Dict, List
+
+import sys
 
 # MongoDB
 from pymongo import MongoClient
@@ -8,9 +16,6 @@ from pymongo import MongoClient
 
 class SigaaDatabase:
     """
-    .. _Sigaa Database:
-
-
     This class is responsable to fetch and push data to mongo
     """
 
@@ -18,13 +23,11 @@ class SigaaDatabase:
         """
         Starts a mongodb client
 
-        Parameters
-        ----------
-        connection_string: str
-          A connection string to mongo server.
-        database_name: str
-          OPTIONAL, Default value is "sigaadb"
+        :Args:
+            - `connection_string`: A connection string to mongo server.
 
+        :Kwargs:
+            - `database_name`: *OPTIONAL*, Default value is "sigaadb"
         """
         # Create a mongoclient
         self.__client = MongoClient(connection_string)
@@ -39,7 +42,43 @@ class SigaaDatabase:
         return self
 
 
-def average(*args):
+def average(*args: List[float] or List[List[float]]):
+    """
+    Calculate the mean of a given amount of values.
+    It can performs the mean over List[List[float]] or List[float].
+
+    .. math:: \\frac{\\sum_{i=0}^N\\text{arg}_i}{N}
+
+    :Args:
+        - `*args`: A list of floats or a list of matrices
+
+    :Example:
+        .. code-block:: python
+            :caption: Using a list of float
+
+            l = [1, 1, 1, 1, 1]
+            # will not throw an error
+            assert 1 == average(*l)
+
+        .. code-block:: python
+            :caption: Using a list of list of floats
+
+            from copy import deepcopy
+
+            a = [
+                [1, 1, 1],
+                [1, 1, 1],
+            ]
+            b = deepcopy(a)
+
+            result = average(a,b)
+            expected_result = deepcopy(a)
+
+            # iterate and raise an error. P.S.: It won't throw any error
+            for row in range(2):
+                for col in range(3):
+                    assert result[row][col] == expected_result[row][col]
+    """
     from statistics import mean
 
     # must exist at least two matrices
@@ -47,7 +86,7 @@ def average(*args):
         raise Exception("Must exist at least two itens")
 
     if type(args[0]) is not list:
-        out = round(mean([scalar for scalar in args]), 2)
+        out = round(mean([scalar for scalar in args]), 2)  # type:ignore
         return out
 
     matrix_length = len(args[0])
@@ -58,7 +97,7 @@ def average(*args):
     for row in range(matrix_length):
         for col in range(matrix_length):
             output_matrix[row][col] = round(
-                mean([m[row][col] for m in args]), 2)
+                    mean([m[row][col] for m in args]), 2):  # type: ignore
 
     return output_matrix
 

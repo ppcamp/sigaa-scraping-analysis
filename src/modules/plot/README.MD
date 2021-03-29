@@ -1,1 +1,0 @@
-This directory contains methods used to plot graphs retrieve from grid's modules

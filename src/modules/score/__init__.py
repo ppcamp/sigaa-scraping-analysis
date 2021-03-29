@@ -1,3 +1,3 @@
 """
-This object returns grid's scrapping
+This module contains methods to scrap data from student's scores pdf.
 """
