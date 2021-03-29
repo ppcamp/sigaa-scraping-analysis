@@ -1,28 +1,36 @@
-from typing import List
+from typing import List, Optional
 import plotly
 from plotly.missing_ipywidgets import FigureWidget
-from traitlets.traitlets import Float
 
 
-def plot(categories: List[str], **kwargs) -> FigureWidget:
+def plot(
+    categories: List[str],
+    show: bool = True,
+    r1: List[float] = None,
+    r1_name: str = None,
+    r2: List[float] = None,
+    r2_name: str = None
+) -> FigureWidget:
     """
     Does spider plot. Accept at max 2 elements.
     By default, it assumes that only are possible values between 0..1
 
-    :Parameters:
-      - `categories`: A list with name strings that will be used as labels
-      - `kwargs["show"]`: OPTIONAL if settled will not show the figure at end
-      - `kwargs["r1"]`: List[Float] Mapped values following `categories` order
-      - `kwargs["r1_name"]`: (str) Name of this section
-      - `kwargs["r2"]`: *OPTIONAL*. List[Float] Mapped values following `categories` order
-      - `kwargs["r2_name"]`: *OPTIONAL*. (str) Name of this section
+    :Args:
+        - `categories`: A list with name strings that will be used as labels
+
+    :Kwargs:
+        - `r1`: List[Float] Mapped values following `categories` order
+        - `r1_name`: (str) Name of this section
+        - `show`: *OPTIONAL* if settled will not show the figure at end
+        - `r2`: *OPTIONAL*. List[Float] Mapped values following `categories` order
+        - `r2_name`: *OPTIONAL*. (str) Name of this section
 
     :Returns:
       - A figure plotly object (only access by ipykernel)
     """
 
     # checking excential kwargs
-    if all(("r1" not in kwargs, "r1_name" not in kwargs)):
+    if all(("r1" is not None, "r1_name" is not None)):
         raise Exception(
             "You must pass at least one graph, i.e, r1:List and r1_name")
 
@@ -31,18 +39,18 @@ def plot(categories: List[str], **kwargs) -> FigureWidget:
     fig: FigureWidget = plotly.graph_objects.Figure()  # type: ignore
 
     fig.add_trace(go.Scatterpolar(
-        r=kwargs["r1"],
+        r=r1,
         theta=categories,
         fill='toself',
-        name=kwargs["r1_name"]
+        name=r1_name
     ))  # type: ignore
 
-    if all(("r2" in kwargs, "r2_name" in kwargs)):
+    if all(("r2" is not None, "r2_name" is not None)):
         fig.add_trace(go.Scatterpolar(
-            r=kwargs["r2"],
+            r=r2,
             theta=categories,
             fill='toself',
-            name=kwargs["r2_name"]
+            name=r2_name
         ))  # type: ignore
 
     # update figure object
@@ -56,11 +64,8 @@ def plot(categories: List[str], **kwargs) -> FigureWidget:
     )
 
     # show this object
-    if "show" not in kwargs:
+    if show:
         fig.show()
-    else:
-        if kwargs["show"]:
-            fig.show()
 
     # and return it
     return fig

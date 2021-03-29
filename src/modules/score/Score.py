@@ -14,7 +14,7 @@ def read_json(filepath: str) -> json:
     """
     Read a json file equivalent to student's grid.
 
-    :Parameters:
+    :Args:
         - `filepath`: path where to load the json file
 
     :Returns:

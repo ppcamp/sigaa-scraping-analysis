@@ -45,7 +45,7 @@ class Grids(object):
         Convert graphs to json, then, to string. After that, store it
         into database.
 
-        :Parameters:
+        :Args:
             - `grid`: A grid string like. E.g: "0192015"
             - `GraphPreReq`: A `networkx.DiGraph`, where the edges are the pre requisite
             - `GraphCoReq`: A `networkx.DiGraph`, where the edges are the co requisite
@@ -70,7 +70,7 @@ class Grids(object):
         """
         Get object then convert it to graph again
 
-        :Parameters:
+        :Args:
             - `grid`: Equivalent grid number.
 
         :Returns:
@@ -105,7 +105,7 @@ class Grids(object):
         """
         Check if exists this item in dabatase
 
-        :Parameters:
+        :Args:
             - `item`: The course code to be checked. E.g: "0192015"
 
         :Returns:
@@ -120,7 +120,7 @@ class Grids(object):
         """
         Get the object with this key. This function is an alias to :meth:`get`
 
-        :Parameters:
+        :Args:
             - `key`: A courseCode string
         """
         return self.get(key)

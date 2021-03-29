@@ -33,7 +33,7 @@ class AhpForm(SigaaDatabase):
         """
         Find an element by a given Id.
 
-        :Parameters:
+        :Args:
             - `id`: The unique identifier.
 
         :Returns:
@@ -51,7 +51,7 @@ class AhpForm(SigaaDatabase):
         """
         Find an element by a given Id.
 
-        :Parameters:
+        :Args:
             - `args`: A dictionary containing the filters to object keys.
 
         :Returns:
@@ -87,7 +87,7 @@ class AhpForm(SigaaDatabase):
         """
         Insert a new item in database.
 
-        :Parameters:
+        :Args:
             - `args`:
                 You should pass a dictionary with the necessary
                 keys to this database collection.
@@ -160,7 +160,7 @@ class AhpForm(SigaaDatabase):
         """
         Remove an element from this table
 
-        :Parameters:
+        :Args:
             - `id`: An unique identifier to this json object that will be, permanenlty, removed from database.
 
         :Example:

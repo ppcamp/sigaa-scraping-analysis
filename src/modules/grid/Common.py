@@ -29,7 +29,7 @@ def get_materias(nodes: DiGraph, periodo: int) -> List[str]:
     """
     Get all class acronyms for a given `periodo`.
 
-    :Parameters:
+    :Args:
         - `nodes`: a DiGraph containing graphs and edges
         - `periodo`: current grade period. Bettween [1,10]. See :meth:`get_periodo`
 
@@ -44,7 +44,7 @@ def check_competencia(out: DataFrame, materias_atuais: List[str], competencia: s
     """
     Check if exist some value (edge) to some `competencia` in a given list of period, `materias_atuais`.
 
-    :Parameters:
+    :Args:
         - `materias_atuais`: list of class acronyms for a some period. Check it out :meth:`get_periodo`
         - `competencia`: competency to be analysed. E.g: 'BAC01'
 
@@ -65,7 +65,7 @@ def get_peso_competencia(out: DataFrame, materias_atuais: List[str], competencia
         *Peso errado?* Não, o peso das arestas é referente ao período do vértice de onde sai,
         se só tiver 1 matéria, irá ser peso 1 para qualquer aresta.
 
-    :Parameters:
+    :Args:
         - `materias_atuais`: list of classes in the current period. Check :meth:`get_materias`
         - `competencia`: competency to be analized.
         - `materia`: class acronym to get the edge weight.
@@ -110,7 +110,7 @@ def dfs_walk(notas: Dict[str, float], grafo: DiGraph, materia: str, acumulado: f
     """
     A recursive walk over competency graph
 
-    :Parameters:
+    :Args:
         - `notas`:
             A dictionary mapping a class acronym to an value.
             Usually, this value will be the highest student's score to this class.

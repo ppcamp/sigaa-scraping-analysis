@@ -15,13 +15,20 @@ from os import path, getcwd, unlink
 
 class Colors(object):
     """
-    Color palette in hexa.
+    A enum like to map a color palette in hexa.
     """
     node = "#BDC3C7"
 
+    """
+    A palletet based on blue
+    """
     BlueBased = {
         "baby": "#BDC3C7"
     }
+
+    """
+    A pallette based on red
+    """
     RedBased = {
         "wine": "#BD1C32",
         "lightenRed": "#FA3246",
@@ -30,16 +37,20 @@ class Colors(object):
         "darkenRed": "#850014",
         "darkerRed": "#BB0019",
     }
+
+    """
+    A pallette based on green
+    """
     GreenBased = {
         "nature": "#4c8768"
     }
 
     @staticmethod
-    def rand():
+    def rand() -> str:
         """
-        Generate some random color.
+        A static method to generate some random color.
         """
-        return randHex(urandom(6))
+        return "#" + randHex(urandom(3)).decode("utf-8")
 
 
 def weighted_graph(nodes, edges, filename='grid', outputDir="out"):

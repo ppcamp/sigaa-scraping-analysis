@@ -49,7 +49,7 @@ def calculate(obj: List[List[float]]) -> Tuple[float, List[float]]:
     :Note:
         This method not change the current value of object. So we can use it later if not pass through test.
 
-    :Parameters:
+    :Args:
         - `obj`: The matrix(NxN) that holds the ahp values
         - `matrix`: *OPTIONAL*. If pass some value, we'll gonna change the object passed.
             Usually is the same object as the first param

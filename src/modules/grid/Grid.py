@@ -21,7 +21,7 @@ def get_grid(grid: str, connection: str) -> Tuple[DiGraph, DiGraph]:
     Get this grid.
     If the grid is not in database. Got it and then, store in database
 
-    :Parameters:
+    :Args:
         - `grid`: The grid id. E.g, '0192015'
         - `connection`: The connection string needed to access mongodb
 

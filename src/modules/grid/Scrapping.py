@@ -29,7 +29,7 @@ def _scrapping_grid(courseCode: str) -> Tuple[DiGraph, DiGraph]:
     logon into sigaa's system and then, scrap it, retriving a new graph to a certain
     grid string
 
-    :Parameters:
+    :Args:
         - `courseCode`: Course number, e.g, "0192015"
 
     :Returns:
