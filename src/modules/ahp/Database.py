@@ -25,7 +25,7 @@ class AhpForm(SigaaDatabase):
             - `id`: The unique identifier.
 
         :Returns:
-            A `FormData`_ for the matched object.
+            A :class:`.Types.FormData` for the matched object.
         """
         element = self._db.AhpForm.find_one(ObjectId(id))
         return FormData(element)  # type:ignore
@@ -38,7 +38,7 @@ class AhpForm(SigaaDatabase):
             - `args`: A dictionary containing the filters to object keys.
 
         :Returns:
-            A `FormData`_ for the matched object.
+            A :class:`.Types.FormData` for the matched object.
         """
         element = self._db.AhpForm.find_one(args)
         return FormData(element)  # type:ignore
@@ -48,7 +48,7 @@ class AhpForm(SigaaDatabase):
         Get all database elements.
 
         :Returns:
-            A *List* of `FormData`_ objects, containing all database elements.
+            A *List* of :class:`.Types.FormData` objects, containing all database elements.
         """
         # iterate and get all elements
         cursor = self._db.AhpForm.find()
@@ -63,10 +63,10 @@ class AhpForm(SigaaDatabase):
             - `args`:
                 You should pass a dictionary with the necessary
                 keys to this database collection.
-                You can use the `FormData`_ object, and then, call the `FormData.toDict()`_ .
+                You can use the :class:`.Types.FormData` object, and then, call the :meth:`modules.ahp.Types.FormData.toDict` .
 
         :Returns:
-            A `FormData`_ for the matched object.
+            A :class:`.Types.FormData` for the matched object.
         """
         element = self._db.AhpForm.insert_one(args)
         return FormData(element)  # type:ignore

@@ -1,5 +1,5 @@
 # Python
-**__pycache__**
+**/__pycache__
 
 # Sigaa
 **/credentials.json
@@ -21,3 +21,6 @@ mongodb/
 
 # ignore builded pages under documentation
 **build
+**__pycache__
+
+**.pyc

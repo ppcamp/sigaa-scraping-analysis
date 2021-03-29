@@ -61,6 +61,26 @@ def calculate(obj: List[List[float]]) -> Tuple[float, List[float]]:
         It returns a tuple/vector, where the first element is the IC calculated over ahp,
         and the second one, is the proper index.
 
+    :Example:
+        .. code-block:: python
+            :name: this-py
+
+            # import this module
+            from modules.ahp import Ahp
+
+            # some input matrix
+            matrix = [
+                [1, 1, 1],
+                [1, 1, 1],
+                [1, 1, 1],
+            ]
+
+            # calculate the index and its priority vector
+            consistency_index, priority_vector = Ahp.calculate(matrix)
+
+            # in this case, should not raise this
+            assert consistency_index>=0.1, "Inconsistent ahp matrix"
+
     .. _AHP: https://www.youtube.com/watch?v=J4T70o8gjlk&ab_channel=ManojMathew
     """
 

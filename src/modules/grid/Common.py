@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
+
 """
-Test
+This module contains some usefull functions to iterate over competency graph and sigaa's graphs.
 """
 
 from networkx import DiGraph
@@ -10,14 +12,11 @@ from networkx.classes.digraph import DiGraph
 from pandas.core.frame import DataFrame
 
 
-# Variável que irá iterar sobre os períodos
-
-
 def get_periodo() -> int:
     """
-    Função que computa o período atual
+    Computes the current period
 
-    Returns:
+    :Yields:
         A value for every period
     """
     p = 0
@@ -25,35 +24,32 @@ def get_periodo() -> int:
         p += 1
         yield p
 
-# --
-
 
 def get_materias(nodes: DiGraph, periodo: int) -> List[str]:
     """
-    Obtêm todas a lista de todas as siglas de matérias do período
+    Get all class acronyms for a given `periodo`.
 
-    Args:
-        periodo: número que indica o período atual entre [1,10]
+    :Parameters:
+        - `nodes`: a DiGraph containing graphs and edges
+        - `periodo`: current grade period. Bettween [1,10]. See :meth:`get_periodo`
 
-    Returns:
-        Uma lista contendo todas as siglas das matérias deste período
+
+    :Returns:
+        A List containing all classes for a given `periodo`.
     """
     return [sigla for sigla, data in nodes.nodes(data=True) if data['period'] == str(periodo)]  # type:ignore
 
 
-# --
 def check_competencia(out: DataFrame, materias_atuais: List[str], competencia: str) -> bool:
     """
-    Verifica se tem algum valor para esta competência neste periodo
+    Check if exist some value (edge) to some `competencia` in a given list of period, `materias_atuais`.
 
-    Parameters
-    ----------
-    materias_atuais: lista de materias no periodo atual
-    competencia: competencia a ser analizada
+    :Parameters:
+        - `materias_atuais`: list of class acronyms for a some period. Check it out :meth:`get_periodo`
+        - `competencia`: competency to be analysed. E.g: 'BAC01'
 
-    Returns
-    -------
-    True para caso não tenha uma disciplina no período atual que possua esta competência
+    :Returns:
+        True if there's none class in this period with this competency.
     """
     return sum([out.loc[i][competencia] for i in materias_atuais]) == 0
 
