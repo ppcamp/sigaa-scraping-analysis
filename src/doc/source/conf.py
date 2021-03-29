@@ -22,7 +22,7 @@ copyright = '2021, Pedro A C Santos'
 author = 'Pedro A C Santos'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.3'
+release = '0.0.6'
 
 
 # -- General configuration ---------------------------------------------------
