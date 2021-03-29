@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # fluxogram
+from typing import Dict, List, Tuple
 from graphviz import Digraph
 from os import sep as OSsep
 import networkx as nx
@@ -12,6 +13,8 @@ from os import urandom, system as RUN
 from binascii import b2a_hex as randHex
 from os import path, getcwd, unlink
 
+from networkx.classes.reportviews import NodeView, OutEdgeView
+
 
 class Colors(object):
     """
@@ -19,16 +22,13 @@ class Colors(object):
     """
     node = "#BDC3C7"
 
-    """
-    A palletet based on blue
-    """
     BlueBased = {
         "baby": "#BDC3C7"
     }
+    """
+    A color palletet based on blue
+    """
 
-    """
-    A pallette based on red
-    """
     RedBased = {
         "wine": "#BD1C32",
         "lightenRed": "#FA3246",
@@ -37,29 +37,51 @@ class Colors(object):
         "darkenRed": "#850014",
         "darkerRed": "#BB0019",
     }
+    """
+    A color pallette based on red
+    """
 
-    """
-    A pallette based on green
-    """
     GreenBased = {
         "nature": "#4c8768"
     }
+    """
+    A color pallette based on green
+    """
 
     @staticmethod
     def rand() -> str:
         """
         A static method to generate some random color.
+
+        :Returns:
+            A formatted hex color, e.g: "#3f0a9b"
         """
         return "#" + randHex(urandom(3)).decode("utf-8")
 
 
-def weighted_graph(nodes, edges, filename='grid', outputDir="out"):
+def weighted_graph(
+    nodes: NodeView,
+    edges: List[Tuple[str, str, Dict[str, float]]],
+    filename: str = 'grid',
+    outputDir: str = "out"
+) -> None:
     """
-    Get a student view of grid fluxogram.
+    .. _graphviz: https://graphviz.org/
 
-    Note
-    ----
-    The nodes must ne ordered by period of the class.
+    Get a student view of grid fluxogram/graph.
+    This function make a system call to `graphviz`_.
+
+    :Args:
+        - `nodes`: A list containing the nodes.
+        - `edges`: A list containing the edges for this graph.
+
+    :Kwargs:
+        - `filename`: The name of the file to save (image name). DEFAULT: grid
+        - `outputDir`: The directory to save. DEFAULT: out
+
+    :Note:
+        - The nodes must ne ordered by period of the class.
+        - Usually, you can get an example graph in :meth:`modules.grid.Grid.get_grid`
     """
 
     # Construct a tree with xml grid
@@ -158,13 +180,22 @@ def weighted_graph(nodes, edges, filename='grid', outputDir="out"):
     unlink(input)
 
 
-def only_grid(nodes, pre, co, filename='grid', outputDir="out"):
+def only_grid(nodes, pre, co, filename='grid', outputDir="out") -> None:
     """
-    Get a student view of grid fluxogram.
+    Get a student view of grid fluxogram. This plot bot edges, pre and co requisite.
+    It run a system call to `graphviz`_.
 
-    Note
-    ----
-    The nodes must ne ordered by period of the class.
+    :Args:
+        - `nodes`: A list containing the nodes.
+        - `pre`: A list containing the edges for this graph.
+        - `co`: A list containing the edges for this graph.
+
+    :Kwargs:
+        - `filename`: The name of the file to save (image name). DEFAULT: grid
+        - `outputDir`: The directory to save. DEFAULT: out
+
+    :Note:
+        The nodes must ne ordered by period of the class.
     """
 
     # Construct a tree with xml grid
@@ -264,6 +295,10 @@ def only_grid(nodes, pre, co, filename='grid', outputDir="out"):
 class DotFile(object):
     """
     A class used to generate dot files.
+
+    Check it out more infos in the `graphviz documentation`_
+
+    .. _graphviz documentation: https://graphviz.org/doc/info/attrs.html
     """
     # Command used to generate png image
     # neato -Tpng 2016001942.dot -o teste.png
@@ -271,32 +306,33 @@ class DotFile(object):
     def __init__(self):
         self._outputFile = "digraph {\n\trankdir=TB;\n"
 
-    def node(self, nodeName, label, color, fillcolor, style, shape, pos):
+    def node(
+            self,
+            nodeName: str,
+            label: str,
+            color: str,
+            fillcolor: str,
+            style: str,
+            shape: str,
+            pos: str
+    ):
         """
         Insert string used to create a node.
 
-        Parameters
-        ----------
-        nodeName: string
-            Name used to make connections.
-        label: string
-            Name showed in graph.
-        color: string
-            Border color.
-        fillcolor: string
-            Fill color.
-        pos: string
-            Inch absolute position.
-        shape: string
-            Form shape
-        style: string
-            Form style, i.e., filled or striped
+        :Args:
+            - `nodeName`: Name used to make connections.
+            - `label`: Name showed in graph.
+            - `color`: Border color.
+            - `fillcolor`: Fill color.
+            - `pos`: Inch absolute position.
+            - `shape`: Form shape
+            - `style`: Form style, i.e., filled or striped
 
-        Example
-        -------
-        >> insert(
-            'CEI039','CEI039', 'black', 'white',
-            '4,0!', 'rectangle', 'filled')
+        :Example:
+            .. code-block:: python
+
+                dotfile = DotFile()
+                dotfile.insert( 'CEI039','CEI039', 'black', 'white', '4,0!', 'rectangle', 'filled')
         """
 
         auxiliarStr = '\t{} [label="{}" color="{}" fillcolor="{}" pos="{}" shape="{}" style="{}"]\n'.format(
@@ -304,41 +340,45 @@ class DotFile(object):
 
         self._outputFile += auxiliarStr
 
-    def edge(self, father, son, style, color):
+    def edge(self, father: str, son: str, style: str, color: str):
         """
         Create connection
 
-        Parameters
-        ----------
-        father: string
-            'From' node
-        son: string
-            'To' node
+        :Parameters:
+            - `father`: 'From' node
+            - `son`: 'To' node
+            - `style`: edge style.
+            - `color`: edge color.
 
-        Example
-        -------
-        >> edge('A','B') # A→B
+        :Example:
+            .. code-block:: python
+
+                a = DotFile()
+                a.edge('A','B') # create a connection A→B
         """
         aux = '\t' + father + ' -> ' + son + \
             ' [style={}, color={}]\n'.format(style, color)
         self._outputFile += aux
 
     def _endOfInput(self):
+        """
+        Finish this file
+        """
         self._outputFile += '\n}'
 
-    def getDot(self, nameFile):
+    def getDot(self, filename: str):
         """
         Gerate dot file.
 
-        Parameters
-        ----------
-        nameFile: string
-            Name to save dot's file.
+        :Args:
+            - `filename`: Name to save dot's file.
 
-        Example
-        -------
-        >> getDot('/home/ppcamp/Desktop/test.dot')
+        :Example:
+            .. code-block:: python
+
+                a = DotFile()
+                a.getDot('/home/ppcamp/Desktop/test.dot')
         """
         self._endOfInput()
-        with open(nameFile, 'w') as f:
+        with open(filename, 'w') as f:
             f.write(self._outputFile)
