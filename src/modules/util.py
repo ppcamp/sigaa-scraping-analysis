@@ -8,6 +8,9 @@ from pymongo import MongoClient
 
 class SigaaDatabase:
     """
+    .. _Sigaa Database:
+
+
     This class is responsable to fetch and push data to mongo
     """
 

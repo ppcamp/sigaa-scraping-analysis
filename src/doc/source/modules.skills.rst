@@ -1,21 +1,15 @@
-modules.skills package
+skills package
 ======================
 
-Submodules
-----------
-
-modules.skills.Skillset module
-------------------------------
-
-.. automodule:: modules.skills.Skillset
+.. automodule:: modules.skills
    :members:
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
+Skillset module
+------------------------------
 
-.. automodule:: modules.skills
+.. automodule:: modules.skills.Skillset
    :members:
    :undoc-members:
    :show-inheritance:

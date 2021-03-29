@@ -1,10 +1,13 @@
-modules.plot package
+plot package
 ====================
 
-Submodules
-----------
+.. automodule:: modules.plot
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-modules.plot.Common module
+
+Common module
 --------------------------
 
 .. automodule:: modules.plot.Common
@@ -12,18 +15,10 @@ modules.plot.Common module
    :undoc-members:
    :show-inheritance:
 
-modules.plot.Graph module
+Graph module
 -------------------------
 
 .. automodule:: modules.plot.Graph
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: modules.plot
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,10 +1,12 @@
-modules.ahp package
+ahp package
 ===================
 
-Submodules
-----------
+.. automodule:: modules.ahp
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-modules.ahp.Ahp module
+Ahp module
 ----------------------
 
 .. automodule:: modules.ahp.Ahp
@@ -12,7 +14,7 @@ modules.ahp.Ahp module
    :undoc-members:
    :show-inheritance:
 
-modules.ahp.Database module
+Database module
 ---------------------------
 
 .. automodule:: modules.ahp.Database
@@ -20,7 +22,7 @@ modules.ahp.Database module
    :undoc-members:
    :show-inheritance:
 
-modules.ahp.Types module
+Types module
 ------------------------
 
 .. automodule:: modules.ahp.Types
@@ -28,10 +30,3 @@ modules.ahp.Types module
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
-
-.. automodule:: modules.ahp
-   :members:
-   :undoc-members:
-   :show-inheritance:

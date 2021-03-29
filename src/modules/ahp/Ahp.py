@@ -1,10 +1,14 @@
+# -*- coding: utf-8 -*-
+
 """
-Module that contains some common functions to handle with ahp data
+Module that contains some common functions to handle with ahp data.
+It performs the ahp calculations.
+
+.. calculate ahp:
 """
 
 from copy import deepcopy
-import json
-from typing import Any, List
+from typing import List, Optional, Tuple
 
 
 """
@@ -13,11 +17,12 @@ The index is equivalent to matrix cols (n) -1
 
 JS_Index | cols |Random index  (calculated by Saaty)
 ---------|------|----------------------------------
-  0     |   1  | there's only one question. Therefore, you can't apply AHP
-  1     |   2  | there's only two questions. Therefore, you can't apply AHP, since that you just have two possible choices.
-  2^    |  3^  | there's at least three questions. Therefore, you use the value
+   0     |   1  | there's only one question. Therefore, you can't apply AHP
+   1     |   2  | there's only two questions. Therefore, you can't apply AHP, since that you just have two possible choices.
+   2^    |  3^  | there's at least three questions. Therefore, you use the value
 """
-__RI = [
+# test
+__RI: List[float] = [
     0,
     0,
     0.58,
@@ -36,15 +41,27 @@ __RI = [
 ]
 
 
-def calculate(obj: List[List[float]], matrix: List[List[float]] = None) -> float:
+def calculate(obj: List[List[float]]) -> Tuple[float, List[float]]:
     """
-    Verifies if AHP is valid.
+    Calculates AHP and returns the *IC* and *priority_vector*.
+    To an AHP be valid, it must have its IC bellow than 0.1.
 
-    @note This method not change the current value of object. So we can use it later if not pass through test.
-    @param {[Float64Array]} obj The matrix(NxN) that holds the ahp values
-    @param {[Float64Array]} matrix OPTIONAL. If pass some value, we'll gonna change the object passed. Usually is the same object as the first param
-    @see A reference to AHP: {@link https://www.youtube.com/watch?v=J4T70o8gjlk&ab_channel=ManojMathew}
-    @returns {[Boolean, Number]} It returns a tuple/vector, where the first element is if the obj satisfies the ahp, and the second one, is the proper index.
+    :Note:
+        This method not change the current value of object. So we can use it later if not pass through test.
+
+    :Parameters:
+        - `obj`: The matrix(NxN) that holds the ahp values
+        - `matrix`: *OPTIONAL*. If pass some value, we'll gonna change the object passed.
+            Usually is the same object as the first param
+
+    :See:
+        A reference to `AHP`_ .
+
+    :Returns:
+        It returns a tuple/vector, where the first element is the IC calculated over ahp,
+        and the second one, is the proper index.
+
+    .. _AHP: https://www.youtube.com/watch?v=J4T70o8gjlk&ab_channel=ManojMathew
     """
 
     """
@@ -73,19 +90,21 @@ def calculate(obj: List[List[float]], matrix: List[List[float]] = None) -> float
 
     # If exist only 2 questions, ahp is not needed
     if (length <= 2):
-        return 1
+        return 1, []
 
     # If we don't pass matrix object, we'll ...
     # ... copy the matrix, doing so, we don't change the current value of matrix stored in "obj"
-    if matrix is None:
-        matrix = list(map(lambda row: deepcopy(row), obj))
+    # if matrix is None:
+    matrix = list(map(lambda row: deepcopy(row), obj))
 
     """
     This is the Pair-wise comparasion matrix
 
-    @description Object that will be modified in ahp.
-         At this point it will be the copy of `obj`, which is something like this:
-    @example
+    :Description:
+        Object that will be modified in ahp.
+        At this point it will be the copy of `obj`, which is something like this:
+
+    :Example:
     ________| Price | Storage | Camera | Looks
     Price   |   1   |    5    |   4    | 7
     Storage |  1/5  |    1    |   1/2  | 3
@@ -128,15 +147,14 @@ def calculate(obj: List[List[float]], matrix: List[List[float]] = None) -> float
     """
     Priority vector (sum of row / row length). Also named as criteria weights
     ________|     Price    |   Storage   |    Camera    | Looks  | SUM(row)/cols -> criteria weights
-    Price   |    0.6289    |   0.6002    |    0.6891    |  0.500 | (
-        0.6289+0.6002+0.6891+0.500)/4
+    Price   |    0.6289    |   0.6002    |    0.6891    |  0.500 | (0.6289+0.6002+0.6891+0.500)/4
     Storage |  (1/5)/1.59  |  (1)/8.33   |  (1/2)/5.83  | (3)/14 |
     Camera  |  (1/4)/1.59  |  (2)/8.33   |   (1)/5.83   | (3)/14 |
     Looks   |  (1/7)/1.59  | (1/3)/8.33  |  (1/3)/5.83  | (1)/14 |
     --------|--------------|-------------|--------------|--------|
     Sum     |     1.59     |    8.33     |     5.83     |   14
     """
-    priorityVec = [0]*length
+    priorityVec: List[float] = [0.0]*length
     for row in range(length):
         priorityVec[row] = sum(pair_wise_comp_matrix[row])/length
 
@@ -160,7 +178,7 @@ def calculate(obj: List[List[float]], matrix: List[List[float]] = None) -> float
     Weight vector
 
     Criteria|              |                 |                |           | Weigth
-        weights|    0.6038    |      0.1365     |    0.1957      | 0.0646    | vector
+     weights|    0.6038    |      0.1365     |    0.1957      | 0.0646    | vector
     --------|--------------|-----------------|----------------|-----------|--------
             |     Price    |     Storage     |     Camera     | Looks     | SUM(row)
     Price   |   1 * 0.6038 |    5 * 0.1365   |   4 * 0.1957   | 7 * 0.0646| 0.6038 + 0.6825 + 0.7832 + 0.4522 = 2.517
@@ -168,7 +186,7 @@ def calculate(obj: List[List[float]], matrix: List[List[float]] = None) -> float
     Camera  |  1/4 * 0.6038|    2 * 0.1365   |   1 * 0.1957   | 3 * 0.0646|
     Looks   |  1/7 * 0.6038|   1/3 * 0.1365  |  1/3 * 0.1957  | 1 * 0.0646|
     """
-    weightVec = [0]*length
+    weightVec: List[float] = [0.0]*length
     for row in range(length):
         weightVec[row] = sum(matrix[row])
 

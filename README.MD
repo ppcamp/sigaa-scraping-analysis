@@ -84,3 +84,4 @@ python src/main.py
 - https://stackoverflow.com/questions/13516404/sphinx-error-unknown-directive-type-automodule-or-autoclass
 - https://www.youtube.com/watch?v=b4iFyrLQQh4&ab_channel=avcourt
 - https://stackoverflow.com/questions/34533346/incorrect-cross-reference-syntax-gives-confusing-undefined-label-warning
+- https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-pygments_style

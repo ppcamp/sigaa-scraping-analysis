@@ -1,10 +1,14 @@
-modules.grid package
+grid package
 ====================
 
-Submodules
-----------
 
-modules.grid.Common module
+.. automodule:: modules.grid
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Common module
 --------------------------
 
 .. automodule:: modules.grid.Common
@@ -12,7 +16,7 @@ modules.grid.Common module
    :undoc-members:
    :show-inheritance:
 
-modules.grid.Database module
+Database module
 ----------------------------
 
 .. automodule:: modules.grid.Database
@@ -20,7 +24,7 @@ modules.grid.Database module
    :undoc-members:
    :show-inheritance:
 
-modules.grid.Grid module
+Grid module
 ------------------------
 
 .. automodule:: modules.grid.Grid
@@ -28,18 +32,10 @@ modules.grid.Grid module
    :undoc-members:
    :show-inheritance:
 
-modules.grid.Scrapping module
+Scrapping module
 -----------------------------
 
 .. automodule:: modules.grid.Scrapping
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: modules.grid
    :members:
    :undoc-members:
    :show-inheritance:

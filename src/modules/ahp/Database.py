@@ -1,25 +1,73 @@
-from typing import Dict, List
+# -*- coding: utf-8 -*-
+
+"""
+Module that contains some common functions to handle with mongo database connections.
+It's a wrapper to *pymongo*
+"""
+
+from typing import Any, Dict, List
 from modules.ahp.Types import FormData
 from modules.util import SigaaDatabase
 from bson.objectid import ObjectId
 
 
 class AhpForm(SigaaDatabase):
+    """
+    A mongodb class used to connect and retrieve (already parsed), objects.
+    Those objects are the answers of `AHP`_ site.
+    """
+
     def findById(self, id: str) -> FormData:
+        """
+        Find an element by a given Id.
+
+        :Parameters:
+            - `id`: The unique identifier.
+
+        :Returns:
+            A `FormData`_ for the matched object.
+        """
         element = self._db.AhpForm.find_one(ObjectId(id))
         return FormData(element)  # type:ignore
 
-    def findByDict(self, args: Dict) -> FormData:
+    def findByDict(self, args: Dict[str, Any]) -> FormData:
+        """
+        Find an element by a given Id.
+
+        :Parameters:
+            - `args`: A dictionary containing the filters to object keys.
+
+        :Returns:
+            A `FormData`_ for the matched object.
+        """
         element = self._db.AhpForm.find_one(args)
         return FormData(element)  # type:ignore
 
     def getAll(self) -> List[FormData]:
+        """
+        Get all database elements.
+
+        :Returns:
+            A *List* of `FormData`_ objects, containing all database elements.
+        """
         # iterate and get all elements
         cursor = self._db.AhpForm.find()
         elements = [FormData(el) for el in cursor]
         return elements
 
     def insert(self, args) -> FormData:
+        """
+        Insert a new item in database.
+
+        :Parameters:
+            - `args`:
+                You should pass a dictionary with the necessary
+                keys to this database collection.
+                You can use the `FormData`_ object, and then, call the `FormData.toDict()`_ .
+
+        :Returns:
+            A `FormData`_ for the matched object.
+        """
         element = self._db.AhpForm.insert_one(args)
         return FormData(element)  # type:ignore
 
@@ -28,7 +76,7 @@ class AhpForm(SigaaDatabase):
         Remove an element from this table
 
         :Parameters:
-            - `id`: An unique identifier to this json object
+            - `id`: An unique identifier to this json object that will be, permanenlty, removed from database.
 
         """
         element = self.findById(ObjectId(id))  # type:ignore

@@ -1,7 +1,13 @@
-modules package
-===============
+Brief
+-----
 
-Subpackages
+.. automodule:: modules
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Sub modules
 -----------
 
 .. toctree::
@@ -13,21 +19,10 @@ Subpackages
    modules.score
    modules.skills
 
-Submodules
-----------
-
-modules.util module
+util module
 -------------------
 
 .. automodule:: modules.util
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: modules
    :members:
    :undoc-members:
    :show-inheritance:

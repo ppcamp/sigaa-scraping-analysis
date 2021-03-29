@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 
 """
-Skillset
---------
-
 This module contains all functions used to read the CSV files under a specified
 directory. It's responsable to parse the data obtained in the `Google Sheets`
 """
