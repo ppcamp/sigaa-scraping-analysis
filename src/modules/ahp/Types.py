@@ -17,6 +17,80 @@ class FormData:
     .. _FormData:
 
     This class hold some usefull methods to handle with `AHP`_ site data.
+
+    :Example:
+        .. code-block:: python
+            :caption: Example passing a value from mongodb
+
+            # import this module
+            from modules.ahp import Types
+            # import object id (used to parse id into uuid object type)
+            from bson.objectid import ObjectId
+
+            # mongodb connection string
+            connection_string = "mongodb://ppcamp:password@localhost:27017/?authSource=admin"
+
+            # Create a mongoclient
+            client = MongoClient(connection_string)
+            # Connect to database sigaadb (default)
+            db = client.sigaadb
+
+            response = db.find_one(ObjectId("20de2b50-5349-4cae-b72e-d85ea47417f2"))
+
+        .. code-block:: python
+            :caption: Example using empty value
+
+            # import this module
+            from modules.ahp.Types import FormData
+
+            # lRoot, q1s2, q1sec5, q3
+            new_response = FormData() \\
+            .setName("Joãozinho") \\
+            .setEmail("joaozinho@teste.com") \\
+            .setDate("03-03-2021") \\
+            .setMatrixRoot([
+                [1,1,0.33],
+                [1,1,0.33],
+                [3.03,3.03,1],
+            ]) \\
+            .setMatrixQ1([
+                [1,5,5,5,1,1],
+                [0.2,1,1,1,0.2,0.2],
+                [0.2,1,1,1,0.2,0.2],
+                [0.2,1,1,1,0.2,0.2],
+                [1,5,5,5,1,1],
+                [1,5,5,5,1,1],
+            ]) \\
+            .setMatrixQ1sec2([
+                [1,1,1],
+                [1,1,1],
+                [1,1,1],
+            ]) \\
+            .setMatrixQ1sec3([
+                [1,3,1,5,3,5],
+                [0.33,1,0.33,5,1,3],
+                [1,3.03,1,5,1,3],
+                [0.2,0.2,0.2,1,0.2,0.33],
+                [0.33,1,1,5,1,3],
+                [0.2,0.33,0.33,3.03,0.33,1],
+            ]) \\
+            .setMatrixQ1sec5(0.2) \\
+            .setMatrixQ2([
+                [1,0.33,3,3,3],
+                [3.03,1,3,5,3],
+                [0.33,0.33,1,1,1],
+                [0.33,0.2,1,1,1],
+                [0.33,0.33,1,1,1],
+            ]) \\
+            .setMatrixQ3([
+                [1,0.33,1,1],
+                [3.03,1,3,3],
+                [1,0.33,1,1],
+                [1,0.33,1,1],
+            ])
+
+
+
     """
 
     def __init__(self, obj: Dict = {}):

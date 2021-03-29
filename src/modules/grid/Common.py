@@ -56,19 +56,22 @@ def check_competencia(out: DataFrame, materias_atuais: List[str], competencia: s
 
 def get_peso_competencia(out: DataFrame, materias_atuais: List[str], competencia: str, materia: str) -> float:
     """
-    FIXME: Peso errado? Não, o peso das arestas é referente ao período do vértice de onde sai, se só tiver 1 matéria, irá ser peso 1 para qualquer aresta.
+    Get the class weight normalized by total amount of classes in a given semester.
+    The maximum value that a given competency can have is 1 (100%).
 
-    Obtêm o peso da disciplina normalizado pelo peso de disciplinas no semestre, i.e., o máximo que uma competência pode ter no semestre é 1 ou 100%
+    .. math:: \\frac{\\sum_{i=0}^N \\text{competency}_i}{N}
 
-    Parameters
-    ----------
-    materias_atuais: lista de materias no periodo atual
-    competencia: competencia a ser analizada
-    materia: materia que se deseja obter o peso da competencia para este periodo
+    :Note:
+        *Peso errado?* Não, o peso das arestas é referente ao período do vértice de onde sai,
+        se só tiver 1 matéria, irá ser peso 1 para qualquer aresta.
 
-    Returns
-    -------
-    Um float arredondado à duas casas decimais
+    :Parameters:
+        - `materias_atuais`: list of classes in the current period. Check :meth:`get_materias`
+        - `competencia`: competency to be analized.
+        - `materia`: class acronym to get the edge weight.
+
+    :Returns:
+        A stipulated weight rounded by 2 decimal places.
     """
     total = sum([out.loc[i][competencia] for i in materias_atuais])
 
@@ -76,14 +79,21 @@ def get_peso_competencia(out: DataFrame, materias_atuais: List[str], competencia
     return round(out.loc[materia][competencia]/total, 2)  # type:ignore
 
 
-def errprint(msg: str) -> None:
-    """
-    Exibe uma mensagem de error usando o stderr
-    """
-    sys.stderr.write('Error: ' + msg)
-
-
 def get_nota(notas: Dict[str, float], materia: str, peso: float, acumulado: float) -> float:
+    """
+    Calculate the class scores.
+
+    .. math:: x =
+        \\begin{cases}
+            \\text{acumulado}\\cdot\\text{peso}, \\text{Se...?} \\\\
+            \\left(\\frac{\\text{notas[materia]}}{10}+\\text{acumulado}\\right)\\cdot\\text{peso},\\text{Se...?} \\\\
+        \\end{cases}
+
+
+    TODO:
+        - increase this documentation
+
+    """
     # Caso o aluno não tenha feito a matéria ainda, propaga o acumulado pelo peso
     if materia not in notas:
         return round(acumulado * peso, 3)
@@ -98,7 +108,18 @@ sys.setrecursionlimit(1000)
 
 def dfs_walk(notas: Dict[str, float], grafo: DiGraph, materia: str, acumulado: float = 0.0) -> float:
     """
-    A recursive walk
+    A recursive walk over competency graph
+
+    :Parameters:
+        - `notas`:
+            A dictionary mapping a class acronym to an value.
+            Usually, this value will be the highest student's score to this class.
+        - `grafo`: A graph equivalent to some competency.
+        - `materia`: A name for a given node.
+        - `acumulado`: The propagated value until some point
+
+    :Returns:
+        The propageted `acumulado` value over it's childrens/leafs.
     """
     total: float = 0
 

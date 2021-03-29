@@ -70,3 +70,10 @@ def normalize_vectors(vet: Dict[str, float]):
         vet[competencia] = round(resultado/maior_valor, 2)
 
     return vet
+
+
+def errprint(msg: str) -> None:
+    """
+    Print some error message, returning a different value from default (1).
+    """
+    sys.stderr.write('Error: ' + msg)

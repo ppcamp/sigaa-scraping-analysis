@@ -2,7 +2,8 @@
 
 """
 Module that contains some common functions to handle with mongo database connections.
-It's a wrapper to *pymongo*
+It's a wrapper to *pymongo*.
+
 """
 
 from typing import Any, Dict, List
@@ -15,6 +16,17 @@ class AhpForm(SigaaDatabase):
     """
     A mongodb class used to connect and retrieve (already parsed), objects.
     Those objects are the answers of `AHP`_ site.
+
+    :Example:
+        .. code-block:: python
+
+            # import this module
+            from modules.ahp import Database
+
+            # mongodb connection string
+            connection_string = "mongodb://ppcamp:password@localhost:27017/?authSource=admin"
+            ahp = Database.AhpForm(connection_string)
+
     """
 
     def findById(self, id: str) -> FormData:
@@ -26,6 +38,11 @@ class AhpForm(SigaaDatabase):
 
         :Returns:
             A :class:`.Types.FormData` for the matched object.
+
+        :Example:
+            .. code-block:: python
+
+                resp = ahp.findById("7ab8ccba-e123-4e52-835a-93fd8b86b1b7")
         """
         element = self._db.AhpForm.find_one(ObjectId(id))
         return FormData(element)  # type:ignore
@@ -39,6 +56,11 @@ class AhpForm(SigaaDatabase):
 
         :Returns:
             A :class:`.Types.FormData` for the matched object.
+
+        :Example:
+            .. code-block:: python
+
+                resp = ahp.findByDict({"email":"7ab8ccba-e123-4e52-835a-93fd8b86b1b7"})
         """
         element = self._db.AhpForm.find_one(args)
         return FormData(element)  # type:ignore
@@ -49,6 +71,12 @@ class AhpForm(SigaaDatabase):
 
         :Returns:
             A *List* of :class:`.Types.FormData` objects, containing all database elements.
+
+        :Example:
+            .. code-block:: python
+
+                # get all responses stored in database
+                responses = ahp.getAll()
         """
         # iterate and get all elements
         cursor = self._db.AhpForm.find()
@@ -67,6 +95,63 @@ class AhpForm(SigaaDatabase):
 
         :Returns:
             A :class:`.Types.FormData` for the matched object.
+
+        :Example:
+            .. code-block:: python
+
+                from modules.ahp.Types import FormData
+                from modules.ahp import Database
+
+                ahp = Database.AhpForm(connection_string)
+
+                # lRoot, q1s2, q1sec5, q3
+
+                new_response = FormData() \\
+                .setName("Joãozinho") \\
+                .setEmail("joaozinho@teste.com") \\
+                .setDate("03-03-2021") \\
+                .setMatrixRoot([
+                    [1,1,0.33],
+                    [1,1,0.33],
+                    [3.03,3.03,1],
+                ]) \\
+                .setMatrixQ1([
+                    [1,5,5,5,1,1],
+                    [0.2,1,1,1,0.2,0.2],
+                    [0.2,1,1,1,0.2,0.2],
+                    [0.2,1,1,1,0.2,0.2],
+                    [1,5,5,5,1,1],
+                    [1,5,5,5,1,1],
+                ]) \\
+                .setMatrixQ1sec2([
+                    [1,1,1],
+                    [1,1,1],
+                    [1,1,1],
+                ]) \\
+                .setMatrixQ1sec3([
+                    [1,3,1,5,3,5],
+                    [0.33,1,0.33,5,1,3],
+                    [1,3.03,1,5,1,3],
+                    [0.2,0.2,0.2,1,0.2,0.33],
+                    [0.33,1,1,5,1,3],
+                    [0.2,0.33,0.33,3.03,0.33,1],
+                ]) \\
+                .setMatrixQ1sec5(0.2) \\
+                .setMatrixQ2([
+                    [1,0.33,3,3,3],
+                    [3.03,1,3,5,3],
+                    [0.33,0.33,1,1,1],
+                    [0.33,0.2,1,1,1],
+                    [0.33,0.33,1,1,1],
+                ]) \\
+                .setMatrixQ3([
+                    [1,0.33,1,1],
+                    [3.03,1,3,3],
+                    [1,0.33,1,1],
+                    [1,0.33,1,1],
+                ])
+
+                ahp.insert(new_response.toDict())
         """
         element = self._db.AhpForm.insert_one(args)
         return FormData(element)  # type:ignore
@@ -78,6 +163,10 @@ class AhpForm(SigaaDatabase):
         :Parameters:
             - `id`: An unique identifier to this json object that will be, permanenlty, removed from database.
 
+        :Example:
+            .. code-block:: python
+
+                removed_el = ahp.delete("5cbfb7d6-c6b9-4342-8c9b-52d6a9a9ed2f")
         """
         element = self.findById(ObjectId(id))  # type:ignore
         self._db.AhpForm.delete_one(ObjectId(id))

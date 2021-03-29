@@ -27,7 +27,7 @@ def _scrapping_grid(courseCode):
     - When we'll check the history, we must check for equivalency (based on student's history) too.
     """
     # Load credentials json
-    with open('credentials.json') as file:
+    with open('./certs/credentials.json') as file:
         credentials = load(file)
 
     # URL's used in scrapping

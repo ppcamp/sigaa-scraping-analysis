@@ -4,7 +4,7 @@
   "python.autoComplete.extraPaths": ["src"],
   "files.exclude": {
     "mongodb/": true,
-    "**/__pycache__": false,
+    "**/__pycache__": true,
     "**/*.ipynb_checkpoints":true
   },
   "python.analysis.extraPaths": [
