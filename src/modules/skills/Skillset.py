@@ -1,10 +1,18 @@
 # -*- coding: utf-8 -*-
 
-# Lista os arquivos no diretório
+"""
+Skillset
+--------
+
+This module contains all functions used to read the CSV files under a specified
+directory. It's responsable to parse the data obtained in the `Google Sheets`
+"""
+
+# list files over a specified directory
 from os import listdir
 # Dataframe
 import pandas as pd
-# Aliases
+# typings marks
 from typing import List
 
 # A object used only to specify the type
@@ -29,7 +37,7 @@ def read_csv(sheetsDir: str) -> DataFrames:
         # Remove two last lines
         tmpDF = tmpDF[:-2]
         # Renaming columns
-        header = tmpDF.columns.to_list()
+        header: List[str] = tmpDF.columns.to_list()  # type: ignore
         header[0] = 'Periodo'
         header[1] = 'Sigla'
         header[2] = 'Nome da disciplina'
@@ -63,10 +71,7 @@ def merge_data(dataframes: DataFrames) -> pd.DataFrame:
     out = pd.concat(dataframes)
 
     # Realizando a média
-    out = out.groupby(out.index)
+    out = out.groupby(out.index)  # type: ignore
     out = out.mean()
 
     return out
-
-
-# TODO: colocar a função de montar a grade com base nas competências aqui

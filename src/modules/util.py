@@ -33,6 +33,8 @@ class SigaaDatabase:
             # Connect to database sigaadb (default)
             self._db = self.__client.sigaadb
 
+        return self
+
 
 def average(*args):
     from statistics import mean
