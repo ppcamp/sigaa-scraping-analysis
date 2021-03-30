@@ -1,9 +1,11 @@
-from typing import List, Optional
+from typing import List
+import pandas as pd
 import plotly
+import plotly.express as px
 from plotly.missing_ipywidgets import FigureWidget
 
 
-def plot(
+def spider_plot(
     categories: List[str],
     show: bool = True,
     r1: List[float] = None,
@@ -30,7 +32,7 @@ def plot(
     """
 
     # checking excential kwargs
-    if all(("r1" is not None, "r1_name" is not None)):
+    if all(("r1" == None, "r1_name" == None)):
         raise Exception(
             "You must pass at least one graph, i.e, r1:List and r1_name")
 
@@ -45,7 +47,7 @@ def plot(
         name=r1_name
     ))  # type: ignore
 
-    if all(("r2" is not None, "r2_name" is not None)):
+    if all((r2 != None, r2_name != None)):
         fig.add_trace(go.Scatterpolar(
             r=r2,
             theta=categories,
@@ -68,4 +70,60 @@ def plot(
         fig.show()
 
     # and return it
+    return fig
+
+
+def parallel_plot(
+    df: pd.DataFrame,
+    column_color: str,
+    s: int = 0,
+    e: int = 5,
+    show: bool = True,
+    color_scale: List[str] = px.colors.diverging.Tealrose,
+    width: int = 1200,
+    height: int = 620
+) -> FigureWidget:
+    """
+    Realize a parallel plot. A parallel plot is a plot similar to line plt.
+    Check it out the `parallel plot`_ documentation.
+
+    :Args:
+        - `df`: The dataframe object to be plotted
+        - `column_color`:
+            The name of the column that holds the float equivalent number to be colored.
+            This column should hold ranges like 0.0..3.0
+
+    :Kwargs:
+        - `s`: start column to be plotted. *REMEBER* to include the column_color in this range.
+        - `e`: end column
+        - `show`: show the figure after generated
+        - `color_scale`:
+            it's a range of hexadecimal colors.
+            The default value is `plotly.express.colors.diverging.Tealrose`
+        - `width`: the figure width
+        - `height`: the figure height
+
+    :Returns:
+        A generated figure object
+
+    .. _parallel plot: https://plotly.com/python/parallel-coordinates-plot/
+    """
+    # convert to list
+    cols = df.columns.tolist()
+
+    # cria um novo dataframe usando somente o range estipulado
+    _d = df[cols[s:e]]
+
+    fig: FigureWidget = px.parallel_coordinates(
+        _d,
+        color=column_color,
+        width=width, height=height,
+        color_continuous_scale=color_scale,
+        color_continuous_midpoint=2,
+    )  # type: ignore
+
+    # exibe a figura
+    if show:
+        fig.show()
+
     return fig

@@ -19,7 +19,7 @@ class SigaaDatabase:
     This class is responsable to fetch and push data to mongo
     """
 
-    def __init__(self, connection_string: str, database_name: str = "") -> SigaaDatabase:
+    def __init__(self, connection_string: str, database_name: str = "") -> None:
         """
         Starts a mongodb client
 
@@ -38,8 +38,6 @@ class SigaaDatabase:
         else:
             # Connect to database sigaadb (default)
             self._db = self.__client.sigaadb
-
-        return self
 
 
 def average(*args: List[float] or List[List[float]]):
@@ -97,7 +95,7 @@ def average(*args: List[float] or List[List[float]]):
     for row in range(matrix_length):
         for col in range(matrix_length):
             output_matrix[row][col] = round(
-                    mean([m[row][col] for m in args]), 2):  # type: ignore
+                mean([m[row][col] for m in args]), 2)  # type: ignore
 
     return output_matrix
 
