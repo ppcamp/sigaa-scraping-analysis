@@ -32,6 +32,9 @@ def get_grid(grid: str, connection: str) -> Tuple[DiGraph, DiGraph]:
     # Create a mongoclient
     Database = Grids(connection)
 
+    GraphCo: DiGraph
+    GraphPre: DiGraph
+
     # Check if grid exists
     if grid in Database:
         # Get grid from database
