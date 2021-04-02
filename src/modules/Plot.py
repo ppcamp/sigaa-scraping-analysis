@@ -89,16 +89,14 @@ def parallel_plot(
 
     :Args:
         - `df`: The dataframe object to be plotted
-        - `column_color`:
-            The name of the column that holds the float equivalent number to be colored.
+        - `column_color`: The name of the column that holds the float equivalent number to be colored.\
             This column should hold ranges like 0.0..3.0
 
     :Kwargs:
         - `s`: start column to be plotted. *REMEBER* to include the column_color in this range.
         - `e`: end column
         - `show`: show the figure after generated
-        - `color_scale`:
-            it's a range of hexadecimal colors.
+        - `color_scale`: it's a range of hexadecimal colors.\
             The default value is `plotly.express.colors.diverging.Tealrose`
         - `width`: the figure width
         - `height`: the figure height

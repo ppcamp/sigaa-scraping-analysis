@@ -92,9 +92,8 @@ class AhpForm(SigaaDatabase):
         Insert a new item in database.
 
         :Args:
-            - `args`:
-                You should pass a dictionary with the necessary
-                keys to this database collection.
+            - `args`: You should pass a dictionary with the necessary\
+                keys to this database collection.\
                 You can use the :class:`.Types.FormData` object, and then, call the :meth:`modules.ahp.Types.FormData.toDict` .
 
         :Returns:

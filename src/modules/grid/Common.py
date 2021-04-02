@@ -84,23 +84,23 @@ def get_nota(notas: Dict[str, float], materia: str, peso: float, acumulado: floa
 
     .. math:: x =
         \\begin{cases}
-            \\text{acumulado}\\cdot\\text{peso}, \\text{Se...?} \\\\
-            \\left(\\frac{\\text{notas[materia]}}{10}+\\text{acumulado}\\right)\\cdot\\text{peso},\\text{Se...?} \\\\
+            \\text{acumulado}\\cdot\\text{peso}, \\text{[1]} \\\\
+            \\left(\\frac{\\text{notas[materia]}}{10}+\\text{acumulado}\\right)\\cdot\\text{peso},\\text{[2]} \\\\
         \\end{cases}
+
+    Where:
+        (I) If student didn't pass yet
+        (II) If student has a score to this class acronynm.
 
     :Args:
         - `notas`: dictionary mapping a class acronym to an given score
         - `materia`: class acronym to be analysed
-        - `peso`:
-            A calculated percentual in terms of competency in a given semester.
+        - `peso`: A calculated percentual in terms of competency in a given semester.\
             See more at :meth:`get_peso_competencia`.
         - `acumulado`: a propagated `peso` over a graph.
 
     :Returns:
-
-
-    .. todo:: Update and understand better this documentation HERE
-
+        The calculated value plus `acumulado` multiplied by `peso`
     """
     # Caso o aluno não tenha feito a matéria ainda, propaga o acumulado pelo peso
     if materia not in notas:
@@ -119,8 +119,7 @@ def dfs_walk(notas: Dict[str, float], grafo: DiGraph, materia: str, acumulado: f
     A recursive walk over competency graph
 
     :Args:
-        - `notas`:
-            A dictionary mapping a class acronym to an value.
+        - `notas`: A dictionary mapping a class acronym to an value.\
             Usually, this value will be the highest student's score to this class.
         - `grafo`: A graph equivalent to some competency.
         - `materia`: A name for a given node.
