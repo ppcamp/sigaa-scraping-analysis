@@ -32,6 +32,14 @@ Grid module
    :undoc-members:
    :show-inheritance:
 
+Plot module
+------------------------
+
+.. automodule:: modules.grid.Plot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Scrapping module
 -----------------------------
 

@@ -20,6 +20,7 @@ class FormData:
 
     :Example:
         .. code-block:: python
+            :linenos:
             :caption: Example passing a value from mongodb
 
             # import this module
@@ -38,6 +39,7 @@ class FormData:
             response = db.find_one(ObjectId("20de2b50-5349-4cae-b72e-d85ea47417f2"))
 
         .. code-block:: python
+            :linenos:
             :caption: Example using empty value
 
             # import this module

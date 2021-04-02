@@ -46,7 +46,8 @@ def calculate(obj: List[List[float]]) -> Tuple[float, List[float]]:
     Calculates AHP and returns the *IC* and *priority_vector*.
     To an AHP be valid, it must have its IC bellow than 0.1.
 
-    :Note:
+    .. warning::
+
         This method not change the current value of object. So we can use it later if not pass through test.
 
     :Args:
@@ -63,6 +64,7 @@ def calculate(obj: List[List[float]]) -> Tuple[float, List[float]]:
 
     :Example:
         .. code-block:: python
+            :linenos:
             :name: this-py
 
             # import this module

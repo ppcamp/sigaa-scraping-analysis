@@ -15,9 +15,30 @@ Sub modules
 
    modules.ahp
    modules.grid
-   modules.plot
-   modules.score
-   modules.skills
+
+Plot module
+-------------------
+
+.. automodule:: modules.Plot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Score module
+-------------------
+
+.. automodule:: modules.Score
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Skillset module
+-------------------
+
+.. automodule:: modules.Skillset
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 util module
 -------------------

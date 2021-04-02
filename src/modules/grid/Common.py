@@ -59,11 +59,12 @@ def get_peso_competencia(out: DataFrame, materias_atuais: List[str], competencia
     Get the class weight normalized by total amount of classes in a given semester.
     The maximum value that a given competency can have is 1 (100%).
 
-    .. math:: \\frac{\\sum_{i=0}^N \\text{competency}_i}{N}
+    .. math:: \\frac{\\text{competency}_k}{\\sum_{i=0}^N \\text{competency}_i}
 
-    :Note:
-        *Peso errado?* Não, o peso das arestas é referente ao período do vértice de onde sai,
-        se só tiver 1 matéria, irá ser peso 1 para qualquer aresta.
+    .. note::
+
+        This module only calculate the equivalent percentual in terms of maximum compenty values
+        in a given semester.
 
     :Args:
         - `materias_atuais`: list of classes in the current period. Check :meth:`get_materias`
@@ -74,8 +75,6 @@ def get_peso_competencia(out: DataFrame, materias_atuais: List[str], competencia
         A stipulated weight rounded by 2 decimal places.
     """
     total = sum([out.loc[i][competencia] for i in materias_atuais])
-
-    # debug(f'get_peso_competencia({materia},  {materias_atuais}) -> Total {total}, Matéria {out.loc[materia][competencia]}\n')
     return round(out.loc[materia][competencia]/total, 2)  # type:ignore
 
 
@@ -89,9 +88,18 @@ def get_nota(notas: Dict[str, float], materia: str, peso: float, acumulado: floa
             \\left(\\frac{\\text{notas[materia]}}{10}+\\text{acumulado}\\right)\\cdot\\text{peso},\\text{Se...?} \\\\
         \\end{cases}
 
+    :Args:
+        - `notas`: dictionary mapping a class acronym to an given score
+        - `materia`: class acronym to be analysed
+        - `peso`:
+            A calculated percentual in terms of competency in a given semester.
+            See more at :meth:`get_peso_competencia`.
+        - `acumulado`: a propagated `peso` over a graph.
 
-    TODO:
-        - Update and understand better this documentation HERE
+    :Returns:
+
+
+    .. todo:: Update and understand better this documentation HERE
 
     """
     # Caso o aluno não tenha feito a matéria ainda, propaga o acumulado pelo peso

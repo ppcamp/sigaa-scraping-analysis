@@ -19,6 +19,7 @@ class Grids(object):
 
     :Example:
         .. code-block:: python
+            :linenos:
 
             # importing this module
             from modules.grid.Database import Grids

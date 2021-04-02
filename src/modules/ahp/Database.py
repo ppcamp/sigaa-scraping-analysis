@@ -19,6 +19,7 @@ class AhpForm(SigaaDatabase):
 
     :Example:
         .. code-block:: python
+            :linenos:
 
             # import this module
             from modules.ahp import Database
@@ -41,6 +42,7 @@ class AhpForm(SigaaDatabase):
 
         :Example:
             .. code-block:: python
+                :linenos:
 
                 resp = ahp.findById("7ab8ccba-e123-4e52-835a-93fd8b86b1b7")
         """
@@ -59,6 +61,7 @@ class AhpForm(SigaaDatabase):
 
         :Example:
             .. code-block:: python
+                :linenos:
 
                 resp = ahp.findByDict({"email":"7ab8ccba-e123-4e52-835a-93fd8b86b1b7"})
         """
@@ -74,6 +77,7 @@ class AhpForm(SigaaDatabase):
 
         :Example:
             .. code-block:: python
+                :linenos:
 
                 # get all responses stored in database
                 responses = ahp.getAll()
@@ -98,6 +102,7 @@ class AhpForm(SigaaDatabase):
 
         :Example:
             .. code-block:: python
+                :linenos:
 
                 from modules.ahp.Types import FormData
                 from modules.ahp import Database
@@ -165,6 +170,7 @@ class AhpForm(SigaaDatabase):
 
         :Example:
             .. code-block:: python
+                :linenos:
 
                 removed_el = ahp.delete("5cbfb7d6-c6b9-4342-8c9b-52d6a9a9ed2f")
         """

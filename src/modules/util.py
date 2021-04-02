@@ -52,6 +52,7 @@ def average(*args: List[float] or List[List[float]]):
 
     :Example:
         .. code-block:: python
+            :linenos:
             :caption: Using a list of float
 
             l = [1, 1, 1, 1, 1]
@@ -59,6 +60,7 @@ def average(*args: List[float] or List[List[float]]):
             assert 1 == average(*l)
 
         .. code-block:: python
+            :linenos:
             :caption: Using a list of list of floats
 
             from copy import deepcopy
