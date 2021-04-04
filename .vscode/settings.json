@@ -3,7 +3,7 @@
   "jupyter.jupyterServerType": "local",
   "python.autoComplete.extraPaths": ["src"],
   "files.exclude": {
-    "mongodb/": true,
+    "mongodb/": false,
     "**/__pycache__": true,
     "**/*.ipynb_checkpoints":true
   },

@@ -89,7 +89,7 @@ def get_nota(notas: Dict[str, float], materia: str, peso: float, acumulado: floa
         \\end{cases}
 
     Where:
-        (I) If student didn't pass yet
+        (I) If student didn't pass yet. If so, send only the current `acumulado` multiplied by `peso` to the next period
         (II) If student has a score to this class acronynm.
 
     :Args:
@@ -102,7 +102,7 @@ def get_nota(notas: Dict[str, float], materia: str, peso: float, acumulado: floa
     :Returns:
         The calculated value plus `acumulado` multiplied by `peso`
     """
-    # Caso o aluno não tenha feito a matéria ainda, propaga o acumulado pelo peso
+    # Caso o aluno não tenha feito a matéria ainda, propaga apenas o acumulado pelo peso
     if materia not in notas:
         return round(acumulado * peso, 3)
     # Caso já tenha feito a matéria, calcula pelo peso e retorna mais o acumulado
@@ -124,6 +124,11 @@ def dfs_walk(notas: Dict[str, float], grafo: DiGraph, materia: str, acumulado: f
         - `grafo`: A graph equivalent to some competency.
         - `materia`: A name for a given node.
         - `acumulado`: The propagated value until some point
+
+    .. note::
+        This approach, calculate the propagated value before walk trough graph, \
+        which means that we don't need to create a new node, since that the calculus is made in\
+        nodes, not in transitions
 
     :Returns:
         The propageted `acumulado` value over it's childrens/leafs.

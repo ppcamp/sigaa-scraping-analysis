@@ -27,3 +27,6 @@ mongodb/
 **__pycache__
 
 **.pyc
+
+# out folder
+out/

@@ -16,7 +16,7 @@ from typing import List
 DataFrames = List[pd.DataFrame]
 
 
-def read_csv(sheetsDir: str) -> List[DataFrames]:
+def read_csvs(sheetsDir: str) -> List[DataFrames]:
     """
     Open a directory and read all csv files inside.
     This function clean some unusefull elements based on researches models.
@@ -29,8 +29,8 @@ def read_csv(sheetsDir: str) -> List[DataFrames]:
     """
     # Get form's infos
     infos = []
-    for file in listdir(sheetsDir):
-        tmpDF = pd.read_csv(f"{sheetsDir}/{file}").fillna(0)
+    for f in listdir(sheetsDir):
+        tmpDF = pd.read_csv(f"{sheetsDir}/{f}").fillna(0)
         # Remove two last lines
         tmpDF = tmpDF[:-2]
         # Renaming columns

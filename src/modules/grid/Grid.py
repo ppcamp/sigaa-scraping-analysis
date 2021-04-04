@@ -6,6 +6,7 @@ if didn't found, scrap it from sigaa's systems.
 """
 
 
+from math import log
 from .Scrapping import _scrapping_grid as scrapping
 # Import database connection
 from .Database import Grids
@@ -13,9 +14,12 @@ from .Database import Grids
 from typing import Tuple
 # Digraph model
 from networkx import DiGraph
-
+# logging
+import logging as logger
 
 # Module responsable to get grid
+
+
 def get_grid(grid: str, connection: str) -> Tuple[DiGraph, DiGraph]:
     """
     Get this grid.
@@ -28,6 +32,7 @@ def get_grid(grid: str, connection: str) -> Tuple[DiGraph, DiGraph]:
     :Returns:
         - A `tuple` containing the pre and co requisite (networkx.DiGraph)
     """
+    logger.info("Getting grid")
     # Store in mongodb those two graphs
     # Create a mongoclient
     Database = Grids(connection)
@@ -37,14 +42,16 @@ def get_grid(grid: str, connection: str) -> Tuple[DiGraph, DiGraph]:
 
     # Check if grid exists
     if grid in Database:
+        logger.info("Returning grid {} from database".format(grid))
         # Get grid from database
         GraphPre, GraphCo = Database[grid]
     else:
         # Otherwise, run scrapping in sigaa's system
-        # print("[Debug] Searching in sigaa's system")
+        logger.info(
+            "Grid {} wasn't found in database. Srapping it".format(grid))
         GraphPre, GraphCo = scrapping(grid)
         # Store it in database
-        print("[Debug] Storing in database")
+        logger.debug("Storing grid {} in database".format(grid))
         # Database.set(grid, GraphPre, GraphCo)
 
     return GraphPre, GraphCo  # type: ignore

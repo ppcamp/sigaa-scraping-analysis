@@ -298,9 +298,9 @@ class DotFile(object):
     """
     A class used to generate dot files.
 
-    Check it out more infos in the `graphviz documentation`_
+    .. seealso::
 
-    .. _graphviz documentation: https://graphviz.org/doc/info/attrs.html
+        `See more on Graphviz <https://graphviz.org/doc/info/attrs.html>`_
     """
     # Command used to generate png image
     # neato -Tpng 2016001942.dot -o teste.png

@@ -103,6 +103,10 @@ def average(*args: List[float] or List[List[float]]):
 
 
 def normalize_vectors(vet: Dict[str, float]):
+    """
+    .. todo:: Document this function
+
+    """
     maior_valor = max(vet.values())
 
     for competencia, resultado in vet.items():
@@ -114,5 +118,8 @@ def normalize_vectors(vet: Dict[str, float]):
 def errprint(msg: str) -> None:
     """
     Print some error message, returning a different value from default (1).
+
+    :Args:
+        - `msg`: Message to be shown
     """
     sys.stderr.write('Error: ' + msg)

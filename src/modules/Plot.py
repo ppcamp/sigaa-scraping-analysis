@@ -3,6 +3,7 @@ import pandas as pd
 import plotly
 import plotly.express as px
 from plotly.missing_ipywidgets import FigureWidget
+import logging as logger
 
 
 def spider_plot(
@@ -31,6 +32,7 @@ def spider_plot(
       - A figure plotly object (only access by ipykernel)
     """
 
+    logger.debug("Starting a new plot")
     # checking excential kwargs
     if all(("r1" == None, "r1_name" == None)):
         raise Exception(
@@ -122,6 +124,107 @@ def parallel_plot(
 
     # exibe a figura
     if show:
+        fig.show()
+
+    return fig
+
+
+def pie_plot(
+    df: pd.DataFrame,
+    col: str,
+    threshold: float = 0.08,
+    show: bool = False
+) -> FigureWidget:
+    """
+    Generates a pie plot for a given dataframe.
+
+    :Args:
+        - `df`: A pandas dataframe object like
+        - `col`: The column to be analysed
+
+    :Kwargs:
+        - `threshold`: The value that used to group elements in this column
+        - `show`: If setled, show the generated plot too
+
+    :Returns:
+        A `plotly.Figure`
+    """
+    # removendo linhas onde essa competência não existe
+    df = df.query(f"`{col}` > 0")
+    # juntando índices com peso menor que threshold
+    _index = df.loc[df[col] < threshold, col].index  # type:ignore
+    # substituindo esses índices, gerando um "índice compartilhado"
+    df.index = df.index.map(lambda x: "Outras" if x in _index else x)
+
+    # gerando as anotações
+    a = list(_index)
+    a = [a[i:i+10] for i in range(0, len(a), 10)]
+    annotation = "Outras: "
+    for l in a:
+        annotation += ','.join(l)
+        annotation += '<br>'
+
+    fig = px.pie(
+        df,
+        names=df.index,
+        values=col,
+        title=f"Distribuição da competência: {col}")
+
+    # adicionando o nome das matérias ocultadas
+    fig.add_annotation(
+        x=0, y=-0.27,
+        text=annotation,
+        showarrow=False)
+
+    # fig.update_layout(showlegend=True)
+    if show:
+        fig.show()
+
+    return fig
+
+
+def bar_plot(
+    df: pd.DataFrame,
+    col: str,
+    show: bool = False,
+    filename: str = '',
+) -> FigureWidget:
+    """
+    Generates a bar plot.
+
+    :Args:
+        - `df`: A dataframe object to be plotted
+        - `col`: The column to be analysed
+
+    :Kwargs:
+        - `show`: Flag to force the figure to be shown
+        - `filename`: A path to store the image. It must contains the extension too.
+
+    :Returns:
+        The figure object of the image created
+
+    .. seealso::
+
+        `See more on Pyplot exporting image <https://plotly.com/python/static-image-export>`_
+    """
+    logger.debug(f"Starting a new bar_plot: {filename}")
+    # removendo linhas onde essa competência não existe
+    df = df.query(f"`{col}` > 0")
+
+    fig: FigureWidget = px.bar(
+        df,
+        x=df.index,
+        y=col,
+        text=col)  # type: ignore
+
+    fig.update_traces(textposition='outside')
+
+    if filename:
+        logger.debug(f"Generating image files for {filename}")
+        fig.write_image(filename)
+
+    if show:
+        logger.debug('Showing image for')
         fig.show()
 
     return fig

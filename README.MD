@@ -6,6 +6,7 @@ This repository contains some codes used in the article that will be published l
 
 - [Student's competency analisis: An graph approach](#students-competency-analisis-an-graph-approach)
   - [How to run](#how-to-run)
+  - [Documentation](#documentation)
   - [How to document](#how-to-document)
     - [Some usefull commands:](#some-usefull-commands)
     - [Packages needed](#packages-needed)
@@ -19,6 +20,11 @@ This repository contains some codes used in the article that will be published l
 
 The project was created and designed under "jupyter researchers" approach. Doing so, you'll need an jupyter
 interface to open it.
+
+## Documentation
+
+The documentation of `modules` is in `src/doc/build/html`
+
 
 ## How to document
 
