@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+# type: ignore
+
 """
 Module that contains some common functions to handle with ahp data.
 It performs the ahp calculations.
@@ -8,7 +10,8 @@ It performs the ahp calculations.
 """
 
 from copy import deepcopy
-from typing import List, Tuple
+from typing import Dict, List, Tuple, Union, no_type_check
+import typing
 
 
 """
@@ -244,3 +247,52 @@ def calculate(obj: List[List[float]]) -> Tuple[float, List[float]]:
 
     # to compare, it must be less than 0.1 by Saaty
     return cr, priorityVec
+
+
+def mapping_competences(secoes: Dict[str, Union[List[float], float]]) -> Dict[str, float]:
+    """
+    Mapping matrix positions to questions
+
+    :Args:
+        - `secoes`: A dictionary containing a list (or scalar), to every matrix. A matrix is defined as *root*, *q1*, *q12*, *q13*, *q15*, *q2*, *q3*
+
+    :Returns:
+        - It returns a dictionary mapping competences to an specific scalar.
+    """
+    # montando o vetor para situado na mesma posição (root ignorado)
+    return {
+
+        "Conhecimento técnico": secoes['root'][0],
+        "Competências, habilidades e atributos pessoais e profissionais: gerenciar projetos, compreender problemas e autoaprendizado": secoes['root'][1],
+        "Competências e habilidades interpessoais: trabalho em equipe e comunicação": secoes['root'][2],
+
+        "Conhecimento, métodos e ferramentas fundamentais de computação básica": secoes['q1'][1],
+        "Conhecimento, métodos e ferramentas na área de sistemas de software": secoes['q1'][2],
+        "Conhecimentos básicos em sistemas de comunicação": secoes['q1'][4],
+
+        "Desenvolvimento Web e Mobile": secoes['q13'][5],
+
+
+        "Matemática e física": secoes['q1'][0],
+        "Lógica, algoritmos, teoria da comp,  estruras de dados.": secoes['q12'][0],
+        "Linguagens e paradigmas.": secoes['q12'][1],
+        "PAA": secoes['q12'][2],
+        "Configurar plataformas para softwares e serviços.": secoes['q13'][0],
+        "Arquiteturas de computadores": secoes['q13'][1],
+        "Segurança de sis. de comp.": secoes['q13'][2],
+        "Engenharia de software": secoes['q13'][3],
+        "Inteligência artificial": secoes['q13'][4],
+        "Sistemas microprocessados": secoes['q1'][3],
+        "Redes de computadores": secoes['q15'],
+        "Software para sistemas de comunicação": 1/secoes['q15'],
+        "Conhecimento em sistemas de automação ": secoes['q1'][5],
+        "Gerenciar projetos e sistemas de computação": secoes['q2'][0],
+        "Engenharia-econômica": secoes['q2'][1],
+        "Compreender e resolver problemas": secoes['q2'][2],
+        "Autoaprendizado": secoes['q2'][3],
+        "Criatividade e Inovação": secoes['q2'][4],
+        "Comunicação oral e escrita": secoes['q3'][0],
+        "Língua inglesa": secoes['q3'][1],
+        "Empreender e exercer liderança": secoes['q3'][2],
+        "Trabalho em equipe": secoes['q3'][3],
+    }

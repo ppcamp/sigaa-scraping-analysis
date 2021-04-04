@@ -5,13 +5,10 @@ A module containing some usefull functions that can be shared with another modul
 """
 
 from __future__ import annotations
-from typing import Any, Dict, List
-
+from typing import Dict, List
+import logging as logger
 import sys
-
-# MongoDB
 from pymongo import MongoClient
-# from bson.objectid import ObjectId
 
 
 class SigaaDatabase:
@@ -102,17 +99,24 @@ def average(*args: List[float] or List[List[float]]):
     return output_matrix
 
 
-def normalize_vectors(vet: Dict[str, float]):
+def normalize_vectors(d: Dict[str, float]) -> Dict[str, float]:
     """
-    .. todo:: Document this function
+    Normalize a dictionary basing on its maximum value.
 
+    :Args:
+        - `d`: A dictionary mapping competency with value. \
+            Usually, based on :meth:`.Ahp.mapping_competences`
+
+    :Returns:
+        The competency mapping normalized by its maximum value.
     """
-    maior_valor = max(vet.values())
+    maior_valor = max(d.values())
+    logger.debug(f"Dictionary: {d}")
+    logger.debug(f"Maximum value: {maior_valor}")
 
-    for competencia, resultado in vet.items():
-        vet[competencia] = round(resultado/maior_valor, 2)
-
-    return vet
+    for competencia, resultado in d.items():
+        d[competencia] = round(resultado/maior_valor, 4)
+    return d
 
 
 def errprint(msg: str) -> None:

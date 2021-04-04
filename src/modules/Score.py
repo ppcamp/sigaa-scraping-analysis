@@ -9,7 +9,7 @@ This module contains methods to:
 """
 
 from os import path
-from typing import List
+from typing import List, Union
 # Tabula also needs the java installed
 import tabula
 # Pandas dataframe type
@@ -118,7 +118,7 @@ def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> DataFrame:
             return number.replace(',', '.')
 
         # ==
-        def change_key(val) -> str or float:
+        def change_key(val) -> Union[str, float]:
             """
             Check if type is string, if so, convert it and return (or just return)
 

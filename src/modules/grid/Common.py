@@ -11,6 +11,10 @@ from typing import Dict, List
 from networkx.classes.digraph import DiGraph
 from pandas.core.frame import DataFrame
 
+# DFS
+# A função poderá ser chamada recursivamente 1000x (default)
+sys.setrecursionlimit(1000)
+
 
 def get_periodo() -> int:
     """
@@ -107,11 +111,6 @@ def get_nota(notas: Dict[str, float], materia: str, peso: float, acumulado: floa
         return round(acumulado * peso, 3)
     # Caso já tenha feito a matéria, calcula pelo peso e retorna mais o acumulado
     return round((notas[materia]/10 + acumulado)*peso, 3)
-
-
-# DFS
-# A função poderá ser chamada recursivamente 1000x (default)
-sys.setrecursionlimit(1000)
 
 
 def dfs_walk(notas: Dict[str, float], grafo: DiGraph, materia: str, acumulado: float = 0.0) -> float:

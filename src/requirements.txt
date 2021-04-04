@@ -10,3 +10,4 @@ networkx==2.5
 kaleido>=0.2.1
 sphinx>=1.0.2
 furo==2021.3.20b30
+tabulate
