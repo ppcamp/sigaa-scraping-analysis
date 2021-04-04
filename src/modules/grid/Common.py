@@ -6,7 +6,7 @@ This module contains some usefull functions to iterate over competency graph and
 
 from networkx import DiGraph
 import sys
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 from networkx.classes.digraph import DiGraph
 from pandas.core.frame import DataFrame
@@ -82,7 +82,7 @@ def get_peso_competencia(out: DataFrame, materias_atuais: List[str], competencia
     return round(out.loc[materia][competencia]/total, 2)  # type:ignore
 
 
-def get_nota(notas: Dict[str, float], materia: str, peso: float, acumulado: float) -> float:
+def _get_nota(notas: Dict[str, float], materia: str, peso: float, acumulado: float) -> float:
     """
     Calculate the class scores.
 
@@ -113,7 +113,7 @@ def get_nota(notas: Dict[str, float], materia: str, peso: float, acumulado: floa
     return round((notas[materia]/10 + acumulado)*peso, 3)
 
 
-def dfs_walk(notas: Dict[str, float], grafo: DiGraph, materia: str, acumulado: float = 0.0) -> float:
+def _dfs_walk(notas: Dict[str, float], grafo: DiGraph, materia: str, acumulado: float = 0.0) -> float:
     """
     A recursive walk over competency graph
 
@@ -139,12 +139,54 @@ def dfs_walk(notas: Dict[str, float], grafo: DiGraph, materia: str, acumulado: f
         # Obtém o peso da aresta que manda para o filho
         peso = grafo[materia][filho]['weight']
         # Obtém a nota (acumulada) que será enviada para o filho
-        novo_acumulado: float = get_nota(notas, materia, peso, acumulado)
+        novo_acumulado: float = _get_nota(notas, materia, peso, acumulado)
         # Caminha para este filho
-        total += dfs_walk(notas, grafo, filho, novo_acumulado)
+        total += _dfs_walk(notas, grafo, filho, novo_acumulado)
     else:
         # Não possui filhos (última da grade com essa competência)
-        total: float = get_nota(notas, materia, 1, acumulado)
+        total: float = _get_nota(notas, materia, 1, acumulado)
 
     # Retorna o valor acumulado (dos filhos e até ela)
     return total
+
+
+def walk_through_graph(
+    grafos: Dict[str, DiGraph],
+    notas: Dict[str, float]
+) -> Dict[str, float]:
+    """
+    Walk over all competences(graphs), propagating the value
+    over each line.
+
+    :Args:
+        - `grafos`: A dictionary mapping competences to graphs equivalent.
+        - `notas`: A dictionary mapping class acronym to a given score.
+
+    :Returns:
+        A dictionary mapping competency to an calculated and propagated value.
+
+    .. note::
+
+        This function runs the :meth:`modules.grid.Common._dfs_walk` for
+        all competences.
+    """
+    # Dicionário que irá conter o valor sobre cada competência
+    notas_aluno: Dict[str, float] = {}
+    # Itera sobre as competências
+    for competencia, grafo in grafos.items():
+        # ∀ competência, encontra a primeira matéria que possui ela
+        edges: List[Tuple[str, str]] = list(grafo.edges())  # type: ignore
+
+        # Uma vez que o grafo foi montado em ordem cronológica, ...
+        # ... não há necessidade de busca por arestas.
+        fst_materia: str = edges[0][0]
+
+        # Em seguida, anda no seu grafo e obtêm o valor iterado sobre as notas ...
+        # ... ou seja, a soma das notas propagadas
+        resultado: float = _dfs_walk(notas, grafo, fst_materia)
+
+        # valor das notas iteradas sobre o grafo de uma competência "N"
+        notas_aluno[competencia] = resultado
+
+    # Notas do aluno propagadas no grafo de competência
+    return notas_aluno

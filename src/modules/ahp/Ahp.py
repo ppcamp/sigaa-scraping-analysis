@@ -283,8 +283,10 @@ def mapping_competences(secoes: Dict[str, Union[List[float], float]]) -> Dict[st
         "Engenharia de software": secoes['q13'][3],
         "Inteligência artificial": secoes['q13'][4],
         "Sistemas microprocessados": secoes['q1'][3],
+
         "Redes de computadores": secoes['q15'],
         "Software para sistemas de comunicação": 1/secoes['q15'],
+
         "Conhecimento em sistemas de automação ": secoes['q1'][5],
         "Gerenciar projetos e sistemas de computação": secoes['q2'][0],
         "Engenharia-econômica": secoes['q2'][1],

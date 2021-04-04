@@ -103,6 +103,10 @@ def normalize_vectors(d: Dict[str, float]) -> Dict[str, float]:
     """
     Normalize a dictionary basing on its maximum value.
 
+    .. warning:: This function should be used?
+
+    .. todo:: Remove this function
+
     :Args:
         - `d`: A dictionary mapping competency with value. \
             Usually, based on :meth:`.Ahp.mapping_competences`
@@ -110,13 +114,14 @@ def normalize_vectors(d: Dict[str, float]) -> Dict[str, float]:
     :Returns:
         The competency mapping normalized by its maximum value.
     """
-    maior_valor = max(d.values())
-    logger.debug(f"Dictionary: {d}")
-    logger.debug(f"Maximum value: {maior_valor}")
-
-    for competencia, resultado in d.items():
-        d[competencia] = round(resultado/maior_valor, 4)
-    return d
+    logger.debug("Normalizing vectors")
+    maxv: float = sum(d.values())
+    n: Dict[str, float] = {}
+    for k, v in d.items():
+        res = round(v/maxv, 4)
+        n[k] = res
+    logger.debug("Returning normalized vectors")
+    return n
 
 
 def errprint(msg: str) -> None:
