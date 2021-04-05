@@ -1,9 +1,13 @@
+# -*- coding: utf-8 -*-
+
+import logging as logger
 from typing import List
 import pandas as pd
 import plotly
 import plotly.express as px
+import plotly.graph_objects as go
 from plotly.missing_ipywidgets import FigureWidget
-import logging as logger
+from plotly.subplots import make_subplots
 
 
 def spider_plot(
@@ -190,7 +194,7 @@ def bar_plot(
     filename: str = '',
 ) -> FigureWidget:
     """
-    Generates a bar plot.
+    Generates a bar plot for each row in a given column.
 
     :Args:
         - `df`: A dataframe object to be plotted
@@ -225,6 +229,70 @@ def bar_plot(
 
     if show:
         logger.debug('Showing image for')
+        fig.show()
+
+    return fig
+
+
+def all_competencies(df: pd.DataFrame, show: bool = False) -> FigureWidget:
+    """
+    Does a plot for all competencies (columns) in a given df.
+
+    :Args:
+        - `df`: A dataframe object like
+
+    :Kwargs:
+        - `show`: A flag to force show the generated figure
+
+    :Returns:
+        The generated plot
+    """
+    # generate subplots
+    fig: FigureWidget = make_subplots(
+        rows=df.shape[1],
+        cols=1)  # type: ignore
+
+    # add traces
+    for i, competencia in enumerate(df.columns):
+        _df = df[competencia]
+        fig.add_trace(
+            go.Scatter(
+                x=list(map(lambda n: f'Resp#{n+1}', _df.index.tolist())),
+                y=_df.values.tolist(),
+                name=competencia,
+                hovertemplate=f"<b>{competencia}</b><br>" +
+                "<b>X:</b> %{x}<br><b>Valor:</b> %{y}<br><extra></extra>",
+                hoverinfo="y+name",
+                hoverlabel={'namelength': -1}
+            ),  # type: ignore
+            row=i+1, col=1)
+
+    # update figure
+    fig.update_yaxes(title="Valores")  # type: ignore
+    fig.update_layout(
+        height=4000,
+        width=1000,
+        title="Relação de Respostas x Competências",
+        legend_title="Competências",
+        hoverdistance=100,  # Distance to show hover label of data point
+        spikedistance=1000,  # Distance to show spike
+        font=dict(
+            family="Courier New, monospace",
+            size=9,
+            color="RebeccaPurple"),
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=1.02,
+            xanchor="center",
+            x=1),
+        hoverlabel=dict(
+            bgcolor="white",
+            font_size=9,
+            font_family="Rockwell"),
+        showlegend=False)
+
+    if show:
         fig.show()
 
     return fig

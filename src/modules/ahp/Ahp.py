@@ -44,7 +44,7 @@ __RI: List[float] = [
 ]
 
 
-def calculate(obj: List[List[float]]) -> Tuple[float, List[float]]:
+def calculate(obj: List[List[float]], roundp: int = 4) -> Tuple[float, List[float]]:
     """
     Calculates AHP and returns the *IC* and *priority_vector*.
     To an AHP be valid, it must have its IC bellow than 0.1.
@@ -57,6 +57,9 @@ def calculate(obj: List[List[float]]) -> Tuple[float, List[float]]:
         - `obj`: The matrix(NxN) that holds the ahp values
         - `matrix`: *OPTIONAL*. If pass some value, we'll gonna change the object passed.
             Usually is the same object as the first param
+
+    :Kwargs:
+        - `roundp`: The number of decimal places used to round.
 
     :See:
         A reference to `AHP`_ .
@@ -197,7 +200,8 @@ def calculate(obj: List[List[float]]) -> Tuple[float, List[float]]:
     """
     for col in range(length):
         for row in range(length):
-            matrix[row][col] = round(priorityVec[col] * matrix[row][col], 2)
+            matrix[row][col] = round(
+                priorityVec[col] * matrix[row][col], roundp)
 
     """
     Weight vector
@@ -285,7 +289,8 @@ def mapping_competences(secoes: Dict[str, Union[List[float], float]]) -> Dict[st
         "Sistemas microprocessados": secoes['q1'][3],
 
         "Redes de computadores": secoes['q15'],
-        "Software para sistemas de comunicação": 1/secoes['q15'],
+        # 1/secoes['q15'],
+        "Software para sistemas de comunicação": 1 - secoes['q15'],
 
         "Conhecimento em sistemas de automação ": secoes['q1'][5],
         "Gerenciar projetos e sistemas de computação": secoes['q2'][0],
@@ -298,3 +303,33 @@ def mapping_competences(secoes: Dict[str, Union[List[float], float]]) -> Dict[st
         "Empreender e exercer liderança": secoes['q3'][2],
         "Trabalho em equipe": secoes['q3'][3],
     }
+
+
+def get_q15_value(v: float, roundp: int = 3) -> float:
+    """
+    Get the equivalent value `v`, in percentual terms. (Normalized value)
+
+    :Args:
+        - `v`: The number to be normalized
+
+    :Kwargs:
+        - `roundp`: The number of decimal places to be rounded
+
+    :Returns:
+        The equivalent number converted into a value in [0..~1]
+
+    .. note::
+
+        This number should be in:
+
+        .. centered:: v = [1/9, 1/7, 1/5, 1/3, 1, 3, 5, 7, 9]
+
+
+    It does the following operation:
+
+    .. math::
+
+        x(n) = \\frac{V(n) - 1/9}{9-1/9} \\\\
+        \\therefore \\begin{cases} x(1/9) \\approx 0 \\\\ x(9) \\approx 1 \\end{cases}
+    """
+    return round((v-1/9) / (9-1/9), roundp)

@@ -58,7 +58,13 @@ def check_competencia(out: DataFrame, materias_atuais: List[str], competencia: s
     return sum([out.loc[i][competencia] for i in materias_atuais]) == 0
 
 
-def get_peso_competencia(out: DataFrame, materias_atuais: List[str], competencia: str, materia: str) -> float:
+def get_peso_competencia(
+    out: DataFrame,
+    materias_atuais: List[str],
+    competencia: str,
+    materia: str,
+    roundp: int = 4
+) -> float:
     """
     Get the class weight normalized by total amount of classes in a given semester.
     The maximum value that a given competency can have is 1 (100%).
@@ -75,14 +81,23 @@ def get_peso_competencia(out: DataFrame, materias_atuais: List[str], competencia
         - `competencia`: competency to be analized.
         - `materia`: class acronym to get the edge weight.
 
+    :Kwargs:
+        - `roundp`: The number of decimal places used to round
+
     :Returns:
-        A stipulated weight rounded by 2 decimal places.
+        A stipulated weight rounded by `roundp` decimal places.
     """
     total = sum([out.loc[i][competencia] for i in materias_atuais])
-    return round(out.loc[materia][competencia]/total, 2)  # type:ignore
+    return round(out.loc[materia][competencia]/total, roundp)  # type:ignore
 
 
-def _get_nota(notas: Dict[str, float], materia: str, peso: float, acumulado: float) -> float:
+def _get_nota(
+    notas: Dict[str, float],
+    materia: str,
+    peso: float,
+    acumulado: float,
+    roundp: int = 4
+) -> float:
     """
     Calculate the class scores.
 
@@ -103,14 +118,17 @@ def _get_nota(notas: Dict[str, float], materia: str, peso: float, acumulado: flo
             See more at :meth:`get_peso_competencia`.
         - `acumulado`: a propagated `peso` over a graph.
 
+    :Kwargs:
+        - `roundp`: The number of decimal places used to round
+
     :Returns:
         The calculated value plus `acumulado` multiplied by `peso`
     """
     # Caso o aluno não tenha feito a matéria ainda, propaga apenas o acumulado pelo peso
     if materia not in notas:
-        return round(acumulado * peso, 3)
+        return round(acumulado * peso, roundp)
     # Caso já tenha feito a matéria, calcula pelo peso e retorna mais o acumulado
-    return round((notas[materia]/10 + acumulado)*peso, 3)
+    return round((notas[materia]/10 + acumulado)*peso, roundp)
 
 
 def _dfs_walk(notas: Dict[str, float], grafo: DiGraph, materia: str, acumulado: float = 0.0) -> float:

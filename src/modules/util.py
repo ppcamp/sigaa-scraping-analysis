@@ -37,7 +37,7 @@ class SigaaDatabase:
             self._db = self.__client.sigaadb
 
 
-def average(*args: List[float] or List[List[float]]):
+def average(*args: List[float] or List[List[float]], roundp: int = 4):
     """
     Calculate the mean of a given amount of values.
     It can performs the mean over List[List[float]] or List[float].
@@ -46,6 +46,9 @@ def average(*args: List[float] or List[List[float]]):
 
     :Args:
         - `*args`: A list of floats or a list of matrices
+
+    :Kwargs:
+        - `roundp`: Number of decimal places used to round
 
     :Example:
         .. code-block:: python
@@ -83,7 +86,7 @@ def average(*args: List[float] or List[List[float]]):
         raise Exception("Must exist at least two itens")
 
     if type(args[0]) is not list:
-        out = round(mean([scalar for scalar in args]), 2)  # type:ignore
+        out = round(mean([scalar for scalar in args]), roundp)  # type:ignore
         return out
 
     matrix_length = len(args[0])
@@ -94,12 +97,12 @@ def average(*args: List[float] or List[List[float]]):
     for row in range(matrix_length):
         for col in range(matrix_length):
             output_matrix[row][col] = round(
-                mean([m[row][col] for m in args]), 2)  # type: ignore
+                mean([m[row][col] for m in args]), roundp)  # type: ignore
 
     return output_matrix
 
 
-def normalize_vectors(d: Dict[str, float]) -> Dict[str, float]:
+def normalize_vectors(d: Dict[str, float], roundp: int = 4) -> Dict[str, float]:
     """
     Normalize a dictionary basing on its maximum value.
 
@@ -111,6 +114,9 @@ def normalize_vectors(d: Dict[str, float]) -> Dict[str, float]:
         - `d`: A dictionary mapping competency with value. \
             Usually, based on :meth:`.Ahp.mapping_competences`
 
+    :Kwargs:
+        - `roundp`: The number of decimal places used to round
+
     :Returns:
         The competency mapping normalized by its maximum value.
     """
@@ -118,7 +124,7 @@ def normalize_vectors(d: Dict[str, float]) -> Dict[str, float]:
     maxv: float = sum(d.values())
     n: Dict[str, float] = {}
     for k, v in d.items():
-        res = round(v/maxv, 4)
+        res = round(v/maxv, roundp)
         n[k] = res
     logger.debug("Returning normalized vectors")
     return n
