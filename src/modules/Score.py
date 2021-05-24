@@ -53,8 +53,10 @@ def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> DataFrame:
 
     :Args:
       - `studentId`: The student unique id
-      - `inputDir`: Directory where are placed the input files
-      - `outDir`: Where to save the json objects
+      - `inputDir`: Directory where are placed the input files. (Based on current file)
+
+    :Kwargs:
+        - `outDir`: *OPTIONAL*. Directory to save the json objects. (Based on project dir)
 
     :Returns:
       Returns a dataframe containing the parsed value

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import logging as logger
-from typing import List
+from typing import List, Tuple
 import pandas as pd
 import plotly
 import plotly.express as px
@@ -211,7 +211,7 @@ def bar_plot(
 
         `See more on Pyplot exporting image <https://plotly.com/python/static-image-export>`_
     """
-    logger.debug(f"Starting a new bar_plot: {filename}")
+    # logger.debug(f"Starting a new bar_plot: {filename}")
     # removendo linhas onde essa competência não existe
     df = df.query(f"`{col}` > 0")
 
@@ -224,7 +224,7 @@ def bar_plot(
     fig.update_traces(textposition='outside')
 
     if filename:
-        logger.debug(f"Generating image files for {filename}")
+        # logger.debug(f"Generating image files for {filename}")
         fig.write_image(filename)
 
     if show:
@@ -296,3 +296,23 @@ def all_competencies(df: pd.DataFrame, show: bool = False) -> FigureWidget:
         fig.show()
 
     return fig
+
+
+def grouped_bar_plot(
+    labels: List[str],
+    legend: Tuple[str, str],
+    values: Tuple[List[float], List[float]],
+    show: bool = False
+) -> FigureWidget:
+
+    fig = go.Figure(data=[
+        go.Bar(name=legend[0], x=labels, y=values[0]),  # type: ignore
+        go.Bar(name=legend[1], x=labels, y=values[1])  # type: ignore
+    ])  # type: ignore
+    # Change the bar mode
+    fig.update_layout(barmode='group')
+
+    if show:
+        fig.show()
+
+    return fig  # type: ignore

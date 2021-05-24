@@ -6,10 +6,17 @@ It has the class to hold and retrieve ahp data.
 """
 
 from __future__ import annotations
+from enum import Enum, unique
 import json
 import pprint
 from typing import Dict, List
 from copy import deepcopy
+
+
+@unique
+class FormDataType(Enum):
+    TEACHER = 'teacher'
+    MARKET = 'market'
 
 
 class FormData:
@@ -91,8 +98,6 @@ class FormData:
                 [1,0.33,1,1],
             ])
 
-
-
     """
 
     def __init__(self, obj: Dict = {}):
@@ -110,6 +115,7 @@ class FormData:
                     'q3': 'A 4x4 matrix',
                     'root': 'A 3x3 matrix'
                 },
+                'type': FormDataType.MARKET.value,
                 'name': 'SomeName'
             }
         else:
@@ -126,6 +132,19 @@ class FormData:
             This object itself. It can use nested calls.
         """
         self._obj['email'] = email
+        return self
+
+    def setType(self, type: FormDataType) -> FormData:
+        """
+        Update the type of this object.
+
+        :Args:
+            - `type`: An type string. You should encounter in :class:`.FormDataType`
+
+        :Returns:
+            This object itself. It can use nested calls.
+        """
+        self._obj['type'] = type.value
         return self
 
     def setName(self, name: str) -> FormData:
@@ -310,7 +329,7 @@ class FormData:
         """
         return self._obj['date']
 
-    def getMatrices(self) -> List[Dict[str, List[List[float]] or float]]:
+    def getMatrices(self) -> Dict[str, List[List[float]] or float]:
         """
         Get the dictionary equivalent to matrices.
 
@@ -319,12 +338,21 @@ class FormData:
         """
         return self._obj['matrices']
 
-    def getRoot(self) -> List[List[float]]:
+    def getMatrixRoot(self) -> List[List[float]]:
         """
         Get the root matrix.
 
         :Returns:
             The root matrix object.
+        """
+        return self._obj['matrices']['root']
+
+    def getMatrixQ1(self) -> List[List[float]]:
+        """
+        Get the q1 matrix.
+
+        :Returns:
+            The q1 matrix object.
         """
         return self._obj['matrices']['q1']
 

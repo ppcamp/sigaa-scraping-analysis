@@ -7,9 +7,35 @@ It's a wrapper to *pymongo*.
 """
 
 from typing import Any, Dict, List
-from modules.ahp.Types import FormData
-from modules.util import SigaaDatabase
+from modules.ahp.Types import FormData, FormDataType
 from bson.objectid import ObjectId
+from pymongo import MongoClient
+
+
+class SigaaDatabase:
+    """
+    This class is responsable to fetch and push data to mongo
+    """
+
+    def __init__(self, connection_string: str, database_name: str = "") -> None:
+        """
+        Starts a mongodb client
+
+        :Args:
+            - `connection_string`: A connection string to mongo server.
+
+        :Kwargs:
+            - `database_name`: *OPTIONAL*, Default value is "sigaadb"
+        """
+        # Create a mongoclient
+        self.__client = MongoClient(connection_string)
+
+        if database_name:
+            connection = "self.__client.{}".format(database_name)
+            self._db = eval(connection)
+        else:
+            # Connect to database sigaadb (default)
+            self._db = self.__client.sigaadb
 
 
 class AhpForm(SigaaDatabase):
@@ -49,9 +75,9 @@ class AhpForm(SigaaDatabase):
         element = self._db.AhpForm.find_one(ObjectId(id))
         return FormData(element)  # type:ignore
 
-    def findByDict(self, args: Dict[str, Any]) -> FormData:
+    def findByDict(self, args: Dict[str, Any]) -> List[FormData]:
         """
-        Find an element by a given Id.
+        Find a *list* of elements that matches with this field.
 
         :Args:
             - `args`: A dictionary containing the filters to object keys.
@@ -65,8 +91,27 @@ class AhpForm(SigaaDatabase):
 
                 resp = ahp.findByDict({"email":"7ab8ccba-e123-4e52-835a-93fd8b86b1b7"})
         """
-        element = self._db.AhpForm.find_one(args)
-        return FormData(element)  # type:ignore
+        element = self._db.AhpForm.find(args)
+        element = list(map(lambda el: FormData(el), element))  # type: ignore
+        return element
+
+    def findByType(self, type: FormDataType) -> List[FormData]:
+        """
+        Find an element by a given Id.
+
+        :Args:
+            - `type`: The type of the searched element
+
+        :Returns:
+            A :class:`.Types.FormData` for the matched object.
+
+        :Example:
+            .. code-block:: python
+                :linenos:
+
+                answers = ahp.findByType({"email":"7ab8ccba-e123-4e52-835a-93fd8b86b1b7"})
+        """
+        return self.findByDict({"type": type.value})
 
     def getAll(self) -> List[FormData]:
         """
@@ -89,7 +134,7 @@ class AhpForm(SigaaDatabase):
 
     def insert(self, args) -> FormData:
         """
-        Insert a new item in database.
+        Insert a new item in d-atabase.
 
         :Args:
             - `args`: You should pass a dictionary with the necessary\

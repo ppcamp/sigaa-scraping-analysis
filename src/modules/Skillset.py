@@ -11,6 +11,8 @@ from os import listdir
 import pandas as pd
 # typings marks
 from typing import List
+# logging
+import logging
 
 # A object used only to specify the type
 DataFrames = List[pd.DataFrame]
@@ -30,6 +32,7 @@ def read_csvs(sheetsDir: str) -> List[DataFrames]:
     # Get form's infos
     infos = []
     for f in listdir(sheetsDir):
+        logging.debug(f"Reading file: {f}")
         tmpDF = pd.read_csv(f"{sheetsDir}/{f}").fillna(0)
         # Remove two last lines
         tmpDF = tmpDF[:-2]
