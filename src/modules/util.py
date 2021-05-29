@@ -115,7 +115,7 @@ def average(
     return output_matrix
 
 
-def normalize_vectors(d: Dict[str, float], roundp: int = 4) -> Dict[str, float]:
+def _normalize_vectors(d: Dict[str, float], roundp: int = 4) -> Dict[str, float]:
     """
     Normalize a dictionary basing on its maximum value.
 
@@ -175,12 +175,7 @@ def get_competences_and_consistency(
     _dfconsist = [
         'type',
         'name',
-        'root',
-        'q1',
-        'q12',
-        'q13',
-        'q2',
-        'q3',
+        *Ahp.Mapping.MATRICES_IDENTIFIERS,
     ]
     mongo_competences_consistency: pd.DataFrame = pd.DataFrame(
         columns=_dfconsist)
@@ -189,49 +184,13 @@ def get_competences_and_consistency(
     mongo_competences: pd.DataFrame = pd.DataFrame(columns=[
         'type',
         'name',
-
-        # root
-        "Conhecimento técnico",
-        "Competências, habilidades e atributos pessoais e profissionais: gerenciar projetos, compreender problemas e autoaprendizado",
-        "Competências e habilidades interpessoais: trabalho em equipe e comunicação",
-
-        # q1
-        "Matemática e física",
-        "Conhecimento, métodos e ferramentas fundamentais de computação básica",
-        "Conhecimento, métodos e ferramentas na área de sistemas de software",
-        "Sistemas microprocessados",
-        "Conhecimentos básicos em sistemas de comunicação",
-        "Conhecimento em sistemas de automação ",
-
-        # q12
-        "Lógica, algoritmos, teoria da comp,  estruras de dados.",
-        "Linguagens e paradigmas.",
-        "PAA",
-
-        # q13
-        "Configurar plataformas para softwares e serviços.",
-        "Arquiteturas de computadores",
-        "Segurança de sis. de comp.",
-        "Engenharia de software",
-        "Inteligência artificial",
-        "Desenvolvimento Web e Mobile",
-
-        # q15
-        "Redes de computadores",
-        "Software para sistemas de comunicação",
-
-        # q2
-        "Gerenciar projetos e sistemas de computação",
-        "Engenharia-econômica",
-        "Compreender e resolver problemas",
-        "Autoaprendizado",
-        "Criatividade e Inovação",
-
-        # q3
-        "Comunicação oral e escrita",
-        "Língua inglesa",
-        "Empreender e exercer liderança",
-        "Trabalho em equipe",
+        *Ahp.Mapping.COMPETENCES_MATRIX_ROOT,
+        *Ahp.Mapping.COMPETENCES_MATRIX_FORM_Q1,
+        *Ahp.Mapping.COMPETENCES_MATRIX_Q12,
+        *Ahp.Mapping.COMPETENCES_MATRIX_Q13,
+        *Ahp.Mapping.COMPETENCES_MATRIX_Q15,
+        *Ahp.Mapping.COMPETENCES_MATRIX_Q2,
+        *Ahp.Mapping.COMPETENCES_MATRIX_Q3,
     ])
 
     for response in data:
@@ -240,9 +199,9 @@ def get_competences_and_consistency(
 
         _secoes = {}
         _matrices = response.getMatrices()
-        _cline = {k: None for k in _dfconsist}
-        _cline['type'] = _type  # type: ignore
-        _cline['name'] = _name  # type: ignore
+        _cline = {k: "" for k in _dfconsist}
+        _cline['type'] = _type
+        _cline['name'] = _name
 
         for k, v in _matrices.items():
             # verifica se é um escalar
@@ -265,7 +224,8 @@ def get_competences_and_consistency(
         mongo_competences_consistency = mongo_competences_consistency.append(
             _cline, ignore_index=True)
         # faz o mapping para essas competências
-        _n: Dict[str, float] = Ahp.mapping_competences(_secoes)
+        # _n: Dict[str, float] = Ahp.mapping_competences(_secoes)
+        _n: Dict[str, float] = Ahp.Mapping.to_competences(_secoes)
         _n['type'] = _type  # type:ignore
         _n['name'] = _name  # type:ignore
         # adiciona o dicionário de competências ao dataframe
@@ -341,22 +301,37 @@ def calc_mean_matrix(data: List[FormData]) -> Dict[str, Union[float, List[List[f
     return matrices
 
 
-def calc_ahp_for_new_mat(matrices: Dict[str, Any]):
-    secoes: Dict[str, List or float] = {}
+def calc_ahp_for_new_mat(
+    matrices: Dict[str, Union[List[List[float]], float]]
+) -> Dict[str, Union[List[float], float]]:
+    """
+    This function are only used to calculate AHP for each `matrices`
+
+    :Args:
+        - `matrices`: A dictionary mapping a matrix to a matrix or a float
+
+    :Returns:
+        A dictionary containing the *priority vector* of each matrix.
+
+    .. warning::
+
+        This method only calculate AHP again. It *doesn't check if AHP are valid or not*
+    """
+    secoes: Dict[str, Union[List[float], float]] = {}
     logger.debug('Calculating ahp for new matrices')
 
     for matrix in matrices:
         logger.debug(f'Calculating for matrix: {matrix}')
         logger.info(matrices[matrix])
-        cr, priorityVec = 0, matrices[matrix]
+        cr, priorityVec = 0, matrices[matrix]  # type: ignore
 
-        # se for uma matriz, calcula o ahp
+        # se for uma matriz, calcula o ahp. Senão, mantém o valor do q15
         if matrix != 'q15':
-            cr, priorityVec = Ahp.calculate(matrices[matrix])
+            cr, priorityVec = Ahp.calculate(matrices[matrix])  # type: ignore
             logger.debug(f'Cr calculated: {cr}')
             logger.debug(f'PriorityVec: {priorityVec}')
             # arredonda o vetor de saída (resultante) para 2 casas decimais
-            priorityVec = list(np.round(priorityVec, 2))
+            priorityVec: List[float] = list(np.round(priorityVec, 2))
 
         # adiciona este dado no vetor de competências do mercado
         secoes[matrix] = priorityVec

@@ -10,7 +10,7 @@ It performs the ahp calculations.
 """
 
 from copy import deepcopy
-from typing import Dict, List, Tuple, Union, no_type_check
+from typing import Dict, Final, List, Tuple, Union, no_type_check
 import typing
 
 
@@ -175,7 +175,8 @@ def calculate(obj: List[List[float]], roundp: int = 4) -> Tuple[float, List[floa
     """
     Priority vector (sum of row / row length). Also named as criteria weights
     ________|     Price    |   Storage   |    Camera    | Looks  | SUM(row)/cols -> criteria weights
-    Price   |    0.6289    |   0.6002    |    0.6891    |  0.500 | (0.6289+0.6002+0.6891+0.500)/4
+    Price   |    0.6289    |   0.6002    |    0.6891    |  0.500 | (
+        0.6289+0.6002+0.6891+0.500)/4
     Storage |  (1/5)/1.59  |  (1)/8.33   |  (1/2)/5.83  | (3)/14 |
     Camera  |  (1/4)/1.59  |  (2)/8.33   |   (1)/5.83   | (3)/14 |
     Looks   |  (1/7)/1.59  | (1/3)/8.33  |  (1/3)/5.83  | (1)/14 |
@@ -253,9 +254,9 @@ def calculate(obj: List[List[float]], roundp: int = 4) -> Tuple[float, List[floa
     return cr, priorityVec
 
 
-def mapping_competences(secoes: Dict[str, Union[List[float], float]]) -> Dict[str, float]:
+def _mapping_competences(secoes: Dict[str, Union[List[float], float]]) -> Dict[str, float]:
     """
-    Mapping matrix positions to questions
+    Mapping the AHP priority vector to questions
 
     :Args:
         - `secoes`: A dictionary containing a list (or scalar), to every matrix. A matrix is defined as *root*, *q1*, *q12*, *q13*, *q15*, *q2*, *q3*
@@ -333,3 +334,252 @@ def get_q15_value(v: float, roundp: int = 3) -> float:
         \\therefore \\begin{cases} x(1/9) \\approx 0 \\\\ x(9) \\approx 1 \\end{cases}
     """
     return round((v-1/9) / (9-1/9), roundp)
+
+
+class Mapping:
+    """
+    A class object used to encapsulate all the mapping methods.
+    Usually used with values obtained of :meth:`.calculate`
+    or :meth:`modules.grid.walk_through_graph`
+    """
+
+    MATRICES_IDENTIFIERS: Final[List[str]] = [
+        'root', 'q1', 'q12', 'q13', 'q2', 'q3']
+
+    # The section root there's no binding equivalent for student's
+    COMPETENCES_MATRIX_ROOT: Final[List[str]] = [
+        "Conhecimento técnico",
+        "Competências, habilidades e atributos pessoais e profissionais: gerenciar projetos, compreender problemas e autoaprendizado",
+        "Competências e habilidades interpessoais: trabalho em equipe e comunicação",
+    ]
+
+    # In sheets, there's no such fields
+    COMPETENCES_MATRIX_Q1: Final[List[str]] = [
+        "Matemática e física",
+        # "Conhecimento, métodos e ferramentas fundamentais de computação básica",
+        # "Conhecimento, métodos e ferramentas na área de sistemas de software",
+        "Sistemas microprocessados",
+        # "Conhecimentos básicos em sistemas de comunicação",
+        "Conhecimento em sistemas de automação ",
+    ]
+
+    # In sigaa's form there is these fields
+    COMPETENCES_MATRIX_FORM_Q1: Final[List[str]] = [
+        "Matemática e física",
+        "Conhecimento, métodos e ferramentas fundamentais de computação básica",
+        "Conhecimento, métodos e ferramentas na área de sistemas de software",
+        "Sistemas microprocessados",
+        "Conhecimentos básicos em sistemas de comunicação",
+        "Conhecimento em sistemas de automação ",
+    ]
+
+    COMPETENCES_MATRIX_Q12: Final[List[str]] = [
+        "Lógica, algoritmos, teoria da comp,  estruras de dados.",
+        "Linguagens e paradigmas.",
+        "PAA",
+    ]
+
+    COMPETENCES_MATRIX_Q13: Final[List[str]] = [
+        "Configurar plataformas para softwares e serviços.",
+        "Arquiteturas de computadores",
+        "Segurança de sis. de comp.",
+        "Engenharia de software",
+        "Inteligência artificial",
+        "Desenvolvimento Web e Mobile",
+    ]
+
+    COMPETENCES_MATRIX_Q15: Final[List[str]] = [
+        "Redes de computadores",
+        "Software para sistemas de comunicação",
+    ]
+
+    COMPETENCES_MATRIX_Q2: Final[List[str]] = [
+        "Gerenciar projetos e sistemas de computação",
+        "Engenharia-econômica",
+        "Compreender e resolver problemas",
+        "Autoaprendizado",
+        "Criatividade e Inovação",
+    ]
+
+    COMPETENCES_MATRIX_Q3: Final[List[str]] = [
+        "Comunicação oral e escrita",
+        "Língua inglesa",
+        "Empreender e exercer liderança",
+        "Trabalho em equipe",
+    ]
+
+    @staticmethod
+    def to_sections(competences: Dict[str, float]) -> Dict[str, Union[List[float], float]]:
+        """
+        Mapping the output of graphs  - calculated in function :meth:`modules.grid.Common.walk_through_graph` - into a mapping
+        of matrix to list of float (ordered)
+
+        :Args:
+            - `competences`: A dictionary containing competences and it's results
+
+        :Returns:
+            A dictionary mapping this competences to it's equivalent matrix.
+
+        .. note::
+
+            Map the student's propagated value of its competence into sections equivalent. This step is important
+            because it's used to normalize the competences values into this sections.
+
+        :Example:
+            .. code-block:: python
+                :linenos:
+
+                competences = {
+                    "Conhecimento técnico": 0.8,
+                    "Competências, habilidades e atributos ...": 0.9,
+                    "Competências e habilidades interpessoais ...": 0.3,
+                }
+
+                Mapping.to_sections(competences)
+
+                # Will be
+                {
+                    "q1": [0.8, 0.9, 0.3]
+                }
+        """
+        keys: List[str] = list(competences.keys())
+
+        # mapping root
+        # NOTE: root can't be tracked due to its functionality
+        # root: List[str] = []
+        # for competence in Mapping.COMPETENCES_MATRIX_ROOT:
+        #     if competence not in keys:
+        #         raise Exception(f"Element {competence} not in competences")
+        #     else:
+        #         root.append(competences[competence])
+
+        q1: List[str] = []
+        for competence in Mapping.COMPETENCES_MATRIX_Q1:
+            if competence not in keys:
+                raise Exception(f"Element {competence} not in competences")
+            else:
+                q1.append(competences[competence])
+
+        q12: List[str] = []
+        for competence in Mapping.COMPETENCES_MATRIX_Q12:
+            if competence not in keys:
+                raise Exception(f"Element {competence} not in competences")
+            else:
+                q12.append(competences[competence])
+
+        q13: List[str] = []
+        for competence in Mapping.COMPETENCES_MATRIX_Q13:
+            if competence not in keys:
+                raise Exception(f"Element {competence} not in competences")
+            else:
+                q13.append(competences[competence])
+
+        q15: List[str] = []
+        for competence in Mapping.COMPETENCES_MATRIX_Q15:
+            if competence not in keys:
+                raise Exception(f"Element {competence} not in competences")
+            else:
+                q15.append(competences[competence])
+
+        q2: List[str] = []
+        for competence in Mapping.COMPETENCES_MATRIX_Q2:
+            if competence not in keys:
+                raise Exception(f"Element {competence} not in competences")
+            else:
+                q2.append(competences[competence])
+
+        q3: List[str] = []
+        for competence in Mapping.COMPETENCES_MATRIX_Q3:
+            if competence not in keys:
+                raise Exception(f"Element {competence} not in competences")
+            else:
+                q3.append(competences[competence])
+
+        return dict(zip(
+            ['q1', 'q12', 'q13', 'q15', 'q2', 'q3'],
+            [q1, q12, q13, q15, q2, q3]))
+
+    @staticmethod
+    def to_matrices(competences: Dict[str, float]) -> Dict[str, Union[List[float], float]]:
+        """
+        It's just a bidding to :meth:`.to_sections`
+        """
+        return Mapping.to_sections(competences)
+
+    @staticmethod
+    def remove_unused_keys(data: List[float]) -> List[float]:
+        """
+        This method, remove the elements in intersection between
+        COMPETENCES_MATRIX_FORM_Q1 - COMPETENCES_MATRIX_Q1
+        """
+        return [data[0], data[3], data[5]]
+
+    @staticmethod
+    def to_competences(matrices: Dict[str, Union[List[float], float]]) -> Dict[str, float]:
+        """
+        Does a mapping with AHP priority vector.
+
+        :Args:
+            - `matrices`: A dictionary containing a list (or scalar), to every matrix. \
+                          A matrix is defined as *root*, *q1*, *q12*, *q13*, *q15*, *q2*, *q3*
+
+        :Returns:
+            It returns a dictionary mapping competences to an specific scalar.
+
+        .. note::
+
+            Usually used with values of *priority vector*, obtained in function :meth:`calculate`
+        """
+        competences: Dict[str, float] = {}
+
+        # check if all matrices exists
+        for matrix in ['q1', 'q12', 'q13', 'q2', 'q3']:
+            if matrix not in matrices.keys():
+                raise Exception(
+                    f'Matrix {matrix} doesn\' not exist in matrices dict')
+
+        if 'root' in matrices:
+            if len(matrices['root']) != 3:
+                raise Exception('Length of root matrix aren\'t corrent')
+            for index, competence in enumerate(Mapping.COMPETENCES_MATRIX_ROOT):
+                competences[competence] = matrices['root'][index]
+
+        # NOTE: that you can pass COMPETENCES_MATRIX_FORM_Q1, however
+        # it will be mapped to COMPETENCES_MATRIX_Q1
+        if len(matrices['q1']) == 6:
+            matrices['q1'] = Mapping.remove_unused_keys(matrices['q1'])
+
+        if len(matrices['q1']) != 3:
+            raise Exception('Length of q1 matrix aren\'t corrent')
+        for index, competence in enumerate(Mapping.COMPETENCES_MATRIX_Q1):
+            competences[competence] = matrices['q1'][index]
+
+        if len(matrices['q12']) != 3:
+            raise Exception('Length of q12 matrix aren\'t corrent')
+        for index, competence in enumerate(Mapping.COMPETENCES_MATRIX_Q12):
+            competences[competence] = matrices['q12'][index]
+
+        if len(matrices['q13']) != 6:
+            raise Exception('Length of q13 matrix aren\'t corrent')
+        for index, competence in enumerate(Mapping.COMPETENCES_MATRIX_Q13):
+            competences[competence] = matrices['q13'][index]
+
+        if type(matrices['q15']) == float:
+            competences[Mapping.COMPETENCES_MATRIX_Q15[0]] = matrices['q15']
+            competences[Mapping.COMPETENCES_MATRIX_Q15[1]] = 1 - \
+                matrices['q15']
+        elif type(matrices['q15']) == list:
+            for index, competence in enumerate(Mapping.COMPETENCES_MATRIX_Q15):
+                competences[competence] = matrices['q15'][index]
+
+        if len(matrices['q2']) != 5:
+            raise Exception('Length of q2 matrix aren\'t corrent')
+        for index, competence in enumerate(Mapping.COMPETENCES_MATRIX_Q2):
+            competences[competence] = matrices['q2'][index]
+
+        if len(matrices['q3']) != 4:
+            raise Exception('Length of q3 matrix aren\'t corrent')
+        for index, competence in enumerate(Mapping.COMPETENCES_MATRIX_Q3):
+            competences[competence] = matrices['q3'][index]
+
+        return competences
