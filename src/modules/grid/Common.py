@@ -1,17 +1,25 @@
 # -*- coding: utf-8 -*-
 
 """
-This module contains some usefull functions to iterate over competency graph and sigaa's graphs.
+This module contains some usefull functions to iterate over competencies graphs.
+
+It contains:
+- A function to create the competecies graphs
+- A function to iterate over these created graphs and calculate the propagated value
 """
 
+# imports
 from networkx import DiGraph
 import sys
 from typing import Dict, List, Tuple
-
 from networkx.classes.digraph import DiGraph
 from pandas.core.frame import DataFrame
+import logging
 
-# DFS
+
+# -------------------------------------------------------------------------------------------
+#                                   Walking over graph
+# -------------------------------------------------------------------------------------------
 # A função poderá ser chamada recursivamente 1000x (default)
 sys.setrecursionlimit(1000)
 
@@ -153,18 +161,24 @@ def _dfs_walk(notas: Dict[str, float], grafo: DiGraph, materia: str, acumulado: 
     total: float = 0
 
     # Anda sobre os filhos
+    logging.debug(f'\t\t{materia} -> [{grafo.neighbors(materia)}]')
     for filho in grafo.neighbors(materia):
         # Obtém o peso da aresta que manda para o filho
         peso = grafo[materia][filho]['weight']
         # Obtém a nota (acumulada) que será enviada para o filho
+        logging.debug(
+            f'\t\t\t({materia},{filho} -> w={peso}) Acumulated: {acumulado}')
         novo_acumulado: float = _get_nota(notas, materia, peso, acumulado)
         # Caminha para este filho
         total += _dfs_walk(notas, grafo, filho, novo_acumulado)
+
     else:
         # Não possui filhos (última da grade com essa competência)
         total: float = _get_nota(notas, materia, 1, acumulado)
+        logging.debug(f'\t\t\tÚltima da grade: {total}')
 
     # Retorna o valor acumulado (dos filhos e até ela)
+    logging.debug(f'\t\t{materia} = {total}')
     return total
 
 
@@ -181,13 +195,15 @@ def walk_through_graph(
         - `notas`: A dictionary mapping class acronym to a given score.
 
     :Returns:
-        A dictionary mapping competency to an calculated and propagated value.
+        A dictionary mapping competency to a calculated and propagated value.
 
     .. note::
 
         This function runs the :meth:`modules.grid.Common._dfs_walk` for
         all competences.
     """
+    logging.debug('Walking over graphs')
+
     # Dicionário que irá conter o valor sobre cada competência
     notas_aluno: Dict[str, float] = {}
     # Itera sobre as competências
@@ -201,10 +217,20 @@ def walk_through_graph(
 
         # Em seguida, anda no seu grafo e obtêm o valor iterado sobre as notas ...
         # ... ou seja, a soma das notas propagadas
+        logging.debug(f'\tCompetence {competencia} - Walking')
+        # logging.debug(f'\t\tEdges {edges}')
+        # logging.debug(f'\t\tEdges {fst_materia}')
         resultado: float = _dfs_walk(notas, grafo, fst_materia)
 
         # valor das notas iteradas sobre o grafo de uma competência "N"
         notas_aluno[competencia] = resultado
 
+        # debug
+        break
+
     # Notas do aluno propagadas no grafo de competência
     return notas_aluno
+
+# -------------------------------------------------------------------------------------------
+#                                      Creating the graphs
+# -------------------------------------------------------------------------------------------

@@ -24,9 +24,13 @@ mongodb/
 
 # ignore builded pages under documentation
 **build
-**__pycache__
+**/__pycache__
+**/.ipynb_checkpoints/
 
 **.pyc
 
 # out folder
 out/
+
+# logs folders
+**logs/
