@@ -7,6 +7,7 @@ directory. It's responsable to parse the data obtained in the `Google Sheets`
 
 # list files over a specified directory
 from os import listdir
+from os import path
 # Dataframe
 import pandas as pd
 # typings marks
@@ -29,13 +30,24 @@ def read_csvs(sheetsDir: str) -> List[DataFrames]:
     :Returns:
         A list of pandas dataframes
     """
+    full_path: str = path.realpath(sheetsDir)
+
     # Get form's infos
     infos = []
-    for f in listdir(sheetsDir):
+
+    def is_csv(element: str):
+        return path.isfile(path.join(full_path, element)) and element[-4:] == '.csv'
+
+    directory: List[str] = listdir(full_path)
+    csvs = list(filter(is_csv, directory))
+
+    for f in csvs:
         logging.debug(f"Reading file: {f}")
         tmpDF = pd.read_csv(f"{sheetsDir}/{f}").fillna(0)
+
         # Remove two last lines
-        tmpDF = tmpDF[:-2]
+        # tmpDF = tmpDF[:-2]
+
         # Renaming columns
         header: List[str] = tmpDF.columns.to_list()  # type: ignore
         header[0] = 'Periodo'
