@@ -1,5 +1,5 @@
 {
-  "python.pythonPath": "/bin/python3",
+  "python.pythonPath": "C:\\Program Files\\Python39\\python.exe",
   "jupyter.jupyterServerType": "local",
   "python.autoComplete.extraPaths": ["src"],
   "files.exclude": {
