@@ -24,29 +24,6 @@ def average(
     Calculate the mean of a given amount of values.
     It can performs the mean over List[List[float]] or List[float].
 
-
-    .. warning::
-        This function was modified in 17/05/2021 due to problems with list compreension in python.
-        Python was putting the same memory address to this command:
-
-        .. code-block:: python
-            :caption: Code changed
-
-            # original code
-            # assuming matrix_length=3
-            output_matrix: List[List[float]] = [[0.0]*matrix_length] * matrix_length
-
-            # expected output
-            [[0, 0, 0],
-             [0, 0, 0],
-             [0, 0, 0]]
-
-            # however, it was putting the same address to all rows, so, it was changed to
-            output_matrix = np.zeros((matrix_length, matrix_length))
-
-
-    .. math:: \\frac{\\sum_{i=0}^N\\text{arg}_i}{N}
-
     :Args:
         - `args`: A list of floats or a list of matrices
 
@@ -81,6 +58,36 @@ def average(
             for row in range(2):
                 for col in range(3):
                     assert result[row][col] == expected_result[row][col]
+
+    .. warning::
+
+        *The problem was already fixed*
+
+        This function was modified in 17/05/2021 due to problems with list compreension in python.
+        Python was putting the same memory address to this command:
+
+        .. code-block:: python
+            :caption: Code changed
+
+            # original code
+            # assuming matrix_length=3
+            output_matrix: List[List[float]] = [[0.0]*matrix_length] * matrix_length
+
+            # expected output
+            [[0, 0, 0],
+             [0, 0, 0],
+             [0, 0, 0]]
+
+            # however, it was putting the same address to all rows, so, it was changed to
+            output_matrix = np.zeros((matrix_length, matrix_length))
+
+
+    .. centered:: Equation that describes its behavior:
+
+    .. math:: \\frac{\\sum_{i=0}^N\\text{arg}_i}{N}
+
+    .. versionchanged:: 0.0.7
+        Fixed the problem.
     """
     from statistics import mean
 
@@ -119,7 +126,9 @@ def _normalize_vectors(d: Dict[str, float], roundp: int = 4) -> Dict[str, float]
     """
     Normalize a dictionary basing on its maximum value.
 
-    .. warning:: This function should be used?
+    .. important::
+
+        This function should be used?
 
     .. todo:: Remove this function
 
@@ -238,7 +247,7 @@ def calc_mean_matrix(data: List[FormData]) -> Dict[str, Union[float, List[List[f
     """
     It calculates the mean matrix that corresponds to the mean of all *data*.
 
-    .. note::
+    .. attention::
 
         - It ignores matrices fullfilled with 0 for the mean calculation.
         - It also ignores matrices where the *ahp wasn't valid*
@@ -313,7 +322,7 @@ def calc_ahp_for_new_mat(
     :Returns:
         A dictionary containing the *priority vector* of each matrix.
 
-    .. warning::
+    .. important::
 
         This method only calculate AHP again. It *doesn't check if AHP are valid or not*
     """

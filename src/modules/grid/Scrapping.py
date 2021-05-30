@@ -23,7 +23,7 @@ import json
 import networkx as nx
 
 
-def _scrapping_grid(courseCode: str) -> Tuple[DiGraph, DiGraph]:
+def scrapping_grid(courseCode: str) -> Tuple[DiGraph, DiGraph]:
     """
     Load the credentials under `src/certs/credentials.json` file,
     logon into sigaa's system and then, scrap it, retriving a new graph to a certain
@@ -35,9 +35,13 @@ def _scrapping_grid(courseCode: str) -> Tuple[DiGraph, DiGraph]:
     :Returns:
         A tuple with (pre,co) requisite graphs equivalents to this courseCode
 
-    :Notes:
-        - We only add the graph the connection
-        - This graph ain't check for equivalency. It means that when using student's history, you'll problably need to check for equivalency too.
+    .. note::
+
+        We only add the graph the connection
+
+    .. caution::
+
+        This graph ain't check for equivalency. It means that when using student's history, you'll problably need to check for equivalency too.
     """
     # Load credentials json
     with open('./certs/credentials.json') as file:

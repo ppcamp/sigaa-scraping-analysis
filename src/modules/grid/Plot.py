@@ -79,10 +79,13 @@ def weighted_graph(
         - `filename`: The name of the file to save (image name). DEFAULT: grid
         - `outputDir`: The directory to save. DEFAULT: out
 
-    .. note::
+    .. important::
 
-        - The nodes must ne ordered by period of the class.
-        - Usually, you can get an example graph in :meth:`modules.grid.Grid.get_grid`
+        The nodes must ne ordered by period of the class.
+
+    .. tip::
+
+        Usually, you can get an example graph in :meth:`modules.grid.Grid.get_grid`
     """
 
     # Construct a tree with xml grid
@@ -195,7 +198,7 @@ def only_grid(nodes, pre, co, filename='grid', outputDir="out") -> None:
         - `filename`: The name of the file to save (image name). DEFAULT: grid
         - `outputDir`: The directory to save. DEFAULT: out
 
-    .. note::
+    .. important::
 
         The nodes must be ordered by period of the class.
     """

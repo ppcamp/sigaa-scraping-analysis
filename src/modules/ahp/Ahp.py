@@ -49,7 +49,7 @@ def calculate(obj: List[List[float]], roundp: int = 4) -> Tuple[float, List[floa
     Calculates AHP and returns the *IC* and *priority_vector*.
     To an AHP be valid, it must have its IC bellow than 0.1.
 
-    .. warning::
+    .. tip::
 
         This method not change the current value of object. So we can use it later if not pass through test.
 
@@ -319,7 +319,7 @@ def get_q15_value(v: float, roundp: int = 3) -> float:
     :Returns:
         The equivalent number converted into a value in [0..~1]
 
-    .. note::
+    .. caution::
 
         This number should be in:
 
@@ -411,7 +411,7 @@ class Mapping:
     @staticmethod
     def to_sections(competences: Dict[str, float]) -> Dict[str, Union[List[float], float]]:
         """
-        Mapping the output of graphs  - calculated in function :meth:`modules.grid.Common.walk_through_graph` - into a mapping
+        Mapping the output of graphs  - calculated in function :meth:`modules.grid.Competence.walk_through_graph` - into a mapping
         of matrix to list of float (ordered)
 
         :Args:
@@ -526,7 +526,7 @@ class Mapping:
         :Returns:
             It returns a dictionary mapping competences to an specific scalar.
 
-        .. note::
+        .. tip::
 
             Usually used with values of *priority vector*, obtained in function :meth:`calculate`
         """

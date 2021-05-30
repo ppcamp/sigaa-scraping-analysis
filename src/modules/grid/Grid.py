@@ -7,7 +7,7 @@ if didn't found, scrap it from sigaa's systems.
 
 
 from math import log
-from .Scrapping import _scrapping_grid as scrapping
+from .Scrapping import scrapping_grid as scrapping
 # Import database connection
 from .Database import Grids
 # New type

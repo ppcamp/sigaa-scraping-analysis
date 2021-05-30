@@ -51,7 +51,8 @@ class Grids(object):
             - `GraphPreReq`: A `networkx.DiGraph`, where the edges are the pre requisite
             - `GraphCoReq`: A `networkx.DiGraph`, where the edges are the co requisite
 
-        :Notes:
+        .. tip::
+
             Check it out the :mod:`.Grid` module.
         """
         pre = json_graph.node_link_data(GraphPreReq)
