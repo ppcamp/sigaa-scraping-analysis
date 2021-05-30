@@ -22,7 +22,7 @@ copyright = '2021, Pedro A C Santos'
 author = 'Pedro A C Santos'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.6'
+release = '0.0.8'
 
 
 # -- General configuration ---------------------------------------------------
@@ -74,3 +74,9 @@ html_css_files = [
 html_js_files = [
     'js/index.js',
 ]
+
+html_favicon = "_static/img/favicon.ico"
+html_logo = "_static/img/logo.png"
+
+# ---
+numfig = True
