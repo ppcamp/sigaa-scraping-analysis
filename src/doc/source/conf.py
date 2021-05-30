@@ -31,12 +31,13 @@ release = '0.0.6'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.todo',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.graphviz',
-    'myst_parser',
-    'sphinx.ext.autodoc']
+    'sphinx.ext.todo',        # todos list
+    'sphinx.ext.mathjax',     # mathematical codes
+    'sphinx.ext.viewcode',    # link to code
+    # 'sphinx.ext.graphviz',    # graphviz extension
+    # 'myst_parser',            # markdown parser
+    'sphinx.ext.autodoc'      # auto documentation (open modules and build it)
+]
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -63,3 +64,13 @@ html_theme = 'furo'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# These paths are either relative to html_static_path
+# or fully qualified paths (eg. https://...)
+html_css_files = [
+    'css/index.css',
+]
+
+html_js_files = [
+    'js/index.js',
+]

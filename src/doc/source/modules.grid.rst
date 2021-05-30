@@ -8,10 +8,10 @@ grid package
    :show-inheritance:
 
 
-Common module
+Competence module
 --------------------------
 
-.. automodule:: modules.grid.Common
+.. automodule:: modules.grid.Competence
    :members:
    :undoc-members:
    :show-inheritance:
