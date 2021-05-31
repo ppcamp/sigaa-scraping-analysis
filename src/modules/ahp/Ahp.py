@@ -438,9 +438,9 @@ class Mapping:
                 Mapping.to_sections(competences)
 
                 # Will be
-                {
-                    "q1": [0.8, 0.9, 0.3]
-                }
+                ... {
+                ...    "q1": [0.8, 0.9, 0.3]
+                ... }
         """
         keys: List[str] = list(competences.keys())
 
