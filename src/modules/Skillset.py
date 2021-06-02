@@ -19,7 +19,7 @@ import logging
 DataFrames = List[pd.DataFrame]
 
 
-def read_csvs(sheetsDir: str) -> List[DataFrames]:
+def read_csvs(sheetsDir: str) -> DataFrames:
     """
     Open a directory and read all csv files inside.
     This function clean some unusefull elements based on researches models.

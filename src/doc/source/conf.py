@@ -79,4 +79,5 @@ html_favicon = "_static/img/favicon.ico"
 html_logo = "_static/img/logo.png"
 
 # ---
-numfig = True
+# numfig = True
+rst_prolog = open('includes.pro').read()
