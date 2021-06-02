@@ -5,21 +5,86 @@ A module containing some usefull functions that can be shared with another modul
 """
 
 from __future__ import annotations
-from typing import Any, Dict, List, Tuple, Union
+import unittest
+from typing import Dict, List, Tuple, Union, overload
 import logging as logger
 import sys
 import numpy as np
-
 import pandas as pd
 from modules.ahp import Ahp
-
 from modules.ahp.Types import FormData, FormDataType
 
 
-def average(
-    args: Union[List[float], List[List[float]]],
-    roundp: int = 4
-) -> Union[float, List[List[float]]]:
+class MinimumLenghtError(Exception):
+    """
+    Exception raised when you didn't achieved the minimum numbers of elements.
+
+    :Args:
+        - `message`: The value to raise
+    """
+
+    def __init__(self, message):
+        self.message = message
+        super().__init__(self.message)
+
+
+@overload
+def average(args: List[float], roundp: int = 4) -> float:
+    """
+    Calculate the mean of a given amount of values.
+
+    :Args:
+        - `args`: A list of floats
+
+    :Kwargs:
+        - `roundp`: Number of decimal places used to round
+
+    :Returns:
+        The median of this vector
+
+    :Example:
+        .. code-block:: python
+            :linenos:
+            :caption: Using a list of float
+
+            l = [1, 1, 1, 1, 1]
+            average(l)
+            # will be 1
+
+    .. centered:: Equation that describes its behavior:
+    .. math:: \\frac{\\sum_{i=0}^N\\text{arg}_i}{N}
+
+    .. versionchanged:: 0.0.9
+        Separated into two documentations
+    """
+    ...
+
+
+@overload
+def average(args: List[List[List[float]]], roundp: int = 4) -> np.ndarray:
+    """
+    Calculate the mean of a given amount of values.
+    It can performs the mean over List[List[float]] or List[float].
+
+    :Args:
+        - `args`: A list of matrices
+
+    :Kwargs:
+        - `roundp`: Number of decimal places used to round
+
+    :Returns:
+        The matrix that corresponds to median for each position
+
+    .. centered:: Equation that describes its behavior:
+    .. math:: \\text{output} = \\frac{\\sum_{n=0}^N \\mathb{M}[n]_\\text{i x j}}{N}
+
+    .. versionchanged:: 0.0.7
+        Fixed the problem with multiples pointers to the same memory address.
+    """
+    ...
+
+
+def average(args: ..., roundp: int = 4) -> ...:
     """
     Calculate the mean of a given amount of values.
     It can performs the mean over List[List[float]] or List[float].
@@ -36,8 +101,11 @@ def average(
             :caption: Using a list of float
 
             l = [1, 1, 1, 1, 1]
-            # will not throw an error
-            assert 1 == average(l)
+            average(l)
+            # will be 1
+
+        .. centered:: Equation that describes its behavior:
+        .. math:: \\frac{\\sum_{i=0}^N\\text{arg}_i}{N}
 
         .. code-block:: python
             :linenos:
@@ -59,41 +127,25 @@ def average(
                 for col in range(3):
                     assert result[row][col] == expected_result[row][col]
 
-    .. warning::
+        .. centered:: Equation that describes its behavior:
+        .. math:: \\text{output}_\\text{(i,j)} = \\frac{\\sum_{n=0}^N \\text{Matrix}[n]_\\text{(i,j)}}{N} \\text{,     } \\forall \\text{ }0 \\leq i,j < N
 
-        *The problem was already fixed*
-
-        This function was modified in 17/05/2021 due to problems with list compreension in python.
-        Python was putting the same memory address to this command:
-
-        .. code-block:: python
-            :caption: Code changed
-
-            # original code
-            # assuming matrix_length=3
-            output_matrix: List[List[float]] = [[0.0]*matrix_length] * matrix_length
-
-            # expected output
-            [[0, 0, 0],
-             [0, 0, 0],
-             [0, 0, 0]]
-
-            # however, it was putting the same address to all rows, so, it was changed to
-            output_matrix = np.zeros((matrix_length, matrix_length))
-
-
-    .. centered:: Equation that describes its behavior:
-
-    .. math:: \\frac{\\sum_{i=0}^N\\text{arg}_i}{N}
+    .. versionchanged:: 0.0.9
+        Create two functions, splicing documentation according with param type.
 
     .. versionchanged:: 0.0.7
-        Fixed the problem.
+        Fixed the problem with multiples pointers to the same memory address.
     """
     from statistics import mean
 
+    if type(args) != float and type(args) != list:
+        raise TypeError(
+            f"The elements must be a List[float] or List[List[List[float]]]. The type is {type(args)}")
+
     # must exist at least two elements
     if len(args) < 2:
-        raise Exception("Must exist at least two itens")
+        raise MinimumLenghtError(
+            f"You should pass, at least, an array with 2 elements")
 
     # logger.debug(f'Average called.')
     # if passed a list of float, returns a single float element
@@ -120,36 +172,6 @@ def average(
     # logger.debug(f'It\'s a matrix:Mean={output_matrix}')
 
     return output_matrix
-
-
-def _normalize_vectors(d: Dict[str, float], roundp: int = 4) -> Dict[str, float]:
-    """
-    Normalize a dictionary basing on its maximum value.
-
-    .. important::
-
-        This function should be used?
-
-    .. todo:: Remove this function
-
-    :Args:
-        - `d`: A dictionary mapping competency with value. \
-            Usually, based on :meth:`.Ahp.mapping_competences`
-
-    :Kwargs:
-        - `roundp`: The number of decimal places used to round
-
-    :Returns:
-        The competency mapping normalized by its maximum value.
-    """
-    logger.debug("Normalizing vectors")
-    maxv: float = sum(d.values())
-    n: Dict[str, float] = {}
-    for k, v in d.items():
-        res = round(v/maxv, roundp)
-        n[k] = res
-    logger.debug("Returning normalized vectors")
-    return n
 
 
 def errprint(msg: str) -> None:
@@ -346,3 +368,32 @@ def calc_ahp_for_new_mat(
         secoes[matrix] = priorityVec
     logger.debug('\n\n')
     return secoes
+
+
+class TestUtil(unittest.TestCase):
+    def test_average_to_floats(self):
+        v = [3.0, 56.0, 1.0, 41.0]
+        test = round(sum(v)/len(v), 3)
+        result = average(v, roundp=3)
+        self.assertEqual(test, result, "Values didn't match")
+
+    def test_average_to_matrices(self):
+        from copy import deepcopy
+
+        a: List[List[float]] = [[1.0, 1.0, 1.0], [1.0, 1.0, 1.0]]
+        b: List[List[float]] = deepcopy(a)
+
+        result = average([a, b])
+        expected_result: List[List[float]] = deepcopy(a)
+
+        # iterate and raise an error. P.S.: It won't throw any error
+        for row in range(2):
+            for col in range(2):
+                self.assertEqual(
+                    result[row][col],
+                    expected_result[row][col],
+                    f"result[{row}][{col}] = {result[row][col]}")
+
+
+if __name__ == '__main__':
+    unittest.main()
