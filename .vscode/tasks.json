@@ -12,6 +12,12 @@
         "html",
         "--directory=${workspaceFolder}/src/doc"
       ],
+      "windows":{
+        "args": [
+          "./src/doc/make.bat",
+          "html",
+          "--directory=${workspaceFolder}/src/doc"]
+      },
       "group": {
         "kind": "build",
         "isDefault": true
