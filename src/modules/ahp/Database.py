@@ -15,18 +15,19 @@ from pymongo import MongoClient
 class SigaaDatabase:
     """
     This class is responsable to fetch and push data to mongo
+
+    Args
+    ----
+    `connection_string`:
+        A connection string to mongo server.
+
+    Keyword Args
+    ------------
+    `database_name`:
+        *OPTIONAL*, Default value is "sigaadb"
     """
 
     def __init__(self, connection_string: str, database_name: str = "") -> None:
-        """
-        Starts a mongodb client
-
-        :Args:
-            - `connection_string`: A connection string to mongo server.
-
-        :Kwargs:
-            - `database_name`: *OPTIONAL*, Default value is "sigaadb"
-        """
         # Create a mongoclient
         self.__client = MongoClient(connection_string)
 
@@ -41,36 +42,34 @@ class SigaaDatabase:
 class AhpForm(SigaaDatabase):
     """
     A mongodb class used to connect and retrieve (already parsed), objects.
-    Those objects are the answers of `AHP`_ site.
+    Those objects are the answers of *AHP* site.
 
-    :Example:
-        .. code-block:: python
-            :linenos:
-
-            # import this module
-            from modules.ahp import Database
-
-            # mongodb connection string
-            connection_string = "mongodb://ppcamp:password@localhost:27017/?authSource=admin"
-            ahp = Database.AhpForm(connection_string)
-
+    Example
+    -------
+    >>> # import this module
+    >>> from modules.ahp import Database
+    >>> # mongodb connection string
+    >>> connection_string = "mongodb://ppcamp:password@localhost:27017/?authSource=admin"
+    >>> ahp = Database.AhpForm(connection_string)
     """
 
     def findById(self, id: str) -> FormData:
         """
         Find an element by a given Id.
 
-        :Args:
-            - `id`: The unique identifier.
+        Args
+        ----
+        `id`:
+            The unique identifier.
 
-        :Returns:
+        Returns
+        -------
+        FormData
             A :class:`.Types.FormData` for the matched object.
 
-        :Example:
-            .. code-block:: python
-                :linenos:
-
-                resp = ahp.findById("7ab8ccba-e123-4e52-835a-93fd8b86b1b7")
+        Example
+        -------
+        >>> resp = ahp.findById("7ab8ccba-e123-4e52-835a-93fd8b86b1b7")
         """
         element = self._db.AhpForm.find_one(ObjectId(id))
         return FormData(element)  # type:ignore
@@ -79,17 +78,19 @@ class AhpForm(SigaaDatabase):
         """
         Find a *list* of elements that matches with this field.
 
-        :Args:
-            - `args`: A dictionary containing the filters to object keys.
+        Args
+        ----
+        `args`:
+            A dictionary containing the filters to object keys.
 
-        :Returns:
+        Returns
+        -------
+        List[FormData]
             A :class:`.Types.FormData` for the matched object.
 
-        :Example:
-            .. code-block:: python
-                :linenos:
-
-                resp = ahp.findByDict({"email":"7ab8ccba-e123-4e52-835a-93fd8b86b1b7"})
+        Example
+        -------
+        >>> resp = ahp.findByDict({"email":"7ab8ccba-e123-4e52-835a-93fd8b86b1b7"})
         """
         element = self._db.AhpForm.find(args)
         element = list(map(lambda el: FormData(el), element))  # type: ignore
@@ -99,17 +100,19 @@ class AhpForm(SigaaDatabase):
         """
         Find an element by a given Id.
 
-        :Args:
-            - `type`: The type of the searched element
+        Args
+        -----
+        `type`:
+            The type of the searched element
 
-        :Returns:
+        Returns
+        -------
+        List[FormData]
             A :class:`.Types.FormData` for the matched object.
 
-        :Example:
-            .. code-block:: python
-                :linenos:
-
-                answers = ahp.findByType({"email":"7ab8ccba-e123-4e52-835a-93fd8b86b1b7"})
+        Example
+        -------
+        >>> answers = ahp.findByType({"email":"7ab8ccba-e123-4e52-835a-93fd8b86b1b7"})
         """
         return self.findByDict({"type": type.value})
 
@@ -117,15 +120,14 @@ class AhpForm(SigaaDatabase):
         """
         Get all database elements.
 
-        :Returns:
+        Returns
+        -------
+        List[FormData]
             A *List* of :class:`.Types.FormData` objects, containing all database elements.
 
-        :Example:
-            .. code-block:: python
-                :linenos:
-
-                # get all responses stored in database
-                responses = ahp.getAll()
+        Example
+        -------
+        >>> responses = ahp.getAll()
         """
         # iterate and get all elements
         cursor = self._db.AhpForm.find()
@@ -136,71 +138,70 @@ class AhpForm(SigaaDatabase):
         """
         Insert a new item in d-atabase.
 
-        :Args:
-            - `args`: You should pass a dictionary with the necessary\
-                keys to this database collection.\
-                You can use the :class:`.Types.FormData` object, and then, call the :meth:`modules.ahp.Types.FormData.toDict` .
+        Args
+        -----
+        `args`:
+            You should pass a dictionary with the necessary \
+                keys to this database collection. \
+                    You can use the :class:`.Types.FormData` object, \
+                        and then, call the :meth:`modules.ahp.Types.FormData.toDict` .
 
-        :Returns:
+        Returns
+        -------
+        FormData
             A :class:`.Types.FormData` for the matched object.
 
-        :Example:
-            .. code-block:: python
-                :linenos:
-
-                from modules.ahp.Types import FormData
-                from modules.ahp import Database
-
-                ahp = Database.AhpForm(connection_string)
-
-                # lRoot, q1s2, q1sec5, q3
-
-                new_response = FormData() \\
-                .setName("Joãozinho") \\
-                .setEmail("joaozinho@teste.com") \\
-                .setDate("03-03-2021") \\
-                .setMatrixRoot([
-                    [1,1,0.33],
-                    [1,1,0.33],
-                    [3.03,3.03,1],
-                ]) \\
-                .setMatrixQ1([
-                    [1,5,5,5,1,1],
-                    [0.2,1,1,1,0.2,0.2],
-                    [0.2,1,1,1,0.2,0.2],
-                    [0.2,1,1,1,0.2,0.2],
-                    [1,5,5,5,1,1],
-                    [1,5,5,5,1,1],
-                ]) \\
-                .setMatrixQ1sec2([
-                    [1,1,1],
-                    [1,1,1],
-                    [1,1,1],
-                ]) \\
-                .setMatrixQ1sec3([
-                    [1,3,1,5,3,5],
-                    [0.33,1,0.33,5,1,3],
-                    [1,3.03,1,5,1,3],
-                    [0.2,0.2,0.2,1,0.2,0.33],
-                    [0.33,1,1,5,1,3],
-                    [0.2,0.33,0.33,3.03,0.33,1],
-                ]) \\
-                .setMatrixQ1sec5(0.2) \\
-                .setMatrixQ2([
-                    [1,0.33,3,3,3],
-                    [3.03,1,3,5,3],
-                    [0.33,0.33,1,1,1],
-                    [0.33,0.2,1,1,1],
-                    [0.33,0.33,1,1,1],
-                ]) \\
-                .setMatrixQ3([
-                    [1,0.33,1,1],
-                    [3.03,1,3,3],
-                    [1,0.33,1,1],
-                    [1,0.33,1,1],
-                ])
-
-                ahp.insert(new_response.toDict())
+        Example
+        -------
+        >>> from modules.ahp.Types import FormData
+        >>> from modules.ahp import Database
+        >>> ahp = Database.AhpForm(connection_string)
+        >>> # lRoot, q1s2, q1sec5, q3
+        >>> new_response = FormData() \\
+        ... .setName("Joãozinho") \\
+        ... .setEmail("joaozinho@teste.com") \\
+        ... .setDate("03-03-2021") \\
+        ... .setMatrixRoot([
+        ...    [1,1,0.33],
+        ...    [1,1,0.33],
+        ...    [3.03,3.03,1],
+        ... ]) \\
+        ... .setMatrixQ1([
+        ...    [1,5,5,5,1,1],
+        ...    [0.2,1,1,1,0.2,0.2],
+        ...    [0.2,1,1,1,0.2,0.2],
+        ...    [0.2,1,1,1,0.2,0.2],
+        ...    [1,5,5,5,1,1],
+        ...    [1,5,5,5,1,1],
+        ... ]) \\
+        ... .setMatrixQ1sec2([
+        ...    [1,1,1],
+        ...    [1,1,1],
+        ...    [1,1,1],
+        ... ]) \\
+        ... .setMatrixQ1sec3([
+        ...    [1,3,1,5,3,5],
+        ...    [0.33,1,0.33,5,1,3],
+        ...    [1,3.03,1,5,1,3],
+        ...    [0.2,0.2,0.2,1,0.2,0.33],
+        ...    [0.33,1,1,5,1,3],
+        ...    [0.2,0.33,0.33,3.03,0.33,1],
+        ... ]) \\
+        ... .setMatrixQ1sec5(0.2) \\
+        ... .setMatrixQ2([
+        ...    [1,0.33,3,3,3],
+        ...    [3.03,1,3,5,3],
+        ...    [0.33,0.33,1,1,1],
+        ...    [0.33,0.2,1,1,1],
+        ...    [0.33,0.33,1,1,1],
+        ... ]) \\
+        ... .setMatrixQ3([
+        ...    [1,0.33,1,1],
+        ...    [3.03,1,3,3],
+        ...    [1,0.33,1,1],
+        ...    [1,0.33,1,1],
+        ... ])
+        >>> ahp.insert(new_response.toDict())
         """
         element = self._db.AhpForm.insert_one(args)
         return FormData(element)  # type:ignore
@@ -209,14 +210,14 @@ class AhpForm(SigaaDatabase):
         """
         Remove an element from this table
 
-        :Args:
-            - `id`: An unique identifier to this json object that will be, permanenlty, removed from database.
+        Args
+        -----
+        `id`:
+            An unique identifier to this json object that will be, permanenlty, removed from database.
 
-        :Example:
-            .. code-block:: python
-                :linenos:
-
-                removed_el = ahp.delete("5cbfb7d6-c6b9-4342-8c9b-52d6a9a9ed2f")
+        Example
+        -------
+        >>> removed_el = ahp.delete("5cbfb7d6-c6b9-4342-8c9b-52d6a9a9ed2f")
         """
         element = self.findById(ObjectId(id))  # type:ignore
         self._db.AhpForm.delete_one(ObjectId(id))

@@ -10,6 +10,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+import re
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
@@ -29,13 +30,18 @@ release = '0.0.8'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
+#
+# Usefull links
+#
+# https://www.sphinx-doc.org/pt_BR/master/usage/extensions/napoleon.html
 # ones.
 extensions = [
+    #   'myst_parser',            # markdown parser
+    #   'sphinx.ext.graphviz',    # graphviz extension
     'sphinx.ext.todo',        # todos list
     'sphinx.ext.mathjax',     # mathematical codes
     'sphinx.ext.viewcode',    # link to code
-    # 'sphinx.ext.graphviz',    # graphviz extension
-    # 'myst_parser',            # markdown parser
+    'sphinx.ext.napoleon',    # handle with google/numpy docstring format
     'sphinx.ext.autodoc'      # auto documentation (open modules and build it)
 ]
 # Add any paths that contain templates here, relative to this directory.
@@ -78,6 +84,29 @@ html_js_files = [
 html_favicon = "_static/img/favicon.ico"
 html_logo = "_static/img/logo.png"
 
-# ---
+# -----------------------------------------------------------------------------
+# Configs
+# -----------------------------------------------------------------------------
+# Numerate figures
 # numfig = True
+
+# Default replacements
 rst_prolog = open('includes.pro').read()
+
+
+# ---
+# Skipping testings
+
+
+def skip_tests(app: ..., what: ..., name: str, obj: ..., skip: bool, options: ...):
+    # print(f"app: {app}, what\n {what}, name\n {name}, obj\n {obj}, skip\n {skip}, options: {options}\n\n")
+    if re.search("^[Tt]est", name) or re.search("^_", name):
+        # skip if is a private/protected member or if its a test object/function
+        print(f"Skipped: {name}")
+        return True
+    return False
+
+
+def setup(app):
+    print("Setting up configs")
+    app.connect('autodoc-skip-member', skip_tests)

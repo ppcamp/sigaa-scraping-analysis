@@ -9,7 +9,7 @@ from __future__ import annotations
 from enum import Enum, unique
 import json
 import pprint
-from typing import Dict, List
+from typing import Any, Dict, List, Union
 from copy import deepcopy
 
 
@@ -23,81 +23,74 @@ class FormData:
     """
     .. _FormData:
 
-    This class hold some usefull methods to handle with `AHP`_ site data.
+    This class hold some usefull methods to handle with *AHP* site data.
 
-    :Example:
-        .. code-block:: python
-            :linenos:
-            :caption: Example passing a value from mongodb
+    Examples
+    --------
 
-            # import this module
-            from modules.ahp import Types
-            # import object id (used to parse id into uuid object type)
-            from bson.objectid import ObjectId
+    Example passing a value from mongodb
 
-            # mongodb connection string
-            connection_string = "mongodb://ppcamp:password@localhost:27017/?authSource=admin"
+        >>> # import this module
+        >>> from modules.ahp import Types
+        >>> # import object id (used to parse id into uuid object type)
+        >>> from bson.objectid import ObjectId
+        >>> # mongodb connection string
+        >>> connection_string = "mongodb://ppcamp:password@localhost:27017/?authSource=admin"
+        >>> # Create a mongoclient
+        >>> client = MongoClient(connection_string)
+        >>> # Connect to database sigaadb (default)
+        >>> db = client.sigaadb
+        >>> response = db.find_one(ObjectId("20de2b50-5349-4cae-b72e-d85ea47417f2"))
 
-            # Create a mongoclient
-            client = MongoClient(connection_string)
-            # Connect to database sigaadb (default)
-            db = client.sigaadb
+    Example using empty value
 
-            response = db.find_one(ObjectId("20de2b50-5349-4cae-b72e-d85ea47417f2"))
-
-        .. code-block:: python
-            :linenos:
-            :caption: Example using empty value
-
-            # import this module
-            from modules.ahp.Types import FormData
-
-            # lRoot, q1s2, q1sec5, q3
-            new_response = FormData() \\
-            .setName("Joãozinho") \\
-            .setEmail("joaozinho@teste.com") \\
-            .setDate("03-03-2021") \\
-            .setMatrixRoot([
-                [1,1,0.33],
-                [1,1,0.33],
-                [3.03,3.03,1],
-            ]) \\
-            .setMatrixQ1([
-                [1,5,5,5,1,1],
-                [0.2,1,1,1,0.2,0.2],
-                [0.2,1,1,1,0.2,0.2],
-                [0.2,1,1,1,0.2,0.2],
-                [1,5,5,5,1,1],
-                [1,5,5,5,1,1],
-            ]) \\
-            .setMatrixQ1sec2([
-                [1,1,1],
-                [1,1,1],
-                [1,1,1],
-            ]) \\
-            .setMatrixQ1sec3([
-                [1,3,1,5,3,5],
-                [0.33,1,0.33,5,1,3],
-                [1,3.03,1,5,1,3],
-                [0.2,0.2,0.2,1,0.2,0.33],
-                [0.33,1,1,5,1,3],
-                [0.2,0.33,0.33,3.03,0.33,1],
-            ]) \\
-            .setMatrixQ1sec5(0.2) \\
-            .setMatrixQ2([
-                [1,0.33,3,3,3],
-                [3.03,1,3,5,3],
-                [0.33,0.33,1,1,1],
-                [0.33,0.2,1,1,1],
-                [0.33,0.33,1,1,1],
-            ]) \\
-            .setMatrixQ3([
-                [1,0.33,1,1],
-                [3.03,1,3,3],
-                [1,0.33,1,1],
-                [1,0.33,1,1],
-            ])
-
+        >>> # import this module
+        >>> from modules.ahp.Types import FormData
+        >>> # lRoot, q1s2, q1sec5, q3
+        >>> new_response = FormData() \\
+        ... .setName("Joãozinho") \\
+        ... .setEmail("joaozinho@teste.com") \\
+        ... .setDate("03-03-2021") \\
+        ... .setMatrixRoot([
+        ...     [1,1,0.33],
+        ...     [1,1,0.33],
+        ...     [3.03,3.03,1],
+        ... ]) \\
+        ... .setMatrixQ1([
+        ...     [1,5,5,5,1,1],
+        ...     [0.2,1,1,1,0.2,0.2],
+        ...     [0.2,1,1,1,0.2,0.2],
+        ...     [0.2,1,1,1,0.2,0.2],
+        ...     [1,5,5,5,1,1],
+        ...     [1,5,5,5,1,1],
+        ... ]) \\
+        ... .setMatrixQ1sec2([
+        ...     [1,1,1],
+        ...     [1,1,1],
+        ...     [1,1,1],
+        ... ]) \\
+        ... .setMatrixQ1sec3([
+        ...     [1,3,1,5,3,5],
+        ...     [0.33,1,0.33,5,1,3],
+        ...     [1,3.03,1,5,1,3],
+        ...     [0.2,0.2,0.2,1,0.2,0.33],
+        ...     [0.33,1,1,5,1,3],
+        ...     [0.2,0.33,0.33,3.03,0.33,1],
+        ... ]) \\
+        ... .setMatrixQ1sec5(0.2) \\
+        ... .setMatrixQ2([
+        ...     [1,0.33,3,3,3],
+        ...     [3.03,1,3,5,3],
+        ...     [0.33,0.33,1,1,1],
+        ...     [0.33,0.2,1,1,1],
+        ...     [0.33,0.33,1,1,1],
+        ... ]) \\
+        ... .setMatrixQ3([
+        ...     [1,0.33,1,1],
+        ...     [3.03,1,3,3],
+        ...     [1,0.33,1,1],
+        ...     [1,0.33,1,1],
+        ... ])
     """
 
     def __init__(self, obj: Dict = {}):
@@ -125,10 +118,14 @@ class FormData:
         """
         Update the email of this object.
 
-        :Args:
-            - `email`: An email string.
+        Args
+        ----
+        `email`:
+            An email string.
 
-        :Returns:
+        Returns
+        -------
+        FormData
             This object itself. It can use nested calls.
         """
         self._obj['email'] = email
@@ -138,10 +135,14 @@ class FormData:
         """
         Update the type of this object.
 
-        :Args:
-            - `type`: An type string. You should encounter in :class:`.FormDataType`
+        Args
+        ----
+        `type`:
+            An type string. You should encounter in :class:`.FormDataType`
 
-        :Returns:
+        Returns
+        -------
+        FormData
             This object itself. It can use nested calls.
         """
         self._obj['type'] = type.value
@@ -151,10 +152,14 @@ class FormData:
         """
         Update the name of this object.
 
-        :Args:
-            - `name`: A string name.
+        Args
+        ----
+        `name`:
+            A string name.
 
-        :Returns:
+        Returns
+        -------
+        FormData
             This object itself. It can use nested calls.
         """
         self._obj['name'] = name
@@ -164,10 +169,14 @@ class FormData:
         """
         Update the date of this object.
 
-        :Args:
-            - `date`: An date string.
+        Args
+        ----
+        `date`:
+            An date string.
 
-        :Returns:
+        Returns
+        -------
+        FormData
             This object itself. It can use nested calls.
         """
         self._obj['date'] = date
@@ -177,10 +186,14 @@ class FormData:
         """
         Update the root of this object.
 
-        :Args:
-            - `root`: An root matrix.
+        Args
+        -----
+        `root`:
+            An root matrix.
 
-        :Returns:
+        Returns
+        --------
+        FormData
             This object itself. It can use nested calls.
         """
         self._obj['matrices']['root'] = matrix
@@ -190,10 +203,14 @@ class FormData:
         """
         Update the q1 matrix of this object.
 
-        :Args:
-            - `matrix`: An q1 matrix.
+        Args
+        -----
+        `matrix`:
+            An q1 matrix.
 
-        :Returns:
+        Returns
+        --------
+        FormData
             This object itself. It can use nested calls.
         """
         self._obj['matrices']['q1'] = matrix
@@ -203,10 +220,14 @@ class FormData:
         """
         Update the Q1sec2 matrix of this object.
 
-        :Args:
-            - `matrix`: An Q1sec2 matrix.
+        Args
+        -----
+        `matrix`:
+            An Q1sec2 matrix.
 
-        :Returns:
+        Returns
+        --------
+        FormData
             This object itself. It can use nested calls.
         """
         self._obj['matrices']['q12'] = matrix
@@ -216,10 +237,14 @@ class FormData:
         """
         Update the Q1sec3 matrix of this object.
 
-        :Args:
-            - `matrix`: An Q1sec3 matrix.
+        Args
+        -----
+        `matrix`:
+            An Q1sec3 matrix.
 
-        :Returns:
+        Returns
+        --------
+        FormData
             This object itself. It can use nested calls.
         """
         self._obj['matrices']['q13'] = matrix
@@ -229,10 +254,14 @@ class FormData:
         """
         Update the Q1sec5 matrix of this object.
 
-        :Args:
-            - `matrix`: An Q1sec5 matrix.
+        Args
+        -----
+        `matrix`:
+            An Q1sec5 matrix.
 
-        :Returns:
+        Returns
+        --------
+        FormData
             This object itself. It can use nested calls.
         """
         self._obj['matrices']['q15'] = number
@@ -242,10 +271,14 @@ class FormData:
         """
         Update the Q2 matrix of this object.
 
-        :Args:
-            - `matrix`: An Q2 matrix.
+        Args
+        -----
+        `matrix`:
+            An Q2 matrix.
 
-        :Returns:
+        Returns
+        --------
+        FormData
             This object itself. It can use nested calls.
         """
         self._obj['matrices']['q2'] = matrix
@@ -255,10 +288,14 @@ class FormData:
         """
         Update the q3 matrix of this object.
 
-        :Args:
-            - `matrix`: An q3 matrix.
+        Args
+        -----
+        `matrix`:
+            An q3 matrix.
 
-        :Returns:
+        Returns
+        --------
+        FormData
             This object itself. It can use nested calls.
         """
         self._obj['matrices']['q3'] = matrix
@@ -268,7 +305,9 @@ class FormData:
         """
         Parse into json objects. It's a destructive action
 
-        :Returns:
+        Returns
+        -------
+        json
             Parsed json objects
         """
         obj = deepcopy(self._obj)
@@ -281,7 +320,9 @@ class FormData:
         """
         Get a representation of this object
 
-        :Returns:
+        Returns
+        --------
+        str
             A formatted string
         """
         return pprint.pformat(self._obj, indent=1)
@@ -290,7 +331,9 @@ class FormData:
         """
         Prettifies this object
 
-        :Returns:
+        Returns
+        --------
+        str
             A formatted string
         """
         local_obj = deepcopy(self._obj)
@@ -306,7 +349,9 @@ class FormData:
         """
         Get this email
 
-        :Returns:
+        Returns
+        --------
+        str
             A email string.
         """
         return self._obj['email']
@@ -315,7 +360,9 @@ class FormData:
         """
         Get this name
 
-        :Returns:
+        Returns
+        --------
+        str
             A name string.
         """
         return self._obj['name']
@@ -324,16 +371,20 @@ class FormData:
         """
         Get this date
 
-        :Returns:
+        Returns
+        --------
+        str
             A date string.
         """
         return self._obj['date']
 
-    def getMatrices(self) -> Dict[str, List[List[float]] or float]:
+    def getMatrices(self) -> Dict[str, Union[List[List[float]], float]]:
         """
         Get the dictionary equivalent to matrices.
 
-        :Returns:
+        Returns
+        --------
+        Union[List[List[float]], float]]
             A dictionary mapping to matrices.
         """
         return self._obj['matrices']
@@ -342,7 +393,9 @@ class FormData:
         """
         Get the root matrix.
 
-        :Returns:
+        Returns
+        --------
+        List[List[float]]
             The root matrix object.
         """
         return self._obj['matrices']['root']
@@ -351,7 +404,9 @@ class FormData:
         """
         Get the q1 matrix.
 
-        :Returns:
+        Returns
+        --------
+        List[List[float]]
             The q1 matrix object.
         """
         return self._obj['matrices']['q1']
@@ -360,7 +415,9 @@ class FormData:
         """
         Get the Q1sec2 matrix.
 
-        :Returns:
+        Returns
+        --------
+        List[List[float]]
             The Q1sec2 matrix object.
         """
         return self._obj['matrices']['q12']
@@ -369,7 +426,9 @@ class FormData:
         """
         Get the Q1sec3 matrix.
 
-        :Returns:
+        Returns
+        --------
+        List[List[float]]
             The Q1sec3 matrix object.
         """
         return self._obj['matrices']['q13']
@@ -378,7 +437,9 @@ class FormData:
         """
         Get the Q1sec5 matrix.
 
-        :Returns:
+        Returns
+        --------
+        float
             The Q1sec5 matrix object.
         """
         return self._obj['matrices']['q15']
@@ -387,7 +448,9 @@ class FormData:
         """
         Get the Q2 matrix.
 
-        :Returns:
+        Returns
+        --------
+        List[List[float]]
             The Q2 matrix object.
         """
         return self._obj['matrices']['q2']
@@ -396,23 +459,27 @@ class FormData:
         """
         Get the Q3 matrix.
 
-        :Returns:
+        Returns
+        --------
+        List[List[float]]
             The Q3 matrix object.
         """
         return self._obj['matrices']['q3']
 
-    def toDict(self) -> Dict:
+    def toDict(self) -> Dict[str, Union[str, Dict[str, Union[List[List[float]], float]]]]:
         """
         .. _FormData.toDict():
 
         Convert to a dictionary
 
-        :Returns:
+        Returns
+        --------
+        List[List[float]]
             A dictionary equivalent to this object.
         """
         return self._obj
 
-    def getDict(self) -> Dict:
+    def getDict(self) -> Dict[str, Union[str, Dict[str, Union[List[List[float]], float]]]]:
         """
         A alias to `FormData.toDict()`_ method.
         """

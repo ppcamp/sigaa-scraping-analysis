@@ -15,7 +15,7 @@ import typing
 
 
 """
-Inconsistency index (Random Index, RI) mapping.
+Inconsistency index (Random Index, RI) mapping.\
 The index is equivalent to matrix cols (n) -1
 
 JS_Index | cols |Random index  (calculated by Saaty)
@@ -49,48 +49,52 @@ def calculate(obj: List[List[float]], roundp: int = 4) -> Tuple[float, List[floa
     Calculates AHP and returns the *IC* and *priority_vector*.
     To an AHP be valid, it must have its IC bellow than 0.1.
 
-    .. tip::
+    Args
+    ----
+    `obj`:
+        The matrix(NxN) that holds the ahp values
 
-        This method not change the current value of object. So we can use it later if not pass through test.
+    Keyword Args
+    ------------
+    `roundp`:
+        The number of decimal places used to round.
 
-    :Args:
-        - `obj`: The matrix(NxN) that holds the ahp values
-        - `matrix`: *OPTIONAL*. If pass some value, we'll gonna change the object passed.
-            Usually is the same object as the first param
+    Returns
+    -------
+    Tuple[float, List[float]]
+        It returns a tuple/vector, where the first element is the IC calculated over ahp,\
+            and the second one, is the proper index.
 
-    :Kwargs:
-        - `roundp`: The number of decimal places used to round.
+    Example
+    -------
 
-    :See:
-        A reference to `AHP`_ .
+    >>> from modules.ahp import Ahp
+    >>> # import this module
+    >>> from modules.ahp import Ahp
+    >>> # some input matrix
+    >>> matrix = [
+    ...     [1, 1, 1],
+    ...     [1, 1, 1],
+    ...     [1, 1, 1],
+    ... ]
+    >>> # calculate the index and its priority vector
+    >>> consistency_index, priority_vector = Ahp.calculate(matrix)
+    >>> # in this case, should not raise this
+    >>> assert consistency_index>=0.1, "Inconsistent ahp matrix"
 
-    :Returns:
-        It returns a tuple/vector, where the first element is the IC calculated over ahp,
-        and the second one, is the proper index.
+    Tip
+    ---
+    This method not change the current value of object. So we can use it later if not pass through test.
 
-    :Example:
-        .. code-block:: python
-            :linenos:
-            :name: this-py
+    See Also
+    --------
+    `Analytic Hierarchy Process`_
 
-            # import this module
-            from modules.ahp import Ahp
-
-            # some input matrix
-            matrix = [
-                [1, 1, 1],
-                [1, 1, 1],
-                [1, 1, 1],
-            ]
-
-            # calculate the index and its priority vector
-            consistency_index, priority_vector = Ahp.calculate(matrix)
-
-            # in this case, should not raise this
-            assert consistency_index>=0.1, "Inconsistent ahp matrix"
-
-    .. _AHP: https://www.youtube.com/watch?v=J4T70o8gjlk&ab_channel=ManojMathew
+    .. _Analytic Hierarchy Process:
+        https://www.youtube.com/watch?v=J4T70o8gjlk&ab_channel=ManojMathew
     """
+
+    # code ...
 
     """
     The AHP work as follows:
@@ -132,7 +136,8 @@ def calculate(obj: List[List[float]], roundp: int = 4) -> Tuple[float, List[floa
         Object that will be modified in ahp.
         At this point it will be the copy of `obj`, which is something like this:
 
-    :Example:
+    Example
+    ---------
     ________| Price | Storage | Camera | Looks
     Price   |   1   |    5    |   4    | 7
     Storage |  1/5  |    1    |   1/2  | 3
@@ -258,11 +263,16 @@ def _mapping_competences(secoes: Dict[str, Union[List[float], float]]) -> Dict[s
     """
     Mapping the AHP priority vector to questions
 
-    :Args:
-        - `secoes`: A dictionary containing a list (or scalar), to every matrix. A matrix is defined as *root*, *q1*, *q12*, *q13*, *q15*, *q2*, *q3*
+    Args
+    ----
+    `secoes`:
+        A dictionary containing a list (or scalar), to every matrix. \
+            A matrix is defined as *root*, *q1*, *q12*, *q13*, *q15*, *q2*, *q3*
 
-    :Returns:
-        - It returns a dictionary mapping competences to an specific scalar.
+    Returns
+    -------
+    Dict[str, float]
+        It returns a dictionary mapping competences to an specific scalar.
     """
     # montando o vetor para situado na mesma posição (root ignorado)
     return {
@@ -310,21 +320,26 @@ def get_q15_value(v: float, roundp: int = 3) -> float:
     """
     Get the equivalent value `v`, in percentual terms. (Normalized value)
 
-    :Args:
-        - `v`: The number to be normalized
+    Args
+    ----
+    `v`:
+        The number to be normalized
 
-    :Kwargs:
-        - `roundp`: The number of decimal places to be rounded
+    Keyword Args
+    -------------
+    `roundp`:
+        The number of decimal places to be rounded
 
-    :Returns:
+    Returns
+    -------
+    float
         The equivalent number converted into a value in [0..~1]
 
-    .. caution::
+    Caution
+    -------
+    This number should be in:
 
-        This number should be in:
-
-        .. centered:: v = [1/9, 1/7, 1/5, 1/3, 1, 3, 5, 7, 9]
-
+    .. centered:: v = [1/9, 1/7, 1/5, 1/3, 1, 3, 5, 7, 9]
 
     It does the following operation:
 
@@ -414,33 +429,31 @@ class Mapping:
         Mapping the output of graphs  - calculated in function :meth:`modules.grid.Competence.walk_through_graph` - into a mapping
         of matrix to list of float (ordered)
 
-        :Args:
-            - `competences`: A dictionary containing competences and it's results
+        Args
+        ----
+        `competences`:
+            A dictionary containing competences and it's results
 
-        :Returns:
+        Returns
+        -------
+        Dict[str, Union[List[float], float]]
             A dictionary mapping this competences to it's equivalent matrix.
 
-        .. note::
+        Note
+        ----
+        Map the student's propagated value of its competence into sections equivalent.\
+            This step is important \
+                because it's used to normalize the competences values into this sections.
 
-            Map the student's propagated value of its competence into sections equivalent. This step is important
-            because it's used to normalize the competences values into this sections.
-
-        :Example:
-            .. code-block:: python
-                :linenos:
-
-                competences = {
-                    "Conhecimento técnico": 0.8,
-                    "Competências, habilidades e atributos ...": 0.9,
-                    "Competências e habilidades interpessoais ...": 0.3,
-                }
-
-                Mapping.to_sections(competences)
-
-                # Will be
-                ... {
-                ...    "q1": [0.8, 0.9, 0.3]
-                ... }
+        Example
+        -------
+        >>> competences = {
+        ...     "Conhecimento técnico": 0.8,
+        ...     "Competências, habilidades e atributos ...": 0.9,
+        ...     "Competências e habilidades interpessoais ...": 0.3,
+        ... }
+        >>> Mapping.to_sections(competences)
+        { "q1": [0.8, 0.9, 0.3] }
         """
         keys: List[str] = list(competences.keys())
 
@@ -519,16 +532,20 @@ class Mapping:
         """
         Does a mapping with AHP priority vector.
 
-        :Args:
-            - `matrices`: A dictionary containing a list (or scalar), to every matrix. \
-                          A matrix is defined as *root*, *q1*, *q12*, *q13*, *q15*, *q2*, *q3*
+        Args
+        ----
+        `matrices`:
+            A dictionary containing a list (or scalar), to every matrix. \
+                A matrix is defined as *root*, *q1*, *q12*, *q13*, *q15*, *q2*, *q3*
 
-        :Returns:
+        Returns
+        --------
+        Dict[str, float]
             It returns a dictionary mapping competences to an specific scalar.
 
-        .. tip::
-
-            Usually used with values of *priority vector*, obtained in function :meth:`calculate`
+        Tip
+        ---
+        Usually used with values of *priority vector*, obtained in function :meth:`calculate`
         """
         competences: Dict[str, float] = {}
 
