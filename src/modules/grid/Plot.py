@@ -1,19 +1,29 @@
 # -*- coding: utf-8 -*-
+
+"""
+Contains the functions used to plot the graph
+
+Todo
+----
+
+Implement loggers for:
+
+- :class:`DotFile`
+- :meth:`weighted_graph`
+- :meth:`only_grid`
+"""
 # fluxogram
 from typing import Dict, List, Tuple
 from graphviz import Digraph
 from os import sep as OSsep
 import networkx as nx
-
 # Random over list
 # from secrets import choice
-
 # Rand some hexa char
 from os import urandom, system as RUN
 from binascii import b2a_hex as randHex
 from os import path, getcwd, unlink
-
-from networkx.classes.reportviews import NodeView, OutEdgeView
+from networkx.classes.reportviews import NodeView
 
 
 class Colors(object):
@@ -79,12 +89,12 @@ def weighted_graph(
         - `filename`: The name of the file to save (image name). DEFAULT: grid
         - `outputDir`: The directory to save. DEFAULT: out
 
-    .. important::
-
+    Important
+    ---
         The nodes must ne ordered by period of the class.
 
-    .. tip::
-
+    Tip
+    ---
         Usually, you can get an example graph in :meth:`modules.grid.Grid.get_grid`
     """
 
@@ -198,8 +208,8 @@ def only_grid(nodes, pre, co, filename='grid', outputDir="out") -> None:
         - `filename`: The name of the file to save (image name). DEFAULT: grid
         - `outputDir`: The directory to save. DEFAULT: out
 
-    .. important::
-
+    Important
+    ---
         The nodes must be ordered by period of the class.
     """
 
@@ -301,9 +311,9 @@ class DotFile(object):
     """
     A class used to generate dot files.
 
-    .. seealso::
-
-        `See more on Graphviz <https://graphviz.org/doc/info/attrs.html>`_
+    See Also
+    --------
+    `See more on Graphviz <https://graphviz.org/doc/info/attrs.html>`_
     """
     # Command used to generate png image
     # neato -Tpng 2016001942.dot -o teste.png
@@ -319,26 +329,31 @@ class DotFile(object):
             fillcolor: str,
             style: str,
             shape: str,
-            pos: str
-    ):
+            pos: str) -> None:
         """
         Insert string used to create a node.
 
-        :Args:
-            - `nodeName`: Name used to make connections.
-            - `label`: Name showed in graph.
-            - `color`: Border color.
-            - `fillcolor`: Fill color.
-            - `pos`: Inch absolute position.
-            - `shape`: Form shape
-            - `style`: Form style, i.e., filled or striped
+        Args
+        ----
+        `nodeName`:
+            Name used to make connections.
+        `label`:
+            Name showed in graph.
+        `color`:
+            Border color.
+        `fillcolor`:
+            Fill color.
+        `pos`:
+            Inch absolute position.
+        `shape`:
+            Form shape
+        `style`:
+            Form style, i.e., filled or striped
 
-        :Example:
-            .. code-block:: python
-                :linenos:
-
-                dotfile = DotFile()
-                dotfile.insert( 'CEI039','CEI039', 'black', 'white', '4,0!', 'rectangle', 'filled')
+        Example
+        --------
+        >>> dotfile = DotFile()
+        >>> dotfile.insert( 'CEI039','CEI039', 'black', 'white', '4,0!', 'rectangle', 'filled')
         """
 
         auxiliarStr = '\t{} [label="{}" color="{}" fillcolor="{}" pos="{}" shape="{}" style="{}"]\n'.format(
@@ -350,18 +365,21 @@ class DotFile(object):
         """
         Create connection
 
-        :Parameters:
-            - `father`: 'From' node
-            - `son`: 'To' node
-            - `style`: edge style.
-            - `color`: edge color.
+        Args
+        ----
+        `father`:
+            'From' node
+        `son`:
+            'To' node
+        `style`:
+            edge style.
+        `color`:
+            edge color.
 
-        :Example:
-            .. code-block:: python
-                :linenos:
-
-                a = DotFile()
-                a.edge('A','B') # create a connection A→B
+        Example
+        -------
+        >>> a = DotFile()
+        >>> a.edge('A','B') # create a connection A→B
         """
         aux = '\t' + father + ' -> ' + son + \
             ' [style={}, color={}]\n'.format(style, color)
@@ -377,15 +395,15 @@ class DotFile(object):
         """
         Gerate dot file.
 
-        :Args:
-            - `filename`: Name to save dot's file.
+        Args
+        ----
+        `filename`:
+            Name to save dot's file.
 
-        :Example:
-            .. code-block:: python
-                :linenos:
-
-                a = DotFile()
-                a.getDot('/home/ppcamp/Desktop/test.dot')
+        Example
+        -------
+        >>> a = DotFile()
+        >>> a.getDot('/home/ppcamp/Desktop/test.dot')
         """
         self._endOfInput()
         with open(filename, 'w') as f:

@@ -10,6 +10,9 @@ if "%SPHINXBUILD%" == "" (
 set SOURCEDIR=source
 set BUILDDIR=build
 
+@REM REMOVING build dir
+@RD /S /Q "build"
+
 if "%1" == "" goto help
 
 %SPHINXBUILD% >NUL 2>NUL

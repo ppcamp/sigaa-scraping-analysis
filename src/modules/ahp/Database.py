@@ -4,12 +4,33 @@
 Module that contains some common functions to handle with mongo database connections.
 It's a wrapper to *pymongo*.
 
+Todo
+----
+Implement tests for:
+
+- test_findById
+- test_findByDict
+- test_getAll
+- test_insert
+- test_delete
 """
 
+
+if __name__ == '__main__':
+    # Append this libraries if not in the path
+    import sys
+    import os
+    sys.path.insert(0, os.path.realpath('./src/'))
+
+
 from typing import Any, Dict, List
+from unittest.main import main
 from modules.ahp.Types import FormData, FormDataType
 from bson.objectid import ObjectId
 from pymongo import MongoClient
+import unittest
+import logging
+logger = logging.getLogger(__name__)
 
 
 class SigaaDatabase:
@@ -31,6 +52,8 @@ class SigaaDatabase:
         # Create a mongoclient
         self.__client = MongoClient(connection_string)
 
+        logger.info(f'Creating a MongoClient for {connection_string}')
+
         if database_name:
             connection = "self.__client.{}".format(database_name)
             self._db = eval(connection)
@@ -43,6 +66,10 @@ class AhpForm(SigaaDatabase):
     """
     A mongodb class used to connect and retrieve (already parsed), objects.
     Those objects are the answers of *AHP* site.
+
+    Todo
+    ----
+    Missing tests
 
     Example
     -------
@@ -204,6 +231,7 @@ class AhpForm(SigaaDatabase):
         >>> ahp.insert(new_response.toDict())
         """
         element = self._db.AhpForm.insert_one(args)
+        logger.debug('Data inserted into Database')
         return FormData(element)  # type:ignore
 
     def delete(self, id: str) -> FormData:
@@ -221,4 +249,26 @@ class AhpForm(SigaaDatabase):
         """
         element = self.findById(ObjectId(id))  # type:ignore
         self._db.AhpForm.delete_one(ObjectId(id))
+        logger.debug(f'Object({id}) removed from database')
         return element
+
+
+class TestAhpForm(unittest.TestCase):
+    def test_findById(self):
+        ...
+
+    def test_findByDict(self):
+        ...
+
+    def test_getAll(self):
+        ...
+
+    def test_insert(self):
+        ...
+
+    def test_delete(self):
+        ...
+
+
+if __name__ == '__main__':
+    unittest.main()

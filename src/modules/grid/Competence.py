@@ -24,206 +24,6 @@ from copy import deepcopy
 sys.setrecursionlimit(1000)
 
 
-def _get_weight(
-        notas: Dict[str, float],
-        materia: str,
-        peso: float,
-        acumulado: float,
-        roundp: int = 4) -> float:
-    """
-    Calculate the class scores for graph propagation.
-
-     :Args:
-        - `notas`: dictionary mapping a class acronym to an given score
-        - `materia`: class acronym to be analysed
-        - `peso`: A calculated percentual in terms of competency in a given semester.\
-            See more at :meth:`_get_competence_weight`.
-        - `acumulado`: a propagated `peso` over a graph.
-
-    :Kwargs:
-        - `roundp`: The number of decimal places used to round
-
-    :Returns:
-        The calculated value plus `acumulado` multiplied by `peso`
-
-    .. tip::
-
-        Used in graph propagation
-
-    .. math:: x =
-        \\begin{cases}
-            \\text{acumulado}\\cdot\\text{peso}, \\text{[1]} \\\\
-            \\left(\\frac{\\text{notas[materia]}}{10}\\cdot\\text{acumulado}\\right)\\cdot\\text{peso},\\text{[2]} \\\\
-        \\end{cases}
-
-    .. attention::
-
-        - If student didn't pass yet: send only the current `acumulado` multiplied by `peso` to the next period
-        - If student has a score to this subject: multiply the current `acumulado` by `peso` and by `subject value`
-    """
-    # Caso o aluno não tenha feito a matéria ainda, propaga apenas o acumulado pelo peso
-    if materia not in notas:
-        return round(acumulado * peso, roundp)
-    # Caso já tenha feito a matéria, calcula pelo peso e retorna mais o acumulado
-    return round((notas[materia]/10 * acumulado)*peso, roundp)
-
-
-def __dfs_walk(
-        notas: Dict[str, float],
-        grafo: DiGraph,
-        materia: str,
-        acumulado: float = 1.0) -> float:
-    """
-    A recursive walk over competency graph
-
-    :Args:
-        - `notas`: A dictionary mapping a class acronym to an value.\
-            Usually, this value will be the highest student's score to this class.
-        - `grafo`: A graph equivalent to some competency.
-        - `materia`: A name for a given node.
-        - `acumulado`: The propagated value until some point
-
-    :Returns:
-        The propageted `acumulado` value over it's childrens/leafs.
-
-    .. important::
-
-        This approach, calculate the propagated value before walk trough graph, \
-        which means that we don't need to create a new node, since that the calculus is made in\
-        nodes, not in transitions
-    """
-    total: float = 0
-
-    # Anda sobre os filhos
-    logging.debug(
-        f'\t\t\t{materia} -> {[i for i in grafo.successors(materia)]}')
-
-    # atingiu o fim (última folha "Fim/Formou") do grafo
-    if not list(grafo.successors(materia)):
-        logging.debug('\t\tReached a leaf (Fim/Formou)')
-        return acumulado
-
-    logging.debug(f'\t\tCurrent acumulated: {acumulado}')
-    for filho in grafo.successors(materia):
-        # Obtém o peso da aresta que manda para o filho
-        peso = grafo[materia][filho]['weight']
-        # Obtém a nota (acumulada) que será enviada para o filho
-        novo_acumulado: float = _get_weight(notas, materia, peso, acumulado)
-        logging.debug(
-            f'\t\t({materia}, {filho} | w={peso}) New Acumulated: {novo_acumulado}')
-        # Caminha para este filho
-        total += __dfs_walk(notas, grafo, filho, novo_acumulado)
-        logging.debug(f'\t\tTOTAL: {total}')
-
-    # Retorna o valor acumulado (dos filhos até ela)
-    return total
-
-
-def walk(
-        grafos: Dict[str, DiGraph],
-        notas: Dict[str, float]) -> Dict[str, float]:
-    """
-    Walk over all competences(graphs), propagating the current value
-    over each semester.
-
-    :Args:
-        - `grafos`: A dictionary mapping competences to graphs equivalent.
-        - `notas`: A dictionary mapping class acronym to a given score.
-
-    :Returns:
-        A dictionary mapping competency to a calculated and propagated value.
-
-    :Example:
-        .. code-block:: python
-            :linenos:
-
-            from modules.grid import Competence
-            from modules import Score
-            import json
-
-            grafos = Competence.generate_competency_graphs(out, nodes)
-
-            student_grid: str = path.join('..','assets','parsed_scores','2016001942.json')
-            # obtém o histórico de um único estudante
-            student_grid: json = Score.read_json(student_grid)
-
-            # Does some boring stuffs to handle and map a given class to an value ...
-            # ... (usully, the greatest one for a subject)
-            # notas
-
-            # anda sobre o grafo para o(s) aluno(s)
-            notas_aluno = Competence.walk(grafos, notas)
-
-    .. important::
-
-        This function calculates the sum propagated over all "subgraphs" that can exist in a single DiGraph.
-        For example, take a look in the figure (:ref:`figure-graph-web`). In this figure, we have 3 independent subgraphs (We
-        are assuming that, HUMI01|MATI01|MATI02 are indepedent graphs since they are not directly connected with each other).
-        For those situations, this method sum the output of all subgraphs.
-
-    .. note::
-
-        This function runs the :meth:`modules.grid.Competence.__dfs_walk` for
-        all competences.
-
-        Bellow you can check the **manual debugging** for this method.
-
-        .. image:: _static/img/graph_example_devweb_debug_1.png
-            :width: 310
-            :alt: Graph example - Desenvolvimento Web
-            :align: left
-
-        .. image:: _static/img/graph_example_devweb_debug_2.png
-            :width: 310
-            :alt: Graph example - Desenvolvimento Web
-            :align: right
-
-
-    .. seealso::
-
-        See more in :meth:`generate_competency_graphs`
-    """
-    logging.debug('-'*100)
-    logging.debug('Walking over graphs')
-
-    # Dicionário que irá conter o valor sobre cada competência
-    notas_aluno: Dict[str, float] = {}
-    # Itera sobre as competências
-    for competencia, grafo in grafos.items():
-        # ∀ competência, encontra a primeira matéria que possui ela
-        edges: List[Tuple[str, str]] = list(grafo.edges())  # type: ignore
-        nodes: Dict[str, str] = dict(grafo.nodes(data='period'))
-
-        # Uma vez que o grafo foi montado em ordem cronológica, ...
-        # ... sabemos que as arestas estarão em ordem crescente por período
-        fst_materia: str = edges[0][0]
-        fst_periodo: str = nodes[fst_materia]
-
-        # deve pegar as primeiras disciplinas deste periodo
-        # Para isso, pega todas as disciplinas do período de fst_materia
-        materias_do_periodo: List[str] = [
-            k for k, v in nodes.items() if v == fst_periodo]
-        # filtra elas com base naquelas que existem arestas saindo delas (que têm filhos)
-        materias_grafos: List[str] = [
-            k for k in materias_do_periodo if list(grafo.successors(k))]
-
-        # Em seguida, anda no seu grafo e obtêm o valor iterado sobre as notas ...
-        # ... ou seja, a soma das notas propagadas
-        logging.debug(f'\tCompetence {competencia} - Walking')
-
-        # chama o dfs para cada subgrafo independente
-        resultado: float = 0
-        for materias in materias_grafos:
-            resultado += __dfs_walk(notas, grafo, materias)
-
-        logging.debug(f'\tCompetence: {competencia} = {resultado}')
-        # valor das notas iteradas sobre o grafo de uma competência "N"
-        notas_aluno[competencia] = resultado
-        logging.debug('-'*50)
-    logging.debug('-'*100)
-    # Notas do aluno propagadas no grafo de competência
-    return notas_aluno
-
 # -------------------------------------------------------------------------------------------
 #                                      Creating the graphs
 # -------------------------------------------------------------------------------------------
@@ -234,7 +34,7 @@ def __get_period() -> Generator[int, None, None]:
     Computes the current period
 
     :Yields:
-        A value for every period
+        A value [0,9] for every period
     """
     p: int = 0
     while p < 10:
@@ -283,9 +83,9 @@ def _get_competence_weight(
 
     .. math:: \\frac{\\text{competency}_k}{\\sum_{i=0}^N \\text{competency}_i}
 
-    .. important::
-
-        This module only calculate the equivalent percentual in terms of maximum compenty values
+    Important
+    ---------
+        This module only calculate the equivalent percentual in terms of maximum compenty values\
         in a given semester.
 
     :Args:
@@ -304,9 +104,11 @@ def _get_competence_weight(
     return round(out.loc[materia][competencia]/total, roundp)  # type:ignore
 
 
-def generate_competency_graphs(
+def _generate_competency_graphs(
         out: DataFrame,
-        nodes: DiGraph) -> Dict[str, DiGraph]:
+        nodes: DiGraph,
+        isBFS: bool = False,
+        roundp: int = 4) -> Dict[str, DiGraph]:
     """
     Create graphs for each *competence* inside `competencias`. See :ref:`figure-graph-web`
 
@@ -314,10 +116,15 @@ def generate_competency_graphs(
         - `out`: A dataframe mapping columns (competency) to rows (classes)
         - `nodes`: A DiGraph containing all nodes (classes) already inserted
 
+    :Kwargs:
+        - `isBFS`: when settled, it will divide the weight by the number of vertices outcoming of the node.
+        - `roundp`: the number of decimal places to use
+
     :Returns:
         A dictionary mapping competency to graphs equivalent
 
-    :Example:
+    Example
+    ---------
         .. code-block:: python
             :linenos:
 
@@ -381,98 +188,10 @@ def generate_competency_graphs(
             ...    'Trabalho em equipe': <networkx.classes.digraph.DiGraph at 0x1fa0afe2220>
             ... }
 
-    .. caution::
-
-        - Usually, the `out` param is equal to 1 foreach column sum. It means that, at the end of the course\
+    Caution
+    -------
+        Usually, the `out` param is equal to 1 foreach column sum. It means that, at the end of the course\
             a student can have, **at maximum**, 100% of a given competence.
-        - This method also assumes that, for each period, the maximum obtained value propagated will be 100%. It means that, for\
-            each period, the percentual values are normalized.
-
-    .. _figure-graph-web:
-
-    .. figure:: _static/img/graph_example_desenvolvimento_web.png
-        :width: 700
-        :alt: Graph example - Desenvolvimento Web
-        :align: center
-
-        Graph example - Desenvolvimento Web
-
-    In the image above, the values of `out` are:
-
-    .. csv-table:: Values for `out`
-        :header: "Period", "Acronym/Subject", "Value"
-        :widths: 1,1,1
-        :align: center
-
-        1, "HUMI01", 0.0435
-        1, "MATI01", 0.0870
-        1, "MATI02", 0.0870
-        2, "ECOI04", 0.0870
-        4, "ECOI09", 0.2174
-        4, "MATI04", 0.1304
-        5, "ECOI11", 0.1304
-        5, "ECOI14", 0.0435
-        9, "ECOI25", 0.1739
-
-    However, due to the normalization made for each period:
-
-    .. math:: \\forall \\text{ period | } \\text{subject}_i = \\frac{\\text{current_subject_value}_i}{\\sum_{n=0}^N\\text{current_subject_value}_n}
-
-    .. important::
-
-        The :math:`\\sum` of each period is equal to 1.0. E.g: \
-        :math:`\\sum\\text{period}_1 = HUMI01\\cdot0.2 + MATI01\\cdot0.4 + MATI02\\cdot0.4 \\equiv 1.0`
-
-    For the period 1:
-
-    .. math::
-
-        \\sum\\left(\\text{HUMI01}+\\text{MATI01}+\\text{MATI02}\\right) = 0.2175 \\
-        \\therefore \\
-        \\text{HUMI01} = \\frac{0.0435}{0.2175} = 0.2
-
-    Doing so, we have:
-
-    .. csv-table::
-        :header: "Period", "Acronym/Subject", "Sum", "New value"
-        :widths: 1,1,1,1
-        :align: center
-
-        1, "HUMI01", , 0.2
-        1, "MATI01", 0.2175, 0.4
-        1, "MATI02", , 0.4
-        2, "ECOI04", 0.0870, 1.0
-        4, "ECOI09", 0.3478, 0.6251
-        4, "MATI04", , 0.3749
-        5, "ECOI11", 0.1739, 0.7499
-        5, "ECOI14", , 0.250
-        9, "ECOI25", 0.1739, 1.0
-
-    .. tip::
-
-        1. Propagate the **current value** (acumulated * subject * edge) to the next node.
-        2. Sum all returns of children nodes. Doing so, at the end, the value should be between [0,1].
-
-    .. note::
-
-        .. image:: _static/img/perceptron_view.jpg
-            :width: 500
-            :align: left
-
-        **Why don't use perceptron approach?**
-
-        **R.:** Perceptron classifies as 0 or 1 (activate or not the layer), doing so, we will not have
-        the "percentual reference" in the end.
-
-        .. todo::
-
-            According to *Giovani*, we can have a perceptron passing a value between those.
-
-    .. seealso::
-
-        See the :meth:`walk`
-
-    .. versionadded:: 0.0.8
     """
     # Obtêndo o nome de cada coluna (será utilizada no grafo novo) ...
     # ... Equivale às competências que foram encontradas (não zeradas nos csvs) ...
@@ -562,13 +281,23 @@ def generate_competency_graphs(
                     out,
                     materias_periodo_atual,
                     competencia,
-                    materia_atual)
+                    materia_atual,
+                    roundp=roundp)
                 logging.debug(
                     f'\t\t\tThe class "{materia_atual}" has {peso} of weight')
+
+                # se for BFS, divide o peso pela quantidade de nós
+                qnt_materias: int = len(materias_herdeiras)
+                #print(f"{peso} - {qnt_materias} ", end="")
+                if isBFS and qnt_materias > 0:
+                    peso: float = round(peso/qnt_materias, roundp)
+                #print(f"-> {peso} : {materia_atual}", end="\n\n")
 
                 # adiciona as arestas
                 logging.debug(
                     f'\t\t\tAdding the edges for: {materias_herdeiras}')
+
+                # cria a aresta
                 for materia_herdeira in materias_herdeiras:
                     grafos[competencia].add_edge(
                         materia_atual,
@@ -589,7 +318,8 @@ def generate_competency_graphs(
                     out,
                     last,
                     competencia,
-                    materia_atual)
+                    materia_atual,
+                    roundp=roundp)
                 grafos[competencia].add_edge(
                     materia_atual,
                     'Fim/Formou',
@@ -616,3 +346,592 @@ def generate_competency_graphs(
 
     logging.debug('-'*100)
     return grafos
+
+
+# class DFS:
+#     """
+#     An object created to encapsulate all elements and calls that are used in DFS.
+#     """
+
+#     @staticmethod
+#     def generate_graphs(
+#             out: DataFrame,
+#             nodes: DiGraph) -> Dict[str, DiGraph]:
+#         """
+#         A method used to create a simple graph which, in the end of dfs :meth:`walk`, will be the sum of 1.
+
+#         .. _figure-graph-web:
+
+#         .. figure:: _static/img/graph_example_desenvolvimento_web.png
+#             :width: 700
+#             :alt: Graph example - Desenvolvimento Web
+#             :align: center
+
+#             Graph example - Desenvolvimento Web
+
+#         In the image above, the values of `out` are:
+
+#         .. csv-table:: Values for `out`
+#             :header: "Period", "Acronym/Subject", "Value"
+#             :widths: 1,1,1
+#             :align: center
+
+#             1, "HUMI01", 0.0435
+#             1, "MATI01", 0.0870
+#             1, "MATI02", 0.0870
+#             2, "ECOI04", 0.0870
+#             4, "ECOI09", 0.2174
+#             4, "MATI04", 0.1304
+#             5, "ECOI11", 0.1304
+#             5, "ECOI14", 0.0435
+#             9, "ECOI25", 0.1739
+
+#         However, due to the normalization made for each period:
+
+#         .. math:: \\forall \\text{ period | } \\text{subject}_i = \\frac{\\text{current_subject_value}_i}{\\sum_{n=0}^N\\text{current_subject_value}_n}
+
+#         Important
+#         ---------
+#             The :math:`\\sum` of each period is equal to 1.0. E.g: \
+#             :math:`\\sum\\text{period}_1 = HUMI01\\cdot0.2 + MATI01\\cdot0.4 + MATI02\\cdot0.4 \\equiv 1.0`
+
+#         For the period 1:
+
+#         .. math::
+
+#             \\sum\\left(\\text{HUMI01}+\\text{MATI01}+\\text{MATI02}\\right) = 0.2175 \\
+#             \\therefore \\
+#             \\text{HUMI01} = \\frac{0.0435}{0.2175} = 0.2
+
+#         Doing so, we have:
+
+#         .. csv-table::
+#             :header: "Period", "Acronym/Subject", "Sum", "New value"
+#             :widths: 1,1,1,1
+#             :align: center
+
+#             1, "HUMI01", , 0.2
+#             1, "MATI01", 0.2175, 0.4
+#             1, "MATI02", , 0.4
+#             2, "ECOI04", 0.0870, 1.0
+#             4, "ECOI09", 0.3478, 0.6251
+#             4, "MATI04", , 0.3749
+#             5, "ECOI11", 0.1739, 0.7499
+#             5, "ECOI14", , 0.250
+#             9, "ECOI25", 0.1739, 1.0
+
+#         Tip
+#         ---
+#             1. Propagate the **current value** (acumulated * subject * edge) to the next node.
+#             2. Sum all returns of children nodes. Doing so, at the end, the value should be between [0,1].
+
+#         Note
+#         ----
+#             .. image:: _static/img/perceptron_view.jpg
+#                 :width: 500
+#                 :align: left
+
+#             **Why don't use perceptron approach?**
+
+#             **R.:** Perceptron classifies as 0 or 1 (activate or not the layer), doing so, we will not have
+#             the "percentual reference" in the end.
+
+#             |clear|
+
+#             Todo
+#             ---
+#                 According to *Giovani*, we can have a perceptron passing a value between those.
+
+#         Caution
+#         -------
+#             This method also assumes that, for each period, the maximum obtained value propagated will be 100%. It means that, for\
+#                 each period, the percentual values are normalized.
+
+#         See Also
+#         --------
+#             See the :meth:`walk`
+
+#         .. versionadded:: 0.0.8
+#         """
+#         return _generate_competency_graphs(out, nodes)
+
+#     @staticmethod
+#     def _get_weight(
+#             notas: Dict[str, float],
+#             materia: str,
+#             peso: float,
+#             acumulado: float,
+#             roundp: int = 4) -> float:
+#         """
+#         Calculate the class scores for graph propagation.
+
+#         :Args:
+#             - `notas`: dictionary mapping a class acronym to an given score
+#             - `materia`: class acronym to be analysed
+#             - `peso`: A calculated percentual in terms of competency in a given semester.\
+#                 See more at :meth:`_get_competence_weight`.
+#             - `acumulado`: a propagated `peso` over a graph.
+
+#         :Kwargs:
+#             - `roundp`: The number of decimal places used to round
+
+#         :Returns:
+#             The calculated value plus `acumulado` multiplied by `peso`
+
+#         Tip
+#         ---
+#             Used in graph propagation
+
+#         .. math:: x =
+#             \\begin{cases}
+#                 \\text{acumulado}\\cdot\\text{peso}, \\text{[1]} \\\\
+#                 \\left(\\frac{\\text{notas[materia]}}{10}\\cdot\\text{acumulado}\\right)\\cdot\\text{peso},\\text{[2]} \\\\
+#             \\end{cases}
+
+#         Attention
+#         ---------
+#             - If student didn't pass yet: send only the current `acumulado` multiplied by `peso` to the next period
+#             - If student has a score to this subject: multiply the current `acumulado` by `peso` and by `subject value`
+#         """
+#         # Caso o aluno não tenha feito a matéria ainda, propaga apenas o acumulado pelo peso
+#         if materia not in notas:
+#             return round(acumulado * peso, roundp)
+#         # Caso já tenha feito a matéria, calcula pelo peso e retorna mais o acumulado
+#         return round((notas[materia]/10 * acumulado)*peso, roundp)
+
+#     @staticmethod
+#     def __dfs_walk(
+#             notas: Dict[str, float],
+#             grafo: DiGraph,
+#             materia: str,
+#             acumulado: float = 1.0) -> float:
+#         """
+#         A recursive walk over competency graph
+
+#         :Args:
+#             - `notas`: A dictionary mapping a class acronym to an value.\
+#                 Usually, this value will be the highest student's score to this class.
+#             - `grafo`: A graph equivalent to some competency.
+#             - `materia`: A name for a given node.
+#             - `acumulado`: The propagated value until some point
+
+#         :Returns:
+#             The propageted `acumulado` value over it's childrens/leafs.
+
+#         Important
+#         ---------
+#             This approach, calculate the propagated value before walk trough graph, \
+#             which means that we don't need to create a new node, since that the calculus is made in\
+#             nodes, not in transitions
+#         """
+#         total: float = 0
+
+#         # Anda sobre os filhos
+#         logging.debug(
+#             f'\t\t\t{materia} -> {[i for i in grafo.successors(materia)]}')
+
+#         # atingiu o fim (última folha "Fim/Formou") do grafo
+#         if not list(grafo.successors(materia)):
+#             logging.debug('\t\tReached a leaf (Fim/Formou)')
+#             return acumulado
+
+#         logging.debug(f'\t\tCurrent acumulated: {acumulado}')
+#         for filho in grafo.successors(materia):
+#             # Obtém o peso da aresta que manda para o filho
+#             peso = grafo[materia][filho]['weight']
+#             # Obtém a nota (acumulada) que será enviada para o filho
+#             novo_acumulado: float = DFS._get_weight(
+#                 notas, materia, peso, acumulado)
+#             logging.debug(
+#                 f'\t\t({materia}, {filho} | w={peso}) New Acumulated: {novo_acumulado}')
+#             # Caminha para este filho
+#             total += DFS.__dfs_walk(notas, grafo, filho, novo_acumulado)
+#             logging.debug(f'\t\tTOTAL: {total}')
+
+#         # Retorna o valor acumulado (dos filhos até ela)
+#         return total
+
+#     @staticmethod
+#     def walk(
+#             grafos: Dict[str, DiGraph],
+#             notas: Dict[str, float]) -> Dict[str, float]:
+#         """
+#         Walk over all competences(graphs), propagating the current value
+#         over each semester.
+
+#         :Args:
+#             - `grafos`: A dictionary mapping competences to graphs equivalent.
+#             - `notas`: A dictionary mapping class acronym to a given score.
+
+#         :Returns:
+#             A dictionary mapping competency to a calculated and propagated value.
+
+#         Example
+#         ---------
+#             .. code-block:: python
+#                 :linenos:
+
+#                 from modules.grid import Competence
+#                 from modules import Score
+#                 import json
+
+#                 grafos = Competence.generate_competency_graphs(out, nodes)
+
+#                 student_grid: str = path.join('..','assets','parsed_scores','2016001942.json')
+#                 # obtém o histórico de um único estudante
+#                 student_grid: json = Score.read_json(student_grid)
+
+#                 # Does some boring stuffs to handle and map a given class to an value ...
+#                 # ... (usully, the greatest one for a subject)
+#                 # notas
+
+#                 # anda sobre o grafo para o(s) aluno(s)
+#                 notas_aluno = Competence.walk(grafos, notas)
+
+#         Important
+#         ---------
+#             This function calculates the sum propagated over all "subgraphs" that can exist in a single DiGraph.
+#             For example, take a look in the figure (:ref:`figure-graph-web`). In this figure, we have 3 independent subgraphs (We
+#             are assuming that, HUMI01|MATI01|MATI02 are indepedent graphs since they are not directly connected with each other).
+#             For those situations, this method sum the output of all subgraphs.
+
+#         Note
+#         ----
+#             This function runs the :meth:`modules.grid.Competence.__dfs_walk` for
+#             all competences.
+
+#             Bellow you can check the **manual debugging** for this method.
+
+#             .. image:: _static/img/graph_example_devweb_debug_1.png
+#                 :width: 310
+#                 :alt: Graph example - Desenvolvimento Web
+#                 :align: left
+
+#             .. image:: _static/img/graph_example_devweb_debug_2.png
+#                 :width: 310
+#                 :alt: Graph example - Desenvolvimento Web
+#                 :align: right
+
+
+#         See Also
+#         --------
+#             See more in :meth:`generate_competency_graphs`
+#         """
+#         logging.debug('-'*100)
+#         logging.debug('Walking over graphs')
+
+#         # Dicionário que irá conter o valor sobre cada competência
+#         notas_aluno: Dict[str, float] = {}
+#         # Itera sobre as competências
+#         for competencia, grafo in grafos.items():
+#             # ∀ competência, encontra a primeira matéria que possui ela
+#             edges: List[Tuple[str, str]] = list(grafo.edges())  # type: ignore
+#             nodes: Dict[str, str] = dict(grafo.nodes(data='period'))
+
+#             # Uma vez que o grafo foi montado em ordem cronológica, ...
+#             # ... sabemos que as arestas estarão em ordem crescente por período
+#             fst_materia: str = edges[0][0]
+#             fst_periodo: str = nodes[fst_materia]
+
+#             # deve pegar as primeiras disciplinas deste periodo
+#             # Para isso, pega todas as disciplinas do período de fst_materia
+#             materias_do_periodo: List[str] = [
+#                 k for k, v in nodes.items() if v == fst_periodo]
+#             # filtra elas com base naquelas que existem arestas saindo delas (que têm filhos)
+#             materias_grafos: List[str] = [
+#                 k for k in materias_do_periodo if list(grafo.successors(k))]
+
+#             # Em seguida, anda no seu grafo e obtêm o valor iterado sobre as notas ...
+#             # ... ou seja, a soma das notas propagadas
+#             logging.debug(f'\tCompetence {competencia} - Walking')
+
+#             # chama o dfs para cada subgrafo independente
+#             resultado: float = 0
+#             for materias in materias_grafos:
+#                 resultado += DFS.__dfs_walk(notas, grafo, materias)
+
+#             logging.debug(f'\tCompetence: {competencia} = {resultado}')
+#             # valor das notas iteradas sobre o grafo de uma competência "N"
+#             notas_aluno[competencia] = resultado
+#             logging.debug('-'*50)
+#         logging.debug('-'*100)
+#         # Notas do aluno propagadas no grafo de competência
+#         return notas_aluno
+
+
+# class BFS:
+#     """
+#     An object created to encapsulate all elements and calls that are used in BFS.
+#     """
+#     @staticmethod
+#     def generate_graphs(
+#             out: DataFrame,
+#             nodes: DiGraph) -> Dict[str, DiGraph]:
+#         """
+#         A method used to create a simple graph which, in the end of dfs :meth:`walk`, will be the sum of 1.
+
+#         .. _figure-graph-web2:
+
+#         .. figure:: _static/img/graph_example_desenvolvimento_web_2.png
+#             :width: 700
+#             :alt: Graph example - Desenvolvimento Web
+#             :align: center
+
+#             Graph example - Desenvolvimento Web
+
+#         In the image above, the values of `out` are:
+
+#         .. csv-table:: Values for `out`
+#             :header: "Period", "Acronym/Subject", "Value"
+#             :widths: 1,1,1
+#             :align: center
+
+#             1, "HUMI01", 0.0435
+#             1, "MATI01", 0.0870
+#             1, "MATI02", 0.0870
+#             2, "ECOI04", 0.0870
+#             4, "ECOI09", 0.2174
+#             4, "MATI04", 0.1304
+#             5, "ECOI11", 0.1304
+#             5, "ECOI14", 0.0435
+#             9, "ECOI25", 0.1739
+
+#         However, due to the normalization made for each period:
+
+#         .. math:: \\forall \\text{ period | } \\text{subject}_i = \\frac{\\text{current_subject_value}_i}{\\sum_{n=0}^N\\text{current_subject_value}_n}
+
+#         Important
+#         ---------
+#             The :math:`\\sum` of each period is equal to 1.0. E.g: \
+#             :math:`\\sum\\text{period}_1 = HUMI01\\cdot0.2 + MATI01\\cdot0.4 + MATI02\\cdot0.4 \\equiv 1.0`
+
+#         For the period 1:
+
+#         .. math::
+
+#             \\sum\\left(\\text{HUMI01}+\\text{MATI01}+\\text{MATI02}\\right) = 0.2175 \\
+#             \\therefore \\
+#             \\text{HUMI01} = \\frac{0.0435}{0.2175} = 0.2
+
+#         Doing so, we have:
+
+#         .. csv-table::
+#             :header: "Period", "Acronym/Subject", "Sum", "New value"
+#             :widths: 1,1,1,1
+#             :align: center
+
+#             1, "HUMI01", , 0.2
+#             1, "MATI01", 0.2175, 0.4
+#             1, "MATI02", , 0.4
+#             2, "ECOI04", 0.0870, 1.0
+#             4, "ECOI09", 0.3478, 0.6251
+#             4, "MATI04", , 0.3749
+#             5, "ECOI11", 0.1739, 0.7499
+#             5, "ECOI14", , 0.250
+#             9, "ECOI25", 0.1739, 1.0
+
+#         Tip
+#         ---
+#             1. Propagate the **current value** (acumulated * subject * edge) to the next node.
+#             2. Sum all returns of children nodes. Doing so, at the end, the value should be between [0,1].
+
+#         Note
+#         ----
+#             .. image:: _static/img/perceptron_view.jpg
+#                 :width: 500
+#                 :align: left
+
+#             **Why don't use perceptron approach?**
+
+#             **R.:** Perceptron classifies as 0 or 1 (activate or not the layer), doing so, we will not have
+#             the "percentual reference" in the end.
+
+#             |clear|
+
+#             Todo
+#             ---
+#                 According to *Giovani*, we can have a perceptron passing a value between those.
+
+#         Caution
+#         -------
+#             This method also assumes that, for each period, the maximum obtained value propagated will be 100%. It means that, for\
+#                 each period, the percentual values are normalized.
+
+#         See Also
+#         --------
+#             See the :meth:`walk`
+
+#         .. versionadded:: 0.0.8
+#         """
+#         return _generate_competency_graphs(out, nodes, isBFS=True)
+
+#         ...
+
+#     @staticmethod
+#     def _get_weight(
+#             notas: Dict[str, float],
+#             materia: str,
+#             peso: float,
+#             acumulado: float,
+#             roundp: int = 4) -> float:
+#         """
+#         Calculate the class scores for graph propagation.
+
+#         :Args:
+#             - `notas`: dictionary mapping a class acronym to an given score
+#             - `materia`: class acronym to be analysed
+#             - `peso`: A calculated percentual in terms of competency in a given semester.\
+#                 See more at :meth:`_get_competence_weight`.
+#             - `acumulado`: a propagated `peso` over a graph.
+
+#         :Kwargs:
+#             - `roundp`: The number of decimal places used to round
+
+#         :Returns:
+#             The calculated value plus `acumulado` multiplied by `peso`
+
+#         Tip
+#         ---
+#             Used in graph propagation
+
+#         .. math:: x =
+#             \\begin{cases}
+#                 \\text{acumulado}\\cdot\\text{peso}, \\text{[1]} \\\\
+#                 \\left(\\frac{\\text{notas[materia]}}{10}\\cdot\\text{acumulado}\\right)\\cdot\\text{peso},\\text{[2]} \\\\
+#             \\end{cases}
+
+#         Attention
+#         ---------
+#             - If student didn't pass yet: send only the current `acumulado` multiplied by `peso` to the next period
+#             - If student has a score to this subject: multiply the current `acumulado` by `peso` and by `subject value`
+#         """
+#         # Caso o aluno não tenha feito a matéria ainda, propaga apenas o acumulado pelo peso
+#         if materia not in notas:
+#             return round(acumulado * peso, roundp)
+#         # Caso já tenha feito a matéria, calcula pelo peso e retorna mais o acumulado
+#         return round((notas[materia]/10 * acumulado)*peso, roundp)
+
+#     @staticmethod
+#     def walk(
+#             grafos: Dict[str, DiGraph],
+#             notas: Dict[str, float]) -> Dict[str, float]:
+#         """
+#         Walk over all competences(graphs), propagating the current value
+#         over each semester.
+
+#         Args
+#         ----
+#         `grafos`: Dict[str, DiGraph]
+#             A dictionary mapping competences to graphs equivalent.
+#         `notas`: Dict[str, float]
+#             A dictionary mapping class acronym to a given score.
+
+#         Returns
+#         -------
+#             A dictionary mapping competency to a calculated and propagated value.
+
+#         Example
+#         -------
+#             .. code-block:: python
+#                 :linenos:
+
+#                 from modules.grid import Competence
+#                 from modules import Score
+#                 import json
+
+#                 grafos = Competence.generate_competency_graphs(out, nodes)
+
+#                 student_grid: str = path.join('..','assets','parsed_scores','2016001942.json')
+#                 # obtém o histórico de um único estudante
+#                 student_grid: json = Score.read_json(student_grid)
+
+#                 # Does some boring stuffs to handle and map a given class to an value ...
+#                 # ... (usully, the greatest one for a subject)
+#                 # notas
+
+#                 # anda sobre o grafo para o(s) aluno(s)
+#                 notas_aluno = Competence.walk(grafos, notas)
+
+#         Todo
+#         ----
+#             Test
+
+#         Warning
+#         -------
+#             Allow
+
+#         Important
+#         ---------
+#             This function calculates the sum propagated over all "subgraphs" that can exist in a single DiGraph.
+#             For example, take a look in the figure (:ref:`figure-graph-web`). In this figure, we have 3 independent subgraphs (We
+#             are assuming that, HUMI01|MATI01|MATI02 are indepedent graphs since they are not directly connected with each other).
+#             For those situations, this method sum the output of all subgraphs.
+
+#         Note
+#         ----
+#             This function runs the :meth:`modules.grid.Competence.__dfs_walk` for
+#             all competences.
+
+#             Bellow you can check the **manual debugging** for this method.
+
+#             .. image:: _static/img/graph_example_devweb_debug_1.png
+#                 :width: 310
+#                 :alt: Graph example - Desenvolvimento Web
+#                 :align: left
+
+#             .. image:: _static/img/graph_example_devweb_debug_2.png
+#                 :width: 310
+#                 :alt: Graph example - Desenvolvimento Web
+#                 :align: right
+
+#         See Also
+#         --------
+#             See more in :meth:`generate_competency_graphs`
+#         """
+#         logging.debug('-'*100)
+#         logging.debug('Walking over graphs')
+
+#         # Dicionário que irá conter o valor sobre cada competência
+#         notas_aluno: Dict[str, float] = {}
+#         # Itera sobre as competências
+#         for competencia, grafo in grafos.items():
+#             nodes: Dict[str, str] = dict(grafo.nodes(data='period'))
+
+#             for periodo in __get_period():
+#                 materias_do_periodo = list(
+#                     filter(lambda n: n == str(periodo), nodes))
+
+#             # ----------------------------------------------------
+#             # ----------------------------------------------------
+#             # ----------------------------------------------------
+#             edges: List[Tuple[str, str]] = list(grafo.edges())  # type: ignore
+
+#             # Uma vez que o grafo foi montado em ordem cronológica, ...
+#             # ... sabemos que as arestas estarão em ordem crescente por período
+#             fst_materia: str = edges[0][0]
+#             fst_periodo: str = nodes[fst_materia]
+
+#             # deve pegar as primeiras disciplinas deste periodo
+#             # Para isso, pega todas as disciplinas do período de fst_materia
+#             materias_do_periodo: List[str] = [
+#                 k for k, v in nodes.items() if v == fst_periodo]
+#             # filtra elas com base naquelas que existem arestas saindo delas (que têm filhos)
+#             materias_grafos: List[str] = [
+#                 k for k in materias_do_periodo if list(grafo.successors(k))]
+
+#             # Em seguida, anda no seu grafo e obtêm o valor iterado sobre as notas ...
+#             # ... ou seja, a soma das notas propagadas
+#             logging.debug(f'\tCompetence {competencia} - Walking')
+
+#             # chama o dfs para cada subgrafo independente
+#             resultado: float = 0
+#             for materias in materias_grafos:
+#                 resultado += DFS.__dfs_walk(notas, grafo, materias)
+
+#             logging.debug(f'\tCompetence: {competencia} = {resultado}')
+#             # valor das notas iteradas sobre o grafo de uma competência "N"
+#             notas_aluno[competencia] = resultado
+#             logging.debug('-'*50)
+#         logging.debug('-'*100)
+#         # Notas do aluno propagadas no grafo de competência
+#         return notas_aluno

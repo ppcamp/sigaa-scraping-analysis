@@ -3,6 +3,17 @@
 """
 This module contains all functions used to read the CSV files under a specified
 directory. It's responsable to parse the data obtained in the `Google Sheets`
+
+Todo
+----
+Implement loggers for
+
+- read_csvs
+
+Implement tests for:
+
+- test_read_csvs
+- merge_data
 """
 
 # list files over a specified directory
@@ -14,6 +25,7 @@ import pandas as pd
 from typing import List
 # logging
 import logging
+import unittest
 
 # A object used only to specify the type
 DataFrames = List[pd.DataFrame]
@@ -24,10 +36,14 @@ def read_csvs(sheetsDir: str) -> DataFrames:
     Open a directory and read all csv files inside.
     This function clean some unusefull elements based on researches models.
 
-    :Args:
-        - `sheetsDir`: Directory to search for csv files.
+    Args
+    ----
+    `sheetsDir`:
+        Directory to search for csv files.
 
-    :Returns:
+    Returns
+    -------
+    List[pandas.DataFrame]
         A list of pandas dataframes
     """
     full_path: str = path.realpath(sheetsDir)
@@ -76,10 +92,14 @@ def merge_data(dataframes: DataFrames) -> pd.DataFrame:
 
     .. math:: \\frac{\\sum_{i=0}^N \\text{dataframes}_i}{N}
 
-    :Args:
-        - `dataframes`: A list of dataframes to be merged.
+    Args
+    ----
+    `dataframes`:
+        A list of dataframes to be merged.
 
-    :Returns:
+    Returns
+    -------
+    pandas.DataFrame
         A single dataframe based on values passed through. mean(dataframes)
     """
     # Juntando os arquivos num único dataframe
@@ -90,3 +110,15 @@ def merge_data(dataframes: DataFrames) -> pd.DataFrame:
     out = out.mean()
 
     return out
+
+
+class TestSkillsetCSVS(unittest.TestCase):
+    def test_read_csvs(self):
+        ...
+
+    def test_merge_data(self):
+        ...
+
+
+if __name__ == '__main__':
+    unittest.main()

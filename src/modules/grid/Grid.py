@@ -3,6 +3,10 @@
 """
 This module contains the functions which check for existency and,
 if didn't found, scrap it from sigaa's systems.
+
+Todo
+----
+Implement `loggers` and `tests` for Grid
 """
 
 
@@ -16,7 +20,7 @@ from typing import Tuple
 from networkx import DiGraph
 # logging
 import logging as logger
-
+import unittest
 # Module responsable to get grid
 
 
@@ -25,12 +29,17 @@ def get_grid(grid: str, connection: str) -> Tuple[DiGraph, DiGraph]:
     Get this grid.
     If the grid is not in database. Got it and then, store in database
 
-    :Args:
-        - `grid`: The grid id. E.g, '0192015'
-        - `connection`: The connection string needed to access mongodb
+    Args
+    ----
+    `grid`:
+        The grid id. E.g, '0192015'
+    `connection`:
+        The connection string needed to access mongodb
 
-    :Returns:
-        - A `tuple` containing the pre and co requisite (networkx.DiGraph)
+    Returns
+    -------
+    Tuple[DiGraph, DiGraph]
+        A `tuple` containing the pre and co requisite (networkx.DiGraph)
     """
     logger.info("Getting grid")
     # Store in mongodb those two graphs
@@ -55,3 +64,8 @@ def get_grid(grid: str, connection: str) -> Tuple[DiGraph, DiGraph]:
         # Database.set(grid, GraphPre, GraphCo)
 
     return GraphPre, GraphCo  # type: ignore
+
+
+class TestGrid(unittest.TestCase):
+    def test_get_grid(self):
+        ...

@@ -2,6 +2,12 @@
 
 """
 This module is responsable to open the sigaa system and then scrapy if don't find the course in mongodb database.
+
+Todo
+----
+Missing loggers for:
+
+- :meth:`scrapping_grid`
 """
 
 
@@ -29,19 +35,23 @@ def scrapping_grid(courseCode: str) -> Tuple[DiGraph, DiGraph]:
     logon into sigaa's system and then, scrap it, retriving a new graph to a certain
     grid string
 
-    :Args:
-        - `courseCode`: Course number, e.g, "0192015"
+    Args
+    ----
+    `courseCode`:
+        Course number, e.g, "0192015"
 
-    :Returns:
+    Returns
+    -------
+    Tuple[DiGraph, DiGraph]
         A tuple with (pre,co) requisite graphs equivalents to this courseCode
 
-    .. note::
+    Note
+    ----
+    We only add the graph the connection
 
-        We only add the graph the connection
-
-    .. caution::
-
-        This graph ain't check for equivalency. It means that when using student's history, you'll problably need to check for equivalency too.
+    Caution
+    -------
+    This graph ain't check for equivalency. It means that when using student's history, you'll problably need to check for equivalency too.
     """
     # Load credentials json
     with open('./certs/credentials.json') as file:

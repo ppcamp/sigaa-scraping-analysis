@@ -1,29 +1,33 @@
 # -*- coding: utf-8 -*-
-
 # type: ignore
 
 """
 Module that contains some common functions to handle with ahp data.
 It performs the ahp calculations.
 
-.. calculate ahp:
+Todo
+----
+Must implement:
+
+- Test case for :class:`.Mapping` methods
+- Loggers for :class:`.Mapping` methods
 """
 
 from copy import deepcopy
 from typing import Dict, Final, List, Tuple, Union, no_type_check
 import typing
+import unittest
+import logging
+logger = logging.getLogger(__name__)
 
+# Inconsistency index (Random Index, RI) mapping.\
+# The index is equivalent to matrix cols (n) -1
 
-"""
-Inconsistency index (Random Index, RI) mapping.\
-The index is equivalent to matrix cols (n) -1
-
-JS_Index | cols |Random index  (calculated by Saaty)
----------|------|----------------------------------
-   0     |   1  | there's only one question. Therefore, you can't apply AHP
-   1     |   2  | there's only two questions. Therefore, you can't apply AHP, since that you just have two possible choices.
-   2^    |  3^  | there's at least three questions. Therefore, you use the value
-"""
+# JS_Index | cols |Random index  (calculated by Saaty)
+# ---------|------|----------------------------------
+#    0     |   1  | there's only one question. Therefore, you can't apply AHP
+#    1     |   2  | there's only two questions. Therefore, you can't apply AHP, since that you just have two possible choices.
+#    2^    |  3^  | there's at least three questions. Therefore, you use the value
 # test
 __RI: List[float] = [
     0,
@@ -67,7 +71,6 @@ def calculate(obj: List[List[float]], roundp: int = 4) -> Tuple[float, List[floa
 
     Example
     -------
-
     >>> from modules.ahp import Ahp
     >>> # import this module
     >>> from modules.ahp import Ahp
@@ -93,35 +96,30 @@ def calculate(obj: List[List[float]], roundp: int = 4) -> Tuple[float, List[floa
     .. _Analytic Hierarchy Process:
         https://www.youtube.com/watch?v=J4T70o8gjlk&ab_channel=ManojMathew
     """
+    # The AHP work as follows:
+    # 1) Developing a hierarchical structure with a goal at the top level, the attributes/criteria at
+    #     the second level and the alternatives at the third level
+    # 2) Determine the relative importance of different attributes or Criteria with respect to the goal
+    #     Pairwise comparation matrix. Bellow follows the example of relative scaling:
+    #             1           - Equal importance
+    #             3           - Moderate importance
+    #             5           - Strong importance
+    #             7           - Very strong importance
+    #             9           - Extreme importance
+    #         2,4,5,8        - Intermediate values
+    #     1/3, 1/5, 1/7, 1/9  - Are values for inverse comparison
+    # 3) Calculate the consistency
 
-    # code ...
-
-    """
-    The AHP work as follows:
-
-    1) Developing a hierarchical structure with a goal at the top level, the attributes/criteria at
-        the second level and the alternatives at the third level
-    2) Determine the relative importance of different attributes or Criteria with respect to the goal
-        Pairwise comparation matrix. Bellow follows the example of relative scaling:
-                1           - Equal importance
-                3           - Moderate importance
-                5           - Strong importance
-                7           - Very strong importance
-                9           - Extreme importance
-            2,4,5,8        - Intermediate values
-        1/3, 1/5, 1/7, 1/9  - Are values for inverse comparison
-    3) Calculate the consistency
-
-
-    Therefore, to this form:
-    1) The Main objective is get the discrepance bettween answers, the alternatives are the questions
-    """
+    # Therefore, to this form:
+    # 1) The Main objective is get the discrepance bettween answers, the alternatives are the questions
+    logger.debug(f'Calculating AHP for {obj}. Rounding by {roundp}')
 
     # the length of my matrix
     length = len(obj)
 
     # If exist only 2 questions, ahp is not needed
     if (length <= 2):
+        logger.debug('Exists only 2 questions. AHP can\'t be calculated')
         return 1, []
 
     # If we don't pass matrix object, we'll ...
@@ -129,118 +127,104 @@ def calculate(obj: List[List[float]], roundp: int = 4) -> Tuple[float, List[floa
     # if matrix is None:
     matrix = list(map(lambda row: deepcopy(row), obj))
 
-    """
-    This is the Pair-wise comparasion matrix
+    # This is the Pair-wise comparasion matrix
 
-    :Description:
-        Object that will be modified in ahp.
-        At this point it will be the copy of `obj`, which is something like this:
+    # :Description:
+    #     Object that will be modified in ahp.
+    #     At this point it will be the copy of `obj`, which is something like this:
 
-    Example
-    ---------
-    ________| Price | Storage | Camera | Looks
-    Price   |   1   |    5    |   4    | 7
-    Storage |  1/5  |    1    |   1/2  | 3
-    Camera  |  1/4  |    2    |   1    | 3
-    Looks   |  1/7  |   1/3   |  1/3   | 1
-    """
+    # Example
+    # ---------
+    # ________| Price | Storage | Camera | Looks
+    # Price   |   1   |    5    |   4    | 7
+    # Storage |  1/5  |    1    |   1/2  | 3
+    # Camera  |  1/4  |    2    |   1    | 3
+    # Looks   |  1/7  |   1/3   |  1/3   | 1
     pair_wise_comp_matrix = list(map(lambda row: deepcopy(row), obj))
 
     # Normalize the pair-wise matrix
     for col in range(length):
-        """
-        Sum each column
-
-        ________| Price | Storage | Camera | Looks
-        Price   |   1   |    5    |   4    | 7
-        Storage |  1/5  |    1    |   1/2  | 3
-        Camera  |  1/4  |    2    |   1    | 3
-        Looks   |  1/7  |   1/3   |  1/3   | 1
-        --------|-------|---------|--------|--------
-        Sum     |  1.59 |   8.33  |5.83    | 14
-        """
+        # Sum each column
+        # ________| Price | Storage | Camera | Looks
+        # Price   |   1   |    5    |   4    | 7
+        # Storage |  1/5  |    1    |   1/2  | 3
+        # Camera  |  1/4  |    2    |   1    | 3
+        # Looks   |  1/7  |   1/3   |  1/3   | 1
+        # --------|-------|---------|--------|--------
+        # Sum     |  1.59 |   8.33  |5.83    | 14
         column_sum = 0
         for row in range(length):
             column_sum += matrix[row][col]
 
-        """
-        Normalize the copied table
+        # Normalize the copied table
 
-        ________|     Price    |   Storage   |    Camera    | Looks
-        Price   |   (1)/1.59   |  (5)/8.33   |   (4)/5.83   | (7)/14
-        Storage |  (1/5)/1.59  |  (1)/8.33   |  (1/2)/5.83  | (3)/14
-        Camera  |  (1/4)/1.59  |  (2)/8.33   |   (1)/5.83   | (3)/14
-        Looks   |  (1/7)/1.59  | (1/3)/8.33  |  (1/3)/5.83  | (1)/14
-        --------|--------------|-------------|--------------|--------
-        Sum     |     1.59     |    8.33     |     5.83     |   14
-        """
+        # ________|     Price    |   Storage   |    Camera    | Looks
+        # Price   |   (1)/1.59   |  (5)/8.33   |   (4)/5.83   | (7)/14
+        # Storage |  (1/5)/1.59  |  (1)/8.33   |  (1/2)/5.83  | (3)/14
+        # Camera  |  (1/4)/1.59  |  (2)/8.33   |   (1)/5.83   | (3)/14
+        # Looks   |  (1/7)/1.59  | (1/3)/8.33  |  (1/3)/5.83  | (1)/14
+        # --------|--------------|-------------|--------------|--------
+        # Sum     |     1.59     |    8.33     |     5.83     |   14
         for row in range(length):
             pair_wise_comp_matrix[row][col] /= column_sum
 
-    """
-    Priority vector (sum of row / row length). Also named as criteria weights
-    ________|     Price    |   Storage   |    Camera    | Looks  | SUM(row)/cols -> criteria weights
-    Price   |    0.6289    |   0.6002    |    0.6891    |  0.500 | (
-        0.6289+0.6002+0.6891+0.500)/4
-    Storage |  (1/5)/1.59  |  (1)/8.33   |  (1/2)/5.83  | (3)/14 |
-    Camera  |  (1/4)/1.59  |  (2)/8.33   |   (1)/5.83   | (3)/14 |
-    Looks   |  (1/7)/1.59  | (1/3)/8.33  |  (1/3)/5.83  | (1)/14 |
-    --------|--------------|-------------|--------------|--------|
-    Sum     |     1.59     |    8.33     |     5.83     |   14
-    """
+    # Priority vector (sum of row / row length). Also named as criteria weights
+    # ________|     Price    |   Storage   |    Camera    | Looks  | SUM(row)/cols -> criteria weights
+    # Price   |    0.6289    |   0.6002    |    0.6891    |  0.500 | (
+    #     0.6289+0.6002+0.6891+0.500)/4
+    # Storage |  (1/5)/1.59  |  (1)/8.33   |  (1/2)/5.83  | (3)/14 |
+    # Camera  |  (1/4)/1.59  |  (2)/8.33   |   (1)/5.83   | (3)/14 |
+    # Looks   |  (1/7)/1.59  | (1/3)/8.33  |  (1/3)/5.83  | (1)/14 |
+    # --------|--------------|-------------|--------------|--------|
+    # Sum     |     1.59     |    8.33     |     5.83     |   14
     priorityVec: List[float] = [0.0]*length
     for row in range(length):
         priorityVec[row] = sum(pair_wise_comp_matrix[row])/length
 
-    """
-    Apply the (priorityVec) into column values
+    # Apply the (priorityVec) into column values
 
-    Criteria|
-     weights|    0.6038    |      0.1365     |    0.1957      | 0.0646
-    --------|--------------|-----------------|----------------|-----------
-            |     Price    |     Storage     |     Camera     | Looks
-    Price   |   1 * 0.6038 |    5 * 0.1365   |   4 * 0.1957   | 7 * 0.0646
-    Storage |  1/5 * 0.6038|    1 * 0.1365   |   1/2 * 0.1957 | 3 * 0.0646
-    Camera  |  1/4 * 0.6038|    2 * 0.1365   |   1 * 0.1957   | 3 * 0.0646
-    Looks   |  1/7 * 0.6038|   1/3 * 0.1365  |  1/3 * 0.1957  | 1 * 0.0646
-    """
+    # Criteria|
+    #  weights|    0.6038    |      0.1365     |    0.1957      | 0.0646
+    # --------|--------------|-----------------|----------------|-----------
+    #         |     Price    |     Storage     |     Camera     | Looks
+    # Price   |   1 * 0.6038 |    5 * 0.1365   |   4 * 0.1957   | 7 * 0.0646
+    # Storage |  1/5 * 0.6038|    1 * 0.1365   |   1/2 * 0.1957 | 3 * 0.0646
+    # Camera  |  1/4 * 0.6038|    2 * 0.1365   |   1 * 0.1957   | 3 * 0.0646
+    # Looks   |  1/7 * 0.6038|   1/3 * 0.1365  |  1/3 * 0.1957  | 1 * 0.0646
     for col in range(length):
         for row in range(length):
             matrix[row][col] = round(
                 priorityVec[col] * matrix[row][col], roundp)
 
-    """
-    Weight vector
+    # Weight vector
 
-    Criteria|              |                 |                |           | Weigth
-     weights|    0.6038    |      0.1365     |    0.1957      | 0.0646    | vector
-    --------|--------------|-----------------|----------------|-----------|--------
-            |     Price    |     Storage     |     Camera     | Looks     | SUM(row)
-    Price   |   1 * 0.6038 |    5 * 0.1365   |   4 * 0.1957   | 7 * 0.0646| 0.6038 + 0.6825 + 0.7832 + 0.4522 = 2.517
-    Storage |  1/5 * 0.6038|    1 * 0.1365   |   1/2 * 0.1957 | 3 * 0.0646|
-    Camera  |  1/4 * 0.6038|    2 * 0.1365   |   1 * 0.1957   | 3 * 0.0646|
-    Looks   |  1/7 * 0.6038|   1/3 * 0.1365  |  1/3 * 0.1957  | 1 * 0.0646|
-    """
+    # Criteria|              |                 |                |           | Weigth
+    #  weights|    0.6038    |      0.1365     |    0.1957      | 0.0646    | vector
+    # --------|--------------|-----------------|----------------|-----------|--------
+    #         |     Price    |     Storage     |     Camera     | Looks     | SUM(row)
+    # Price   |   1 * 0.6038 |    5 * 0.1365   |   4 * 0.1957   | 7 * 0.0646| 0.6038 + 0.6825 + 0.7832 + 0.4522 = 2.517
+    # Storage |  1/5 * 0.6038|    1 * 0.1365   |   1/2 * 0.1957 | 3 * 0.0646|
+    # Camera  |  1/4 * 0.6038|    2 * 0.1365   |   1 * 0.1957   | 3 * 0.0646|
+    # Looks   |  1/7 * 0.6038|   1/3 * 0.1365  |  1/3 * 0.1957  | 1 * 0.0646|
     weightVec: List[float] = [0.0]*length
     for row in range(length):
         weightVec[row] = sum(matrix[row])
 
-    """
-    Check consistency
+    # Check consistency
+    # Criteria|              |                |            |           | Weigth  | Result
+    #  weights|    0.6038    |      0.1365    |   0.1957   |  0.0646   | vector  |
+    # --------|--------------|----------------|------------|-----------|---------|-------------
+    #         |     Price    |    Storage     |   Camera   |   Looks   | SUM(row)| weightVec/priorityVec
+    # Price   |    0.6038    |     0.6825     |   0.7832   |   0.4522  |  2.517  | 2.517/0.6038
+    # Storage |    0.1208    |    0.1365      |   0.0979   |   0.1938  |  0.5490 | 0.5490/0.1365
+    # Camera  |    0.1510    |    0.2730      |   0.1958   |   0.1938  |  0.8136 | 0.8136/0.1957
+    # Looks   |    0.0863    |    0.0455      |   0.0653   |   0.0646  |  0.2616 | 0.2616/0.0646
+    # --------|--------------|----------------|------------|-----------|---------|-------------
+    # ->  lambda_max =>  [ (2.517/0.6038) + (0.5490/0.1365) + (0.8136/0.1957) + (0.2616/0.0646) ] / 4
+    # ->  CI => [lambda_max - n]/n - 1, where n is the number of cols
 
-    Criteria|              |                |            |           | Weigth  | Result
-     weights|    0.6038    |      0.1365    |   0.1957   |  0.0646   | vector  |
-    --------|--------------|----------------|------------|-----------|---------|-------------
-            |     Price    |    Storage     |   Camera   |   Looks   | SUM(row)| weightVec/priorityVec
-    Price   |    0.6038    |     0.6825     |   0.7832   |   0.4522  |  2.517  | 2.517/0.6038
-    Storage |    0.1208    |    0.1365      |   0.0979   |   0.1938  |  0.5490 | 0.5490/0.1365
-    Camera  |    0.1510    |    0.2730      |   0.1958   |   0.1938  |  0.8136 | 0.8136/0.1957
-    Looks   |    0.0863    |    0.0455      |   0.0653   |   0.0646  |  0.2616 | 0.2616/0.0646
-    --------|--------------|----------------|------------|-----------|---------|-------------
-    ->  lambda_max =>  [ (2.517/0.6038) + (0.5490/0.1365) + (0.8136/0.1957) + (0.2616/0.0646) ] / 4
-    ->  CI => [lambda_max - n]/n - 1, where n is the number of cols
-    """
     # We must use a function because lambda doesn't suppor tuple anymore
+
     def divide(icurr):
         # unpack
         i, curr = icurr
@@ -249,71 +233,14 @@ def calculate(obj: List[List[float]], roundp: int = 4) -> Tuple[float, List[floa
         list(map(divide, enumerate(weightVec)))) / length
     ci = (lambda_max - length) / (length-1)
 
-    """
-    Calculate the consistency ratio CR, which is given by the formula:
-    CR = CI/RI, where RI is the random index calculated by Saaty
-    """
+    # Calculate the consistency ratio CR, which is given by the formula:\
+    # CR = CI/RI, where RI is the random index calculated by Saaty
     cr = ci / __RI[length-1]
 
     # to compare, it must be less than 0.1 by Saaty
+    logger.debug(
+        f'AHP calculated. CI={ci}, CR={cr}, PRIORITY_VEC={priorityVec}')
     return cr, priorityVec
-
-
-def _mapping_competences(secoes: Dict[str, Union[List[float], float]]) -> Dict[str, float]:
-    """
-    Mapping the AHP priority vector to questions
-
-    Args
-    ----
-    `secoes`:
-        A dictionary containing a list (or scalar), to every matrix. \
-            A matrix is defined as *root*, *q1*, *q12*, *q13*, *q15*, *q2*, *q3*
-
-    Returns
-    -------
-    Dict[str, float]
-        It returns a dictionary mapping competences to an specific scalar.
-    """
-    # montando o vetor para situado na mesma posição (root ignorado)
-    return {
-
-        "Conhecimento técnico": secoes['root'][0],
-        "Competências, habilidades e atributos pessoais e profissionais: gerenciar projetos, compreender problemas e autoaprendizado": secoes['root'][1],
-        "Competências e habilidades interpessoais: trabalho em equipe e comunicação": secoes['root'][2],
-
-        "Conhecimento, métodos e ferramentas fundamentais de computação básica": secoes['q1'][1],
-        "Conhecimento, métodos e ferramentas na área de sistemas de software": secoes['q1'][2],
-        "Conhecimentos básicos em sistemas de comunicação": secoes['q1'][4],
-
-        "Desenvolvimento Web e Mobile": secoes['q13'][5],
-
-
-        "Matemática e física": secoes['q1'][0],
-        "Lógica, algoritmos, teoria da comp,  estruras de dados.": secoes['q12'][0],
-        "Linguagens e paradigmas.": secoes['q12'][1],
-        "PAA": secoes['q12'][2],
-        "Configurar plataformas para softwares e serviços.": secoes['q13'][0],
-        "Arquiteturas de computadores": secoes['q13'][1],
-        "Segurança de sis. de comp.": secoes['q13'][2],
-        "Engenharia de software": secoes['q13'][3],
-        "Inteligência artificial": secoes['q13'][4],
-        "Sistemas microprocessados": secoes['q1'][3],
-
-        "Redes de computadores": secoes['q15'],
-        # 1/secoes['q15'],
-        "Software para sistemas de comunicação": 1 - secoes['q15'],
-
-        "Conhecimento em sistemas de automação ": secoes['q1'][5],
-        "Gerenciar projetos e sistemas de computação": secoes['q2'][0],
-        "Engenharia-econômica": secoes['q2'][1],
-        "Compreender e resolver problemas": secoes['q2'][2],
-        "Autoaprendizado": secoes['q2'][3],
-        "Criatividade e Inovação": secoes['q2'][4],
-        "Comunicação oral e escrita": secoes['q3'][0],
-        "Língua inglesa": secoes['q3'][1],
-        "Empreender e exercer liderança": secoes['q3'][2],
-        "Trabalho em equipe": secoes['q3'][3],
-    }
 
 
 def get_q15_value(v: float, roundp: int = 3) -> float:
@@ -337,9 +264,7 @@ def get_q15_value(v: float, roundp: int = 3) -> float:
 
     Caution
     -------
-    This number should be in:
-
-    .. centered:: v = [1/9, 1/7, 1/5, 1/3, 1, 3, 5, 7, 9]
+    This number should be in [1/9, 1/7, 1/5, 1/3, 1, 3, 5, 7, 9]
 
     It does the following operation:
 
@@ -348,6 +273,7 @@ def get_q15_value(v: float, roundp: int = 3) -> float:
         x(n) = \\frac{V(n) - 1/9}{9-1/9} \\\\
         \\therefore \\begin{cases} x(1/9) \\approx 0 \\\\ x(9) \\approx 1 \\end{cases}
     """
+    logger.debug(f'Getting q15 value for {v}. Rounding by {roundp}')
     return round((v-1/9) / (9-1/9), roundp)
 
 
@@ -600,3 +526,47 @@ class Mapping:
             competences[competence] = matrices['q3'][index]
 
         return competences
+
+
+class TestAhpModule(unittest.TestCase):
+    def test_calculate(self):
+        import pandas as pd
+
+        # https://www.youtube-nocookie.com/embed/J4T70o8gjlk?start=335
+        # https://www.youtube-nocookie.com/embed/J4T70o8gjlk?start=569
+        ahp_testing_data = pd.DataFrame(
+            data={
+                'Price or Cost': [1, 0.2, 0.25, 0.14],
+                'Storage Space': [5, 1, 2, 0.33],
+                'Camera': [4, 0.5, 1, 0.33],
+                'Looks': [7, 3, 3, 1]},
+            index=['Price or Cost', 'Storage Space', 'Camera', 'Looks'])
+
+        # converting into a List[List[float]]
+        ahp_testing_data_matrix: List[List[float]] = list(
+            map(list, ahp_testing_data.to_numpy()))
+
+        ahp_test_ci: float
+        ahp_test_pv: List[float]
+        ahp_test_ci, ahp_test_pv = calculate(ahp_testing_data_matrix)
+
+        expected_pv = pd.DataFrame(
+            index=['Price or Cost', 'Storage Space', 'Camera', 'Looks'],
+            data={'Criteria weights': [0.6038, 0.1365, 0.1958, 0.0646]}
+        )
+        expected_ci = 0.037311
+        expected_pv_list = expected_pv['Criteria weights'].to_list()
+
+        for expected, result in zip(expected_pv_list, ahp_test_pv):
+            self.assertAlmostEqual(expected, result, 2)
+        self.assertAlmostEqual(expected_ci, ahp_test_ci, 2)
+
+    def test_get_q15_value(self):
+        self.assertEqual(1.0, get_q15_value(9))
+        self.assertEqual(0.1, get_q15_value(1))
+        self.assertEqual(0.0, get_q15_value(1/9))
+
+
+if __name__ == "__main__":
+    # run test
+    unittest.main()

@@ -3,14 +3,34 @@
 """
 Module that contains some common classes to handle with ahp data.
 It has the class to hold and retrieve ahp data.
+
+Todo
+----
+Implements tests for:
+
+- test_email
+- test_type
+- test_date
+- test_matrix_root
+- test_matrix_q1
+- test_matrix_q1sec2
+- test_matrix_q1sec3
+- test_matrix_q1sec5
+- test_matrix_q2
+- test_matrix_q3
+- test_parse
+- test_repr
+- test_pretty
+- test_toDict
 """
 
 from __future__ import annotations
 from enum import Enum, unique
 import json
 import pprint
-from typing import Any, Dict, List, Union
+from typing import Dict, List, Union
 from copy import deepcopy
+import unittest
 
 
 @unique
@@ -21,9 +41,11 @@ class FormDataType(Enum):
 
 class FormData:
     """
-    .. _FormData:
-
     This class hold some usefull methods to handle with *AHP* site data.
+
+    Todo
+    ----
+    Missing tests
 
     Examples
     --------
@@ -468,8 +490,6 @@ class FormData:
 
     def toDict(self) -> Dict[str, Union[str, Dict[str, Union[List[List[float]], float]]]]:
         """
-        .. _FormData.toDict():
-
         Convert to a dictionary
 
         Returns
@@ -479,8 +499,57 @@ class FormData:
         """
         return self._obj
 
-    def getDict(self) -> Dict[str, Union[str, Dict[str, Union[List[List[float]], float]]]]:
-        """
-        A alias to `FormData.toDict()`_ method.
-        """
-        return self.toDict()
+    # Alias to toDict function
+    getDict = toDict
+
+
+class TestFormData(unittest.TestCase):
+    def setUp(self) -> None:
+        return super().setUp()
+
+    def test_email(self):
+        test = FormData().setEmail("test@email.com")
+        self.assertEqual("test@email.com", test.getEmail())
+
+    def test_type(self):
+        ...
+
+    def test_date(self):
+        ...
+
+    def test_matrix_root(self):
+        ...
+
+    def test_matrix_q1(self):
+        ...
+
+    def test_matrix_q1sec2(self):
+        ...
+
+    def test_matrix_q1sec3(self):
+        ...
+
+    def test_matrix_q1sec5(self):
+        ...
+
+    def test_matrix_q2(self):
+        ...
+
+    def test_matrix_q3(self):
+        ...
+
+    def test_parse(self):
+        ...
+
+    def test_repr(self):
+        ...
+
+    def test_pretty(self):
+        ...
+
+    def test_toDict(self):
+        ...
+
+
+if __name__ == '__main__':
+    unittest.main()

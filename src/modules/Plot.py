@@ -1,5 +1,15 @@
 # -*- coding: utf-8 -*-
 
+"""
+Contains all the functions used to plot data
+
+Todo
+----
+.. raw:: html
+
+    <mark>Refactor this module</mark>
+"""
+
 import logging as logger
 from typing import List, Tuple
 import pandas as pd
@@ -22,7 +32,8 @@ def spider_plot(
     Does spider plot. Accept at max 2 elements.
     By default, it assumes that only are possible values between 0..1
 
-    :Args:
+    Keyword Args
+    ---------------
         - `categories`: A list with name strings that will be used as labels
 
     :Kwargs:
@@ -93,7 +104,8 @@ def parallel_plot(
     Realize a parallel plot. A parallel plot is a plot similar to line plt.
     Check it out the `parallel plot`_ documentation.
 
-    :Args:
+    Keyword Args
+    ---------------
         - `df`: The dataframe object to be plotted
         - `column_color`: The name of the column that holds the float equivalent number to be colored.\
             This column should hold ranges like 0.0..3.0
@@ -142,7 +154,8 @@ def pie_plot(
     """
     Generates a pie plot for a given dataframe.
 
-    :Args:
+    Keyword Args
+    ---------------
         - `df`: A pandas dataframe object like
         - `col`: The column to be analysed
 
@@ -175,7 +188,7 @@ def pie_plot(
         title=f"Distribuição da competência: {col}")
 
     # adicionando o nome das matérias ocultadas
-    fig.add_annotation(
+    fig.add_annotation(  # type: ignore
         x=0, y=-0.27,
         text=annotation,
         showarrow=False)
@@ -196,7 +209,8 @@ def bar_plot(
     """
     Generates a bar plot for each row in a given column.
 
-    :Args:
+    Keyword Args
+    ---------------
         - `df`: A dataframe object to be plotted
         - `col`: The column to be analysed
 
@@ -207,8 +221,8 @@ def bar_plot(
     :Returns:
         The figure object of the image created
 
-    .. seealso::
-
+    See Also
+    --------
         `See more on Pyplot exporting image <https://plotly.com/python/static-image-export>`_
     """
     # logger.debug(f"Starting a new bar_plot: {filename}")
@@ -238,7 +252,8 @@ def all_competencies(df: pd.DataFrame, show: bool = False) -> FigureWidget:
     """
     Does a plot for all competencies (columns) in a given df.
 
-    :Args:
+    Keyword Args
+    ---------------
         - `df`: A dataframe object like
 
     :Kwargs:

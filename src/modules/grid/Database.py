@@ -2,6 +2,18 @@
 
 """
 This module it's responsable to store/retrieve the graphs from mongodb.
+
+Todo
+----
+Implement loggers for:
+
+- Grids.set
+
+Implement tests for:
+
+- test_get
+- test_contains
+- test_insert
 """
 
 # Convert Graph to json
@@ -11,30 +23,24 @@ from networkx.classes.digraph import DiGraph
 from networkx.readwrite import json_graph
 # MongoDB
 from pymongo import MongoClient
+import unittest
 
 
 class Grids(object):
     """
     This class is responsable to get/put grids into database.
 
-    :Example:
-        .. code-block:: python
-            :linenos:
-
-            # importing this module
-            from modules.grid.Database import Grids
-
-            grids_module = Grids(mongo_connection_string)
-            unexistent_courseCode = "coxinha"
-
-            # throw this AssertionError
-            assert unexistent_courseCode in grids_module, "It will throw this error"
+    Example
+    -------
+    >>> # importing this module
+    >>> from modules.grid.Database import Grids
+    >>> grids_module = Grids(mongo_connection_string)
+    >>> unexistent_courseCode = "coxinha"
+    >>> # throw this AssertionError
+    >>> assert unexistent_courseCode in grids_module, "It will throw this error"
     """
 
     def __init__(self, connectionString) -> None:
-        """
-        By default, it starts a mongodb client.
-        """
         # Create a mongoclient
         self.client = MongoClient(connectionString)
         # Connect to database
@@ -46,14 +52,18 @@ class Grids(object):
         Convert graphs to json, then, to string. After that, store it
         into database.
 
-        :Args:
-            - `grid`: A grid string like. E.g: "0192015"
-            - `GraphPreReq`: A `networkx.DiGraph`, where the edges are the pre requisite
-            - `GraphCoReq`: A `networkx.DiGraph`, where the edges are the co requisite
+        Args
+        ----
+        `grid`:
+            A grid string like. E.g: "0192015"
+        `GraphPreReq`:
+            A `networkx.DiGraph`, where the edges are the pre requisite
+        `GraphCoReq`:
+            A `networkx.DiGraph`, where the edges are the co requisite
 
-        .. tip::
-
-            Check it out the :mod:`.Grid` module.
+        Tip
+        ---
+        Check it out the :mod:`.Grid` module.
         """
         pre = json_graph.node_link_data(GraphPreReq)
         co = json_graph.node_link_data(GraphCoReq)
@@ -72,14 +82,20 @@ class Grids(object):
         """
         Get object then convert it to graph again
 
-        :Args:
-            - `grid`: Equivalent grid number.
+        Args
+        ----
+        `grid`:
+            Equivalent grid number.
 
-        :Returns:
-            - `Tuple`: (pre, co) Pre and corequisites (digraphs)
+        Returns
+        -------
+        `Tuple`:
+            (pre, co) Pre and corequisites (digraphs)
 
-        :Raises:
-            *Exception* if couldn't fetch some object with this courseCode.
+        Raises
+        ------
+        `Exception`:
+            if couldn't fetch some object with this courseCode.
         """
         # Get object
         obj = self.db.Grids.find_one({"grid": grid})
@@ -107,10 +123,14 @@ class Grids(object):
         """
         Check if exists this item in dabatase
 
-        :Args:
-            - `item`: The course code to be checked. E.g: "0192015"
+        Args
+        ----
+        `item`:
+            The course code to be checked. E.g: "0192015"
 
-        :Returns:
+        Returns
+        -------
+        bool
             True if the item exists in database
         """
         # Get object
@@ -122,8 +142,15 @@ class Grids(object):
         """
         Get the object with this key. This function is an alias to :meth:`get`
 
-        :Args:
-            - `key`: A courseCode string
+        Args
+        ----
+        `key`:
+            A courseCode string
+
+        Returns
+        -------
+        Tuple[DiGraph, DiGraph]
+            The object that matches with the key
         """
         return self.get(key)
 
@@ -132,3 +159,15 @@ class Grids(object):
         Close mongo's connections
         """
         self.client.close()
+
+
+class TestGridsConnection(unittest.TestCase):
+    def test_get(self):
+        ...
+
+    def test_contains(self):
+        ...
+
+    def test_insert(self):
+        # set + close
+        ...

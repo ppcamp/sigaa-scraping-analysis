@@ -6,6 +6,18 @@ This module contains methods to:
 - Read a given student history (pdf), and parse it into a dataframe. :meth:`parse_pdf`
 - Save the dataframe into a json. :meth:`save_analysis`
 - Load the json equivalent to a dataframe object. :meth:`read_json`
+
+Todo
+----
+Implement tests for:
+
+- test_read_json
+- test_save_analysis
+- Testtest_parse_pdf
+
+Implement loggers for:
+
+- parse_pdf
 """
 
 from os import path
@@ -17,18 +29,35 @@ from pandas import DataFrame
 # Parse json to string
 import json
 
+import unittest
+
 
 def read_json(filepath: str) -> json:
     """
     Read a json file equivalent to student's grid.
 
-    :Args:
-        - `filepath`: path where to load the json file
+    Args
+    ----
+    `filepath`:
+        path where to load the json file
 
-    :Returns:
-        - The equivalent json representation
+    Returns
+    -------
+    json
+        The equivalent json representation
+
+    Note
+    ----
+    It's just a shortcut to read the file
+
+    Example
+    -------
+    >>> from modules.score import read_json
+    >>> import os
+    >>> p = os.path.realpath("../file.json")
+    >>> read_json(p)
     """
-    out = NotImplemented
+    out = None
     with open(filepath) as f:
         out = json.loads(f.read())
     return out
@@ -39,9 +68,14 @@ def save_analysis(out: DataFrame, filename: str, dirname: str) -> None:
     Save the score loaded into a json object.
     Usually, this methods depends of :meth:`parse_pdf`.
 
-    :Args:
-        - `filename`: the name of generated file
-        - `dirname`: place to put the output file
+    Args
+    ----
+    `out`:
+        the data to store
+    `filename`:
+        the name of generated file
+    `dirname`:
+        place to put the output file
     """
     with open(path.join('..', dirname, filename + '.json'), 'w') as outfile:
         outfile.write(json.dumps(out))
@@ -51,22 +85,28 @@ def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> DataFrame:
     """
     Read a student score and parse it to a json file
 
-    :Args:
-      - `studentId`: The student unique id
-      - `inputDir`: Directory where are placed the input files. (Based on current file)
+    Args
+    ----
+    `studentId`:
+        The student unique id
+    `inputDir`:
+        Directory where are placed the input files. (Based on current file)
 
-    :Kwargs:
-        - `outDir`: *OPTIONAL*. Directory to save the json objects. (Based on project dir)
+    Keyword Args
+    ------------
+    `outDir`:
+        Directory to save the json objects. (Based on project dir)
 
-    :Returns:
-      Returns a dataframe containing the parsed value
+    Returns
+    -------
+    DataFrame
+        Returns a dataframe containing the parsed value
     """
 
     # Read pdf file
-    df: List[DataFrame] = tabula.read_pdf(
+    df: List[DataFrame] = tabula.read_pdf(  # type: ignore
         path.join(inputDir, f'historico_{studentId}.pdf'),
-        pages='all'
-    )  # type: ignore
+        pages='all')
 
     # Internal function
     def get_before(dataframe: DataFrame, currentline: int, columname: str) -> str:
@@ -74,12 +114,18 @@ def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> DataFrame:
         Search for lines above to get an non NaN value
         (Only work for string)
 
-        :Args:
-            - `dataframe`: Pandas dataframe containing
-            - `currentline`: The number that represetns the current line to search before
-            - `columnname`: Column's name to search for
+        Args
+        ----
+        `dataframe`:
+            Pandas dataframe containing
+        `currentline`:
+            The number that represetns the current line to search before
+        `columnname`:
+            Column's name to search for
 
-        :Returns:
+        Returns
+        -------
+        str
             A string containing the usable value
         """
         i, value = currentline, ''
@@ -98,10 +144,14 @@ def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> DataFrame:
         """
         Merge the multiples dataframes into a only one
 
-        :Args:
-            dflist: A list of dataframes to search for
+        Args
+        ----
+        `dflist`:
+            A list of dataframes to search for
 
-        :Returns:
+        Returns
+        -------
+        DataFrame
             A unique merged dataframe
         """
         scores = {}
@@ -111,10 +161,14 @@ def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> DataFrame:
             """
             Change "," to "." character
 
-            :Args:
-                - `number`: A value to convert the float format
+            Args
+            ----
+            `number`:
+                A value to convert the float format
 
-            :Returns:
+            Returns
+            -------
+            str
                 A new string that represents this value in '.' format
             """
             return number.replace(',', '.')
@@ -124,10 +178,14 @@ def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> DataFrame:
             """
             Check if type is string, if so, convert it and return (or just return)
 
-            :Args:
-                - `val`: a object that will be checked for its properties
+            Args
+            ----
+            `val`:
+                a object that will be checked for its properties
 
-            :Returns:
+            Returns
+            -------
+            Union[str, float]
                 A new string or a float equivalent
             """
             if (type(val) is str) and ('--' not in val):
@@ -192,3 +250,14 @@ def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> DataFrame:
 
     # Return the json object
     return out
+
+
+class TestScore(unittest.TestCase):
+    def test_read_json(self):
+        ...
+
+    def test_save_analysis(self):
+        ...
+
+    def test_parse_pdf(self):
+        ...

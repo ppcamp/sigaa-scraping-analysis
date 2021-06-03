@@ -2,13 +2,29 @@
 
 """
 A module containing some usefull functions that can be shared with another modules
+
+Todo
+----
+Implement tests for:
+
+- test_raise_MinimumLenghtError
+- test_raise_TypeError
+- test_get_competences_and_consistency
+- test_calc_mean_matrix
+- test_calc_ahp_for_new_mat
 """
 
 from __future__ import annotations
+import sys
+
+if __name__ == '__main__':
+    # Append this libraries if not in the path
+    import os
+    sys.path.insert(0, os.path.realpath('./src/'))
+
 import unittest
 from typing import Dict, List, Tuple, Union, overload
 import logging as logger
-import sys
 import numpy as np
 import pandas as pd
 from modules.ahp import Ahp
@@ -19,11 +35,13 @@ class MinimumLenghtError(Exception):
     """
     Exception raised when you didn't achieved the minimum numbers of elements.
 
-    :Args:
-        - `message`: The value to raise
+    Args
+    ----
+    `message`:
+        The value to raise
     """
 
-    def __init__(self, message):
+    def __init__(self, message: str):
         self.message = message
         super().__init__(self.message)
 
@@ -33,23 +51,26 @@ def average(args: List[float], roundp: int = 4) -> float:
     """
     Calculate the mean of a given amount of values.
 
-    :Args:
-        - `args`: A list of floats
+    Args
+    ----
+    `args`:
+        A list of floats
 
-    :Kwargs:
-        - `roundp`: Number of decimal places used to round
+    Keyword Args
+    ------------
+    `roundp`:
+        Number of decimal places used to round
 
-    :Returns:
+    Returns
+    -------
+    float
         The median of this vector
 
-    :Example:
-        .. code-block:: python
-            :linenos:
-            :caption: Using a list of float
-
-            l = [1, 1, 1, 1, 1]
-            average(l)
-            # will be 1
+    Example
+    -------
+    >>> l = [1, 1, 1, 1, 1]
+    >>> average(l)
+    1
 
     .. centered:: Equation that describes its behavior:
     .. math:: \\frac{\\sum_{i=0}^N\\text{arg}_i}{N}
@@ -66,14 +87,24 @@ def average(args: List[List[List[float]]], roundp: int = 4) -> np.ndarray:
     Calculate the mean of a given amount of values.
     It can performs the mean over List[List[float]] or List[float].
 
-    :Args:
-        - `args`: A list of matrices
+    Args
+    ----
+    `args`:
+        A list of matrices
 
-    :Kwargs:
-        - `roundp`: Number of decimal places used to round
+    Keyword Args
+    ------------
+    `roundp`:
+        Number of decimal places used to round
 
-    :Returns:
+    Returns
+    -------
+    np.ndarray
         The matrix that corresponds to median for each position
+
+    Example
+    -------
+
 
     .. centered:: Equation that describes its behavior:
     .. math:: \\text{output} = \\frac{\\sum_{n=0}^N \\mathb{M}[n]_\\text{i x j}}{N}
@@ -89,46 +120,59 @@ def average(args: ..., roundp: int = 4) -> ...:
     Calculate the mean of a given amount of values.
     It can performs the mean over List[List[float]] or List[float].
 
-    :Args:
-        - `args`: A list of floats or a list of matrices
+    .. centered:: Equation that describes the behavior when using a list of floats:
 
-    :Kwargs:
-        - `roundp`: Number of decimal places used to round
+    .. math::
 
-    :Example:
-        .. code-block:: python
-            :linenos:
-            :caption: Using a list of float
+        \\frac{\\sum_{i=0}^N\\text{arg}_i}{N}
 
-            l = [1, 1, 1, 1, 1]
-            average(l)
-            # will be 1
+    .. centered:: Equation that describes the behavior when using matrices:
 
-        .. centered:: Equation that describes its behavior:
-        .. math:: \\frac{\\sum_{i=0}^N\\text{arg}_i}{N}
+    .. math::
 
-        .. code-block:: python
-            :linenos:
-            :caption: Using a list of list of floats
+        \\text{output}_\\text{(i,j)} = \\frac{\\sum_{n=0}^N \\text{Matrix}[n]_\\text{(i,j)}}{N} \\text{,     } \\forall \\text{ }0 \\leq i,j < N
 
-            from copy import deepcopy
+    Args
+    ----
+    `args`:
+        A list of floats or a list of matrices
 
-            a = [
-                [1, 1, 1],
-                [1, 1, 1],
-            ]
-            b = deepcopy(a)
+    Keyword Args
+    ------------
+    `roundp`:
+        Number of decimal places used to round
 
-            result = average([a,b])
-            expected_result = deepcopy(a)
+    Raises
+    ------
+    `MinimumLenghtError`:
+        if the len(args) are less than 2
+    `TypeError`:
+        if the input type are not List[List[List[float]]] or List[float]
 
-            # iterate and raise an error. P.S.: It won't throw any error
-            for row in range(2):
-                for col in range(3):
-                    assert result[row][col] == expected_result[row][col]
 
-        .. centered:: Equation that describes its behavior:
-        .. math:: \\text{output}_\\text{(i,j)} = \\frac{\\sum_{n=0}^N \\text{Matrix}[n]_\\text{(i,j)}}{N} \\text{,     } \\forall \\text{ }0 \\leq i,j < N
+    Examples
+    ---------
+        Using a list of float
+
+        >>> l = [1, 1, 1, 1, 1]
+        >>> average(l)
+        1
+
+        Using a list of list of floats
+
+        >>> from copy import deepcopy
+        >>> a = [
+        ...     [1, 1, 1],
+        ...     [1, 1, 1],
+        ... ]
+        >>> b = deepcopy(a)
+        >>> result = average([a,b])
+        >>> expected_result = deepcopy(a)
+        >>> # iterate and raise an error. P.S.: It won't throw any error
+        >>> for row in range(2):
+        ...    for col in range(3):
+        ...        assert result[row][col] == expected_result[row][col]
+
 
     .. versionchanged:: 0.0.9
         Create two functions, splicing documentation according with param type.
@@ -138,14 +182,14 @@ def average(args: ..., roundp: int = 4) -> ...:
     """
     from statistics import mean
 
-    if type(args) != float and type(args) != list:
-        raise TypeError(
-            f"The elements must be a List[float] or List[List[List[float]]]. The type is {type(args)}")
-
     # must exist at least two elements
     if len(args) < 2:
         raise MinimumLenghtError(
             f"You should pass, at least, an array with 2 elements")
+
+    if type(args[0]) != float and type(args) != list:
+        raise TypeError(
+            f"The elements must be a List[float] or List[List[List[float]]]. The type is {type(args)}")
 
     # logger.debug(f'Average called.')
     # if passed a list of float, returns a single float element
@@ -178,8 +222,10 @@ def errprint(msg: str) -> None:
     """
     Print some error message, returning a different value from default (1).
 
-    :Args:
-        - `msg`: Message to be shown
+    Args
+    ----
+    `msg`:
+        Message to be shown
     """
     sys.stderr.write('Error: ' + msg)
 
@@ -191,14 +237,19 @@ def get_competences_and_consistency(
     """
     It calculates the ahp for each *data*
 
-    :Args:
-        - `data`: A list of data that will be placed as rows in result dataframes
-        - `tt`: Type of each list of *data*. See more on :class:`modules.ahp.Types.FormDataType`
+    Args
+    ----
+    `data`:
+        A list of data that will be placed as rows in result dataframes
+    `tt`:
+        Type of each list of *data*. See more on :class:`modules.ahp.Types.FormDataType`
 
-    :Returns:
+    Returns
+    -------
+    Tuple[pd.DataFrame, pd.DataFrame]
         A tuple that contains:
-            - The mongo competences calculated and parsed to each competence
-            - The mongo consistency for each matrix
+            1. The mongo competences calculated and parsed to each competence
+            2. The mongo consistency for each matrix
     """
     t: str = tt.value
 
@@ -242,11 +293,11 @@ def get_competences_and_consistency(
             else:
                 # caso seja uma matriz, calcula o ahp ...
                 # ... NOTE que aceita AHP errados
-                if v[0][0] != 0:
+                if v[0][0] != 0:  # type: ignore
                     _cline[k], priority_vec = Ahp.calculate(v)  # type: ignore
                 else:
                     _cline[k] = 0  # type: ignore
-                    priority_vec = [0]*len(v)
+                    priority_vec = [0]*len(v)  # type: ignore
 
             # adiciona as competências para cada matriz
             _secoes[k]: Union[float, List[float]
@@ -269,15 +320,19 @@ def calc_mean_matrix(data: List[FormData]) -> Dict[str, Union[float, List[List[f
     """
     It calculates the mean matrix that corresponds to the mean of all *data*.
 
-    .. attention::
+    Attention
+    ---------
+    - It ignores matrices fullfilled with 0 for the mean calculation.
+    - It also ignores matrices where the *ahp wasn't valid*
 
-        - It ignores matrices fullfilled with 0 for the mean calculation.
-        - It also ignores matrices where the *ahp wasn't valid*
+    Args
+    ----
+    `data`:
+        The list of data obtained from :meth:`modules.ahp.Database.AhpForm.findByType`
 
-    :Args:
-        - `data`: The list of data obtained from :meth:`modules.ahp.Database.AhpForm.findByType`
-
-    :Returns:
+    Returns
+    -------
+    Dict[str, Union[float, List[List[float]]]]
         A dictionary mapping each matrix to its equivalent mean matrix.
     """
     # dicionário de matrizes (que irão conter a média das matrizes )
@@ -305,10 +360,10 @@ def calc_mean_matrix(data: List[FormData]) -> Dict[str, Union[float, List[List[f
                 # verifica se a matriz atual foi preenchida ...
                 # ... se foi, adiciona essa matriz válida ...
                 # ... dessa forma, futuramente, ela será incluída no cálculo da média
-                if current[0][0] != 0:
+                if current[0][0] != 0:  # type: ignore
                     # logger.debug(
                     # f'\t\tThe matrix for this respondent was fullfilled')
-                    cr, _ = Ahp.calculate(current)
+                    cr, _ = Ahp.calculate(current)  # type: ignore
                 # também verifica se é um ahp válido
                 if cr <= 0.1:
                     # logger.debug(
@@ -338,15 +393,19 @@ def calc_ahp_for_new_mat(
     """
     This function are only used to calculate AHP for each `matrices`
 
-    :Args:
-        - `matrices`: A dictionary mapping a matrix to a matrix or a float
+    Args
+    ----
+    `matrices`:
+        A dictionary mapping a matrix to a matrix or a float
 
-    :Returns:
+    Returns
+    -------
+    Dict[str, Union[List[float], float]]
         A dictionary containing the *priority vector* of each matrix.
 
-    .. important::
-
-        This method only calculate AHP again. It *doesn't check if AHP are valid or not*
+    Important
+    ---------
+    This method only calculate AHP again. It *doesn't check if AHP are valid or not*
     """
     secoes: Dict[str, Union[List[float], float]] = {}
     logger.debug('Calculating ahp for new matrices')
@@ -370,7 +429,7 @@ def calc_ahp_for_new_mat(
     return secoes
 
 
-class TestUtil(unittest.TestCase):
+class TestBasics(unittest.TestCase):
     def test_average_to_floats(self):
         v = [3.0, 56.0, 1.0, 41.0]
         test = round(sum(v)/len(v), 3)
@@ -393,6 +452,21 @@ class TestUtil(unittest.TestCase):
                     result[row][col],
                     expected_result[row][col],
                     f"result[{row}][{col}] = {result[row][col]}")
+
+    def test_raise_MinimumLenghtError(self):
+        ...
+
+    def test_raise_TypeError(self):
+        ...
+
+    def test_get_competences_and_consistency(self):
+        ...
+
+    def test_calc_mean_matrix(self):
+        ...
+
+    def test_calc_ahp_for_new_mat(self):
+        ...
 
 
 if __name__ == '__main__':
