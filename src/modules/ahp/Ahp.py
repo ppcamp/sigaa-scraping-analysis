@@ -300,7 +300,7 @@ class Mapping:
         # "Conhecimento, métodos e ferramentas na área de sistemas de software",
         "Sistemas microprocessados",
         # "Conhecimentos básicos em sistemas de comunicação",
-        "Conhecimento em sistemas de automação ",
+        "Conhec. em sist. de aut.",
     ]
 
     # In sigaa's form there is these fields
@@ -310,19 +310,19 @@ class Mapping:
         "Conhecimento, métodos e ferramentas na área de sistemas de software",
         "Sistemas microprocessados",
         "Conhecimentos básicos em sistemas de comunicação",
-        "Conhecimento em sistemas de automação ",
+        "Conhec. em sist. de aut.",
     ]
 
     COMPETENCES_MATRIX_Q12: Final[List[str]] = [
-        "Lógica, algoritmos, teoria da comp,  estruras de dados.",
-        "Linguagens e paradigmas.",
+        "Lóg., algor. teoria e estrura de dados.",
+        "Ling. e parad.",
         "PAA",
     ]
 
     COMPETENCES_MATRIX_Q13: Final[List[str]] = [
-        "Configurar plataformas para softwares e serviços.",
+        "Conf. plataformas para softwares e serviços",
         "Arquiteturas de computadores",
-        "Segurança de sis. de comp.",
+        "Seg. de sis. de comp.",
         "Engenharia de software",
         "Inteligência artificial",
         "Desenvolvimento Web e Mobile",
@@ -363,6 +363,11 @@ class Mapping:
         -------
         Dict[str, Union[List[float], float]]
             A dictionary mapping this competences to it's equivalent matrix.
+
+        Raises
+        ------
+        `Exception`:
+
 
         Note
         ----
@@ -437,12 +442,8 @@ class Mapping:
             ['q1', 'q12', 'q13', 'q15', 'q2', 'q3'],
             [q1, q12, q13, q15, q2, q3]))
 
-    @staticmethod
-    def to_matrices(competences: Dict[str, float]) -> Dict[str, Union[List[float], float]]:
-        """
-        It's just a bidding to :meth:`.to_sections`
-        """
-        return Mapping.to_sections(competences)
+    # It's just a bidding to :meth:`.to_sections`
+    to_matrices = to_sections
 
     @staticmethod
     def remove_unused_keys(data: List[float]) -> List[float]:
