@@ -23,7 +23,7 @@ graphs
 mongodb/
 
 # ignore builded pages under documentation
-#**build
+**build
 
 # ignore python cache
 **/__pycache__
