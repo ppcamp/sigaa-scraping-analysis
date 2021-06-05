@@ -14,5 +14,15 @@
     "PYTHONPATH": "${workspaceFolder}/src;"
 },
   "python.envFile": "${workspaceFolder}/.env",
-  "restructuredtext.confPath": "${workspaceFolder}/src/doc/source"
+  "restructuredtext.confPath": "${workspaceFolder}/src/doc/source",
+  "python.testing.unittestArgs": [
+    "-v",
+    "-s",
+    "./src",
+    "-p",
+    "test_*.py"
+  ],
+  "python.testing.pytestEnabled": false,
+  "python.testing.nosetestsEnabled": false,
+  "python.testing.unittestEnabled": true
 }

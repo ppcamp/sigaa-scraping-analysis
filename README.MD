@@ -10,6 +10,7 @@ This repository contains some codes used in the article that will be published l
   - [Documentation](#documentation)
     - [How to document](#how-to-document)
     - [Sphinx themes:](#sphinx-themes)
+  - [Tests](#tests)
   - [Some usefull commands:](#some-usefull-commands)
   - [Packages needed](#packages-needed)
     - [See also](#see-also)
@@ -52,12 +53,23 @@ You can check [here](https://www.google.com/search?q=google+documentation+python
 - read the docs (default)
 - asteroid
 
+
+## Tests
+- You can test the python codes using the script "tests.py":
+
+  ```bash
+  # run all the tests
+  python src/tests.py
+  ```
+- You also can use the "vscode testing tool":
+  ```raw
+  Press: CTRL+SHIFT+P or F1
+  and then, type: Tests:
+  ```
+
 ## Some usefull commands:
 
 ```bash
-# run all the tests
-python src/tests.py
-
 # autodocumentation sphinx api (inside source folder)
 sphinx-apidoc -o . ../../modules/
 

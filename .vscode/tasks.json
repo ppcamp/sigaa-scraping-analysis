@@ -12,11 +12,12 @@
         "html",
         "--directory=${workspaceFolder}/src/doc"
       ],
-      "windows":{
+      "windows": {
         "args": [
           "./src/doc/make.bat",
           "html",
-          "--directory=${workspaceFolder}/src/doc"]
+          "--directory=${workspaceFolder}/src/doc"
+        ]
       },
       "group": {
         "kind": "build",
@@ -24,6 +25,22 @@
       },
       "presentation": {
         "reveal": "always"
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "command": "",
+      "label": "Run tests",
+      "args": [
+        "python ./src/tests.py"
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "silent"
       },
       "problemMatcher": []
     }
