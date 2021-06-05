@@ -61,7 +61,7 @@ def __get_period() -> Generator[int, None, None]:
     Computes the current period
 
     :Yields:
-        A value [0,9] for every period
+        A value [0,10] for every period
     """
     p: int = 0
     while p < 10:
