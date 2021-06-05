@@ -901,6 +901,10 @@ class BFS:
 
         - The accumulated is multiplied by each competence in the current period
         - The accumulated is equivalent to the sum of the previous period
+        - When the **sum** of the current period is 0, the accumulated won't change \
+            (it just skip the current period). For example, in these situations:
+            - When the student hasn't taken the subject yet
+            - When the student's score is equal to 0
         """
         logger.debug('-'*100)
         logger.debug('Walking over graphs')
@@ -927,17 +931,17 @@ class BFS:
                 for m in materias:
                     # filhos
                     f: List[str] = list(grafo.successors(m))
-                    logger.debug(f'\t\t\t{m} - Successors: {f}')
                     # se não tiver filhos, pula
                     if not f:
                         continue
                     # nota_do_aluno * acumulado_propagado
                     n: float = BFS._get_weight(notas, m, a)
+                    logger.debug(f'\t\t\t{m}:{n} -> Successors: {f}')
                     s += sum(map(lambda x: n * grafo[m][x]['weight'], f))
                 # somente altera o acumulado se ouve somatório (filhos)
                 if s > 0.0:
                     a = s
-                logger.debug(f'\t\t\tACUMULATED = {a}.  SUM = {s}')
+                logger.debug(f'\t\tACUMULATED = {a}.  SUM = {s}')
             # notas do aluno é o acumulado
             notas_aluno[competencia] = round(a, roundp)
 
