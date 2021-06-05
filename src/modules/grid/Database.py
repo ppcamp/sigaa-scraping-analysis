@@ -23,7 +23,6 @@ from networkx.classes.digraph import DiGraph
 from networkx.readwrite import json_graph
 # MongoDB
 from pymongo import MongoClient
-import unittest
 
 
 class Grids(object):
@@ -159,15 +158,3 @@ class Grids(object):
         Close mongo's connections
         """
         self.client.close()
-
-
-class TestGridsConnection(unittest.TestCase):
-    def test_get(self):
-        ...
-
-    def test_contains(self):
-        ...
-
-    def test_insert(self):
-        # set + close
-        ...

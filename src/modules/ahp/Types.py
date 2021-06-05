@@ -30,7 +30,6 @@ import json
 import pprint
 from typing import Dict, List, Union
 from copy import deepcopy
-import unittest
 
 
 @unique
@@ -501,55 +500,3 @@ class FormData:
 
     # Alias to toDict function
     getDict = toDict
-
-
-class TestFormData(unittest.TestCase):
-    def setUp(self) -> None:
-        return super().setUp()
-
-    def test_email(self):
-        test = FormData().setEmail("test@email.com")
-        self.assertEqual("test@email.com", test.getEmail())
-
-    def test_type(self):
-        ...
-
-    def test_date(self):
-        ...
-
-    def test_matrix_root(self):
-        ...
-
-    def test_matrix_q1(self):
-        ...
-
-    def test_matrix_q1sec2(self):
-        ...
-
-    def test_matrix_q1sec3(self):
-        ...
-
-    def test_matrix_q1sec5(self):
-        ...
-
-    def test_matrix_q2(self):
-        ...
-
-    def test_matrix_q3(self):
-        ...
-
-    def test_parse(self):
-        ...
-
-    def test_repr(self):
-        ...
-
-    def test_pretty(self):
-        ...
-
-    def test_toDict(self):
-        ...
-
-
-if __name__ == '__main__':
-    unittest.main()

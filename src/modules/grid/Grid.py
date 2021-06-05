@@ -20,7 +20,6 @@ from typing import Tuple
 from networkx import DiGraph
 # logging
 import logging as logger
-import unittest
 # Module responsable to get grid
 
 
@@ -65,7 +64,3 @@ def get_grid(grid: str, connection: str) -> Tuple[DiGraph, DiGraph]:
 
     return GraphPre, GraphCo  # type: ignore
 
-
-class TestGrid(unittest.TestCase):
-    def test_get_grid(self):
-        ...

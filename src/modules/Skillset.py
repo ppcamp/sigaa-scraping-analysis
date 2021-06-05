@@ -25,7 +25,6 @@ import pandas as pd
 from typing import List
 # logging
 import logging
-import unittest
 
 # A object used only to specify the type
 DataFrames = List[pd.DataFrame]
@@ -110,15 +109,3 @@ def merge_data(dataframes: DataFrames) -> pd.DataFrame:
     out = out.mean()
 
     return out
-
-
-class TestSkillsetCSVS(unittest.TestCase):
-    def test_read_csvs(self):
-        ...
-
-    def test_merge_data(self):
-        ...
-
-
-if __name__ == '__main__':
-    unittest.main()

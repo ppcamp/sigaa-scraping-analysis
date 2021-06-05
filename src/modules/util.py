@@ -16,13 +16,6 @@ Implement tests for:
 
 from __future__ import annotations
 import sys
-
-if __name__ == '__main__':
-    # Append this libraries if not in the path
-    import os
-    sys.path.insert(0, os.path.realpath('./src/'))
-
-import unittest
 from typing import Dict, List, Tuple, Union, overload
 import logging as logger
 import numpy as np
@@ -152,26 +145,26 @@ def average(args: ..., roundp: int = 4) -> ...:
 
     Examples
     ---------
-        Using a list of float
+    Using a list of float
 
-        >>> l = [1, 1, 1, 1, 1]
-        >>> average(l)
-        1
+    >>> l = [1, 1, 1, 1, 1]
+    >>> average(l)
+    1
 
-        Using a list of list of floats
+    Using a list of list of floats
 
-        >>> from copy import deepcopy
-        >>> a = [
-        ...     [1, 1, 1],
-        ...     [1, 1, 1],
-        ... ]
-        >>> b = deepcopy(a)
-        >>> result = average([a,b])
-        >>> expected_result = deepcopy(a)
-        >>> # iterate and raise an error. P.S.: It won't throw any error
-        >>> for row in range(2):
-        ...    for col in range(3):
-        ...        assert result[row][col] == expected_result[row][col]
+    >>> from copy import deepcopy
+    >>> a = [
+    ...     [1, 1, 1],
+    ...     [1, 1, 1],
+    ... ]
+    >>> b = deepcopy(a)
+    >>> result = average([a,b])
+    >>> expected_result = deepcopy(a)
+    >>> # iterate and raise an error. P.S.: It won't throw any error
+    >>> for row in range(2):
+    ...    for col in range(3):
+    ...        assert result[row][col] == expected_result[row][col]
 
 
     .. versionchanged:: 0.0.9
@@ -427,47 +420,3 @@ def calc_ahp_for_new_mat(
         secoes[matrix] = priorityVec
     logger.debug('\n\n')
     return secoes
-
-
-class TestBasics(unittest.TestCase):
-    def test_average_to_floats(self):
-        v = [3.0, 56.0, 1.0, 41.0]
-        test = round(sum(v)/len(v), 3)
-        result = average(v, roundp=3)
-        self.assertEqual(test, result, "Values didn't match")
-
-    def test_average_to_matrices(self):
-        from copy import deepcopy
-
-        a: List[List[float]] = [[1.0, 1.0, 1.0], [1.0, 1.0, 1.0]]
-        b: List[List[float]] = deepcopy(a)
-
-        result = average([a, b])
-        expected_result: List[List[float]] = deepcopy(a)
-
-        # iterate and raise an error. P.S.: It won't throw any error
-        for row in range(2):
-            for col in range(2):
-                self.assertEqual(
-                    result[row][col],
-                    expected_result[row][col],
-                    f"result[{row}][{col}] = {result[row][col]}")
-
-    def test_raise_MinimumLenghtError(self):
-        ...
-
-    def test_raise_TypeError(self):
-        ...
-
-    def test_get_competences_and_consistency(self):
-        ...
-
-    def test_calc_mean_matrix(self):
-        ...
-
-    def test_calc_ahp_for_new_mat(self):
-        ...
-
-
-if __name__ == '__main__':
-    unittest.main()

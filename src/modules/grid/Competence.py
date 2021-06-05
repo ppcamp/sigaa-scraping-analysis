@@ -42,7 +42,6 @@ Missing tests for:
 """
 
 # imports
-from types import FunctionType
 from networkx import DiGraph
 from typing import Dict, Final, Generator, List, Tuple
 from networkx.classes.digraph import DiGraph

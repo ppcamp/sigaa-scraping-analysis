@@ -29,8 +29,6 @@ from pandas import DataFrame
 # Parse json to string
 import json
 
-import unittest
-
 
 def read_json(filepath: str) -> json:
     """
@@ -250,14 +248,3 @@ def parse_pdf(studentId: str, inputDir: str, outDir: str = None) -> DataFrame:
 
     # Return the json object
     return out
-
-
-class TestScore(unittest.TestCase):
-    def test_read_json(self):
-        ...
-
-    def test_save_analysis(self):
-        ...
-
-    def test_parse_pdf(self):
-        ...

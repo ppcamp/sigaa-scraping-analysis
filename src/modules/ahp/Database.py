@@ -16,19 +16,11 @@ Implement tests for:
 """
 
 
-if __name__ == '__main__':
-    # Append this libraries if not in the path
-    import sys
-    import os
-    sys.path.insert(0, os.path.realpath('./src/'))
-
-
 from typing import Any, Dict, List
 from unittest.main import main
 from modules.ahp.Types import FormData, FormDataType
 from bson.objectid import ObjectId
 from pymongo import MongoClient
-import unittest
 import logging
 logger = logging.getLogger(__name__)
 
@@ -251,24 +243,3 @@ class AhpForm(SigaaDatabase):
         self._db.AhpForm.delete_one(ObjectId(id))
         logger.debug(f'Object({id}) removed from database')
         return element
-
-
-class TestAhpForm(unittest.TestCase):
-    def test_findById(self):
-        ...
-
-    def test_findByDict(self):
-        ...
-
-    def test_getAll(self):
-        ...
-
-    def test_insert(self):
-        ...
-
-    def test_delete(self):
-        ...
-
-
-if __name__ == '__main__':
-    unittest.main()
