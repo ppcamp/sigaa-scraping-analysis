@@ -1,0 +1,1075 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/><meta name="generator" content="sphinx-3.5.4, furo 2021.03.20.beta30"/>
+        <title>modules.grid.Competence - Sigaa Análise 0.0.8 documentation</title>
+      <link rel="stylesheet" href="../../../_static/styles/furo.css?digest=978e1795dfe158b585dda6a8417f6411828bf3ed">
+    <link rel="stylesheet" href="../../../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../../../_static/css/index.css" />
+    <link rel="stylesheet" href="../../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">Sigaa Análise 0.0.8 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../../_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Sigaa Análise 0.0.8 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../todo.html">ToDo</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Brief</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../modules.html#sub-modules">Sub modules</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules.ahp.html">ahp package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules.grid.html">grid package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#module-modules.Plot">Plot module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#module-modules.Score">Score module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#module-modules.Skillset">Skillset module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#module-modules.util">util module</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <h1>Source code for modules.grid.Competence</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">"""</span>
+<span class="sd">This module contains some usefull functions to iterate over competencies graphs.</span>
+
+<span class="sd">It contains:</span>
+<span class="sd">- A function to create the competecies graphs</span>
+<span class="sd">- A function to iterate over these created graphs and calculate the propagated value</span>
+
+<span class="sd">Todo</span>
+<span class="sd">----</span>
+<span class="sd">Missing loggers for:</span>
+
+<span class="sd">- _get_period_classes</span>
+<span class="sd">- _competence_not_exist_in</span>
+<span class="sd">- _get_competence_weight</span>
+<span class="sd">- _generate_competency_graphs</span>
+<span class="sd">- DFS.generate_graphs</span>
+<span class="sd">- DFS._get_weight</span>
+<span class="sd">- DFS.__dfs_walk</span>
+<span class="sd">- DFS.__dfs_walk</span>
+<span class="sd">- BFS.generate_graphs</span>
+<span class="sd">- BFS._get_weight</span>
+<span class="sd">- BFS.__dfs_walk</span>
+<span class="sd">- BFS.__dfs_walk</span>
+
+
+<span class="sd">Missing tests for:</span>
+
+<span class="sd">- __get_period</span>
+<span class="sd">- _competence_not_exist_in</span>
+<span class="sd">- _get_competence_weight</span>
+<span class="sd">- _generate_competency_graphs</span>
+<span class="sd">- DFS.generate_graphs</span>
+<span class="sd">- DFS._get_weight</span>
+<span class="sd">- DFS.__dfs_walk</span>
+<span class="sd">- DFS.__dfs_walk</span>
+<span class="sd">- BFS.generate_graphs</span>
+<span class="sd">- BFS._get_weight</span>
+<span class="sd">- BFS.__dfs_walk</span>
+<span class="sd">- BFS.__dfs_walk</span>
+<span class="sd">"""</span>
+
+<span class="c1"># imports</span>
+<span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">FunctionType</span>
+<span class="kn">from</span> <span class="nn">networkx</span> <span class="kn">import</span> <span class="n">DiGraph</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">networkx.classes.digraph</span> <span class="kn">import</span> <span class="n">DiGraph</span>
+<span class="kn">from</span> <span class="nn">pandas.core.frame</span> <span class="kn">import</span> <span class="n">DataFrame</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="c1"># configuring logger</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="c1"># A função poderá ser chamada recursivamente 1000x (default)</span>
+<span class="c1"># sys.setrecursionlimit(1000)</span>
+
+
+<span class="k">def</span> <span class="nf">__get_period</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Computes the current period</span>
+
+<span class="sd">    :Yields:</span>
+<span class="sd">        A value [0,9] for every period</span>
+<span class="sd">    """</span>
+    <span class="n">p</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">yield</span> <span class="n">p</span>
+
+
+<span class="k">def</span> <span class="nf">_get_period_classes</span><span class="p">(</span><span class="n">nodes</span><span class="p">:</span> <span class="n">DiGraph</span><span class="p">,</span> <span class="n">periodo</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Get all class acronyms for a given `periodo`.</span>
+
+<span class="sd">    :Args:</span>
+<span class="sd">        - `nodes`: a DiGraph containing graphs and edges</span>
+<span class="sd">        - `periodo`: current grade period. Bettween [1,10]. See :meth:`get_periodo`</span>
+
+
+<span class="sd">    :Returns:</span>
+<span class="sd">        A List containing all classes for a given `periodo`.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">sigla</span> <span class="k">for</span> <span class="n">sigla</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">nodes</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">'period'</span><span class="p">]</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">periodo</span><span class="p">)]</span>  <span class="c1"># type:ignore</span>
+
+
+<span class="k">def</span> <span class="nf">_competence_not_exist_in</span><span class="p">(</span><span class="n">out</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">materias_atuais</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">competencia</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Check if exist some value (edge) to some `competencia` in a given list of period, `materias_atuais`.</span>
+
+<span class="sd">    :Args:</span>
+<span class="sd">        - `materias_atuais`: list of class acronyms for a some period. Check it out :meth:`get_periodo`</span>
+<span class="sd">        - `competencia`: competency to be analysed. E.g: 'BAC01'</span>
+
+<span class="sd">    :Returns:</span>
+<span class="sd">        True if there's none class in this period with this competency.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">out</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">competencia</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">materias_atuais</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="k">def</span> <span class="nf">_get_competence_weight</span><span class="p">(</span>
+        <span class="n">out</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">materias_atuais</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">competencia</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">materia</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">roundp</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Get the class weight normalized by total amount of classes in a given semester.</span>
+<span class="sd">    The maximum value that a given competency can have is 1 (100%).</span>
+
+<span class="sd">    .. math:: \\frac{\\text{competency}_k}{\\sum_{i=0}^N \\text{competency}_i}</span>
+
+<span class="sd">    Important</span>
+<span class="sd">    ---------</span>
+<span class="sd">        This module only calculate the equivalent percentual in terms of maximum compenty values\</span>
+<span class="sd">        in a given semester.</span>
+
+<span class="sd">    :Args:</span>
+<span class="sd">        - `materias_atuais`: list of classes in the current period. Check :meth:`get_materias`</span>
+<span class="sd">        - `competencia`: competency to be analized.</span>
+<span class="sd">        - `materia`: class acronym to get the edge weight.</span>
+
+<span class="sd">    :Kwargs:</span>
+<span class="sd">        - `roundp`: The number of decimal places used to round</span>
+
+<span class="sd">    :Returns:</span>
+<span class="sd">        A stipulated weight rounded by `roundp` decimal places.</span>
+<span class="sd">    """</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">out</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">competencia</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">materias_atuais</span><span class="p">])</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">materia</span><span class="p">][</span><span class="n">competencia</span><span class="p">]</span><span class="o">/</span><span class="n">total</span><span class="p">,</span> <span class="n">roundp</span><span class="p">)</span>  <span class="c1"># type:ignore</span>
+
+
+<span class="k">def</span> <span class="nf">_generate_competency_graphs</span><span class="p">(</span>
+        <span class="n">out</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="p">:</span> <span class="n">DiGraph</span><span class="p">,</span>
+        <span class="n">isBFS</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">roundp</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DiGraph</span><span class="p">]:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Create graphs for each *competence* inside `competencias`. See :ref:`figure graph web`</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    ----</span>
+<span class="sd">    `out`:</span>
+<span class="sd">        A dataframe mapping columns (competency) to rows (classes)</span>
+<span class="sd">    `nodes`:</span>
+<span class="sd">        A DiGraph containing all nodes (classes) already inserted</span>
+
+<span class="sd">    Keyword Args</span>
+<span class="sd">    ------------</span>
+<span class="sd">    `isBFS`:</span>
+<span class="sd">        when settled, it will divide the weight by the number of vertices outcoming of the node.</span>
+<span class="sd">    `roundp`:</span>
+<span class="sd">        the number of decimal places to use</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Dict[str, DiGraph]</span>
+<span class="sd">        A dictionary mapping competency to graphs equivalent</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; from modules.grid import Grid</span>
+<span class="sd">    &gt;&gt;&gt; from modules.grid import Competence</span>
+<span class="sd">    &gt;&gt;&gt; # get grid</span>
+<span class="sd">    &gt;&gt;&gt; nodes, _ = Grid.get_grid(</span>
+<span class="sd">    ...     '0192015',</span>
+<span class="sd">    ...     CONNECTION_STRING</span>
+<span class="sd">    ... )</span>
+<span class="sd">    &gt;&gt;&gt; # Removendo os vértices (conexões, que nates eram os pré requisitos)</span>
+<span class="sd">    &gt;&gt;&gt; nodes.remove_edges_from(list(nodes.edges()))</span>
+<span class="sd">    &gt;&gt;&gt; # Realiza a média dos arquivos de competências</span>
+<span class="sd">    &gt;&gt;&gt; out:Final[pd.DataFrame] = Skillset.merge_data(_csvs)</span>
+<span class="sd">    &gt;&gt;&gt; # obtém a soma de cada coluna</span>
+<span class="sd">    &gt;&gt;&gt; _column_sum = out.apply(np.sum, axis=0)</span>
+<span class="sd">    &gt;&gt;&gt; # normaliza pelo maior valor cada coluna</span>
+<span class="sd">    &gt;&gt;&gt; for col in out.columns:</span>
+<span class="sd">    ...    out.loc[:, col] /= _column_sum[col]</span>
+<span class="sd">    &gt;&gt;&gt; # arredondando</span>
+<span class="sd">    &gt;&gt;&gt; out = out.round(4)</span>
+<span class="sd">    &gt;&gt;&gt; # removing</span>
+<span class="sd">    &gt;&gt;&gt; # Removendo os nós que não constam naquela planilha</span>
+<span class="sd">    &gt;&gt;&gt; nos_para_remocao:List[str] = [no for no in list(nodes.nodes()) if no not in out.index.to_list()]</span>
+<span class="sd">    &gt;&gt;&gt; nodes.remove_nodes_from(nos_para_remocao)</span>
+<span class="sd">    &gt;&gt;&gt; grafos = Competence.generate_competency_graphs</span>
+<span class="sd">    &gt;&gt;&gt; grafos</span>
+<span class="sd">    {</span>
+<span class="sd">       'Matemática e física': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2430&gt;,</span>
+<span class="sd">       'Lóg., algor. teoria e estrura de dados.': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2fd0&gt;,</span>
+<span class="sd">       'Ling. e parad.': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe24c0&gt;,</span>
+<span class="sd">       'PAA': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2b50&gt;,</span>
+<span class="sd">       'Conf. plataformas para softwares e serviços': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2730&gt;,</span>
+<span class="sd">       'Arquiteturas de computadores': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2d90&gt;,</span>
+<span class="sd">       'Seg. de sis. de comp.': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2a60&gt;,</span>
+<span class="sd">       'Engenharia de software': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2e20&gt;,</span>
+<span class="sd">       'Inteligência artificial': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2400&gt;,</span>
+<span class="sd">       'Desenvolvimento Web e Mobile': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2f40&gt;,</span>
+<span class="sd">       'Sistemas microprocessados': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2d60&gt;,</span>
+<span class="sd">       'Redes de computadores': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2340&gt;,</span>
+<span class="sd">       'Software para sistemas de comunicação': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe22e0&gt;,</span>
+<span class="sd">       'Conhec. em sist. de aut.': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2670&gt;,</span>
+<span class="sd">       'Gerenciar projetos e sistemas de computação': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2f70&gt;,</span>
+<span class="sd">       'Engenharia-econômica': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2ee0&gt;,</span>
+<span class="sd">       'Compreender e resolver problemas': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe20a0&gt;,</span>
+<span class="sd">       'Autoaprendizado': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2880&gt;,</span>
+<span class="sd">       'Criatividade e Inovação': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2c70&gt;,</span>
+<span class="sd">       'Comunicação oral e escrita': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2820&gt;,</span>
+<span class="sd">       'Língua inglesa': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2130&gt;,</span>
+<span class="sd">       'Empreender e exercer liderança': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe29d0&gt;,</span>
+<span class="sd">       'Trabalho em equipe': &lt;networkx.classes.digraph.DiGraph at 0x1fa0afe2220&gt;</span>
+<span class="sd">    }</span>
+
+<span class="sd">    Caution</span>
+<span class="sd">    -------</span>
+<span class="sd">    Usually, the `out` param is equal to 1 foreach column sum. It means that, at the end of the course\</span>
+<span class="sd">        a student can have, **at maximum**, 100% of a given competence.</span>
+<span class="sd">    """</span>
+    <span class="c1"># Obtêndo o nome de cada coluna (será utilizada no grafo novo) ...</span>
+    <span class="c1"># ... Equivale às competências que foram encontradas (não zeradas nos csvs) ...</span>
+    <span class="c1"># ... Serão todas as competências dos alunos</span>
+    <span class="n">competencias</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
+
+    <span class="c1"># Instância que irá ter todos os objetos de grafos indexados pelas competências</span>
+    <span class="n">grafos</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DiGraph</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Obtêm as matérias do período seguinte (ou do próximo) que tiver ...</span>
+    <span class="c1"># ... este requisito, gerando conexões entre essas disciplinas</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'-'</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'Creating competency graphs'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">competencia</span> <span class="ow">in</span> <span class="n">competencias</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'--&gt; </span><span class="si">{</span><span class="n">competencia</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+        <span class="c1"># Instancia um novo grafo (baseado no grafo que já possui os nós) ...</span>
+        <span class="c1"># ... para essa competência</span>
+        <span class="n">grafos</span><span class="p">[</span><span class="n">competencia</span><span class="p">]:</span> <span class="n">DiGraph</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
+
+        <span class="c1"># últimas matérias que possuem esta competência</span>
+        <span class="n">last</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Itera essa competência para os próximos períodos</span>
+        <span class="n">periodo</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">periodo</span> <span class="ow">in</span> <span class="n">__get_period</span><span class="p">():</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\t</span><span class="s1">Period: </span><span class="si">{</span><span class="n">periodo</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+            <span class="c1"># Obtêm a lista de todas as matérias do período atual</span>
+            <span class="n">materias_periodo_atual</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">_get_period_classes</span><span class="p">(</span>
+                <span class="n">nodes</span><span class="p">,</span> <span class="n">periodo</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\t\t</span><span class="s1">Current classes: [</span><span class="si">{</span><span class="n">materias_periodo_atual</span><span class="si">}</span><span class="s1">]'</span><span class="p">)</span>
+
+            <span class="c1"># Se maior igual à zero, nenhuma das matérias do período ...</span>
+            <span class="c1"># ...possui valor para essa competência</span>
+            <span class="k">if</span> <span class="n">_competence_not_exist_in</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">materias_periodo_atual</span><span class="p">,</span> <span class="n">competencia</span><span class="p">):</span>
+                <span class="c1"># portanto, pode pular esta disciplina</span>
+                <span class="k">continue</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="s1">'</span><span class="se">\t\t</span><span class="s1">Exist classes for this competence in this period'</span><span class="p">)</span>
+
+            <span class="c1"># Lista para armazenar todos os nós de matérias que possuem o ...</span>
+            <span class="c1"># ... mesmo requisito nos próximos períodos</span>
+            <span class="n">materias_herdeiras</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="c1"># Itera sobre os próximos períodos</span>
+            <span class="n">prox_periodo</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">periodo</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="s1">'</span><span class="se">\t\t</span><span class="s1">Searching for this competence in the futures periods'</span><span class="p">)</span>
+            <span class="k">while</span> <span class="n">prox_periodo</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+                <span class="n">prox_periodo</span> <span class="o">+=</span> <span class="mi">1</span>
+
+                <span class="c1"># Obtêm a lista de todas as matérias do período atual</span>
+                <span class="n">materias_proximo_periodo</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">_get_period_classes</span><span class="p">(</span>
+                    <span class="n">nodes</span><span class="p">,</span> <span class="n">prox_periodo</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">'</span><span class="se">\t\t\t</span><span class="s1">[</span><span class="si">{</span><span class="n">prox_periodo</span><span class="si">}</span><span class="s1">] : Classes -&gt; </span><span class="si">{</span><span class="n">materias_proximo_periodo</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+                <span class="c1"># Verifica se neste período possui alguma matéria que herda aquela competência</span>
+                <span class="k">if</span> <span class="n">_competence_not_exist_in</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">materias_proximo_periodo</span><span class="p">,</span> <span class="n">competencia</span><span class="p">):</span>
+                    <span class="k">continue</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                    <span class="s1">'</span><span class="se">\t\t\t</span><span class="s1">Exist classes for this competence in this period'</span><span class="p">)</span>
+
+                <span class="c1"># Caso encontre alguma matéria neste período coloca ela na ...</span>
+                <span class="c1"># ... lista de materias que irão herdar a competência</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">materias_proximo_periodo</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">out</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">competencia</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+                        <span class="n">materias_herdeiras</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                        <span class="n">last</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">materias_herdeiras</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\t\t\t\t</span><span class="s1">Classes: [</span><span class="si">{</span><span class="n">materias_herdeiras</span><span class="si">}</span><span class="s1">]'</span><span class="p">)</span>
+                <span class="c1"># Força a saída deste loop</span>
+                <span class="k">break</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'</span><span class="se">\t\t</span><span class="s1">Stop searching for future classes'</span><span class="p">)</span>
+
+            <span class="c1"># Para cada matéria atual que possui a competência e cada ...</span>
+            <span class="c1"># ... matéria futura que irá herdar, realiza a "junção"</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="s1">'</span><span class="se">\t\t</span><span class="s1">Creating the edges for this graph for each class of this period that has this competence'</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">materia_atual</span> <span class="ow">in</span> <span class="n">materias_periodo_atual</span><span class="p">:</span>
+                <span class="c1"># Verifica se a matéria "possui esta competência</span>
+                <span class="k">if</span> <span class="n">out</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">materia_atual</span><span class="p">][</span><span class="n">competencia</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+                    <span class="k">continue</span>
+                <span class="c1"># o peso é calculado sobre as matérias de um dado período</span>
+                <span class="n">peso</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">_get_competence_weight</span><span class="p">(</span>
+                    <span class="n">out</span><span class="p">,</span>
+                    <span class="n">materias_periodo_atual</span><span class="p">,</span>
+                    <span class="n">competencia</span><span class="p">,</span>
+                    <span class="n">materia_atual</span><span class="p">,</span>
+                    <span class="n">roundp</span><span class="o">=</span><span class="n">roundp</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">'</span><span class="se">\t\t\t</span><span class="s1">The class "</span><span class="si">{</span><span class="n">materia_atual</span><span class="si">}</span><span class="s1">" has </span><span class="si">{</span><span class="n">peso</span><span class="si">}</span><span class="s1"> of weight'</span><span class="p">)</span>
+
+                <span class="c1"># se for BFS, divide o peso pela quantidade de nós</span>
+                <span class="n">qnt_materias</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">materias_herdeiras</span><span class="p">)</span>
+                <span class="c1"># print(f"{peso} - {qnt_materias} ", end="")</span>
+                <span class="k">if</span> <span class="n">isBFS</span> <span class="ow">and</span> <span class="n">qnt_materias</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">peso</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">peso</span><span class="o">/</span><span class="n">qnt_materias</span><span class="p">,</span> <span class="n">roundp</span><span class="p">)</span>
+                <span class="c1"># print(f"-&gt; {peso} : {materia_atual}", end="\n\n")</span>
+
+                <span class="c1"># adiciona as arestas</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">'</span><span class="se">\t\t\t</span><span class="s1">Adding the edges for: </span><span class="si">{</span><span class="n">materias_herdeiras</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+                <span class="c1"># cria a aresta</span>
+                <span class="k">for</span> <span class="n">materia_herdeira</span> <span class="ow">in</span> <span class="n">materias_herdeiras</span><span class="p">:</span>
+                    <span class="n">grafos</span><span class="p">[</span><span class="n">competencia</span><span class="p">]</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span>
+                        <span class="n">materia_atual</span><span class="p">,</span>
+                        <span class="n">materia_herdeira</span><span class="p">,</span>
+                        <span class="n">weight</span><span class="o">=</span><span class="n">peso</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Stop walking over periods for </span><span class="si">{</span><span class="n">competencia</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+        <span class="c1"># adiciona o último nó</span>
+        <span class="n">grafos</span><span class="p">[</span><span class="n">competencia</span><span class="p">]</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s1">'Fim/Formou'</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="n">periodo</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'Adding the last node "Fim/Formou"'</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Last value is: </span><span class="si">{</span><span class="n">last</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">last</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">competencia</span><span class="si">}</span><span class="s2">. "</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">materia_atual</span> <span class="ow">in</span> <span class="n">last</span><span class="p">:</span>
+                <span class="c1"># o peso é calculado sobre as matérias de um dado período</span>
+                <span class="n">peso</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">_get_competence_weight</span><span class="p">(</span>
+                    <span class="n">out</span><span class="p">,</span>
+                    <span class="n">last</span><span class="p">,</span>
+                    <span class="n">competencia</span><span class="p">,</span>
+                    <span class="n">materia_atual</span><span class="p">,</span>
+                    <span class="n">roundp</span><span class="o">=</span><span class="n">roundp</span><span class="p">)</span>
+                <span class="n">grafos</span><span class="p">[</span><span class="n">competencia</span><span class="p">]</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span>
+                    <span class="n">materia_atual</span><span class="p">,</span>
+                    <span class="s1">'Fim/Formou'</span><span class="p">,</span>
+                    <span class="n">weight</span><span class="o">=</span><span class="n">peso</span><span class="p">)</span>
+
+        <span class="c1"># se existir apenas uma única matéria (em todo o curso) ...</span>
+        <span class="c1"># ... que possua esta competência, ela irá ter uma ligação de 100% com "Fim/Formou"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># verificando se existe pelo menos uma disciplina com essa competência</span>
+            <span class="n">materia_atual</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">out</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span>
+                <span class="n">how</span><span class="o">=</span><span class="s1">'all'</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">materia_atual</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">'In this dataframe exist only one class assigned to this competence (</span><span class="si">{</span><span class="n">competencia</span><span class="si">}</span><span class="s1">)'</span><span class="p">)</span>
+                <span class="c1"># adiciona a única matéria que tem uma determinada competência e liga ao final</span>
+                <span class="n">grafos</span><span class="p">[</span><span class="n">competencia</span><span class="p">]</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span>
+                    <span class="n">materia_atual</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="s1">'Fim/Formou'</span><span class="p">,</span>
+                    <span class="n">weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">'In the </span><span class="si">{</span><span class="n">competencia</span><span class="si">}</span><span class="s1"> column, there is no class assigned to it.'</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'-'</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">grafos</span>
+
+
+<div class="viewcode-block" id="DFS"><a class="viewcode-back" href="../../../modules.grid.html#modules.grid.Competence.DFS">[docs]</a><span class="k">class</span> <span class="nc">DFS</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    An object created to encapsulate all elements and calls that are used in DFS.</span>
+
+<span class="sd">    .. versionadded:: 0.0.9</span>
+<span class="sd">    """</span>
+
+<div class="viewcode-block" id="DFS.generate_graphs"><a class="viewcode-back" href="../../../modules.grid.html#modules.grid.Competence.DFS.generate_graphs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">generate_graphs</span><span class="p">(</span>
+            <span class="n">out</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span>
+            <span class="n">nodes</span><span class="p">:</span> <span class="n">DiGraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DiGraph</span><span class="p">]:</span>
+        <span class="sd">"""</span>
+<span class="sd">        A method used to create a simple graph which, in the end of dfs :meth:`walk`, will be the sum of 1.</span>
+
+<span class="sd">        Args</span>
+<span class="sd">        ----</span>
+<span class="sd">        `out`:</span>
+<span class="sd">            The dataframe that makes the correlation for subject and its competence</span>
+<span class="sd">        `nodes`:</span>
+<span class="sd">            The base graph, which contains all the needed nodes.</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Dict[str, DiGraph]</span>
+<span class="sd">            A dictionary mapping each competence to a given graph (:class:`networkx` object)</span>
+
+
+<span class="sd">        .. _figure graph web:</span>
+
+<span class="sd">        .. figure:: _static/img/graph_example_desenvolvimento_web.png</span>
+<span class="sd">            :width: 700</span>
+<span class="sd">            :alt: Graph example - Desenvolvimento Web</span>
+<span class="sd">            :align: center</span>
+
+<span class="sd">            Graph example - Desenvolvimento Web</span>
+
+<span class="sd">        In the image above, the values of `out` are:</span>
+
+
+<span class="sd">        .. csv-table::</span>
+<span class="sd">            :header: "Period", "Acronym/Subject", "Sum", "New value"</span>
+<span class="sd">            :widths: 1,1,1,1</span>
+<span class="sd">            :align: center</span>
+
+<span class="sd">            1, "HUMI01", 0.0435</span>
+<span class="sd">            1, "MATI01", 0.0870</span>
+<span class="sd">            1, "MATI02", 0.0870</span>
+<span class="sd">            2, "ECOI04", 0.0870</span>
+<span class="sd">            4, "ECOI09", 0.2174</span>
+<span class="sd">            4, "MATI04", 0.1304</span>
+<span class="sd">            5, "ECOI11", 0.1304</span>
+<span class="sd">            5, "ECOI14", 0.0435</span>
+<span class="sd">            9, "ECOI25", 0.1739</span>
+
+<span class="sd">        However, due to the normalization made for each period:</span>
+
+<span class="sd">        .. math:: \\forall \\text{ period | } \\text{subject}_i = \\frac{\\text{current_subject_value}_i}{\\sum_{n=0}^N\\text{current_subject_value}_n}</span>
+
+
+<span class="sd">        For the period 1:</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \\sum\\left(\\text{HUMI01}+\\text{MATI01}+\\text{MATI02}\\right) = 0.2175 \\</span>
+<span class="sd">            \\therefore \\</span>
+<span class="sd">            \\text{HUMI01} = \\frac{0.0435}{0.2175} = 0.2</span>
+
+<span class="sd">        Doing so, we have:</span>
+
+
+<span class="sd">        .. csv-table::</span>
+<span class="sd">            :header: "Period", "Acronym/Subject", "Sum", "New value"</span>
+<span class="sd">            :widths: 1,1,1,1</span>
+<span class="sd">            :align: center</span>
+
+<span class="sd">            1, "HUMI01", , 0.2</span>
+<span class="sd">            1, "MATI01", 0.2175, 0.4</span>
+<span class="sd">            1, "MATI02", , 0.4</span>
+<span class="sd">            2, "ECOI04", 0.0870, 1.0</span>
+<span class="sd">            4, "ECOI09", 0.3478, 0.6251</span>
+<span class="sd">            4, "MATI04", , 0.3749</span>
+<span class="sd">            5, "ECOI11", 0.1739, 0.7499</span>
+<span class="sd">            5, "ECOI14", , 0.250</span>
+<span class="sd">            9, "ECOI25", 0.1739, 1.0</span>
+
+<span class="sd">        Tip</span>
+<span class="sd">        ---</span>
+
+<span class="sd">        1. Propagate the **current value** (acumulated * subject * edge) to the next node.</span>
+<span class="sd">        2. Sum all returns of children nodes. Doing so, at the end, the value should be between [0,1].</span>
+
+<span class="sd">        Note</span>
+<span class="sd">        ----</span>
+<span class="sd">        .. image:: _static/img/perceptron_view.jpg</span>
+<span class="sd">            :width: 500</span>
+<span class="sd">            :align: left</span>
+
+<span class="sd">        **Why don't use perceptron approach?**</span>
+
+<span class="sd">        **R.:** Perceptron classifies as 0 or 1 (activate or not the layer), doing so, we will not have</span>
+<span class="sd">        the "percentual reference" in the end.</span>
+
+<span class="sd">        Todo</span>
+<span class="sd">        ----</span>
+<span class="sd">        According to *Giovani*, we can have a perceptron passing a value between those.</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="n">_generate_competency_graphs</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_weight</span><span class="p">(</span>
+            <span class="n">notas</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+            <span class="n">materia</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="n">peso</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+            <span class="n">acumulado</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+            <span class="n">roundp</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Calculate the class scores for graph propagation.</span>
+
+<span class="sd">        Args</span>
+<span class="sd">        ----</span>
+<span class="sd">        `notas`:</span>
+<span class="sd">            dictionary mapping a class acronym to an given score</span>
+<span class="sd">        `materia`:</span>
+<span class="sd">            class acronym to be analysed</span>
+<span class="sd">        `peso`:</span>
+<span class="sd">            A calculated percentual in terms of competency in a given semester.\</span>
+<span class="sd">                See more at :meth:`_get_competence_weight`.</span>
+<span class="sd">        `acumulado`:</span>
+<span class="sd">            a propagated `peso` over a graph.</span>
+
+<span class="sd">        Keyword Args</span>
+<span class="sd">        ------------</span>
+<span class="sd">        `roundp`:</span>
+<span class="sd">            The number of decimal places used to round</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The calculated value plus `acumulado` multiplied by `peso`</span>
+
+<span class="sd">        Tip</span>
+<span class="sd">        ---</span>
+<span class="sd">        Used in graph propagation</span>
+
+<span class="sd">        .. math:: x =</span>
+<span class="sd">            \\begin{cases}</span>
+<span class="sd">                \\text{acumulado}\\cdot\\text{peso}, \\text{[1]} \\\\</span>
+<span class="sd">                \\left(\\frac{\\text{notas[materia]}}{10}\\cdot\\text{acumulado}\\right)\\cdot\\text{peso},\\text{[2]} \\\\</span>
+<span class="sd">            \\end{cases}</span>
+
+<span class="sd">        Attention</span>
+<span class="sd">        ---------</span>
+
+<span class="sd">        - If student didn't pass yet: send only the current `acumulado` multiplied by `peso` to the next period</span>
+<span class="sd">        - If student has a score to this subject: multiply the current `acumulado` by `peso` and by `subject value`</span>
+<span class="sd">        """</span>
+        <span class="c1"># Caso o aluno não tenha feito a matéria ainda, propaga apenas o acumulado pelo peso</span>
+        <span class="k">if</span> <span class="n">materia</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">notas</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">acumulado</span> <span class="o">*</span> <span class="n">peso</span><span class="p">,</span> <span class="n">roundp</span><span class="p">)</span>
+        <span class="c1"># Caso já tenha feito a matéria, calcula pelo peso e retorna mais o acumulado</span>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">((</span><span class="n">notas</span><span class="p">[</span><span class="n">materia</span><span class="p">]</span><span class="o">/</span><span class="mi">10</span> <span class="o">*</span> <span class="n">acumulado</span><span class="p">)</span><span class="o">*</span><span class="n">peso</span><span class="p">,</span> <span class="n">roundp</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">__dfs_walk</span><span class="p">(</span>
+            <span class="n">notas</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+            <span class="n">grafo</span><span class="p">:</span> <span class="n">DiGraph</span><span class="p">,</span>
+            <span class="n">materia</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="n">acumulado</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        A recursive walk over competency graph</span>
+
+<span class="sd">        Args</span>
+<span class="sd">        ----</span>
+<span class="sd">        `notas`:</span>
+<span class="sd">            A dictionary mapping a class acronym to an value.\</span>
+<span class="sd">                Usually, this value will be the highest student's score to this class.</span>
+<span class="sd">        `grafo`:</span>
+<span class="sd">            A graph equivalent to some competency.</span>
+<span class="sd">        `materia`:</span>
+<span class="sd">            A name for a given node.</span>
+<span class="sd">        `acumulado`:</span>
+<span class="sd">            The propagated value until some point</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The propageted `acumulado` value over it's childrens/leafs.</span>
+
+<span class="sd">        Important</span>
+<span class="sd">        ---------</span>
+<span class="sd">            This approach, calculate the propagated value before walk trough graph, \</span>
+<span class="sd">            which means that we don't need to create a new node, since that the calculus is made in\</span>
+<span class="sd">            nodes, not in transitions</span>
+<span class="sd">        """</span>
+        <span class="n">total</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Anda sobre os filhos</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s1">'</span><span class="se">\t\t\t</span><span class="si">{</span><span class="n">materia</span><span class="si">}</span><span class="s1"> -&gt; </span><span class="si">{</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">grafo</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="n">materia</span><span class="p">)]</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+        <span class="c1"># atingiu o fim (última folha "Fim/Formou") do grafo</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">list</span><span class="p">(</span><span class="n">grafo</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="n">materia</span><span class="p">)):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'</span><span class="se">\t\t</span><span class="s1">Reached a leaf (Fim/Formou)'</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">acumulado</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\t\t</span><span class="s1">Current acumulated: </span><span class="si">{</span><span class="n">acumulado</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">filho</span> <span class="ow">in</span> <span class="n">grafo</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="n">materia</span><span class="p">):</span>
+            <span class="c1"># Obtém o peso da aresta que manda para o filho</span>
+            <span class="n">peso</span> <span class="o">=</span> <span class="n">grafo</span><span class="p">[</span><span class="n">materia</span><span class="p">][</span><span class="n">filho</span><span class="p">][</span><span class="s1">'weight'</span><span class="p">]</span>
+            <span class="c1"># Obtém a nota (acumulada) que será enviada para o filho</span>
+            <span class="n">novo_acumulado</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">DFS</span><span class="o">.</span><span class="n">_get_weight</span><span class="p">(</span>
+                <span class="n">notas</span><span class="p">,</span> <span class="n">materia</span><span class="p">,</span> <span class="n">peso</span><span class="p">,</span> <span class="n">acumulado</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">'</span><span class="se">\t\t</span><span class="s1">(</span><span class="si">{</span><span class="n">materia</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">filho</span><span class="si">}</span><span class="s1"> | w=</span><span class="si">{</span><span class="n">peso</span><span class="si">}</span><span class="s1">) New Acumulated: </span><span class="si">{</span><span class="n">novo_acumulado</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+            <span class="c1"># Caminha para este filho</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">DFS</span><span class="o">.</span><span class="n">__dfs_walk</span><span class="p">(</span><span class="n">notas</span><span class="p">,</span> <span class="n">grafo</span><span class="p">,</span> <span class="n">filho</span><span class="p">,</span> <span class="n">novo_acumulado</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\t\t</span><span class="s1">TOTAL: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+        <span class="c1"># Retorna o valor acumulado (dos filhos até ela)</span>
+        <span class="k">return</span> <span class="n">total</span>
+
+<div class="viewcode-block" id="DFS.walk"><a class="viewcode-back" href="../../../modules.grid.html#modules.grid.Competence.DFS.walk">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">walk</span><span class="p">(</span>
+            <span class="n">grafos</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DiGraph</span><span class="p">],</span>
+            <span class="n">notas</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Walk over all competences(graphs), propagating the current value</span>
+<span class="sd">        over each semester.</span>
+
+<span class="sd">        Args</span>
+<span class="sd">        ----</span>
+<span class="sd">        `grafos`:</span>
+<span class="sd">            A dictionary mapping competences to graphs equivalent.</span>
+<span class="sd">        `notas`:</span>
+<span class="sd">            A dictionary mapping class acronym to a given score.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Dict[str, float]</span>
+<span class="sd">            A dictionary mapping competency to a calculated and propagated value.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; from modules.grid import Competence</span>
+<span class="sd">        &gt;&gt;&gt; from modules import Score</span>
+<span class="sd">        &gt;&gt;&gt; import json</span>
+<span class="sd">        &gt;&gt;&gt; grafos = Competence.BFS.generate_graphs(out, nodes)</span>
+<span class="sd">        &gt;&gt;&gt; student_grid: str = path.join('..','assets','parsed_scores','2016001942.json')</span>
+<span class="sd">        &gt;&gt;&gt; # obtém o histórico de um único estudante</span>
+<span class="sd">        &gt;&gt;&gt; student_grid: json = Score.read_json(student_grid)</span>
+<span class="sd">        # Does some boring stuffs to handle and map a given class to an value ...</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; # ... (usully, the greatest one for a subject)</span>
+<span class="sd">        &gt;&gt;&gt; # notas</span>
+<span class="sd">        &gt;&gt;&gt; # anda sobre o grafo para o(s) aluno(s)</span>
+<span class="sd">        &gt;&gt;&gt; notas_aluno = Competence.DFS.walk(grafos, notas)</span>
+
+<span class="sd">        Important</span>
+<span class="sd">        ---------</span>
+<span class="sd">        This function calculates the sum propagated over all "subgraphs" that can exist in a single DiGraph.\</span>
+<span class="sd">            For example, take a look in the figure (:ref:`figure graph web`). In this figure, we have 3 \</span>
+<span class="sd">                independent subgraphs (We are assuming that, HUMI01|MATI01|MATI02 are indepedent graphs \</span>
+<span class="sd">                    since they are not directly connected with each other). For those situations, this \</span>
+<span class="sd">                        method sum the output of all subgraphs.</span>
+
+<span class="sd">        Note</span>
+<span class="sd">        ----</span>
+<span class="sd">        This function runs the :meth:`modules.grid.Competence.__dfs_walk` for \</span>
+<span class="sd">            all competences. Bellow you can check the **manual debugging** for this method.</span>
+
+<span class="sd">        .. image:: _static/img/graph_example_devweb_debug_1.png</span>
+<span class="sd">            :width: 290</span>
+<span class="sd">            :alt: Graph example - Desenvolvimento Web debug#1</span>
+<span class="sd">            :align: left</span>
+
+<span class="sd">        .. image:: _static/img/graph_example_devweb_debug_2.png</span>
+<span class="sd">            :width: 290</span>
+<span class="sd">            :alt: Graph example - Desenvolvimento Web debug#2</span>
+<span class="sd">            :align: right</span>
+<span class="sd">        """</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'-'</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'Walking over graphs'</span><span class="p">)</span>
+
+        <span class="c1"># Dicionário que irá conter o valor sobre cada competência</span>
+        <span class="n">notas_aluno</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># Itera sobre as competências</span>
+        <span class="k">for</span> <span class="n">competencia</span><span class="p">,</span> <span class="n">grafo</span> <span class="ow">in</span> <span class="n">grafos</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># ∀ competência, encontra a primeira matéria que possui ela</span>
+            <span class="n">edges</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">grafo</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>  <span class="c1"># type: ignore</span>
+            <span class="n">nodes</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">grafo</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">'period'</span><span class="p">))</span>
+
+            <span class="c1"># Uma vez que o grafo foi montado em ordem cronológica, ...</span>
+            <span class="c1"># ... sabemos que as arestas estarão em ordem crescente por período</span>
+            <span class="n">fst_materia</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">edges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">fst_periodo</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">fst_materia</span><span class="p">]</span>
+
+            <span class="c1"># deve pegar as primeiras disciplinas deste periodo</span>
+            <span class="c1"># Para isso, pega todas as disciplinas do período de fst_materia</span>
+            <span class="n">materias_do_periodo</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nodes</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="n">fst_periodo</span><span class="p">]</span>
+            <span class="c1"># filtra elas com base naquelas que existem arestas saindo delas (que têm filhos)</span>
+            <span class="n">materias_grafos</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">materias_do_periodo</span> <span class="k">if</span> <span class="nb">list</span><span class="p">(</span><span class="n">grafo</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="n">k</span><span class="p">))]</span>
+
+            <span class="c1"># Em seguida, anda no seu grafo e obtêm o valor iterado sobre as notas ...</span>
+            <span class="c1"># ... ou seja, a soma das notas propagadas</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\t</span><span class="s1">Competence </span><span class="si">{</span><span class="n">competencia</span><span class="si">}</span><span class="s1"> - Walking'</span><span class="p">)</span>
+
+            <span class="c1"># chama o dfs para cada subgrafo independente</span>
+            <span class="n">resultado</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">materias</span> <span class="ow">in</span> <span class="n">materias_grafos</span><span class="p">:</span>
+                <span class="n">resultado</span> <span class="o">+=</span> <span class="n">DFS</span><span class="o">.</span><span class="n">__dfs_walk</span><span class="p">(</span><span class="n">notas</span><span class="p">,</span> <span class="n">grafo</span><span class="p">,</span> <span class="n">materias</span><span class="p">)</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\t</span><span class="s1">Competence: </span><span class="si">{</span><span class="n">competencia</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">resultado</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+            <span class="c1"># valor das notas iteradas sobre o grafo de uma competência "N"</span>
+            <span class="n">notas_aluno</span><span class="p">[</span><span class="n">competencia</span><span class="p">]</span> <span class="o">=</span> <span class="n">resultado</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'-'</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'-'</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+        <span class="c1"># Notas do aluno propagadas no grafo de competência</span>
+        <span class="k">return</span> <span class="n">notas_aluno</span></div></div>
+
+
+<div class="viewcode-block" id="BFS"><a class="viewcode-back" href="../../../modules.grid.html#modules.grid.Competence.BFS">[docs]</a><span class="k">class</span> <span class="nc">BFS</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    An object created to encapsulate all elements and calls that are used in DFS.</span>
+
+<span class="sd">    .. versionadded:: 0.0.8</span>
+<span class="sd">    """</span>
+
+<div class="viewcode-block" id="BFS.generate_graphs"><a class="viewcode-back" href="../../../modules.grid.html#modules.grid.Competence.BFS.generate_graphs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">generate_graphs</span><span class="p">(</span>
+            <span class="n">out</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span>
+            <span class="n">nodes</span><span class="p">:</span> <span class="n">DiGraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DiGraph</span><span class="p">]:</span>
+        <span class="sd">"""</span>
+<span class="sd">        A method used to create a simple graph which, in the end of dfs :meth:`walk`, will be the sum of 1.</span>
+
+<span class="sd">        Args</span>
+<span class="sd">        ----</span>
+<span class="sd">        `out`:</span>
+<span class="sd">            The dataframe that makes the correlation for subject and its competence</span>
+<span class="sd">        `nodes`:</span>
+<span class="sd">            The base graph, which contains all the needed nodes.</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Dict[str, DiGraph]</span>
+<span class="sd">            A dictionary mapping each competence to a given graph (:class:`networkx` object)</span>
+
+
+<span class="sd">        .. _figure graph web 2:</span>
+
+<span class="sd">        .. figure:: _static/img/graph_example_desenvolvimento_web_2.png</span>
+<span class="sd">            :width: 700</span>
+<span class="sd">            :alt: Graph example - Desenvolvimento Web</span>
+<span class="sd">            :align: center</span>
+
+<span class="sd">            Graph example - Desenvolvimento Web</span>
+
+<span class="sd">        In the image above, the values of `out` are:</span>
+
+
+<span class="sd">        .. csv-table::</span>
+<span class="sd">            :header: "Period", "Acronym/Subject", "Original/Out value"</span>
+<span class="sd">            :widths: 1,1,1</span>
+<span class="sd">            :align: center</span>
+
+<span class="sd">            1, "HUMI01", 0.0435</span>
+<span class="sd">            1, "MATI01", 0.0870</span>
+<span class="sd">            1, "MATI02", 0.0870</span>
+<span class="sd">            2, "ECOI04", 0.0870</span>
+<span class="sd">            4, "ECOI09", 0.2174</span>
+<span class="sd">            4, "MATI04", 0.1304</span>
+<span class="sd">            5, "ECOI11", 0.1304</span>
+<span class="sd">            5, "ECOI14", 0.0435</span>
+<span class="sd">            9, "ECOI25", 0.1739</span>
+
+<span class="sd">        However, due to the normalization made for each period:</span>
+
+<span class="sd">        .. math:: \\forall \\text{ period | } \\text{subject}_i = \\frac{\\text{current_subject_value}_i}{\\sum_{n=0}^N\\text{current_subject_value}_n}</span>
+
+
+<span class="sd">        Important</span>
+<span class="sd">        ---------</span>
+<span class="sd">        The :math:`\\sum` of each period is equal to 1.0. E.g: \</span>
+<span class="sd">            :math:`\\sum\\text{period}_1 = HUMI01\\cdot0.2 + MATI01\\cdot0.4 + MATI02\\cdot0.4 \\equiv 1.0`</span>
+
+
+
+<span class="sd">        For the period 1:</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \\sum\\left(\\text{HUMI01}+\\text{MATI01}+\\text{MATI02}\\right) = 0.2175 \\</span>
+<span class="sd">            \\therefore \\</span>
+<span class="sd">            \\text{HUMI01} = \\frac{0.0435}{0.2175} = 0.2</span>
+
+<span class="sd">        Doing so, we have:</span>
+
+
+<span class="sd">        .. csv-table::</span>
+<span class="sd">            :header: "Period", "Acronym/Subject", "Sum", "New value"</span>
+<span class="sd">            :widths: 1,1,1,1</span>
+<span class="sd">            :align: center</span>
+
+<span class="sd">            1, "HUMI01", , 0.2</span>
+<span class="sd">            1, "MATI01", 0.2175, 0.4</span>
+<span class="sd">            1, "MATI02", , 0.4</span>
+<span class="sd">            2, "ECOI04", 0.0870, 1.0</span>
+<span class="sd">            4, "ECOI09", 0.3478, 0.6251</span>
+<span class="sd">            4, "MATI04", , 0.3749</span>
+<span class="sd">            5, "ECOI11", 0.1739, 0.7499</span>
+<span class="sd">            5, "ECOI14", , 0.250</span>
+<span class="sd">            9, "ECOI25", 0.1739, 1.0</span>
+
+<span class="sd">        Tip</span>
+<span class="sd">        ---</span>
+
+<span class="sd">        1. Propagate the **current value** (acumulated * subject * edge) to the next node.</span>
+<span class="sd">        2. Sum all returns of children nodes. Doing so, at the end, the value should be between [0,1].</span>
+
+<span class="sd">        Note</span>
+<span class="sd">        ----</span>
+<span class="sd">        .. image:: _static/img/perceptron_view.jpg</span>
+<span class="sd">            :width: 500</span>
+<span class="sd">            :align: left</span>
+
+<span class="sd">        **Why don't use perceptron approach?**</span>
+
+<span class="sd">        **R.:** Perceptron classifies as 0 or 1 (activate or not the layer), doing so, we will not have</span>
+<span class="sd">        the "percentual reference" in the end.</span>
+
+<span class="sd">        Todo</span>
+<span class="sd">        ----</span>
+<span class="sd">        According to *Giovani*, we can have a perceptron passing a value between those.</span>
+
+<span class="sd">        Caution</span>
+<span class="sd">        -------</span>
+<span class="sd">        This method also assumes that, for each period, the maximum obtained value propagated will be 100%. It means that, for\</span>
+<span class="sd">                each period, the percentual values are normalized.</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="n">_generate_competency_graphs</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">isBFS</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BFS.walk"><a class="viewcode-back" href="../../../modules.grid.html#modules.grid.Competence.BFS.walk">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">walk</span><span class="p">(</span>
+            <span class="n">grafos</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DiGraph</span><span class="p">],</span>
+            <span class="n">notas</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Walk over all competences(graphs), propagating the current value</span>
+<span class="sd">        over each semester.</span>
+
+<span class="sd">        :Complexity: :math:`\\mathcal{O}(n^4)`</span>
+
+<span class="sd">        Args</span>
+<span class="sd">        ----</span>
+<span class="sd">        `grafos`:</span>
+<span class="sd">            A dictionary mapping competences to graphs equivalent.</span>
+<span class="sd">        `notas`:</span>
+<span class="sd">            A dictionary mapping class acronym to a given score.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Dict[str, float]</span>
+<span class="sd">            A dictionary mapping competency to a calculated and propagated value.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; from modules.grid import Competence</span>
+<span class="sd">        &gt;&gt;&gt; from modules import Score</span>
+<span class="sd">        &gt;&gt;&gt; import json</span>
+<span class="sd">        &gt;&gt;&gt; grafos = Competence.BFS.generate_graphs(out, nodes)</span>
+<span class="sd">        &gt;&gt;&gt; student_grid: str = path.join('..','assets','parsed_scores','2016001942.json')</span>
+<span class="sd">        &gt;&gt;&gt; # obtém o histórico de um único estudante</span>
+<span class="sd">        &gt;&gt;&gt; student_grid: json = Score.read_json(student_grid)</span>
+<span class="sd">        # Does some boring stuffs to handle and map a given class to an value ...</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; # ... (usully, the greatest one for a subject)</span>
+<span class="sd">        &gt;&gt;&gt; # notas</span>
+<span class="sd">        &gt;&gt;&gt; # anda sobre o grafo para o(s) aluno(s)</span>
+<span class="sd">        &gt;&gt;&gt; notas_aluno = Competence.BFS.walk(grafos, notas)</span>
+
+
+<span class="sd">        Important</span>
+<span class="sd">        ---------</span>
+
+<span class="sd">        - The accumulated is multiplied by each competence in the current period</span>
+<span class="sd">        - The accumulated is equivalent to the sum of the previous period</span>
+<span class="sd">        """</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'-'</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'Walking over graphs'</span><span class="p">)</span>
+
+        <span class="c1"># Dicionário que irá conter o valor sobre cada competência</span>
+        <span class="n">notas_aluno</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># Itera sobre as competências</span>
+        <span class="k">for</span> <span class="n">competencia</span><span class="p">,</span> <span class="n">grafo</span> <span class="ow">in</span> <span class="n">grafos</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># encontra todos os nós e arestas do grafo. Isso é necessário</span>
+            <span class="n">nodes</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">grafo</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">'period'</span><span class="p">))</span>
+            <span class="c1"># acumulado do período</span>
+            <span class="n">a</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="c1"># anda sobre todos os periodos</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">__get_period</span><span class="p">():</span>
+                <span class="c1"># todas as matérias do período</span>
+                <span class="n">materias</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">nodes</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+                <span class="c1"># Em seguida, anda no seu grafo e obtêm o valor iterado sobre as notas ...</span>
+                <span class="c1"># ... ou seja, a soma das notas propagadas</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\t</span><span class="s1">Competence </span><span class="si">{</span><span class="n">competencia</span><span class="si">}</span><span class="s1"> - Walking'</span><span class="p">)</span>
+                <span class="c1"># somatório de todas as disciplinas do periodo * aresta que saem delas</span>
+                <span class="n">s</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+                <span class="c1"># Calcula para cada matéria do periodo</span>
+                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">materias</span><span class="p">:</span>
+                    <span class="c1"># filhos</span>
+                    <span class="n">f</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">grafo</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+                    <span class="c1"># se não tiver filhos, pula</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">f</span><span class="p">:</span>
+                        <span class="k">continue</span>
+                    <span class="c1"># nota_do_aluno * acumulado_propagado</span>
+                    <span class="n">n</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">notas</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">*</span> <span class="n">a</span>
+                    <span class="n">s</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">n</span> <span class="o">*</span> <span class="n">grafo</span><span class="p">[</span><span class="n">m</span><span class="p">][</span><span class="n">x</span><span class="p">][</span><span class="s1">'weight'</span><span class="p">],</span> <span class="n">f</span><span class="p">))</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">s</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\t\t</span><span class="s1">SUM = ACUMULATED = </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">notas_aluno</span></div></div>
+</pre></div>
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Pedro A C Santos
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/index.js"></script>
+    <script src="../../../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

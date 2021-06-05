@@ -1,0 +1,464 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/><meta name="generator" content="sphinx-3.5.4, furo 2021.03.20.beta30"/>
+        <title>modules.grid.Scrapping - Sigaa Análise 0.0.8 documentation</title>
+      <link rel="stylesheet" href="../../../_static/styles/furo.css?digest=978e1795dfe158b585dda6a8417f6411828bf3ed">
+    <link rel="stylesheet" href="../../../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../../../_static/css/index.css" />
+    <link rel="stylesheet" href="../../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">Sigaa Análise 0.0.8 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../../_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Sigaa Análise 0.0.8 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../todo.html">ToDo</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Brief</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../modules.html#sub-modules">Sub modules</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules.ahp.html">ahp package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules.grid.html">grid package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#module-modules.Plot">Plot module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#module-modules.Score">Score module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#module-modules.Skillset">Skillset module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#module-modules.util">util module</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <h1>Source code for modules.grid.Scrapping</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">"""</span>
+<span class="sd">This module is responsable to open the sigaa system and then scrapy if don't find the course in mongodb database.</span>
+
+<span class="sd">Todo</span>
+<span class="sd">----</span>
+<span class="sd">Missing loggers for:</span>
+
+<span class="sd">- :meth:`scrapping_grid`</span>
+<span class="sd">"""</span>
+
+
+<span class="c1"># Debug</span>
+<span class="c1"># from IPython.core.display import display, HTML</span>
+<span class="c1"># Handle cookie and requests</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">networkx.classes.digraph</span> <span class="kn">import</span> <span class="n">DiGraph</span>
+<span class="kn">from</span> <span class="nn">requests</span> <span class="kn">import</span> <span class="n">Session</span>
+<span class="c1"># Parse html file</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">html</span>
+<span class="c1"># Loads the credentials file</span>
+<span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">load</span>
+<span class="c1"># Replace empowering</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="c1"># Conver string to dict</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="c1"># Graph</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+
+<div class="viewcode-block" id="scrapping_grid"><a class="viewcode-back" href="../../../modules.grid.html#modules.grid.Scrapping.scrapping_grid">[docs]</a><span class="k">def</span> <span class="nf">scrapping_grid</span><span class="p">(</span><span class="n">courseCode</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">DiGraph</span><span class="p">,</span> <span class="n">DiGraph</span><span class="p">]:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Load the credentials under `src/certs/credentials.json` file,</span>
+<span class="sd">    logon into sigaa's system and then, scrap it, retriving a new graph to a certain</span>
+<span class="sd">    grid string</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    ----</span>
+<span class="sd">    `courseCode`:</span>
+<span class="sd">        Course number, e.g, "0192015"</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tuple[DiGraph, DiGraph]</span>
+<span class="sd">        A tuple with (pre,co) requisite graphs equivalents to this courseCode</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    We only add the graph the connection</span>
+
+<span class="sd">    Caution</span>
+<span class="sd">    -------</span>
+<span class="sd">    This graph ain't check for equivalency. It means that when using student's history, you'll problably need to check for equivalency too.</span>
+<span class="sd">    """</span>
+    <span class="c1"># Load credentials json</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./certs/credentials.json'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">credentials</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+    <span class="c1"># URL's used in scrapping</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">'Login'</span><span class="p">:</span> <span class="s1">'https://sigaa.unifei.edu.br/sigaa/logar.do?dispatch=logOn'</span><span class="p">,</span>
+        <span class="s1">'Main'</span><span class="p">:</span> <span class="s1">'https://sigaa.unifei.edu.br/sigaa/portais/discente/discente.jsf'</span><span class="p">,</span>
+        <span class="s1">'SearchResult'</span><span class="p">:</span> <span class="s1">'https://sigaa.unifei.edu.br/sigaa/geral/estrutura_curricular/busca_geral.jsf'</span><span class="p">,</span>
+        <span class="s1">'SearchList'</span><span class="p">:</span> <span class="s1">'https://sigaa.unifei.edu.br/sigaa/graduacao/curriculo/lista.jsf'</span><span class="p">,</span>
+        <span class="s1">'Component'</span><span class="p">:</span> <span class="s1">'https://sigaa.unifei.edu.br/sigaa/geral/componente_curricular/busca_geral.jsf'</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Create a graph</span>
+    <span class="n">Graph</span><span class="p">:</span> <span class="n">DiGraph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+    <span class="c1">#S = Session()</span>
+    <span class="k">with</span> <span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">S</span><span class="p">:</span>
+        <span class="c1"># *  Login into system</span>
+        <span class="n">loginConfig</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"width"</span><span class="p">:</span> <span class="s2">"1366"</span><span class="p">,</span>
+            <span class="s2">"height"</span><span class="p">:</span> <span class="s2">"768"</span><span class="p">,</span>
+            <span class="s2">"urlRedirect"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+            <span class="s2">"subsistemaRedirect"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+            <span class="s2">"acao"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+            <span class="s2">"acessibilidade"</span><span class="p">:</span> <span class="s2">""</span>
+        <span class="p">}</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="s1">'Login'</span><span class="p">],</span> <span class="p">{</span><span class="o">**</span><span class="n">credentials</span><span class="p">,</span> <span class="o">**</span><span class="n">loginConfig</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+
+        <span class="c1"># Get hidden inputs</span>
+        <span class="n">tree</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"menu:form_menu_discente"</span><span class="p">:</span> <span class="s2">"menu:form_menu_discente"</span><span class="p">,</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@id="menu:form_menu_discente"]/input[@name="id"]'</span><span class="p">),</span>
+            <span class="s2">"jscook_action"</span><span class="p">:</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@id="menu:form_menu_discente"]/div/@id'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">':A]#{ curriculo.popularBuscaGeral }'</span><span class="p">,</span>
+            <span class="s2">"javax.faces.ViewState"</span><span class="p">:</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@id="menu:form_menu_discente"]/input[@name="javax.faces.ViewState"]/@value'</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Going to searching grid page</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="s1">'Main'</span><span class="p">],</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+
+        <span class="c1"># Get hidden inputs</span>
+        <span class="n">tree</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"busca"</span><span class="p">:</span> <span class="s2">"busca"</span><span class="p">,</span>
+            <span class="s2">"busca:curso"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>
+            <span class="s2">"busca:matriz"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>
+            <span class="s2">"busca:checkCodigo"</span><span class="p">:</span> <span class="s2">"on"</span><span class="p">,</span>
+            <span class="s2">"busca:codigo"</span><span class="p">:</span> <span class="n">courseCode</span><span class="p">,</span>
+            <span class="s2">"</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@value="Buscar"]/@name'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]):</span> <span class="s2">"Buscar"</span><span class="p">,</span>
+            <span class="s2">"javax.faces.ViewState"</span><span class="p">:</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@name="javax.faces.ViewState"]/@value'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Does the search</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="s1">'SearchResult'</span><span class="p">],</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="s1">'SearchList'</span><span class="p">])</span><span class="o">.</span><span class="n">text</span>
+        <span class="c1"># Get hidden infos</span>
+        <span class="n">tree</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+        <span class="c1"># iF grid didn't exist, throw error</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@id="resultado"]//input[1]/@value'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s1">'The grid </span><span class="si">{</span><span class="n">courseCode</span><span class="si">}</span><span class="s1"> wasn</span><span class="se">\'</span><span class="s1">t found.'</span><span class="p">)</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"resultado"</span><span class="p">:</span> <span class="s2">"resultado"</span><span class="p">,</span>
+            <span class="s2">"</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@id="resultado"]//input[1]/@name'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]):</span> <span class="nb">id</span><span class="p">,</span>
+            <span class="s2">"javax.faces.ViewState"</span><span class="p">:</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@id="javax.faces.ViewState"]/@value'</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s2">"resultado:relatorio"</span><span class="p">:</span> <span class="s1">'resultado:relatorio'</span><span class="p">,</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="nb">id</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Get grid output</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="s1">'SearchList'</span><span class="p">],</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+
+        <span class="c1"># * Get grid</span>
+        <span class="c1"># Add nodes in graph</span>
+        <span class="c1"># Create Tree</span>
+        <span class="n">tree</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+        <span class="c1"># List all lists all school subjects and description also (period or optional or complementary)</span>
+        <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@class="componentes" or @class="tituloRelatorio"]'</span><span class="p">):</span>
+            <span class="c1"># Filter: Check if is a divider or a row itself (class or period)</span>
+            <span class="k">if</span> <span class="n">it</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'@class'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'tituloRelatorio'</span><span class="p">:</span>
+                <span class="c1"># Get period</span>
+                <span class="n">period</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'td'</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+                <span class="c1"># Removing spaces</span>
+                <span class="n">period</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">'[\t\n]'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="n">period</span><span class="p">)</span>
+                <span class="c1"># Change the text</span>
+                <span class="k">if</span> <span class="n">period</span> <span class="o">==</span> <span class="s1">'Componentes Optativos'</span><span class="p">:</span>
+                    <span class="n">period</span> <span class="o">=</span> <span class="s1">'Optativa'</span>
+                <span class="k">elif</span> <span class="n">period</span> <span class="o">==</span> <span class="s1">'Componentes Complementares'</span><span class="p">:</span>
+                    <span class="n">period</span> <span class="o">=</span> <span class="s1">'Complementar'</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Get number only</span>
+                    <span class="n">period</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">period</span><span class="p">[:</span><span class="n">period</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'º'</span><span class="p">)]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="c1"># skip to avoid programming issues</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># Get the code of the initials of grid class</span>
+            <span class="n">initials</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'td'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+
+            <span class="c1"># Get class name</span>
+            <span class="n">className</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'td'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+            <span class="c1"># Get the amount of hours in the classroom</span>
+            <span class="n">time</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'td'</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'text()'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># Get the amount of hours in laboratory</span>
+            <span class="n">labTime</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'td'</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'text()'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="c1"># Removing extra chars</span>
+            <span class="c1"># Removing spaces</span>
+            <span class="n">className</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">'[\t\n]'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="n">className</span><span class="p">)</span>
+            <span class="n">labTime</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">'[\t\n]'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="n">labTime</span><span class="p">)</span>
+            <span class="n">time</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">'[\t\n]'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+            <span class="c1"># Removing extra information 'bout time spent in this class</span>
+            <span class="n">className</span> <span class="o">=</span> <span class="n">className</span><span class="p">[:</span><span class="n">className</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">' - '</span><span class="p">)]</span>
+            <span class="c1"># Getting only the number that represents the max hours spent</span>
+            <span class="n">labTime</span> <span class="o">=</span> <span class="n">labTime</span><span class="p">[:</span><span class="n">labTime</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'h'</span><span class="p">)]</span>
+            <span class="n">time</span> <span class="o">=</span> <span class="n">time</span><span class="p">[:</span><span class="n">time</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'h'</span><span class="p">)]</span>
+            <span class="c1"># Fix a problem with char "" --&gt; '-'</span>
+            <span class="n">className</span> <span class="o">=</span> <span class="n">className</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">''</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">)</span>
+
+            <span class="c1"># Debugging</span>
+            <span class="c1"># print(f'Periodo: |{period}|\t Sigla: |{initials}|\tNome: |{className}|')</span>
+
+            <span class="c1"># Add into graph</span>
+            <span class="n">Graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">initials</span><span class="p">,</span>
+                           <span class="c1"># Create a node with those extra informations</span>
+                           <span class="n">period</span><span class="o">=</span><span class="n">period</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+                           <span class="n">className</span><span class="o">=</span><span class="n">className</span><span class="p">,</span>
+                           <span class="c1"># Laboratory (Practical and Theory)</span>
+                           <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
+                           <span class="n">labTime</span><span class="o">=</span><span class="n">labTime</span><span class="p">)</span>
+
+        <span class="c1"># * Create a graph for pre and co requisite</span>
+        <span class="n">GraphCoReq</span><span class="p">:</span> <span class="n">DiGraph</span> <span class="o">=</span> <span class="n">Graph</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># type:ignore</span>
+        <span class="n">GraphPreReq</span><span class="p">:</span> <span class="n">DiGraph</span> <span class="o">=</span> <span class="n">Graph</span>
+
+        <span class="c1"># * Get edges</span>
+        <span class="c1"># Search for pre and co requisite. They will be used to generate two graphs of connections</span>
+        <span class="c1"># Iterate over graph elements</span>
+        <span class="k">for</span> <span class="n">initials</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">GraphPreReq</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
+            <span class="c1"># Skip if is a optional discipline</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">'period'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Optativa'</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c1"># Otherwise...</span>
+
+            <span class="c1"># Debugging:</span>
+            <span class="c1"># print(f'Key: {initials}, period: {data["period"]}')</span>
+
+            <span class="c1"># Goes to main page</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="s1">'Main'</span><span class="p">])</span><span class="o">.</span><span class="n">text</span>
+
+            <span class="c1"># Get hidden infos</span>
+            <span class="n">tree</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">'menu:form_menu_discente'</span><span class="p">:</span> <span class="s1">'menu:form_menu_discente'</span><span class="p">,</span>
+                <span class="s1">'id'</span><span class="p">:</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@id="menu:form_menu_discente"]/input[@name="id"]/@value'</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="s1">'jscook_action'</span><span class="p">:</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@id="menu:form_menu_discente"]/div/@id'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">':A]#{ componenteCurricular.popularBuscaDiscente }'</span><span class="p">,</span>
+                <span class="s1">'javax.faces.ViewState'</span><span class="p">:</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@name="javax.faces.ViewState"]/@value'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">}</span>
+
+            <span class="c1"># Goes to search page</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="s1">'Main'</span><span class="p">],</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+
+            <span class="c1"># Get hidden infos</span>
+            <span class="n">tree</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">'formBusca'</span><span class="p">:</span> <span class="s1">'formBusca'</span><span class="p">,</span>
+                <span class="s1">'formBusca:checkNivel'</span><span class="p">:</span> <span class="s1">'on'</span><span class="p">,</span>
+                <span class="s1">'formBusca:checkCodigo'</span><span class="p">:</span> <span class="s1">'on'</span><span class="p">,</span>
+                <span class="s1">'formBusca:form:idPreRequisito'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="s1">'formBusca:form:nomeDisciplinaPreRequisito'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="s1">'formBusca:form2:idCoRequisito'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="s1">'formBusca:form2:nomeDisciplinaCoRequisito'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="s1">'formBusca:form3:idEquivalencia'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="s1">'formBusca:form3:nomeDisciplinaEquivalencia'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="s1">'formBusca:Data_Inicial'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="s1">'formBusca:dataFim'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="s1">'formBusca:unidades'</span><span class="p">:</span> <span class="s1">'0'</span><span class="p">,</span>
+                <span class="s1">'formBusca:tipos'</span><span class="p">:</span> <span class="s1">'0'</span><span class="p">,</span>
+                <span class="s1">'formBusca:modalidades'</span><span class="p">:</span> <span class="s1">'0'</span><span class="p">,</span>
+                <span class="s1">'formBusca:btnBuscar'</span><span class="p">:</span> <span class="s1">'Buscar'</span><span class="p">,</span>
+                <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@name="formBusca"]/table/tbody/tr[1]/td[3]/select/@name'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span> <span class="s1">'G'</span><span class="p">,</span>
+                <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@name="formBusca"]/table/tbody/tr[2]/td[3]/input/@name'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">initials</span><span class="p">,</span>
+                <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@name="formBusca"]/table/tbody/tr[3]/td[3]/input/@name'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="s1">'javax.faces.ViewState'</span><span class="p">:</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@name="javax.faces.ViewState"]/@value'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">}</span>
+
+            <span class="c1"># Search for this initial</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="s1">'Component'</span><span class="p">],</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+
+            <span class="c1"># Get hidden infos</span>
+            <span class="n">tree</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+            <span class="n">formName</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span>
+                <span class="s1">'//table[starts-with(@class,"listagem")]//form/@name'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">link</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span>
+                <span class="s1">'//a[@title="Relatório para impressão"]/@onclick'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span>
+                <span class="n">link</span><span class="p">[</span><span class="n">link</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">'{'</span><span class="p">):</span><span class="n">link</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'}'</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\'</span><span class="s1">'</span><span class="p">,</span> <span class="s1">'</span><span class="se">\"</span><span class="s1">'</span><span class="p">))</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">formName</span><span class="p">]</span> <span class="o">=</span> <span class="n">formName</span>
+            <span class="n">data</span><span class="p">[</span><span class="s1">'javax.faces.ViewState'</span><span class="p">]</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span>
+                <span class="s1">'//*[@name="javax.faces.ViewState"]/@value'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="c1"># Goes to response page</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="s1">'Component'</span><span class="p">],</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+
+            <span class="c1"># Extracting infos</span>
+            <span class="n">tree</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+            <span class="c1"># Get Pre requisite (list)</span>
+            <span class="n">preRequisite</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span>
+                <span class="s1">'//th[text()[contains(.,"Pré-Requisitos:")]]/following-sibling::td/acronym/text()'</span><span class="p">)</span>
+            <span class="c1"># Get Co requisite (list)</span>
+            <span class="n">coRequisite</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span>
+                <span class="s1">'//th[text()[contains(.,"Co-Requisitos:")]]/following-sibling::td/acronym/text()'</span><span class="p">)</span>
+
+            <span class="c1"># Check if element is a node, if so, create graph</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">preRequisite</span><span class="p">:</span>
+                <span class="c1"># If element is present in graph</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">GraphPreReq</span><span class="p">:</span>
+                    <span class="c1"># Create edges</span>
+                    <span class="n">GraphPreReq</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">initials</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">coRequisite</span><span class="p">:</span>
+                <span class="c1"># If element is present in graph</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">GraphCoReq</span><span class="p">:</span>
+                    <span class="c1"># Create edges</span>
+                    <span class="n">GraphCoReq</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">initials</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">GraphPreReq</span><span class="p">,</span> <span class="n">GraphCoReq</span></div>
+</pre></div>
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Pedro A C Santos
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/index.js"></script>
+    <script src="../../../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

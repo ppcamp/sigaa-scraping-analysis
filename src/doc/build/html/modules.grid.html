@@ -1,0 +1,1033 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="ahp package" href="modules.ahp.html" />
+
+    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-3.5.4, furo 2021.03.20.beta30"/>
+        <title>grid package - Sigaa Análise 0.0.8 documentation</title>
+      <link rel="stylesheet" href="_static/styles/furo.css?digest=978e1795dfe158b585dda6a8417f6411828bf3ed">
+    <link rel="stylesheet" href="_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="_static/css/index.css" />
+    <link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Sigaa Análise 0.0.8 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Sigaa Análise 0.0.8 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">ToDo</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Brief</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html#sub-modules">Sub modules</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="modules.ahp.html">ahp package</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">grid package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#module-modules.Plot">Plot module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#module-modules.Score">Score module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#module-modules.Skillset">Skillset module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#module-modules.util">util module</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="module-modules.grid">
+<span id="grid-package"></span><h1>grid package<a class="headerlink" href="#module-modules.grid" title="Permalink to this headline">¶</a></h1>
+<p>This object returns grid’s scrapping. It has modules/functions to:</p>
+<ul class="simple">
+<li><p>Search/generate a given grid. <a class="reference internal" href="#module-modules.grid.Grid" title="modules.grid.Grid"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Grid</span></code></a></p></li>
+<li><p>Methods to retrieve/store the graph in the database. <a class="reference internal" href="#module-modules.grid.Database" title="modules.grid.Database"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Database</span></code></a></p></li>
+<li><p>Methods to iterate/walk over generated graphs. <a class="reference internal" href="#module-modules.grid.Competence" title="modules.grid.Competence"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Competence</span></code></a></p></li>
+<li><p>Methods to scrapping a new grid. <a class="reference internal" href="#module-modules.grid.Scrapping" title="modules.grid.Scrapping"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Scrapping</span></code></a></p></li>
+</ul>
+<div class="section" id="module-modules.grid.Competence">
+<span id="competence-module"></span><h2>Competence module<a class="headerlink" href="#module-modules.grid.Competence" title="Permalink to this headline">¶</a></h2>
+<p>This module contains some usefull functions to iterate over competencies graphs.</p>
+<p>It contains:
+- A function to create the competecies graphs
+- A function to iterate over these created graphs and calculate the propagated value</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Missing loggers for:</p>
+<ul class="simple">
+<li><p>_get_period_classes</p></li>
+<li><p>_competence_not_exist_in</p></li>
+<li><p>_get_competence_weight</p></li>
+<li><p>_generate_competency_graphs</p></li>
+<li><p>DFS.generate_graphs</p></li>
+<li><p>DFS._get_weight</p></li>
+<li><p>DFS.__dfs_walk</p></li>
+<li><p>DFS.__dfs_walk</p></li>
+<li><p>BFS.generate_graphs</p></li>
+<li><p>BFS._get_weight</p></li>
+<li><p>BFS.__dfs_walk</p></li>
+<li><p>BFS.__dfs_walk</p></li>
+</ul>
+</div>
+<p>Missing tests for:</p>
+<ul class="simple">
+<li><p>__get_period</p></li>
+<li><p>_competence_not_exist_in</p></li>
+<li><p>_get_competence_weight</p></li>
+<li><p>_generate_competency_graphs</p></li>
+<li><p>DFS.generate_graphs</p></li>
+<li><p>DFS._get_weight</p></li>
+<li><p>DFS.__dfs_walk</p></li>
+<li><p>DFS.__dfs_walk</p></li>
+<li><p>BFS.generate_graphs</p></li>
+<li><p>BFS._get_weight</p></li>
+<li><p>BFS.__dfs_walk</p></li>
+<li><p>BFS.__dfs_walk</p></li>
+</ul>
+<dl class="py class">
+<dt id="modules.grid.Competence.BFS">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">modules.grid.Competence.</span></code><code class="sig-name descname"><span class="pre">BFS</span></code><a class="reference internal" href="_modules/modules/grid/Competence.html#BFS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Competence.BFS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An object created to encapsulate all elements and calls that are used in DFS.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.0.8.</span></p>
+</div>
+<dl class="py method">
+<dt id="modules.grid.Competence.BFS.generate_graphs">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">generate_graphs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">networkx.classes.digraph.DiGraph</span></span></em><span class="sig-paren">)</span> → <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">networkx.classes.digraph.DiGraph</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/modules/grid/Competence.html#BFS.generate_graphs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Competence.BFS.generate_graphs" title="Permalink to this definition">¶</a></dt>
+<dd><p>A method used to create a simple graph which, in the end of dfs <a class="reference internal" href="#modules.grid.Competence.BFS.walk" title="modules.grid.Competence.BFS.walk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">walk()</span></code></a>, will be the sum of 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out</strong> – The dataframe that makes the correlation for subject and its competence</p></li>
+<li><p><strong>nodes</strong> – The base graph, which contains all the needed nodes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary mapping each competence to a given graph (<code class="xref py py-class docutils literal notranslate"><span class="pre">networkx</span></code> object)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[str, DiGraph]</p>
+</dd>
+</dl>
+<div class="figure align-center" id="id8">
+<span id="figure-graph-web-2"></span><a class="reference internal image-reference" href="_images/graph_example_desenvolvimento_web_2.png"><img alt="Graph example - Desenvolvimento Web" src="_images/graph_example_desenvolvimento_web_2.png" style="width: 700px;"/></a>
+<p class="caption"><span class="caption-text">Graph example - Desenvolvimento Web</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+<p>In the image above, the values of <cite>out</cite> are:</p>
+<div class="table-wrapper"><table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Period</p></th>
+<th class="head"><p>Acronym/Subject</p></th>
+<th class="head"><p>Original/Out value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>HUMI01</p></td>
+<td><p>0.0435</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>MATI01</p></td>
+<td><p>0.0870</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>MATI02</p></td>
+<td><p>0.0870</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>ECOI04</p></td>
+<td><p>0.0870</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>ECOI09</p></td>
+<td><p>0.2174</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>MATI04</p></td>
+<td><p>0.1304</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>ECOI11</p></td>
+<td><p>0.1304</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>ECOI14</p></td>
+<td><p>0.0435</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>ECOI25</p></td>
+<td><p>0.1739</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>However, due to the normalization made for each period:</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\forall \text{ period | } \text{subject}_i = \frac{\text{current_subject_value}_i}{\sum_{n=0}^N\text{current_subject_value}_n}\]</div></div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <span class="math notranslate nohighlight">\(\sum\)</span> of each period is equal to 1.0. E.g:             <span class="math notranslate nohighlight">\(\sum\text{period}_1 = HUMI01\cdot0.2 + MATI01\cdot0.4 + MATI02\cdot0.4 \equiv 1.0\)</span></p>
+</div>
+<p>For the period 1:</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\sum\left(\text{HUMI01}+\text{MATI01}+\text{MATI02}\right) = 0.2175 \
+\therefore \
+\text{HUMI01} = \frac{0.0435}{0.2175} = 0.2\]</div></div>
+<p>Doing so, we have:</p>
+<div class="table-wrapper"><table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Period</p></th>
+<th class="head"><p>Acronym/Subject</p></th>
+<th class="head"><p>Sum</p></th>
+<th class="head"><p>New value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>HUMI01</p></td>
+<td></td>
+<td><p>0.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>MATI01</p></td>
+<td><p>0.2175</p></td>
+<td><p>0.4</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>MATI02</p></td>
+<td></td>
+<td><p>0.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>ECOI04</p></td>
+<td><p>0.0870</p></td>
+<td><p>1.0</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>ECOI09</p></td>
+<td><p>0.3478</p></td>
+<td><p>0.6251</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>MATI04</p></td>
+<td></td>
+<td><p>0.3749</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>ECOI11</p></td>
+<td><p>0.1739</p></td>
+<td><p>0.7499</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>ECOI14</p></td>
+<td></td>
+<td><p>0.250</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>ECOI25</p></td>
+<td><p>0.1739</p></td>
+<td><p>1.0</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ol class="arabic simple">
+<li><p>Propagate the <strong>current value</strong> (acumulated * subject * edge) to the next node.</p></li>
+<li><p>Sum all returns of children nodes. Doing so, at the end, the value should be between [0,1].</p></li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<a class="reference internal image-reference" href="_images/perceptron_view.jpg"><img alt="_images/perceptron_view.jpg" class="align-left" src="_images/perceptron_view.jpg" style="width: 500px;"/></a>
+<p><strong>Why don’t use perceptron approach?</strong></p>
+<p><strong>R.:</strong> Perceptron classifies as 0 or 1 (activate or not the layer), doing so, we will not have
+the “percentual reference” in the end.</p>
+</div>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>According to <em>Giovani</em>, we can have a perceptron passing a value between those.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>This method also assumes that, for each period, the maximum obtained value propagated will be 100%. It means that, for                each period, the percentual values are normalized.</p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="modules.grid.Competence.BFS.walk">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">walk</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grafos</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">networkx.classes.digraph.DiGraph</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notas</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> → <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/modules/grid/Competence.html#BFS.walk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Competence.BFS.walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk over all competences(graphs), propagating the current value
+over each semester.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Complexity</dt>
+<dd class="field-odd"><p><span class="math notranslate nohighlight">\(\mathcal{O}(n^4)\)</span></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>grafos</strong> – A dictionary mapping competences to graphs equivalent.</p></li>
+<li><p><strong>notas</strong> – A dictionary mapping class acronym to a given score.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary mapping competency to a calculated and propagated value.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dict[str, float]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">modules.grid</span> <span class="kn">import</span> <span class="n">Competence</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">modules</span> <span class="kn">import</span> <span class="n">Score</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grafos</span> <span class="o">=</span> <span class="n">Competence</span><span class="o">.</span><span class="n">BFS</span><span class="o">.</span><span class="n">generate_graphs</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">student_grid</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">'..'</span><span class="p">,</span><span class="s1">'assets'</span><span class="p">,</span><span class="s1">'parsed_scores'</span><span class="p">,</span><span class="s1">'2016001942.json'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># obtém o histórico de um único estudante</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">student_grid</span><span class="p">:</span> <span class="n">json</span> <span class="o">=</span> <span class="n">Score</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">student_grid</span><span class="p">)</span>
+<span class="go"># Does some boring stuffs to handle and map a given class to an value ...</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ... (usully, the greatest one for a subject)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># notas</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># anda sobre o grafo para o(s) aluno(s)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">notas_aluno</span> <span class="o">=</span> <span class="n">Competence</span><span class="o">.</span><span class="n">BFS</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">grafos</span><span class="p">,</span> <span class="n">notas</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>The accumulated is multiplied by each competence in the current period</p></li>
+<li><p>The accumulated is equivalent to the sum of the previous period</p></li>
+</ul>
+</div>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="modules.grid.Competence.DFS">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">modules.grid.Competence.</span></code><code class="sig-name descname"><span class="pre">DFS</span></code><a class="reference internal" href="_modules/modules/grid/Competence.html#DFS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Competence.DFS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An object created to encapsulate all elements and calls that are used in DFS.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.0.9.</span></p>
+</div>
+<dl class="py method">
+<dt id="modules.grid.Competence.DFS.generate_graphs">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">generate_graphs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">networkx.classes.digraph.DiGraph</span></span></em><span class="sig-paren">)</span> → <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">networkx.classes.digraph.DiGraph</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/modules/grid/Competence.html#DFS.generate_graphs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Competence.DFS.generate_graphs" title="Permalink to this definition">¶</a></dt>
+<dd><p>A method used to create a simple graph which, in the end of dfs <a class="reference internal" href="#modules.grid.Competence.DFS.walk" title="modules.grid.Competence.DFS.walk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">walk()</span></code></a>, will be the sum of 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out</strong> – The dataframe that makes the correlation for subject and its competence</p></li>
+<li><p><strong>nodes</strong> – The base graph, which contains all the needed nodes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary mapping each competence to a given graph (<code class="xref py py-class docutils literal notranslate"><span class="pre">networkx</span></code> object)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[str, DiGraph]</p>
+</dd>
+</dl>
+<div class="figure align-center" id="id9">
+<span id="figure-graph-web"></span><a class="reference internal image-reference" href="_images/graph_example_desenvolvimento_web.png"><img alt="Graph example - Desenvolvimento Web" src="_images/graph_example_desenvolvimento_web.png" style="width: 700px;"/></a>
+<p class="caption"><span class="caption-text">Graph example - Desenvolvimento Web</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+<p>In the image above, the values of <cite>out</cite> are:</p>
+<div class="table-wrapper"><table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Period</p></th>
+<th class="head"><p>Acronym/Subject</p></th>
+<th class="head"><p>Sum</p></th>
+<th class="head"><p>New value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>HUMI01</p></td>
+<td><p>0.0435</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>MATI01</p></td>
+<td><p>0.0870</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>MATI02</p></td>
+<td><p>0.0870</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>ECOI04</p></td>
+<td><p>0.0870</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>ECOI09</p></td>
+<td><p>0.2174</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>MATI04</p></td>
+<td><p>0.1304</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>ECOI11</p></td>
+<td><p>0.1304</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>ECOI14</p></td>
+<td><p>0.0435</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>ECOI25</p></td>
+<td><p>0.1739</p></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>However, due to the normalization made for each period:</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\forall \text{ period | } \text{subject}_i = \frac{\text{current_subject_value}_i}{\sum_{n=0}^N\text{current_subject_value}_n}\]</div></div>
+<p>For the period 1:</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\sum\left(\text{HUMI01}+\text{MATI01}+\text{MATI02}\right) = 0.2175 \
+\therefore \
+\text{HUMI01} = \frac{0.0435}{0.2175} = 0.2\]</div></div>
+<p>Doing so, we have:</p>
+<div class="table-wrapper"><table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Period</p></th>
+<th class="head"><p>Acronym/Subject</p></th>
+<th class="head"><p>Sum</p></th>
+<th class="head"><p>New value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>HUMI01</p></td>
+<td></td>
+<td><p>0.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>MATI01</p></td>
+<td><p>0.2175</p></td>
+<td><p>0.4</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>MATI02</p></td>
+<td></td>
+<td><p>0.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>ECOI04</p></td>
+<td><p>0.0870</p></td>
+<td><p>1.0</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>ECOI09</p></td>
+<td><p>0.3478</p></td>
+<td><p>0.6251</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>MATI04</p></td>
+<td></td>
+<td><p>0.3749</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>ECOI11</p></td>
+<td><p>0.1739</p></td>
+<td><p>0.7499</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>ECOI14</p></td>
+<td></td>
+<td><p>0.250</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>ECOI25</p></td>
+<td><p>0.1739</p></td>
+<td><p>1.0</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ol class="arabic simple">
+<li><p>Propagate the <strong>current value</strong> (acumulated * subject * edge) to the next node.</p></li>
+<li><p>Sum all returns of children nodes. Doing so, at the end, the value should be between [0,1].</p></li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<a class="reference internal image-reference" href="_images/perceptron_view.jpg"><img alt="_images/perceptron_view.jpg" class="align-left" src="_images/perceptron_view.jpg" style="width: 500px;"/></a>
+<p><strong>Why don’t use perceptron approach?</strong></p>
+<p><strong>R.:</strong> Perceptron classifies as 0 or 1 (activate or not the layer), doing so, we will not have
+the “percentual reference” in the end.</p>
+</div>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>According to <em>Giovani</em>, we can have a perceptron passing a value between those.</p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="modules.grid.Competence.DFS.walk">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">walk</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grafos</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">networkx.classes.digraph.DiGraph</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notas</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> → <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/modules/grid/Competence.html#DFS.walk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Competence.DFS.walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk over all competences(graphs), propagating the current value
+over each semester.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grafos</strong> – A dictionary mapping competences to graphs equivalent.</p></li>
+<li><p><strong>notas</strong> – A dictionary mapping class acronym to a given score.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary mapping competency to a calculated and propagated value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[str, float]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">modules.grid</span> <span class="kn">import</span> <span class="n">Competence</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">modules</span> <span class="kn">import</span> <span class="n">Score</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grafos</span> <span class="o">=</span> <span class="n">Competence</span><span class="o">.</span><span class="n">BFS</span><span class="o">.</span><span class="n">generate_graphs</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">student_grid</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">'..'</span><span class="p">,</span><span class="s1">'assets'</span><span class="p">,</span><span class="s1">'parsed_scores'</span><span class="p">,</span><span class="s1">'2016001942.json'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># obtém o histórico de um único estudante</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">student_grid</span><span class="p">:</span> <span class="n">json</span> <span class="o">=</span> <span class="n">Score</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">student_grid</span><span class="p">)</span>
+<span class="go"># Does some boring stuffs to handle and map a given class to an value ...</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ... (usully, the greatest one for a subject)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># notas</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># anda sobre o grafo para o(s) aluno(s)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">notas_aluno</span> <span class="o">=</span> <span class="n">Competence</span><span class="o">.</span><span class="n">DFS</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">grafos</span><span class="p">,</span> <span class="n">notas</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This function calculates the sum propagated over all “subgraphs” that can exist in a single DiGraph.            For example, take a look in the figure (<a class="reference internal" href="#figure-graph-web"><span class="std std-ref">Graph example - Desenvolvimento Web</span></a>). In this figure, we have 3                 independent subgraphs (We are assuming that, HUMI01|MATI01|MATI02 are indepedent graphs                     since they are not directly connected with each other). For those situations, this                         method sum the output of all subgraphs.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function runs the <code class="xref py py-meth docutils literal notranslate"><span class="pre">modules.grid.Competence.__dfs_walk()</span></code> for             all competences. Bellow you can check the <strong>manual debugging</strong> for this method.</p>
+<a class="reference internal image-reference" href="_images/graph_example_devweb_debug_1.png"><img alt="Graph example - Desenvolvimento Web debug#1" class="align-left" src="_images/graph_example_devweb_debug_1.png" style="width: 290px;"/></a>
+<a class="reference internal image-reference" href="_images/graph_example_devweb_debug_2.png"><img alt="Graph example - Desenvolvimento Web debug#2" class="align-right" src="_images/graph_example_devweb_debug_2.png" style="width: 290px;"/></a>
+</div>
+</dd></dl>
+</dd></dl>
+</div>
+<div class="section" id="module-modules.grid.Database">
+<span id="database-module"></span><h2>Database module<a class="headerlink" href="#module-modules.grid.Database" title="Permalink to this headline">¶</a></h2>
+<p>This module it’s responsable to store/retrieve the graphs from mongodb.</p>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>Implement loggers for:</p>
+<ul class="simple">
+<li><p>Grids.set</p></li>
+</ul>
+<p>Implement tests for:</p>
+<ul class="simple">
+<li><p>test_get</p></li>
+<li><p>test_contains</p></li>
+<li><p>test_insert</p></li>
+</ul>
+</div>
+<dl class="py class">
+<dt id="modules.grid.Database.Grids">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">modules.grid.Database.</span></code><code class="sig-name descname"><span class="pre">Grids</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connectionString</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/grid/Database.html#Grids"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Database.Grids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is responsable to get/put grids into database.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># importing this module</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">modules.grid.Database</span> <span class="kn">import</span> <span class="n">Grids</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grids_module</span> <span class="o">=</span> <span class="n">Grids</span><span class="p">(</span><span class="n">mongo_connection_string</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unexistent_courseCode</span> <span class="o">=</span> <span class="s2">"coxinha"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># throw this AssertionError</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">unexistent_courseCode</span> <span class="ow">in</span> <span class="n">grids_module</span><span class="p">,</span> <span class="s2">"It will throw this error"</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="modules.grid.Database.Grids.close">
+<code class="sig-name descname"><span class="pre">close</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/grid/Database.html#Grids.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Database.Grids.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close mongo’s connections</p>
+</dd></dl>
+<dl class="py method">
+<dt id="modules.grid.Database.Grids.get">
+<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">networkx.classes.digraph.DiGraph</span><span class="p"><span class="pre">,</span> </span><span class="pre">networkx.classes.digraph.DiGraph</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/modules/grid/Database.html#Grids.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Database.Grids.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get object then convert it to graph again</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>grid</strong> – Equivalent grid number.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(pre, co) Pre and corequisites (digraphs)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><cite>Tuple</cite></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>Exception</strong> – if couldn’t fetch some object with this courseCode.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="modules.grid.Database.Grids.set">
+<code class="sig-name descname"><span class="pre">set</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GraphPreReq</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">networkx.classes.digraph.DiGraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GraphCoReq</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">networkx.classes.digraph.DiGraph</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="reference internal" href="_modules/modules/grid/Database.html#Grids.set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Database.Grids.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert graphs to json, then, to string. After that, store it
+into database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grid</strong> – A grid string like. E.g: “0192015”</p></li>
+<li><p><strong>GraphPreReq</strong> – A <cite>networkx.DiGraph</cite>, where the edges are the pre requisite</p></li>
+<li><p><strong>GraphCoReq</strong> – A <cite>networkx.DiGraph</cite>, where the edges are the co requisite</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Check it out the <a class="reference internal" href="#module-modules.grid.Grid" title="modules.grid.Grid"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Grid</span></code></a> module.</p>
+</div>
+</dd></dl>
+</dd></dl>
+</div>
+<div class="section" id="module-modules.grid.Grid">
+<span id="grid-module"></span><h2>Grid module<a class="headerlink" href="#module-modules.grid.Grid" title="Permalink to this headline">¶</a></h2>
+<p>This module contains the functions which check for existency and,
+if didn’t found, scrap it from sigaa’s systems.</p>
+<div class="admonition-todo admonition" id="id5">
+<p class="admonition-title">Todo</p>
+<p>Implement <cite>loggers</cite> and <cite>tests</cite> for Grid</p>
+</div>
+<dl class="py function">
+<dt id="modules.grid.Grid.get_grid">
+<code class="sig-prename descclassname"><span class="pre">modules.grid.Grid.</span></code><code class="sig-name descname"><span class="pre">get_grid</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">networkx.classes.digraph.DiGraph</span><span class="p"><span class="pre">,</span> </span><span class="pre">networkx.classes.digraph.DiGraph</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/modules/grid/Grid.html#get_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Grid.get_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get this grid.
+If the grid is not in database. Got it and then, store in database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grid</strong> – The grid id. E.g, ‘0192015’</p></li>
+<li><p><strong>connection</strong> – The connection string needed to access mongodb</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A <cite>tuple</cite> containing the pre and co requisite (networkx.DiGraph)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[DiGraph, DiGraph]</p>
+</dd>
+</dl>
+</dd></dl>
+</div>
+<div class="section" id="module-modules.grid.Plot">
+<span id="plot-module"></span><h2>Plot module<a class="headerlink" href="#module-modules.grid.Plot" title="Permalink to this headline">¶</a></h2>
+<p>Contains the functions used to plot the graph</p>
+<div class="admonition-todo admonition" id="id6">
+<p class="admonition-title">Todo</p>
+<p>Implement loggers for:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#modules.grid.Plot.DotFile" title="modules.grid.Plot.DotFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">DotFile</span></code></a></p></li>
+<li><p><a class="reference internal" href="#modules.grid.Plot.weighted_graph" title="modules.grid.Plot.weighted_graph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">weighted_graph()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#modules.grid.Plot.only_grid" title="modules.grid.Plot.only_grid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">only_grid()</span></code></a></p></li>
+</ul>
+</div>
+<dl class="py class">
+<dt id="modules.grid.Plot.Colors">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">modules.grid.Plot.</span></code><code class="sig-name descname"><span class="pre">Colors</span></code><a class="reference internal" href="_modules/modules/grid/Plot.html#Colors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Plot.Colors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A enum like to map a color palette in hexa.</p>
+<dl class="py attribute">
+<dt id="modules.grid.Plot.Colors.BlueBased">
+<code class="sig-name descname"><span class="pre">BlueBased</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'baby':</span> <span class="pre">'#BDC3C7'}</span></em><a class="headerlink" href="#modules.grid.Plot.Colors.BlueBased" title="Permalink to this definition">¶</a></dt>
+<dd><p>A color palletet based on blue</p>
+</dd></dl>
+<dl class="py attribute">
+<dt id="modules.grid.Plot.Colors.GreenBased">
+<code class="sig-name descname"><span class="pre">GreenBased</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'nature':</span> <span class="pre">'#4c8768'}</span></em><a class="headerlink" href="#modules.grid.Plot.Colors.GreenBased" title="Permalink to this definition">¶</a></dt>
+<dd><p>A color pallette based on green</p>
+</dd></dl>
+<dl class="py attribute">
+<dt id="modules.grid.Plot.Colors.RedBased">
+<code class="sig-name descname"><span class="pre">RedBased</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'darkPink':</span> <span class="pre">'#BD1C44',</span> <span class="pre">'darkRed':</span> <span class="pre">'#AF0019',</span> <span class="pre">'darkenRed':</span> <span class="pre">'#850014',</span> <span class="pre">'darkerRed':</span> <span class="pre">'#BB0019',</span> <span class="pre">'lightenRed':</span> <span class="pre">'#FA3246',</span> <span class="pre">'wine':</span> <span class="pre">'#BD1C32'}</span></em><a class="headerlink" href="#modules.grid.Plot.Colors.RedBased" title="Permalink to this definition">¶</a></dt>
+<dd><p>A color pallette based on red</p>
+</dd></dl>
+<dl class="py attribute">
+<dt id="modules.grid.Plot.Colors.node">
+<code class="sig-name descname"><span class="pre">node</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'#BDC3C7'</span></em><a class="headerlink" href="#modules.grid.Plot.Colors.node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="modules.grid.Plot.Colors.rand">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">rand</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">str</span><a class="reference internal" href="_modules/modules/grid/Plot.html#Colors.rand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Plot.Colors.rand" title="Permalink to this definition">¶</a></dt>
+<dd><p>A static method to generate some random color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A formatted hex color, e.g: “#3f0a9b”</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="modules.grid.Plot.DotFile">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">modules.grid.Plot.</span></code><code class="sig-name descname"><span class="pre">DotFile</span></code><a class="reference internal" href="_modules/modules/grid/Plot.html#DotFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Plot.DotFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to generate dot files.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://graphviz.org/doc/info/attrs.html">See more on Graphviz</a></p>
+</div>
+<dl class="py method">
+<dt id="modules.grid.Plot.DotFile.edge">
+<code class="sig-name descname"><span class="pre">edge</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">father</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">son</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/grid/Plot.html#DotFile.edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Plot.DotFile.edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create connection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>father</strong> – ‘From’ node</p></li>
+<li><p><strong>son</strong> – ‘To’ node</p></li>
+<li><p><strong>style</strong> – edge style.</p></li>
+<li><p><strong>color</strong> – edge color.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">DotFile</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">'A'</span><span class="p">,</span><span class="s1">'B'</span><span class="p">)</span> <span class="c1"># create a connection A→B</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="modules.grid.Plot.DotFile.getDot">
+<code class="sig-name descname"><span class="pre">getDot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/grid/Plot.html#DotFile.getDot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Plot.DotFile.getDot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gerate dot file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> – Name to save dot’s file.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">DotFile</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">getDot</span><span class="p">(</span><span class="s1">'/home/ppcamp/Desktop/test.dot'</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="modules.grid.Plot.DotFile.node">
+<code class="sig-name descname"><span class="pre">node</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodeName</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillcolor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="reference internal" href="_modules/modules/grid/Plot.html#DotFile.node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Plot.DotFile.node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert string used to create a node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodeName</strong> – Name used to make connections.</p></li>
+<li><p><strong>label</strong> – Name showed in graph.</p></li>
+<li><p><strong>color</strong> – Border color.</p></li>
+<li><p><strong>fillcolor</strong> – Fill color.</p></li>
+<li><p><strong>pos</strong> – Inch absolute position.</p></li>
+<li><p><strong>shape</strong> – Form shape</p></li>
+<li><p><strong>style</strong> – Form style, i.e., filled or striped</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dotfile</span> <span class="o">=</span> <span class="n">DotFile</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dotfile</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span> <span class="s1">'CEI039'</span><span class="p">,</span><span class="s1">'CEI039'</span><span class="p">,</span> <span class="s1">'black'</span><span class="p">,</span> <span class="s1">'white'</span><span class="p">,</span> <span class="s1">'4,0!'</span><span class="p">,</span> <span class="s1">'rectangle'</span><span class="p">,</span> <span class="s1">'filled'</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</dd></dl>
+<dl class="py function">
+<dt id="modules.grid.Plot.only_grid">
+<code class="sig-prename descclassname"><span class="pre">modules.grid.Plot.</span></code><code class="sig-name descname"><span class="pre">only_grid</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">co</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'grid'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputDir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'out'</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="reference internal" href="_modules/modules/grid/Plot.html#only_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Plot.only_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a student view of grid fluxogram. This plot bot edges, pre and co requisite.
+It run a system call to <a class="reference external" href="https://graphviz.org/">graphviz</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Args</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><cite>nodes</cite>: A list containing the nodes.</p></li>
+<li><p><cite>pre</cite>: A list containing the edges for this graph.</p></li>
+<li><p><cite>co</cite>: A list containing the edges for this graph.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Kwargs</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><cite>filename</cite>: The name of the file to save (image name). DEFAULT: grid</p></li>
+<li><p><cite>outputDir</cite>: The directory to save. DEFAULT: out</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The nodes must be ordered by period of the class.</p>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt id="modules.grid.Plot.weighted_graph">
+<code class="sig-prename descclassname"><span class="pre">modules.grid.Plot.</span></code><code class="sig-name descname"><span class="pre">weighted_graph</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">networkx.classes.reportviews.NodeView</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'grid'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputDir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'out'</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="reference internal" href="_modules/modules/grid/Plot.html#weighted_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Plot.weighted_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a student view of grid fluxogram/graph.
+This function make a system call to <a class="reference external" href="https://graphviz.org/">graphviz</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Args</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><cite>nodes</cite>: A list containing the nodes.</p></li>
+<li><p><cite>edges</cite>: A list containing the edges for this graph.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Kwargs</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><cite>filename</cite>: The name of the file to save (image name). DEFAULT: grid</p></li>
+<li><p><cite>outputDir</cite>: The directory to save. DEFAULT: out</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The nodes must ne ordered by period of the class.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Usually, you can get an example graph in <a class="reference internal" href="#modules.grid.Grid.get_grid" title="modules.grid.Grid.get_grid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">modules.grid.Grid.get_grid()</span></code></a></p>
+</div>
+</dd></dl>
+</div>
+<div class="section" id="module-modules.grid.Scrapping">
+<span id="scrapping-module"></span><h2>Scrapping module<a class="headerlink" href="#module-modules.grid.Scrapping" title="Permalink to this headline">¶</a></h2>
+<p>This module is responsable to open the sigaa system and then scrapy if don’t find the course in mongodb database.</p>
+<div class="admonition-todo admonition" id="id7">
+<p class="admonition-title">Todo</p>
+<p>Missing loggers for:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#modules.grid.Scrapping.scrapping_grid" title="modules.grid.Scrapping.scrapping_grid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">scrapping_grid()</span></code></a></p></li>
+</ul>
+</div>
+<dl class="py function">
+<dt id="modules.grid.Scrapping.scrapping_grid">
+<code class="sig-prename descclassname"><span class="pre">modules.grid.Scrapping.</span></code><code class="sig-name descname"><span class="pre">scrapping_grid</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">courseCode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">networkx.classes.digraph.DiGraph</span><span class="p"><span class="pre">,</span> </span><span class="pre">networkx.classes.digraph.DiGraph</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/modules/grid/Scrapping.html#scrapping_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modules.grid.Scrapping.scrapping_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the credentials under <cite>src/certs/credentials.json</cite> file,
+logon into sigaa’s system and then, scrap it, retriving a new graph to a certain
+grid string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>courseCode</strong> – Course number, e.g, “0192015”</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple with (pre,co) requisite graphs equivalents to this courseCode</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[DiGraph, DiGraph]</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We only add the graph the connection</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>This graph ain’t check for equivalency. It means that when using student’s history, you’ll problably need to check for equivalency too.</p>
+</div>
+</dd></dl>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="modules.ahp.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">ahp package</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Pedro A C Santos
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="_sources/modules.grid.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">grid package</a><ul>
+<li><a class="reference internal" href="#module-modules.grid.Competence">Competence module</a></li>
+<li><a class="reference internal" href="#module-modules.grid.Database">Database module</a></li>
+<li><a class="reference internal" href="#module-modules.grid.Grid">Grid module</a></li>
+<li><a class="reference internal" href="#module-modules.grid.Plot">Plot module</a></li>
+<li><a class="reference internal" href="#module-modules.grid.Scrapping">Scrapping module</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="_static/js/index.js"></script>
+    <script src="_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

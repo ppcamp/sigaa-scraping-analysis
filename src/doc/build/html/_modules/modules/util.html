@@ -1,0 +1,651 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/><meta name="generator" content="sphinx-3.5.4, furo 2021.03.20.beta30"/>
+        <title>modules.util - Sigaa Análise 0.0.8 documentation</title>
+      <link rel="stylesheet" href="../../_static/styles/furo.css?digest=978e1795dfe158b585dda6a8417f6411828bf3ed">
+    <link rel="stylesheet" href="../../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../../_static/css/index.css" />
+    <link rel="stylesheet" href="../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Sigaa Análise 0.0.8 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Sigaa Análise 0.0.8 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../todo.html">ToDo</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Brief</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules.html#sub-modules">Sub modules</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules.ahp.html">ahp package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules.grid.html">grid package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html#module-modules.Plot">Plot module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html#module-modules.Score">Score module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html#module-modules.Skillset">Skillset module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html#module-modules.util">util module</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <h1>Source code for modules.util</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">"""</span>
+<span class="sd">A module containing some usefull functions that can be shared with another modules</span>
+
+<span class="sd">Todo</span>
+<span class="sd">----</span>
+<span class="sd">Implement tests for:</span>
+
+<span class="sd">- test_raise_MinimumLenghtError</span>
+<span class="sd">- test_raise_TypeError</span>
+<span class="sd">- test_get_competences_and_consistency</span>
+<span class="sd">- test_calc_mean_matrix</span>
+<span class="sd">- test_calc_ahp_for_new_mat</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="c1"># Append this libraries if not in the path</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="s1">'./src/'</span><span class="p">))</span>
+
+<span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">overload</span>
+<span class="kn">import</span> <span class="nn">logging</span> <span class="k">as</span> <span class="nn">logger</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">modules.ahp</span> <span class="kn">import</span> <span class="n">Ahp</span>
+<span class="kn">from</span> <span class="nn">modules.ahp.Types</span> <span class="kn">import</span> <span class="n">FormData</span><span class="p">,</span> <span class="n">FormDataType</span>
+
+
+<div class="viewcode-block" id="MinimumLenghtError"><a class="viewcode-back" href="../../modules.html#modules.util.MinimumLenghtError">[docs]</a><span class="k">class</span> <span class="nc">MinimumLenghtError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Exception raised when you didn't achieved the minimum numbers of elements.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    ----</span>
+<span class="sd">    `message`:</span>
+<span class="sd">        The value to raise</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">)</span></div>
+
+
+<span class="nd">@overload</span>
+<span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">roundp</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Calculate the mean of a given amount of values.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    ----</span>
+<span class="sd">    `args`:</span>
+<span class="sd">        A list of floats</span>
+
+<span class="sd">    Keyword Args</span>
+<span class="sd">    ------------</span>
+<span class="sd">    `roundp`:</span>
+<span class="sd">        Number of decimal places used to round</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The median of this vector</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; l = [1, 1, 1, 1, 1]</span>
+<span class="sd">    &gt;&gt;&gt; average(l)</span>
+<span class="sd">    1</span>
+
+<span class="sd">    .. centered:: Equation that describes its behavior:</span>
+<span class="sd">    .. math:: \\frac{\\sum_{i=0}^N\\text{arg}_i}{N}</span>
+
+<span class="sd">    .. versionchanged:: 0.0.9</span>
+<span class="sd">        Separated into two documentations</span>
+<span class="sd">    """</span>
+    <span class="o">...</span>
+
+
+<span class="nd">@overload</span>
+<span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]],</span> <span class="n">roundp</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Calculate the mean of a given amount of values.</span>
+<span class="sd">    It can performs the mean over List[List[float]] or List[float].</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    ----</span>
+<span class="sd">    `args`:</span>
+<span class="sd">        A list of matrices</span>
+
+<span class="sd">    Keyword Args</span>
+<span class="sd">    ------------</span>
+<span class="sd">    `roundp`:</span>
+<span class="sd">        Number of decimal places used to round</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray</span>
+<span class="sd">        The matrix that corresponds to median for each position</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+
+
+<span class="sd">    .. centered:: Equation that describes its behavior:</span>
+<span class="sd">    .. math:: \\text{output} = \\frac{\\sum_{n=0}^N \\mathb{M}[n]_\\text{i x j}}{N}</span>
+
+<span class="sd">    .. versionchanged:: 0.0.7</span>
+<span class="sd">        Fixed the problem with multiples pointers to the same memory address.</span>
+<span class="sd">    """</span>
+    <span class="o">...</span>
+
+
+<div class="viewcode-block" id="average"><a class="viewcode-back" href="../../modules.html#modules.util.average">[docs]</a><span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="n">roundp</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="o">...</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Calculate the mean of a given amount of values.</span>
+<span class="sd">    It can performs the mean over List[List[float]] or List[float].</span>
+
+<span class="sd">    .. centered:: Equation that describes the behavior when using a list of floats:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \\frac{\\sum_{i=0}^N\\text{arg}_i}{N}</span>
+
+<span class="sd">    .. centered:: Equation that describes the behavior when using matrices:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \\text{output}_\\text{(i,j)} = \\frac{\\sum_{n=0}^N \\text{Matrix}[n]_\\text{(i,j)}}{N} \\text{,     } \\forall \\text{ }0 \\leq i,j &lt; N</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    ----</span>
+<span class="sd">    `args`:</span>
+<span class="sd">        A list of floats or a list of matrices</span>
+
+<span class="sd">    Keyword Args</span>
+<span class="sd">    ------------</span>
+<span class="sd">    `roundp`:</span>
+<span class="sd">        Number of decimal places used to round</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    `MinimumLenghtError`:</span>
+<span class="sd">        if the len(args) are less than 2</span>
+<span class="sd">    `TypeError`:</span>
+<span class="sd">        if the input type are not List[List[List[float]]] or List[float]</span>
+
+
+<span class="sd">    Examples</span>
+<span class="sd">    ---------</span>
+<span class="sd">        Using a list of float</span>
+
+<span class="sd">        &gt;&gt;&gt; l = [1, 1, 1, 1, 1]</span>
+<span class="sd">        &gt;&gt;&gt; average(l)</span>
+<span class="sd">        1</span>
+
+<span class="sd">        Using a list of list of floats</span>
+
+<span class="sd">        &gt;&gt;&gt; from copy import deepcopy</span>
+<span class="sd">        &gt;&gt;&gt; a = [</span>
+<span class="sd">        ...     [1, 1, 1],</span>
+<span class="sd">        ...     [1, 1, 1],</span>
+<span class="sd">        ... ]</span>
+<span class="sd">        &gt;&gt;&gt; b = deepcopy(a)</span>
+<span class="sd">        &gt;&gt;&gt; result = average([a,b])</span>
+<span class="sd">        &gt;&gt;&gt; expected_result = deepcopy(a)</span>
+<span class="sd">        &gt;&gt;&gt; # iterate and raise an error. P.S.: It won't throw any error</span>
+<span class="sd">        &gt;&gt;&gt; for row in range(2):</span>
+<span class="sd">        ...    for col in range(3):</span>
+<span class="sd">        ...        assert result[row][col] == expected_result[row][col]</span>
+
+
+<span class="sd">    .. versionchanged:: 0.0.9</span>
+<span class="sd">        Create two functions, splicing documentation according with param type.</span>
+
+<span class="sd">    .. versionchanged:: 0.0.7</span>
+<span class="sd">        Fixed the problem with multiples pointers to the same memory address.</span>
+<span class="sd">    """</span>
+    <span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">mean</span>
+
+    <span class="c1"># must exist at least two elements</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">MinimumLenghtError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"You should pass, at least, an array with 2 elements"</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">!=</span> <span class="nb">float</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"The elements must be a List[float] or List[List[List[float]]]. The type is </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="c1"># logger.debug(f'Average called.')</span>
+    <span class="c1"># if passed a list of float, returns a single float element</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span>
+            <span class="n">mean</span><span class="p">([</span><span class="n">scalar</span> <span class="k">for</span> <span class="n">scalar</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]),</span> <span class="n">roundp</span><span class="p">)</span>  <span class="c1"># type:ignore</span>
+        <span class="c1"># logger.debug(f"It's a list of floats: {args} --&gt; Mean={out}")</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="c1"># otherwise, create a new matrix</span>
+    <span class="n">matrix_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c1"># output_matrix: List[List[float]] = [[0.0]*matrix_length] * matrix_length</span>
+    <span class="n">output_matrix</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">matrix_length</span><span class="p">,</span> <span class="n">matrix_length</span><span class="p">))</span>
+
+    <span class="c1"># calcula a média item a item</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">matrix_length</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">matrix_length</span><span class="p">):</span>
+            <span class="n">current_elements</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
+            <span class="n">current_mean</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">current_elements</span><span class="p">)</span>
+            <span class="n">output_matrix</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">current_mean</span><span class="p">,</span> <span class="n">roundp</span><span class="p">)</span>
+
+            <span class="c1"># logger.debug(</span>
+            <span class="c1">#     f'Analysing for {row},{col} = {current_elements} --&gt; Mean={current_mean}')</span>
+    <span class="c1"># logger.debug(f'It\'s a matrix:Mean={output_matrix}')</span>
+
+    <span class="k">return</span> <span class="n">output_matrix</span></div>
+
+
+<div class="viewcode-block" id="errprint"><a class="viewcode-back" href="../../modules.html#modules.util.errprint">[docs]</a><span class="k">def</span> <span class="nf">errprint</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Print some error message, returning a different value from default (1).</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    ----</span>
+<span class="sd">    `msg`:</span>
+<span class="sd">        Message to be shown</span>
+<span class="sd">    """</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'Error: '</span> <span class="o">+</span> <span class="n">msg</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_competences_and_consistency"><a class="viewcode-back" href="../../modules.html#modules.util.get_competences_and_consistency">[docs]</a><span class="k">def</span> <span class="nf">get_competences_and_consistency</span><span class="p">(</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">FormData</span><span class="p">],</span>
+        <span class="n">tt</span><span class="p">:</span> <span class="n">FormDataType</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+    <span class="sd">"""</span>
+<span class="sd">    It calculates the ahp for each *data*</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    ----</span>
+<span class="sd">    `data`:</span>
+<span class="sd">        A list of data that will be placed as rows in result dataframes</span>
+<span class="sd">    `tt`:</span>
+<span class="sd">        Type of each list of *data*. See more on :class:`modules.ahp.Types.FormDataType`</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tuple[pd.DataFrame, pd.DataFrame]</span>
+<span class="sd">        A tuple that contains:</span>
+<span class="sd">            1. The mongo competences calculated and parsed to each competence</span>
+<span class="sd">            2. The mongo consistency for each matrix</span>
+<span class="sd">    """</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">tt</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="c1"># dataframe de consistência para cada resposta</span>
+    <span class="n">_dfconsist</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">'type'</span><span class="p">,</span>
+        <span class="s1">'name'</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">Ahp</span><span class="o">.</span><span class="n">Mapping</span><span class="o">.</span><span class="n">MATRICES_IDENTIFIERS</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="n">mongo_competences_consistency</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="n">_dfconsist</span><span class="p">)</span>
+
+    <span class="c1"># cria um dataframe para armazenar a relação de respostas por competência</span>
+    <span class="n">mongo_competences</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+        <span class="s1">'type'</span><span class="p">,</span>
+        <span class="s1">'name'</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">Ahp</span><span class="o">.</span><span class="n">Mapping</span><span class="o">.</span><span class="n">COMPETENCES_MATRIX_ROOT</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">Ahp</span><span class="o">.</span><span class="n">Mapping</span><span class="o">.</span><span class="n">COMPETENCES_MATRIX_FORM_Q1</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">Ahp</span><span class="o">.</span><span class="n">Mapping</span><span class="o">.</span><span class="n">COMPETENCES_MATRIX_Q12</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">Ahp</span><span class="o">.</span><span class="n">Mapping</span><span class="o">.</span><span class="n">COMPETENCES_MATRIX_Q13</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">Ahp</span><span class="o">.</span><span class="n">Mapping</span><span class="o">.</span><span class="n">COMPETENCES_MATRIX_Q15</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">Ahp</span><span class="o">.</span><span class="n">Mapping</span><span class="o">.</span><span class="n">COMPETENCES_MATRIX_Q2</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">Ahp</span><span class="o">.</span><span class="n">Mapping</span><span class="o">.</span><span class="n">COMPETENCES_MATRIX_Q3</span><span class="p">,</span>
+    <span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">t</span>
+        <span class="n">_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>
+
+        <span class="n">_secoes</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">_matrices</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">getMatrices</span><span class="p">()</span>
+        <span class="n">_cline</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="s2">""</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">_dfconsist</span><span class="p">}</span>
+        <span class="n">_cline</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span> <span class="o">=</span> <span class="n">_type</span>
+        <span class="n">_cline</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">=</span> <span class="n">_name</span>
+
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">_matrices</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># verifica se é um escalar</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s2">"q15"</span><span class="p">:</span>
+                <span class="n">priority_vec</span> <span class="o">=</span> <span class="n">Ahp</span><span class="o">.</span><span class="n">get_q15_value</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>  <span class="c1"># type:ignore</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">"q15: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">priority_vec</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># caso seja uma matriz, calcula o ahp ...</span>
+                <span class="c1"># ... NOTE que aceita AHP errados</span>
+                <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+                    <span class="n">_cline</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">priority_vec</span> <span class="o">=</span> <span class="n">Ahp</span><span class="o">.</span><span class="n">calculate</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">_cline</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># type: ignore</span>
+                    <span class="n">priority_vec</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+            <span class="c1"># adiciona as competências para cada matriz</span>
+            <span class="n">_secoes</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+                              <span class="p">]</span> <span class="o">=</span> <span class="n">priority_vec</span>  <span class="c1"># type: ignore</span>
+
+        <span class="n">mongo_competences_consistency</span> <span class="o">=</span> <span class="n">mongo_competences_consistency</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">_cline</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># faz o mapping para essas competências</span>
+        <span class="c1"># _n: Dict[str, float] = Ahp.mapping_competences(_secoes)</span>
+        <span class="n">_n</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">Ahp</span><span class="o">.</span><span class="n">Mapping</span><span class="o">.</span><span class="n">to_competences</span><span class="p">(</span><span class="n">_secoes</span><span class="p">)</span>
+        <span class="n">_n</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span> <span class="o">=</span> <span class="n">_type</span>  <span class="c1"># type:ignore</span>
+        <span class="n">_n</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">=</span> <span class="n">_name</span>  <span class="c1"># type:ignore</span>
+        <span class="c1"># adiciona o dicionário de competências ao dataframe</span>
+        <span class="n">mongo_competences</span> <span class="o">=</span> <span class="n">mongo_competences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_n</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">mongo_competences</span><span class="p">,</span> <span class="n">mongo_competences_consistency</span></div>
+
+
+<div class="viewcode-block" id="calc_mean_matrix"><a class="viewcode-back" href="../../modules.html#modules.util.calc_mean_matrix">[docs]</a><span class="k">def</span> <span class="nf">calc_mean_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">FormData</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]]]:</span>
+    <span class="sd">"""</span>
+<span class="sd">    It calculates the mean matrix that corresponds to the mean of all *data*.</span>
+
+<span class="sd">    Attention</span>
+<span class="sd">    ---------</span>
+<span class="sd">    - It ignores matrices fullfilled with 0 for the mean calculation.</span>
+<span class="sd">    - It also ignores matrices where the *ahp wasn't valid*</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    ----</span>
+<span class="sd">    `data`:</span>
+<span class="sd">        The list of data obtained from :meth:`modules.ahp.Database.AhpForm.findByType`</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Dict[str, Union[float, List[List[float]]]]</span>
+<span class="sd">        A dictionary mapping each matrix to its equivalent mean matrix.</span>
+<span class="sd">    """</span>
+    <span class="c1"># dicionário de matrizes (que irão conter a média das matrizes )</span>
+    <span class="n">matrices</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># obtém as possiveis keys do questionário (ids das matrizes)</span>
+    <span class="n">matrices_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">getMatrices</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="c1"># logger.debug(f'Matrix ids {matrices_ids}')</span>
+
+    <span class="c1"># calcula a média ponderada das matrizes</span>
+    <span class="k">for</span> <span class="n">matrix</span> <span class="ow">in</span> <span class="n">matrices_ids</span><span class="p">:</span>
+        <span class="c1"># logger.debug(f'Calculating the equivalent matrix for {matrix}')</span>
+        <span class="n">all_matrices</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># anda sobre uma determinada "matrix" sobre todas as respostas</span>
+        <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="c1"># logger.debug(f'\tCurrent person {response.getName()}')</span>
+            <span class="c1"># obtêm a matriz</span>
+            <span class="n">current</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]]</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">getMatrices</span><span class="p">()[</span>
+                <span class="n">matrix</span><span class="p">]</span>
+
+            <span class="c1"># verifica se é uma matriz com base na chave (q15 é um escalar)</span>
+            <span class="k">if</span> <span class="n">matrix</span> <span class="o">!=</span> <span class="s1">'q15'</span><span class="p">:</span>
+                <span class="n">cr</span> <span class="o">=</span> <span class="mf">1E9</span>
+                <span class="c1"># verifica se a matriz atual foi preenchida ...</span>
+                <span class="c1"># ... se foi, adiciona essa matriz válida ...</span>
+                <span class="c1"># ... dessa forma, futuramente, ela será incluída no cálculo da média</span>
+                <span class="k">if</span> <span class="n">current</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+                    <span class="c1"># logger.debug(</span>
+                    <span class="c1"># f'\t\tThe matrix for this respondent was fullfilled')</span>
+                    <span class="n">cr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Ahp</span><span class="o">.</span><span class="n">calculate</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+                <span class="c1"># também verifica se é um ahp válido</span>
+                <span class="k">if</span> <span class="n">cr</span> <span class="o">&lt;=</span> <span class="mf">0.1</span><span class="p">:</span>
+                    <span class="c1"># logger.debug(</span>
+                    <span class="c1"># f'\t\tThe CI for this matrix was valid so, we added it in mean: {current}')</span>
+                    <span class="n">all_matrices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+            <span class="c1"># caso contrário, se trata de um escalar e, portanto, deverá ...</span>
+            <span class="c1"># ... ser encontrado o seu equivalente</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># ... IGNORA MATRIZES QUE NÃO HOUVERAM RESPOSTAS</span>
+                <span class="k">if</span> <span class="n">current</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">all_matrices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">Ahp</span><span class="o">.</span><span class="n">get_q15_value</span><span class="p">(</span><span class="n">current</span><span class="p">))</span>  <span class="c1"># type:ignore</span>
+
+        <span class="c1"># logger.debug(f'All matrices: {all_matrices}')</span>
+
+        <span class="c1"># calcula a média ponderada para cada matriz válida</span>
+        <span class="n">mean</span> <span class="o">=</span> <span class="n">average</span><span class="p">(</span><span class="n">all_matrices</span><span class="p">)</span>
+        <span class="c1"># logger.debug(f'Mean for:\n{all_matrices}\nis: {mean}')</span>
+        <span class="n">matrices</span><span class="p">[</span><span class="n">matrix</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean</span>  <span class="c1"># type:ignore</span>
+
+    <span class="k">return</span> <span class="n">matrices</span></div>
+
+
+<div class="viewcode-block" id="calc_ahp_for_new_mat"><a class="viewcode-back" href="../../modules.html#modules.util.calc_ahp_for_new_mat">[docs]</a><span class="k">def</span> <span class="nf">calc_ahp_for_new_mat</span><span class="p">(</span>
+    <span class="n">matrices</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">float</span><span class="p">]]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]]:</span>
+    <span class="sd">"""</span>
+<span class="sd">    This function are only used to calculate AHP for each `matrices`</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    ----</span>
+<span class="sd">    `matrices`:</span>
+<span class="sd">        A dictionary mapping a matrix to a matrix or a float</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Dict[str, Union[List[float], float]]</span>
+<span class="sd">        A dictionary containing the *priority vector* of each matrix.</span>
+
+<span class="sd">    Important</span>
+<span class="sd">    ---------</span>
+<span class="sd">    This method only calculate AHP again. It *doesn't check if AHP are valid or not*</span>
+<span class="sd">    """</span>
+    <span class="n">secoes</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'Calculating ahp for new matrices'</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">matrix</span> <span class="ow">in</span> <span class="n">matrices</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Calculating for matrix: </span><span class="si">{</span><span class="n">matrix</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">matrices</span><span class="p">[</span><span class="n">matrix</span><span class="p">])</span>
+        <span class="n">cr</span><span class="p">,</span> <span class="n">priorityVec</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">matrices</span><span class="p">[</span><span class="n">matrix</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
+
+        <span class="c1"># se for uma matriz, calcula o ahp. Senão, mantém o valor do q15</span>
+        <span class="k">if</span> <span class="n">matrix</span> <span class="o">!=</span> <span class="s1">'q15'</span><span class="p">:</span>
+            <span class="n">cr</span><span class="p">,</span> <span class="n">priorityVec</span> <span class="o">=</span> <span class="n">Ahp</span><span class="o">.</span><span class="n">calculate</span><span class="p">(</span><span class="n">matrices</span><span class="p">[</span><span class="n">matrix</span><span class="p">])</span>  <span class="c1"># type: ignore</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Cr calculated: </span><span class="si">{</span><span class="n">cr</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'PriorityVec: </span><span class="si">{</span><span class="n">priorityVec</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+            <span class="c1"># arredonda o vetor de saída (resultante) para 2 casas decimais</span>
+            <span class="n">priorityVec</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">priorityVec</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+        <span class="c1"># adiciona este dado no vetor de competências do mercado</span>
+        <span class="n">secoes</span><span class="p">[</span><span class="n">matrix</span><span class="p">]</span> <span class="o">=</span> <span class="n">priorityVec</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'</span><span class="se">\n\n</span><span class="s1">'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">secoes</span></div>
+
+
+<span class="k">class</span> <span class="nc">TestBasics</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_average_to_floats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">56.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">41.0</span><span class="p">]</span>
+        <span class="n">test</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">average</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">roundp</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="s2">"Values didn't match"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_average_to_matrices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+        <span class="n">a</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
+        <span class="n">b</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">average</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+        <span class="n">expected_result</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+        <span class="c1"># iterate and raise an error. P.S.: It won't throw any error</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                    <span class="n">result</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">],</span>
+                    <span class="n">expected_result</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">],</span>
+                    <span class="sa">f</span><span class="s2">"result[</span><span class="si">{</span><span class="n">row</span><span class="si">}</span><span class="s2">][</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">] = </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_raise_MinimumLenghtError</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">test_raise_TypeError</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">test_get_competences_and_consistency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">test_calc_mean_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">test_calc_ahp_for_new_mat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Pedro A C Santos
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/index.js"></script>
+    <script src="../../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

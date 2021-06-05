@@ -1,0 +1,588 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/><meta name="generator" content="sphinx-3.5.4, furo 2021.03.20.beta30"/>
+        <title>modules.grid.Plot - Sigaa Análise 0.0.8 documentation</title>
+      <link rel="stylesheet" href="../../../_static/styles/furo.css?digest=978e1795dfe158b585dda6a8417f6411828bf3ed">
+    <link rel="stylesheet" href="../../../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../../../_static/css/index.css" />
+    <link rel="stylesheet" href="../../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">Sigaa Análise 0.0.8 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../../_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Sigaa Análise 0.0.8 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../todo.html">ToDo</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Brief</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../modules.html#sub-modules">Sub modules</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules.ahp.html">ahp package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules.grid.html">grid package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#module-modules.Plot">Plot module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#module-modules.Score">Score module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#module-modules.Skillset">Skillset module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#module-modules.util">util module</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <h1>Source code for modules.grid.Plot</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">"""</span>
+<span class="sd">Contains the functions used to plot the graph</span>
+
+<span class="sd">Todo</span>
+<span class="sd">----</span>
+
+<span class="sd">Implement loggers for:</span>
+
+<span class="sd">- :class:`DotFile`</span>
+<span class="sd">- :meth:`weighted_graph`</span>
+<span class="sd">- :meth:`only_grid`</span>
+<span class="sd">"""</span>
+<span class="c1"># fluxogram</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">graphviz</span> <span class="kn">import</span> <span class="n">Digraph</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">sep</span> <span class="k">as</span> <span class="n">OSsep</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="c1"># Random over list</span>
+<span class="c1"># from secrets import choice</span>
+<span class="c1"># Rand some hexa char</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">urandom</span><span class="p">,</span> <span class="n">system</span> <span class="k">as</span> <span class="n">RUN</span>
+<span class="kn">from</span> <span class="nn">binascii</span> <span class="kn">import</span> <span class="n">b2a_hex</span> <span class="k">as</span> <span class="n">randHex</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">getcwd</span><span class="p">,</span> <span class="n">unlink</span>
+<span class="kn">from</span> <span class="nn">networkx.classes.reportviews</span> <span class="kn">import</span> <span class="n">NodeView</span>
+
+
+<div class="viewcode-block" id="Colors"><a class="viewcode-back" href="../../../modules.grid.html#modules.grid.Plot.Colors">[docs]</a><span class="k">class</span> <span class="nc">Colors</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    A enum like to map a color palette in hexa.</span>
+<span class="sd">    """</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="s2">"#BDC3C7"</span>
+
+    <span class="n">BlueBased</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"baby"</span><span class="p">:</span> <span class="s2">"#BDC3C7"</span>
+    <span class="p">}</span>
+    <span class="sd">"""</span>
+<span class="sd">    A color palletet based on blue</span>
+<span class="sd">    """</span>
+
+    <span class="n">RedBased</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"wine"</span><span class="p">:</span> <span class="s2">"#BD1C32"</span><span class="p">,</span>
+        <span class="s2">"lightenRed"</span><span class="p">:</span> <span class="s2">"#FA3246"</span><span class="p">,</span>
+        <span class="s2">"darkPink"</span><span class="p">:</span> <span class="s2">"#BD1C44"</span><span class="p">,</span>
+        <span class="s2">"darkRed"</span><span class="p">:</span> <span class="s2">"#AF0019"</span><span class="p">,</span>
+        <span class="s2">"darkenRed"</span><span class="p">:</span> <span class="s2">"#850014"</span><span class="p">,</span>
+        <span class="s2">"darkerRed"</span><span class="p">:</span> <span class="s2">"#BB0019"</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="sd">"""</span>
+<span class="sd">    A color pallette based on red</span>
+<span class="sd">    """</span>
+
+    <span class="n">GreenBased</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"nature"</span><span class="p">:</span> <span class="s2">"#4c8768"</span>
+    <span class="p">}</span>
+    <span class="sd">"""</span>
+<span class="sd">    A color pallette based on green</span>
+<span class="sd">    """</span>
+
+<div class="viewcode-block" id="Colors.rand"><a class="viewcode-back" href="../../../modules.grid.html#modules.grid.Plot.Colors.rand">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">rand</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        A static method to generate some random color.</span>
+
+<span class="sd">        :Returns:</span>
+<span class="sd">            A formatted hex color, e.g: "#3f0a9b"</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="s2">"#"</span> <span class="o">+</span> <span class="n">randHex</span><span class="p">(</span><span class="n">urandom</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="weighted_graph"><a class="viewcode-back" href="../../../modules.grid.html#modules.grid.Plot.weighted_graph">[docs]</a><span class="k">def</span> <span class="nf">weighted_graph</span><span class="p">(</span>
+    <span class="n">nodes</span><span class="p">:</span> <span class="n">NodeView</span><span class="p">,</span>
+    <span class="n">edges</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]],</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'grid'</span><span class="p">,</span>
+    <span class="n">outputDir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"out"</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    .. _graphviz: https://graphviz.org/</span>
+
+<span class="sd">    Get a student view of grid fluxogram/graph.</span>
+<span class="sd">    This function make a system call to `graphviz`_.</span>
+
+<span class="sd">    :Args:</span>
+<span class="sd">        - `nodes`: A list containing the nodes.</span>
+<span class="sd">        - `edges`: A list containing the edges for this graph.</span>
+
+<span class="sd">    :Kwargs:</span>
+<span class="sd">        - `filename`: The name of the file to save (image name). DEFAULT: grid</span>
+<span class="sd">        - `outputDir`: The directory to save. DEFAULT: out</span>
+
+<span class="sd">    Important</span>
+<span class="sd">    ---</span>
+<span class="sd">        The nodes must ne ordered by period of the class.</span>
+
+<span class="sd">    Tip</span>
+<span class="sd">    ---</span>
+<span class="sd">        Usually, you can get an example graph in :meth:`modules.grid.Grid.get_grid`</span>
+<span class="sd">    """</span>
+
+    <span class="c1"># Construct a tree with xml grid</span>
+    <span class="n">nameFile</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.dot"</span>
+
+    <span class="c1"># Setting up digraph plot</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">Digraph</span><span class="p">(</span>
+        <span class="n">engine</span><span class="o">=</span><span class="s1">'dot'</span><span class="p">,</span>  <span class="c1"># 'neato',  # force position</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">nameFile</span><span class="p">,</span>
+        <span class="n">filename</span><span class="o">=</span><span class="n">nameFile</span><span class="p">,</span>
+        <span class="n">directory</span><span class="o">=</span><span class="n">outputDir</span><span class="p">,</span>
+        <span class="nb">format</span><span class="o">=</span><span class="s1">'svg'</span><span class="p">,</span>
+        <span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span>
+            <span class="c1"># 'concentrate': 'true',</span>
+            <span class="s1">'rankdir'</span><span class="p">:</span> <span class="s1">'BT'</span><span class="p">,</span>
+            <span class="s1">'overlap'</span><span class="p">:</span> <span class="s1">'scale'</span><span class="p">,</span>  <span class="c1"># force position</span>
+            <span class="c1"># splines → polyline, ortho, true/spline, curved</span>
+            <span class="s1">'splines'</span><span class="p">:</span> <span class="s1">'ortho'</span><span class="p">,</span>  <span class="c1"># edge uppon vertix</span>
+            <span class="c1"># 'margin': '0.5,0.5',</span>
+            <span class="s1">'sep'</span><span class="p">:</span> <span class="s1">'0.5'</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="n">node_attr</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">'pad'</span><span class="p">:</span> <span class="s1">'1'</span><span class="p">,</span>
+            <span class="s1">'nodesep'</span><span class="p">:</span> <span class="s1">'2'</span><span class="p">,</span>
+            <span class="s1">'ranksep'</span><span class="p">:</span> <span class="s1">'2'</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Set a variable that will be responsable to increment x or y variables</span>
+    <span class="n">oldPeriod</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">incX</span> <span class="o">=</span> <span class="n">incY</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># Insert nodes</span>
+    <span class="k">for</span> <span class="n">initials</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+        <span class="c1"># Get node</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">initials</span><span class="p">]</span>
+
+        <span class="c1"># Get period</span>
+        <span class="n">period</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">'period'</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">period</span> <span class="o">==</span> <span class="s1">'Optativa'</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># Check if changed the period.</span>
+        <span class="k">if</span> <span class="n">oldPeriod</span> <span class="o">!=</span> <span class="n">period</span><span class="p">:</span>
+            <span class="n">incY</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># Increment x padding</span>
+            <span class="n">incX</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">oldPeriod</span> <span class="o">=</span> <span class="n">period</span>
+
+        <span class="c1"># default color</span>
+        <span class="n">nodeColor</span> <span class="o">=</span> <span class="n">Colors</span><span class="o">.</span><span class="n">node</span>
+        <span class="c1"># Set node position</span>
+        <span class="n">strPos</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{0:.3}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">incX</span><span class="p">))</span> <span class="o">+</span> <span class="s1">','</span> <span class="o">+</span> <span class="s2">"-</span><span class="si">{}</span><span class="s2">!"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">incY</span><span class="p">)</span>
+
+        <span class="n">output</span><span class="o">.</span><span class="n">node</span><span class="p">(</span>
+            <span class="n">initials</span><span class="p">,</span>
+            <span class="n">initials</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s1">'none'</span><span class="p">,</span>
+            <span class="n">style</span><span class="o">=</span><span class="s1">'filled'</span><span class="p">,</span>  <span class="c1"># 'striped',</span>
+            <span class="n">shape</span><span class="o">=</span><span class="s1">'rectangle'</span><span class="p">,</span>
+            <span class="n">fillcolor</span><span class="o">=</span><span class="n">nodeColor</span><span class="p">,</span>
+            <span class="n">pos</span><span class="o">=</span><span class="n">strPos</span><span class="p">,</span>
+            <span class="o">**</span><span class="p">{</span>  <span class="c1"># Node atributes fixed size</span>
+                 <span class="s1">'fixedsize'</span><span class="p">:</span> <span class="s1">'true'</span><span class="p">,</span>
+                <span class="s1">'width'</span><span class="p">:</span> <span class="s1">'2'</span><span class="p">,</span>
+                <span class="s1">'height'</span><span class="p">:</span> <span class="s1">'1'</span>
+            <span class="p">}</span>
+            <span class="c1"># len='0.5'</span>
+            <span class="c1"># weight='.5',</span>
+        <span class="p">)</span>
+        <span class="c1"># Increment y padding</span>
+        <span class="n">incY</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># In edges you can add other parameters like</span>
+    <span class="c1"># &gt; edge.attr['label'] = '5'</span>
+    <span class="c1"># &gt; edge.attr['weight'] = 5</span>
+
+    <span class="c1"># Creating the edges for pre requisite graph</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'weight'</span><span class="p">]</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span>
+            <span class="n">u</span><span class="p">,</span>
+            <span class="n">v</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">Colors</span><span class="o">.</span><span class="n">RedBased</span><span class="p">[</span><span class="s1">'wine'</span><span class="p">],</span>
+            <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="c1"># ! Due to an windows problem with the binaries you must to save and then, run</span>
+    <span class="c1"># output.render(view=True, filename="output.svg", renderer='neato')</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">outputDir</span><span class="p">)</span>
+    <span class="nb">input</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">getcwd</span><span class="p">()),</span> <span class="n">outputDir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.dot"</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">getcwd</span><span class="p">()),</span> <span class="n">outputDir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+    <span class="n">RUN</span><span class="p">(</span><span class="sa">f</span><span class="s2">"dot -Kneato -Tsvg </span><span class="si">{</span><span class="nb">input</span><span class="si">}</span><span class="s2"> -o </span><span class="si">{</span><span class="n">output</span><span class="si">}</span><span class="s2">.svg"</span><span class="p">)</span>
+
+    <span class="c1"># Remove old file</span>
+    <span class="n">unlink</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="only_grid"><a class="viewcode-back" href="../../../modules.grid.html#modules.grid.Plot.only_grid">[docs]</a><span class="k">def</span> <span class="nf">only_grid</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">co</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">'grid'</span><span class="p">,</span> <span class="n">outputDir</span><span class="o">=</span><span class="s2">"out"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Get a student view of grid fluxogram. This plot bot edges, pre and co requisite.</span>
+<span class="sd">    It run a system call to `graphviz`_.</span>
+
+<span class="sd">    :Args:</span>
+<span class="sd">        - `nodes`: A list containing the nodes.</span>
+<span class="sd">        - `pre`: A list containing the edges for this graph.</span>
+<span class="sd">        - `co`: A list containing the edges for this graph.</span>
+
+<span class="sd">    :Kwargs:</span>
+<span class="sd">        - `filename`: The name of the file to save (image name). DEFAULT: grid</span>
+<span class="sd">        - `outputDir`: The directory to save. DEFAULT: out</span>
+
+<span class="sd">    Important</span>
+<span class="sd">    ---</span>
+<span class="sd">        The nodes must be ordered by period of the class.</span>
+<span class="sd">    """</span>
+
+    <span class="c1"># Construct a tree with xml grid</span>
+    <span class="n">nameFile</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.dot"</span>
+
+    <span class="c1"># Setting up digraph plot</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">Digraph</span><span class="p">(</span>
+        <span class="n">engine</span><span class="o">=</span><span class="s1">'dot'</span><span class="p">,</span>  <span class="c1"># 'neato',  # force position</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">nameFile</span><span class="p">,</span>
+        <span class="n">filename</span><span class="o">=</span><span class="n">nameFile</span><span class="p">,</span>
+        <span class="n">directory</span><span class="o">=</span><span class="n">outputDir</span><span class="p">,</span>
+        <span class="nb">format</span><span class="o">=</span><span class="s1">'svg'</span><span class="p">,</span>
+        <span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span>
+            <span class="c1"># 'concentrate': 'true',</span>
+            <span class="s1">'rankdir'</span><span class="p">:</span> <span class="s1">'BT'</span><span class="p">,</span>
+            <span class="s1">'overlap'</span><span class="p">:</span> <span class="s1">'scale'</span><span class="p">,</span>  <span class="c1"># force position</span>
+            <span class="c1"># splines → polyline, ortho, true/spline, curved</span>
+            <span class="s1">'splines'</span><span class="p">:</span> <span class="s1">'ortho'</span><span class="p">,</span>  <span class="c1"># edge uppon vertix</span>
+            <span class="c1"># 'margin': '0.5,0.5',</span>
+            <span class="s1">'sep'</span><span class="p">:</span> <span class="s1">'0.5'</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="n">node_attr</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">'pad'</span><span class="p">:</span> <span class="s1">'1'</span><span class="p">,</span>
+            <span class="s1">'nodesep'</span><span class="p">:</span> <span class="s1">'2'</span><span class="p">,</span>
+            <span class="s1">'ranksep'</span><span class="p">:</span> <span class="s1">'2'</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Set a variable that will be responsable to increment x or y variables</span>
+    <span class="n">oldPeriod</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">incX</span> <span class="o">=</span> <span class="n">incY</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># Insert nodes</span>
+    <span class="k">for</span> <span class="n">initials</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+        <span class="c1"># Get node</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">initials</span><span class="p">]</span>
+
+        <span class="c1"># Get period</span>
+        <span class="n">period</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">'period'</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">period</span> <span class="o">==</span> <span class="s1">'Optativa'</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># Check if changed the period.</span>
+        <span class="k">if</span> <span class="n">oldPeriod</span> <span class="o">!=</span> <span class="n">period</span><span class="p">:</span>
+            <span class="n">incY</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># Increment x padding</span>
+            <span class="n">incX</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">oldPeriod</span> <span class="o">=</span> <span class="n">period</span>
+
+        <span class="c1"># default color</span>
+        <span class="n">nodeColor</span> <span class="o">=</span> <span class="n">Colors</span><span class="o">.</span><span class="n">node</span>
+        <span class="c1"># Set node position</span>
+        <span class="n">strPos</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{0:.3}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">incX</span><span class="p">))</span> <span class="o">+</span> <span class="s1">','</span> <span class="o">+</span> <span class="s2">"-</span><span class="si">{}</span><span class="s2">!"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">incY</span><span class="p">)</span>
+
+        <span class="n">output</span><span class="o">.</span><span class="n">node</span><span class="p">(</span>
+            <span class="n">initials</span><span class="p">,</span>
+            <span class="n">initials</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s1">'none'</span><span class="p">,</span>
+            <span class="n">style</span><span class="o">=</span><span class="s1">'filled'</span><span class="p">,</span>  <span class="c1"># 'striped',</span>
+            <span class="n">shape</span><span class="o">=</span><span class="s1">'rectangle'</span><span class="p">,</span>
+            <span class="n">fillcolor</span><span class="o">=</span><span class="n">nodeColor</span><span class="p">,</span>
+            <span class="n">pos</span><span class="o">=</span><span class="n">strPos</span><span class="p">,</span>
+            <span class="o">**</span><span class="p">{</span>  <span class="c1"># Node atributes fixed size</span>
+                 <span class="s1">'fixedsize'</span><span class="p">:</span> <span class="s1">'true'</span><span class="p">,</span>
+                <span class="s1">'width'</span><span class="p">:</span> <span class="s1">'2'</span><span class="p">,</span>
+                <span class="s1">'height'</span><span class="p">:</span> <span class="s1">'1'</span>
+            <span class="p">}</span>
+            <span class="c1"># len='0.5'</span>
+            <span class="c1"># weight='.5',</span>
+        <span class="p">)</span>
+        <span class="c1"># Increment y padding</span>
+        <span class="n">incY</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># In edges you can add other parameters like</span>
+    <span class="c1"># &gt; edge.attr['label'] = '5'</span>
+    <span class="c1"># &gt; edge.attr['weight'] = 5</span>
+
+    <span class="c1"># Creating the edges for pre requisite graph</span>
+    <span class="k">for</span> <span class="n">origin</span><span class="p">,</span> <span class="n">destination</span> <span class="ow">in</span> <span class="n">pre</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Colors</span><span class="o">.</span><span class="n">RedBased</span><span class="p">[</span><span class="s1">'wine'</span><span class="p">])</span>
+
+    <span class="c1"># Creating the edges for co requisite graph</span>
+    <span class="k">for</span> <span class="n">origin</span><span class="p">,</span> <span class="n">destination</span> <span class="ow">in</span> <span class="n">co</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
+
+    <span class="c1"># ! Due to an windows problem with the binaries you must to save and then, run</span>
+    <span class="c1"># output.render(view=True, filename="output.svg", renderer='neato')</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">outputDir</span><span class="p">)</span>
+    <span class="nb">input</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">getcwd</span><span class="p">()),</span> <span class="n">outputDir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.dot"</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">getcwd</span><span class="p">()),</span> <span class="n">outputDir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+    <span class="n">RUN</span><span class="p">(</span><span class="sa">f</span><span class="s2">"dot -Kneato -Tsvg </span><span class="si">{</span><span class="nb">input</span><span class="si">}</span><span class="s2"> -o </span><span class="si">{</span><span class="n">output</span><span class="si">}</span><span class="s2">.svg"</span><span class="p">)</span>
+
+    <span class="c1"># Remove old file</span>
+    <span class="n">unlink</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DotFile"><a class="viewcode-back" href="../../../modules.grid.html#modules.grid.Plot.DotFile">[docs]</a><span class="k">class</span> <span class="nc">DotFile</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    A class used to generate dot files.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    `See more on Graphviz &lt;https://graphviz.org/doc/info/attrs.html&gt;`_</span>
+<span class="sd">    """</span>
+    <span class="c1"># Command used to generate png image</span>
+    <span class="c1"># neato -Tpng 2016001942.dot -o teste.png</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_outputFile</span> <span class="o">=</span> <span class="s2">"digraph {</span><span class="se">\n\t</span><span class="s2">rankdir=TB;</span><span class="se">\n</span><span class="s2">"</span>
+
+<div class="viewcode-block" id="DotFile.node"><a class="viewcode-back" href="../../../modules.grid.html#modules.grid.Plot.DotFile.node">[docs]</a>    <span class="k">def</span> <span class="nf">node</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">nodeName</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="n">fillcolor</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="n">style</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="n">shape</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="n">pos</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Insert string used to create a node.</span>
+
+<span class="sd">        Args</span>
+<span class="sd">        ----</span>
+<span class="sd">        `nodeName`:</span>
+<span class="sd">            Name used to make connections.</span>
+<span class="sd">        `label`:</span>
+<span class="sd">            Name showed in graph.</span>
+<span class="sd">        `color`:</span>
+<span class="sd">            Border color.</span>
+<span class="sd">        `fillcolor`:</span>
+<span class="sd">            Fill color.</span>
+<span class="sd">        `pos`:</span>
+<span class="sd">            Inch absolute position.</span>
+<span class="sd">        `shape`:</span>
+<span class="sd">            Form shape</span>
+<span class="sd">        `style`:</span>
+<span class="sd">            Form style, i.e., filled or striped</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; dotfile = DotFile()</span>
+<span class="sd">        &gt;&gt;&gt; dotfile.insert( 'CEI039','CEI039', 'black', 'white', '4,0!', 'rectangle', 'filled')</span>
+<span class="sd">        """</span>
+
+        <span class="n">auxiliarStr</span> <span class="o">=</span> <span class="s1">'</span><span class="se">\t</span><span class="si">{}</span><span class="s1"> [label="</span><span class="si">{}</span><span class="s1">" color="</span><span class="si">{}</span><span class="s1">" fillcolor="</span><span class="si">{}</span><span class="s1">" pos="</span><span class="si">{}</span><span class="s1">" shape="</span><span class="si">{}</span><span class="s1">" style="</span><span class="si">{}</span><span class="s1">"]</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">nodeName</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">fillcolor</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">style</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_outputFile</span> <span class="o">+=</span> <span class="n">auxiliarStr</span></div>
+
+<div class="viewcode-block" id="DotFile.edge"><a class="viewcode-back" href="../../../modules.grid.html#modules.grid.Plot.DotFile.edge">[docs]</a>    <span class="k">def</span> <span class="nf">edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">father</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">son</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Create connection</span>
+
+<span class="sd">        Args</span>
+<span class="sd">        ----</span>
+<span class="sd">        `father`:</span>
+<span class="sd">            'From' node</span>
+<span class="sd">        `son`:</span>
+<span class="sd">            'To' node</span>
+<span class="sd">        `style`:</span>
+<span class="sd">            edge style.</span>
+<span class="sd">        `color`:</span>
+<span class="sd">            edge color.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; a = DotFile()</span>
+<span class="sd">        &gt;&gt;&gt; a.edge('A','B') # create a connection A→B</span>
+<span class="sd">        """</span>
+        <span class="n">aux</span> <span class="o">=</span> <span class="s1">'</span><span class="se">\t</span><span class="s1">'</span> <span class="o">+</span> <span class="n">father</span> <span class="o">+</span> <span class="s1">' -&gt; '</span> <span class="o">+</span> <span class="n">son</span> <span class="o">+</span> \
+            <span class="s1">' [style=</span><span class="si">{}</span><span class="s1">, color=</span><span class="si">{}</span><span class="s1">]</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">style</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_outputFile</span> <span class="o">+=</span> <span class="n">aux</span></div>
+
+    <span class="k">def</span> <span class="nf">_endOfInput</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Finish this file</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_outputFile</span> <span class="o">+=</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">}'</span>
+
+<div class="viewcode-block" id="DotFile.getDot"><a class="viewcode-back" href="../../../modules.grid.html#modules.grid.Plot.DotFile.getDot">[docs]</a>    <span class="k">def</span> <span class="nf">getDot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Gerate dot file.</span>
+
+<span class="sd">        Args</span>
+<span class="sd">        ----</span>
+<span class="sd">        `filename`:</span>
+<span class="sd">            Name to save dot's file.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; a = DotFile()</span>
+<span class="sd">        &gt;&gt;&gt; a.getDot('/home/ppcamp/Desktop/test.dot')</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_endOfInput</span><span class="p">()</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputFile</span><span class="p">)</span></div></div>
+</pre></div>
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Pedro A C Santos
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/index.js"></script>
+    <script src="../../../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>
