@@ -1,15 +1,24 @@
+# Jupyter notebooks/kernel
+notebook>=5.3
 ipykernel>=5.5.0
-requests>=2.23.0
-lxml>=4.6.2
+nbconvert==5.6.1
+ipywidgets>=7.5
+# Others/extras
 pandas>=1.2.1
 numpy==1.19.3
+# Plots
 graphviz>=0.16
 matplotlib>=3.3.3
-pymongo>=3.11.2
-kaleido>=0.2.1
-sphinx>=1.0.2
-tabulate>=0.8.9
 plotly>=4.14.3
-networkx==2.5
-nbconvert==5.6.1
+kaleido>=0.2.1
+# Documentation
+sphinx>=1.0.2
 furo==2021.3.20b30
+# Others
+pymongo>=3.11.2
+networkx==2.5
+# Web scrapping
+requests>=2.23.0
+lxml>=4.6.2
+# Document scrapping
+tabulate>=0.8.9

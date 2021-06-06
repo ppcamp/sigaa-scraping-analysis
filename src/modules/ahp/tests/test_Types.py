@@ -4,9 +4,6 @@ from modules.ahp import Types
 
 
 class TestFormData(unittest.TestCase):
-    def setUp(self) -> None:
-        return super().setUp()
-
     def test_email(self):
         test = Types.FormData().setEmail("test@email.com")
         self.assertEqual("test@email.com", test.getEmail())
