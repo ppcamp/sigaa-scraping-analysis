@@ -37,20 +37,31 @@ class SigaaDatabase:
     ------------
     `database_name`:
         *OPTIONAL*, Default value is "sigaadb"
+
+    Note
+    ----
+    When you didn't pass a connection_string, it will create the `self.__client` and the \
+        `self._db` assigned to None.
     """
 
-    def __init__(self, connection_string: str, database_name: str = "") -> None:
-        # Create a mongoclient
-        self.__client = MongoClient(connection_string)
+    def __init__(self,
+                 connection_string: str = "",
+                 database_name: str = "") -> None:
+        self.__client = None
+        self._db = None
 
-        logger.info(f'Creating a MongoClient for {connection_string}')
+        if connection_string:
+            # Create a mongoclient
+            self.__client = MongoClient(connection_string)
 
-        if database_name:
-            connection = "self.__client.{}".format(database_name)
-            self._db = eval(connection)
-        else:
-            # Connect to database sigaadb (default)
-            self._db = self.__client.sigaadb
+            logger.info(f'Creating a MongoClient for {connection_string}')
+
+            if database_name:
+                connection = "self.__client.{}".format(database_name)
+                self._db = eval(connection)
+            else:
+                # Connect to database sigaadb (default)
+                self._db = self.__client.sigaadb
 
 
 class AhpForm(SigaaDatabase):
@@ -166,7 +177,7 @@ class AhpForm(SigaaDatabase):
         elements = [FormData(el) for el in cursor]
         return elements
 
-    def insert(self, args) -> FormData:
+    def insert(self, args: Dict[str, Any]) -> FormData:
         """
         Insert a new item in d-atabase.
 

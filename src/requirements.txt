@@ -22,3 +22,5 @@ requests>=2.23.0
 lxml>=4.6.2
 # Document scrapping
 tabulate>=0.8.9
+# Testing
+mongomock>=3.22.1

@@ -130,6 +130,7 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.
 5. [Sphinx pygments confs][5]
 6. [Getting started with sphinx][6]
 7. [Getting started with plotly][7]
+8. [Mongo mocking (Testing for mongo)][8]
 
 <!-- Links -->
 
@@ -140,3 +141,4 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.
 [5]: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-pygments_style
 [6]: https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html
 [7]: https://plotly.com/python/getting-started/
+[8]: https://github.com/mongomock/mongomock/blob/develop/tests/test__mongomock.py
