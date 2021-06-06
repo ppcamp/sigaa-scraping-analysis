@@ -16,8 +16,7 @@ Implement tests for:
 """
 
 
-from typing import Any, Dict, List
-from unittest.main import main
+from typing import Any, Dict, List, Union
 from modules.ahp.Types import FormData, FormDataType
 from bson.objectid import ObjectId
 from pymongo import MongoClient
@@ -72,7 +71,7 @@ class AhpForm(SigaaDatabase):
     >>> ahp = Database.AhpForm(connection_string)
     """
 
-    def findById(self, id: str) -> FormData:
+    def findById(self, id: str) -> Union[FormData, None]:
         """
         Find an element by a given Id.
 
@@ -83,14 +82,16 @@ class AhpForm(SigaaDatabase):
 
         Returns
         -------
-        FormData
-            A :class:`.Types.FormData` for the matched object.
+        Union[FormData, None]
+            A :class:`.Types.FormData` for the matched object (or None, if dind't find none)
 
         Example
         -------
         >>> resp = ahp.findById("7ab8ccba-e123-4e52-835a-93fd8b86b1b7")
         """
         element = self._db.AhpForm.find_one(ObjectId(id))
+        if element is None:
+            return None
         return FormData(element)  # type:ignore
 
     def findByDict(self, args: Dict[str, Any]) -> List[FormData]:
@@ -110,6 +111,10 @@ class AhpForm(SigaaDatabase):
         Example
         -------
         >>> resp = ahp.findByDict({"email":"7ab8ccba-e123-4e52-835a-93fd8b86b1b7"})
+
+        Important
+        ---------
+        The list will be empty if didn't found objects that matches with it
         """
         element = self._db.AhpForm.find(args)
         element = list(map(lambda el: FormData(el), element))  # type: ignore
@@ -132,6 +137,10 @@ class AhpForm(SigaaDatabase):
         Example
         -------
         >>> answers = ahp.findByType({"email":"7ab8ccba-e123-4e52-835a-93fd8b86b1b7"})
+
+        Important
+        ---------
+        The list will be empty if didn't found objects that matches with it
         """
         return self.findByDict({"type": type.value})
 
@@ -147,6 +156,10 @@ class AhpForm(SigaaDatabase):
         Example
         -------
         >>> responses = ahp.getAll()
+
+        Important
+        ---------
+        The list will be empty if didn't found objects that matches with it
         """
         # iterate and get all elements
         cursor = self._db.AhpForm.find()
@@ -238,8 +251,17 @@ class AhpForm(SigaaDatabase):
         Example
         -------
         >>> removed_el = ahp.delete("5cbfb7d6-c6b9-4342-8c9b-52d6a9a9ed2f")
+
+        Raises
+        ------
+        `ValueError`
+            The element with this id couldn't be found
         """
-        element = self.findById(ObjectId(id))  # type:ignore
+        element: Union[FormData, None] = self.findById(
+            ObjectId(id))  # type:ignore
+        if element is None:
+            raise ValueError(
+                f'Couldn\'t found an object associated with this id ({id})')
         self._db.AhpForm.delete_one(ObjectId(id))
         logger.debug(f'Object({id}) removed from database')
         return element
