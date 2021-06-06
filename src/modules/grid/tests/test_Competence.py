@@ -41,11 +41,12 @@ def read_scores_csv(data_folder: str) -> Dict[str, float]:
 
 
 class TestCompetence(unittest.TestCase):
-    def setUp(self) -> None:
-        self.data_folder: str = path.join(path.dirname(__file__), 'data')
+    @classmethod
+    def setUpClass(cls):
+        cls.data_folder: str = path.join(path.dirname(__file__), 'data')
         # read dataframe
-        self.dataframe = pd.read_csv(
-            path.join(self.data_folder, 'dataframe.csv'))
+        cls.dataframe = pd.read_csv(
+            path.join(cls.data_folder, 'dataframe.csv'))
 
     def test_get_period(self):
         result: List[int] = [i for i in get_period()]
