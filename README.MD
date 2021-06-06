@@ -13,7 +13,7 @@ This repository contains some codes used in the article that will be published l
   - [Tests](#tests)
   - [Some usefull commands:](#some-usefull-commands)
   - [Packages needed](#packages-needed)
-    - [See also](#see-also)
+  - [See also](#see-also)
 
 ----
 
@@ -89,6 +89,19 @@ sphinx-quickstart
 ```bash
 python install -r requirements.txt
 ```
+* You also need to install the [plotly support for jupyter][7]:
+
+```bash
+# basic packages
+pip install plotly==4.14.3
+pip install "notebook>=5.3" "ipywidgets>=7.5"
+pip install jupyterlab "ipywidgets>=7.5"
+# The following commands needs node to be installed:
+# JupyterLab renderer support
+jupyter labextension install jupyterlab-plotly@4.14.3
+# OPTIONAL: Jupyter widgets extension
+jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.14.3
+```
 * Install the graphviz:
 
   You can install the graphviz by the package [site](https://graphviz.org/download/) or typing:
@@ -105,14 +118,25 @@ python install -r requirements.txt
   choco install graphviz
   ```
 
-### See also
+## See also
 
 > To install other themes you must search for a python package equivalent for that theme.
 
-- [Doc sphinx](https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html)
 
-- https://sphinx-themes.org/
-- https://stackoverflow.com/questions/13516404/sphinx-error-unknown-directive-type-automodule-or-autoclass
-- https://www.youtube.com/watch?v=b4iFyrLQQh4&ab_channel=avcourt
-- https://stackoverflow.com/questions/34533346/incorrect-cross-reference-syntax-gives-confusing-undefined-label-warning
-- https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-pygments_style
+1. [Sphinx themes][1]
+2. [Sphinx automodule/autoclass errors][2]
+3. [Generating automodules][3]
+4. [Sphinx cross references][4]
+5. [Sphinx pygments confs][5]
+6. [Getting started with sphinx][6]
+7. [Getting started with plotly][7]
+
+<!-- Links -->
+
+[1]: https://sphinx-themes.org/
+[2]: https://stackoverflow.com/questions/13516404/sphinx-error-unknown-directive-type-automodule-or-autoclass
+[3]: https://www.youtube.com/watch?v=b4iFyrLQQh4&ab_channel=avcourt
+[4]: https://stackoverflow.com/questions/34533346/incorrect-cross-reference-syntax-gives-confusing-undefined-label-warning
+[5]: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-pygments_style
+[6]: https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html
+[7]: https://plotly.com/python/getting-started/
