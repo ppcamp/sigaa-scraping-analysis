@@ -103,7 +103,8 @@ def _get_competence_weight(
         materias_atuais: List[str],
         competencia: str,
         materia: str,
-        roundp: int = 4) -> float:
+        roundp: int = 4,
+        normalize_period: bool = True) -> float:
     """
     Get the class weight normalized by total amount of classes in a given semester.
     The maximum value that a given competency can have is 1 (100%).
@@ -126,8 +127,10 @@ def _get_competence_weight(
     :Returns:
         A stipulated weight rounded by `roundp` decimal places.
     """
-    total = sum([out.loc[i][competencia]  # type: ignore
-                for i in materias_atuais])
+    total: float = 1.0
+    if normalize_period:
+        total = sum([out.loc[i][competencia]  # type: ignore
+                    for i in materias_atuais])
     return round(out.loc[materia][competencia]/total, roundp)  # type:ignore
 
 

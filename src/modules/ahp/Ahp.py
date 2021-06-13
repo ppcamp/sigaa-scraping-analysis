@@ -300,7 +300,7 @@ class Mapping:
         # "Conhecimento, métodos e ferramentas na área de sistemas de software",
         "Sistemas microprocessados",
         # "Conhecimentos básicos em sistemas de comunicação",
-        "Conhec. em sist. de aut.",
+        "Conhecimento em sistemas de automação ",
     ]
 
     # In sigaa's form there is these fields
@@ -314,15 +314,15 @@ class Mapping:
     ]
 
     COMPETENCES_MATRIX_Q12: Final[List[str]] = [
-        "Lóg., algor. teoria e estrura de dados.",
-        "Ling. e parad.",
+        "Lógica, algoritmos, teoria da comp,  estruras de dados.",
+        "Linguagens e paradigmas.",
         "PAA",
     ]
 
     COMPETENCES_MATRIX_Q13: Final[List[str]] = [
-        "Conf. plataformas para softwares e serviços",
+        "Configurar plataformas para softwares e serviços.",
         "Arquiteturas de computadores",
-        "Seg. de sis. de comp.",
+        "Segurança de sis. de comp.",
         "Engenharia de software",
         "Inteligência artificial",
         "Desenvolvimento Web e Mobile",
