@@ -22,6 +22,10 @@ import numpy as np
 import pandas as pd
 from modules.ahp import Ahp
 from modules.ahp.Types import FormData, FormDataType
+# numpy linear algebra functions
+from numpy import linalg
+# to get arccos
+import math
 
 
 class MinimumLenghtError(Exception):
@@ -420,3 +424,165 @@ def calc_ahp_for_new_mat(
         secoes[matrix] = priorityVec
     logger.debug('\n\n')
     return secoes
+
+
+def dict_to_csv(
+        notas: Dict[str, float],
+        path: str,
+        header: List[str] = ['Subject', 'Value']) -> None:
+    """
+    A function used to export the subject scores
+
+    Args
+    ----
+    `notas`:
+        A mapping to subject -> value
+    `path`:
+        The place to store the file
+
+    Keyword Args
+    ------------
+    `header`:
+        Should be in order of keys=>value and must has at max, 2 elements
+
+    Note
+    ----
+    It only accepts dicionary mapping strings to float values
+
+    Example
+    -------
+    >>> notas = {}
+    >>> notas = {
+    ...     "ECOI20": 7.4,
+    ...     "ECOI30": 10,
+    ... }
+    >>> dict_to_file(notas,'../out/notas.csv')
+    >>> # will generate a csv file with columns Subject and Value
+
+    Raise
+    -----
+    Exception
+        If the lenght of headers is != 2
+    """
+    if len(header) != 2:
+        raise Exception("Should have at max, 2 elements")
+
+    with open(path, 'w') as f:
+        head = ";".join(header)
+        f.write(f'{head}\n')
+        for key, value in notas.items():
+            f.write(f'{key};{value}\n')
+
+
+def dist_vectors(
+        avet: List[float],
+        bvet: List[float],
+        inPercentual: bool = True,
+        roundp: int = 2) -> float:
+    """
+    Calculates the distance between two vectors.
+
+    Args
+    ----
+    `avet`:
+        A vector of floats
+    `bvet`:
+        A vector of floats
+
+
+    Keyword Args
+    ------------
+    `inPercentual`:
+        If checked, will return the value in percentage terms
+    `roundp`:
+        The number of decimal places to take
+
+
+    Returns
+    -------
+    float
+        The distance between them, in degrees or in percentual
+
+
+    In **Euclidian** [#euclidian]_ space a vector has *mag* and *direction*.
+    A magnitude of two vectors, also called *mod*, is giving by:
+
+    .. math::
+
+        ||\\vec{a}|| = \\frac{1}{\\sqrt{a_i^2}}
+
+    The **interal product** (scalar) of two **Euclidian** vectors, :math:`\\vec{a}` and :math:`\\vec{b}`
+    its defined as:
+
+    .. math::
+
+        \\vec{a} \\bullet \\vec{b} = ||\\vec{a}||\\cdot||\\vec{b}||\\cdot\\cos(\\theta)
+
+    Therefore, the angle (in degrees) is:
+
+    .. math::
+
+        \\theta_\\text{em graus} = \\cos^{-1}(\\theta)
+            \\equiv \\cos^{-1}\\underbrace{\\left(\\frac{\\vec{a}
+            \\bullet \\vec{b}}{||\\vec{a}||\\cdot||\\vec{b}||}\\right)}_\\varphi
+
+    Note
+    ----
+    A proximidade entre os dois vetores será:
+
+    .. raw:: html
+
+        <pre>
+        90º -- 100 % (extramente diferentes)
+        ang -- x   %
+        x' = 100*ang/90
+        x  = 100% - 100*ang/90
+        </pre>
+
+    .. math::
+
+        p_\\text{%} = 100_\\text{%} - 100_\\text{%} \\cdot \\frac{\\thetaº}{90º}
+    """
+    # calcula o produto escalar dos vetores do mercado e do aluno
+    internal_product: float = np.dot(avet, bvet)  # type: ignore
+
+    # calcula a norma de cada vetor (é um escalar)
+    norma_a: float = linalg.norm(avet)
+    norma_b: float = linalg.norm(bvet)
+
+    # calcula o valor de phi (varphi na fórmula acima)
+    phi: float = internal_product / (norma_a * norma_b)
+
+    # calcula o ângulo entre eles (em graus)
+    ang: float = round(
+        # entrada e saída são em radianos, necessita a conversão para graus
+        math.degrees(math.acos(phi)),
+        roundp)
+
+    if not inPercentual:
+        return ang
+
+    # calcula a proximidade - em porcentagem:
+    def proximidade(angulo: float, roundp: int = 4) -> float:
+        """
+        Get proximity between two angles rounded by `roundp`
+
+        Args
+        ----
+        `angulo`:
+            The angle itself
+
+        Keyword Args
+        ------------
+        `roundp`:
+            The number of decimal places
+
+        Returns
+        -------
+        float
+            The proximity in percents
+        """
+        return round(100-100*angulo/90, 2)
+
+    # return the equivalent percentual
+    return proximidade(ang)
