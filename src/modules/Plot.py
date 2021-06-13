@@ -11,7 +11,7 @@ Todo
 """
 
 import logging as logger
-from typing import List, Tuple
+from typing import List, Union, overload
 import pandas as pd
 import plotly
 import plotly.express as px
@@ -19,68 +19,132 @@ import plotly.graph_objects as go
 from plotly.missing_ipywidgets import FigureWidget
 from plotly.subplots import make_subplots
 
+# -----------------------------------------------------------------------------
+#                               Main plots
+# -----------------------------------------------------------------------------
 
+
+@overload
 def spider_plot(
-    categories: List[str],
-    show: bool = True,
-    r1: List[float] = None,
-    r1_name: str = None,
-    r2: List[float] = None,
-    r2_name: str = None
-) -> FigureWidget:
+        columns: List[str],
+        names: str,
+        values: List[float],
+        show: bool = False) -> FigureWidget:
     """
-    Does spider plot. Accept at max 2 elements.
-    By default, it assumes that only are possible values between 0..1
+    Does spider plot.
+
+    Args
+    ----
+    `columns`:
+        The values for x axis
+    `names`:
+        The name for this plot (legend). If empty, will not show the legend
+    `values`:
+        The values for y axis
 
     Keyword Args
-    ---------------
-        - `categories`: A list with name strings that will be used as labels
+    ------------
+    `show`:
+        If settled will not show the figure at end
 
-    :Kwargs:
-        - `r1`: List[Float] Mapped values following `categories` order
-        - `r1_name`: (str) Name of this section
-        - `show`: *OPTIONAL* if settled will not show the figure at end
-        - `r2`: *OPTIONAL*. List[Float] Mapped values following `categories` order
-        - `r2_name`: *OPTIONAL*. (str) Name of this section
+    Returns
+    -------
+    FigureWidget
+        A figure plotly object (only access by ipykernel)
 
-    :Returns:
-      - A figure plotly object (only access by ipykernel)
+    Todo
+    ----
+    Missing treat exceptions
     """
+    ...
 
-    logger.debug("Starting a new plot")
-    # checking excential kwargs
-    if all(("r1" == None, "r1_name" == None)):
-        raise Exception(
-            "You must pass at least one graph, i.e, r1:List and r1_name")
 
-    import plotly.graph_objects as go
+@overload
+def spider_plot(
+        columns: List[str],
+        names: List[str],
+        values: List[List[float]],
+        show: bool = False) -> FigureWidget:
+    """
+    Does spider plot.
 
+    Args
+    ----
+    `columns`:
+        The values for x axis
+    `names`:
+        The names for each element in the array of values.
+    `values`:
+        An array of values 1-D for each element in `names`.
+
+    Keyword Args
+    ------------
+    `show`:
+        If settled will not show the figure at end
+
+    Returns
+    -------
+    FigureWidget
+        A figure plotly object (only access by ipykernel)
+
+    Todo
+    ----
+    Missing treat exceptions
+    """
+    ...
+
+
+def spider_plot(
+        columns: List[str],
+        names: Union[str, List[str]],
+        values: Union[List[List[float]], List[float]],
+        show: bool = False) -> FigureWidget:
+    """
+    Does spider plot.
+
+    Args
+    ----
+    `columns`:
+        The values for x axis
+    `names`:
+        Can be a list of names or a single name. If empty, will not plot any legend
+    `values`:
+        An array of 1-D float lists or a single 1-D array of floats
+
+    Keyword Args
+    ------------
+    `show`:
+        If settled will not show the figure at end
+
+    Returns
+    -------
+    FigureWidget
+        A figure plotly object (only access by ipykernel)
+
+    Todo
+    ----
+    Missing treat exceptions
+    """
+    logger.debug("Starting a new spyder/radial plot")
+
+    # creating a new figure
     fig: FigureWidget = plotly.graph_objects.Figure()  # type: ignore
 
-    fig.add_trace(go.Scatterpolar(
-        r=r1,
-        theta=categories,
-        fill='toself',
-        name=r1_name
-    ))  # type: ignore
-
-    if all((r2 != None, r2_name != None)):
-        fig.add_trace(go.Scatterpolar(
-            r=r2,
-            theta=categories,
+    isGrouped: bool = (type(names) is list) and (type(values[0]) is list)
+    if not isGrouped:
+        fig.add_trace(go.Scatterpolar(  # type: ignore
+            r=values,
+            theta=columns,
             fill='toself',
-            name=r2_name
-        ))  # type: ignore
-
-    # update figure object
-    fig.update_layout(
-        polar=dict(
-            radialaxis=dict(
-                visible=True,
-                range=[0, 1]
-            )),
-        showlegend=True
-    )
+            name=names))
+    else:
+        # adding traces
+        for k, v in zip(names, values):
+            fig.add_trace(go.Scatterpolar(  # type: ignore
+                r=v,
+                theta=columns,
+                fill='toself',
+                name=k))
 
     # show this object
     if show:
@@ -89,6 +153,110 @@ def spider_plot(
     # and return it
     return fig
 
+
+@overload
+def bar_plot(
+    columns: List[str],
+    names: str,
+    values: List[float],
+    show: bool = False
+) -> FigureWidget:
+    """
+    Does a bar plot.
+
+    Args
+    ----
+    `columns`:
+        The values for x axis
+    `names`:
+        The name for this plot (legend). If empty, will not show the legend
+    `values`:
+        The values for y axis
+
+    Keyword Args
+    ------------
+    `show`:
+        If settled, will show the generated image before return it.
+    """
+    ...
+
+
+@overload
+def bar_plot(
+    columns: List[str],
+    names: List[str],
+    values: List[List[float]],
+    show: bool = False
+) -> FigureWidget:
+    """
+    Does a grouped bar plot.
+
+    Args
+    ----
+    `columns`:
+        The values for x axis
+    `names`:
+        The names for each element in the array of values.
+    `values`:
+        An array of values 1-D for each element in `names`.
+
+    Keyword Args
+    ------------
+    `show`:
+        If settled, will show the generated image before return it.
+    """
+    ...
+
+
+def bar_plot(
+    columns: List[str],
+    names: Union[str, List[str]],
+    values: Union[List[List[float]], List[float]],
+    show: bool = False
+) -> FigureWidget:
+    """
+    Does a grouped bar plot.
+
+    Args
+    ----
+    `columns`:
+        The values for x axis
+    `names`:
+        Can be a list of names or a single name. If empty, will not plot any legend
+    `values`:
+        An array of 1-D float lists or a single 1-D array of floats
+
+    Keyword Args
+    ------------
+    `show`:
+        If settled, will show the generated image before return it.
+    """
+
+    data: List[FigureWidget] = []
+    isGrouped: bool = (type(names) is list) and (type(values[0]) is list)
+
+    if not isGrouped:
+        data.append(go.Bar(name=names, x=columns, y=values))  # type: ignore
+
+    else:
+        # appending bar plots
+        for k, v in zip(names, values):
+            data.append(go.Bar(name=k, x=columns, y=v))  # type: ignore
+    fig = go.Figure(data)  # type: ignore
+
+    # Change the bar mode
+    if isGrouped:
+        fig.update_layout(barmode='group')
+
+    if show:
+        fig.show()
+
+    return fig  # type: ignore
+
+
+# -----------------------------------------------------------------------------
+#                               Others plots
+# -----------------------------------------------------------------------------
 
 def parallel_plot(
     df: pd.DataFrame,
@@ -200,54 +368,6 @@ def pie_plot(
     return fig
 
 
-def bar_plot(
-    df: pd.DataFrame,
-    col: str,
-    show: bool = False,
-    filename: str = '',
-) -> FigureWidget:
-    """
-    Generates a bar plot for each row in a given column.
-
-    Keyword Args
-    ---------------
-        - `df`: A dataframe object to be plotted
-        - `col`: The column to be analysed
-
-    :Kwargs:
-        - `show`: Flag to force the figure to be shown
-        - `filename`: A path to store the image. It must contains the extension too.
-
-    :Returns:
-        The figure object of the image created
-
-    See Also
-    --------
-        `See more on Pyplot exporting image <https://plotly.com/python/static-image-export>`_
-    """
-    # logger.debug(f"Starting a new bar_plot: {filename}")
-    # removendo linhas onde essa competência não existe
-    df = df.query(f"`{col}` > 0")
-
-    fig: FigureWidget = px.bar(
-        df,
-        x=df.index,
-        y=col,
-        text=col)  # type: ignore
-
-    fig.update_traces(textposition='outside')
-
-    if filename:
-        # logger.debug(f"Generating image files for {filename}")
-        fig.write_image(filename)
-
-    if show:
-        logger.debug('Showing image for')
-        fig.show()
-
-    return fig
-
-
 def all_competencies(df: pd.DataFrame, show: bool = False) -> FigureWidget:
     """
     Does a plot for all competencies (columns) in a given df.
@@ -311,23 +431,3 @@ def all_competencies(df: pd.DataFrame, show: bool = False) -> FigureWidget:
         fig.show()
 
     return fig
-
-
-def grouped_bar_plot(
-    labels: List[str],
-    legend: Tuple[str, str],
-    values: Tuple[List[float], List[float]],
-    show: bool = False
-) -> FigureWidget:
-
-    fig = go.Figure(data=[
-        go.Bar(name=legend[0], x=labels, y=values[0]),  # type: ignore
-        go.Bar(name=legend[1], x=labels, y=values[1])  # type: ignore
-    ])  # type: ignore
-    # Change the bar mode
-    fig.update_layout(barmode='group')
-
-    if show:
-        fig.show()
-
-    return fig  # type: ignore
