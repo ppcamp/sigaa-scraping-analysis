@@ -9,3 +9,18 @@
   display: block;
   max-width: 50% !important;
 }
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+  margin-top: 5rem;
+  margin-bottom: 30px;
+}
+
+footer {
+  font-size: var(--font-size--small);
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}

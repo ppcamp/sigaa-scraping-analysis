@@ -47,3 +47,10 @@ util module
    :members:
    :undoc-members:
    :show-inheritance:
+
+
+|hr|
+
+.. rubric:: Footnotes
+
+.. include:: links/modules.links
