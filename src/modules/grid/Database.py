@@ -24,6 +24,9 @@ from networkx.readwrite import json_graph
 # MongoDB
 from pymongo import MongoClient
 
+import logging
+logger = logging.getLogger(__name__)
+
 
 class Grids(object):
     """
@@ -42,8 +45,10 @@ class Grids(object):
     def __init__(self, connectionString) -> None:
         # Create a mongoclient
         self.client = MongoClient(connectionString)
+        logger.debug('Creating MongoClient')
         # Connect to database
         self.db = self.client.sigaadb
+        logger.debug('Assigning MongoDB')
 
     # override
     def set(self, grid: str, GraphPreReq: DiGraph, GraphCoReq: DiGraph) -> None:

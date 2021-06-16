@@ -19,7 +19,8 @@ from typing import Tuple
 # Digraph model
 from networkx import DiGraph
 # logging
-import logging as logger
+import logging
+logger = logging.getLogger(__name__)
 # Module responsable to get grid
 
 
@@ -40,7 +41,7 @@ def get_grid(grid: str, connection: str) -> Tuple[DiGraph, DiGraph]:
     Tuple[DiGraph, DiGraph]
         A `tuple` containing the pre and co requisite (networkx.DiGraph)
     """
-    logger.info("Getting grid")
+    logger.info("Loading Database")
     # Store in mongodb those two graphs
     # Create a mongoclient
     Database = Grids(connection)
@@ -63,4 +64,3 @@ def get_grid(grid: str, connection: str) -> Tuple[DiGraph, DiGraph]:
         # Database.set(grid, GraphPre, GraphCo)
 
     return GraphPre, GraphCo  # type: ignore
-

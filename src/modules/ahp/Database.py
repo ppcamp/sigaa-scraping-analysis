@@ -54,7 +54,7 @@ class SigaaDatabase:
             # Create a mongoclient
             self.__client = MongoClient(connection_string)
 
-            logger.info(f'Creating a MongoClient for {connection_string}')
+            logger.debug(f'Creating a MongoClient for {connection_string}')
 
             if database_name:
                 connection = "self.__client.{}".format(database_name)
@@ -62,6 +62,8 @@ class SigaaDatabase:
             else:
                 # Connect to database sigaadb (default)
                 self._db = self.__client.sigaadb
+
+            logger.debug('Created MongoDatabase')
 
 
 class AhpForm(SigaaDatabase):
