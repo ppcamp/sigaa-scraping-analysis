@@ -78,6 +78,16 @@ make html
 
 # create a new documentation
 sphinx-quickstart
+
+
+# dump mongo
+$ mongodump --port 27017 -u USER_NICK -p USER_PASSWORD -d DATABASE --authenticationDatabase admin -o OUTPUT_FOLDER
+
+# restore mongo
+$ mongorestore --port 27017 -u USER_NICK -p USER_PASSWORD OUTPUT_FOLDER/
+
+# online restore
+mongorestore --uri URI_CONNECTION_STRING OUTPUT_FOLDER/
 ```
 
 > [Why don't use markdown to documentation](https://www.ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/)
