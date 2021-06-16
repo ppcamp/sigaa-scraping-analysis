@@ -14,8 +14,10 @@ kaleido>=0.2.1
 # Documentation
 sphinx>=1.0.2
 furo==2021.3.20b30
-# Others
+# MongoDB (packages needed to run locally or remote)
 pymongo>=3.11.2
+dnspython>=2.1.0
+# Others
 networkx==2.5
 # Web scrapping
 requests>=2.23.0
