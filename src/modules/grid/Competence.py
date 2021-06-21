@@ -922,7 +922,9 @@ class BFS:
 
             logger.debug(f'\tCompetence "{competencia}" - Walking')
             # acumulado do período
-            a: float = 1.0
+            a: float = 0.0
+            # contador de períodos que tiveram esta matéria
+            c: int = 0
             logger.debug(f'\tACUMULATED = {a}')
             # anda sobre todos os periodos
             for p in range(1, 10):
@@ -938,14 +940,16 @@ class BFS:
                     if not f:
                         continue
                     # nota_do_aluno * acumulado_propagado
-                    n: float = BFS._get_weight(notas, m, a)
+                    n: float = BFS._get_weight(notas, m, 1)
                     logger.debug(f'\t\t\t{m}:{n} -> Successors: {f}')
                     s += sum(map(lambda x: n * grafo[m][x]['weight'], f))
+
                 # somente altera o acumulado se ouve somatório (filhos)
                 if s > 0.0:
-                    a = s
+                    a += round(s, roundp)
+                    c += 1
                 logger.debug(f'\t\tACUMULATED = {a}.  SUM = {s}')
             # notas do aluno é o acumulado
-            notas_aluno[competencia] = round(a, roundp)
+            notas_aluno[competencia] = round(a/c, roundp)
 
         return notas_aluno
