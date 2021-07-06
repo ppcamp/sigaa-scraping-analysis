@@ -236,12 +236,14 @@ def bar_plot(
     isGrouped: bool = (type(names) is list) and (type(values[0]) is list)
 
     if not isGrouped:
-        data.append(go.Bar(name=names, x=columns, y=values))  # type: ignore
+        data.append(go.Bar(name=names, x=columns, y=values,
+                    text=values, textposition='auto'))  # type: ignore
 
     else:
         # appending bar plots
         for k, v in zip(names, values):
-            data.append(go.Bar(name=k, x=columns, y=v))  # type: ignore
+            data.append(go.Bar(name=k, x=columns, y=v, text=v,
+                        textposition='auto'))  # type: ignore
     fig = go.Figure(data)  # type: ignore
 
     # Change the bar mode
