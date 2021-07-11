@@ -39,3 +39,6 @@ out/
 
 # vscode
 .vscode/
+
+# ignore all files that starts with _
+**/__*
