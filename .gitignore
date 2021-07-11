@@ -36,3 +36,6 @@ out/
 
 # logs folders
 **logs/
+
+# vscode
+.vscode/

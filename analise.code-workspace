@@ -1,0 +1,78 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "terminal.integrated.env.windows": {
+      "PYTHONPATH": "${workspaceFolder}/src;"
+    },
+    "python.pythonPath": "C:\\Program Files\\Python39\\python.exe",
+    "jupyter.jupyterServerType": "local",
+    "python.autoComplete.extraPaths": ["src"],
+    "files.exclude": {
+      "mongodb/": false,
+      "**/__pycache__": true,
+      "**/*.ipynb_checkpoints": true
+    },
+    "python.analysis.extraPaths": ["src"],
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.testing.unittestArgs": ["-v", "-s", "./src", "-p", "test_*.py"],
+    "python.testing.pytestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.unittestEnabled": true
+  },
+  "launch": {
+    "configurations": [
+      {
+        "name": "Python: current file",
+        "type": "python",
+        "request": "launch",
+        "program": "${file}",
+        "console": "integratedTerminal"
+      }
+    ],
+    "compounds": []
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "type": "shell",
+        "command": "",
+        "label": "Build documentation",
+        "args": ["make", "html", "--directory=${workspaceFolder}/src/doc"],
+        "windows": {
+          "args": [
+            "./src/doc/make.bat",
+            "html",
+            "--directory=${workspaceFolder}/src/doc"
+          ]
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "reveal": "always"
+        },
+        "problemMatcher": []
+      },
+      {
+        "type": "shell",
+        "command": "",
+        "label": "Run tests",
+        "args": ["python ./src/tests.py"],
+        "group": {
+          "kind": "test",
+          "isDefault": true
+        },
+        "presentation": {
+          "reveal": "silent"
+        },
+        "problemMatcher": []
+      }
+    ]
+  }
+}
