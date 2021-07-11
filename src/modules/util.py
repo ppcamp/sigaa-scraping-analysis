@@ -509,7 +509,7 @@ def dist_vectors(
 
     .. math::
 
-        ||\\vec{a}|| = \\frac{1}{\\sqrt{a_i^2}}
+        ||\\vec{a}|| = \\sqrt{\\sum_{i=0}^N a_i^2}}
 
     The **interal product** (scalar) of two **Euclidian** vectors, :math:`\\vec{a}` and :math:`\\vec{b}`
     its defined as:
