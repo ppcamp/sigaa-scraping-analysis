@@ -42,3 +42,5 @@ out/
 
 # ignore all files that starts with _
 **/__*
+
+**.env
