@@ -8,7 +8,7 @@ class SigaaSpider(scrapy.Spider):
     #   - Need to get screen state of user
     #   - Modal panels etc
 
-    # scrapy crawl sigaa -a user="12638891665" -a pswd="*8N3vLJBHGu8rFS" -a course="0192015"
+    # scrapy crawl sigaa -a user="CPF" -a pswd="PASSWORD" -a course="0192015"
     name = "grid"
     start_urls = ["https://sigaa.unifei.edu.br/sigaa/logar.do?dispatch=logOn"]
 
