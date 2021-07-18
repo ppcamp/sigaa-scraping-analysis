@@ -15,7 +15,7 @@ This repository contains some codes used in the article that will be published l
   - [Packages needed](#packages-needed)
   - [See also](#see-also)
 
-----
+---
 
 ## How it works?
 
@@ -23,8 +23,8 @@ This code uses the following approach:
 
 <p align="center">
   <img
-    src="src/doc/source/_static/img/logo.png"
-    width="200px"
+    src="assets/project_workflow.png"
+    width="500px"
     alt="Image #1"/>
 </p>
 
@@ -40,27 +40,27 @@ interface to open it.
 
 The [documentation](src/doc/build/html/index.html) of `modules` is inside `src/doc/build/html` folder.
 
-
 ### How to document
 
-The project was developed using *Google Docstrings* and *RST (Reestructured text)* guides.
+The project was developed using _Google Docstrings_ and _RST (Reestructured text)_ guides.
 You can check [here](https://www.google.com/search?q=google+documentation+python&oq=google+pydocumention+&aqs=chrome.1.69i57j0i13l9.8494j0j4&sourceid=chrome&ie=UTF-8) and
 [here](https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html).
 
-
 ### Sphinx themes:
+
 - furo (black)
 - read the docs (default)
 - asteroid
 
-
 ## Tests
+
 - You can test the python codes using the script "tests.py":
 
   ```bash
   # run all the tests
   python src/tests.py
   ```
+
 - You also can use the "vscode testing tool":
   ```raw
   Press: CTRL+SHIFT+P or F1
@@ -94,12 +94,13 @@ mongorestore --uri URI_CONNECTION_STRING OUTPUT_FOLDER/
 
 ## Packages needed
 
-* To install the python packages, type (*inside src directory*):
+- To install the python packages, type (_inside src directory_):
 
 ```bash
 python install -r requirements.txt
 ```
-* You also need to install the [plotly support for jupyter][7]:
+
+- You also need to install the [plotly support for jupyter][7]:
 
 ```bash
 # basic packages
@@ -112,17 +113,18 @@ jupyter labextension install jupyterlab-plotly@4.14.3
 # OPTIONAL: Jupyter widgets extension
 jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.14.3
 ```
-* Install the graphviz:
+
+- Install the graphviz:
 
   You can install the graphviz by the package [site](https://graphviz.org/download/) or typing:
 
-  * in debian-based linux:
+  - in debian-based linux:
 
   ```bash
   sudo apt install graphviz
   ```
 
-  * or using a choco (windows)
+  - or using a choco (windows)
 
   ```bash
   choco install graphviz
@@ -131,7 +133,6 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.
 ## See also
 
 > To install other themes you must search for a python package equivalent for that theme.
-
 
 1. [Sphinx themes][1]
 2. [Sphinx automodule/autoclass errors][2]
