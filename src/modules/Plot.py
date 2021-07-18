@@ -146,6 +146,10 @@ def spider_plot(
                 fill='toself',
                 name=k))
 
+        fig.update_traces(texttemplate='%{text:.2f}')
+        fig.update_layout(barmode='group', uniformtext_minsize=1,
+                          uniformtext_mode='show', width=1000)
+
     # show this object
     if show:
         fig.show()
@@ -248,8 +252,9 @@ def bar_plot(
 
     # Change the bar mode
     if isGrouped:
-        fig.update_layout(barmode='group')
-
+        fig.update_traces(texttemplate='%{text:.2f}', textposition='auto')
+        fig.update_layout(barmode='group', uniformtext_minsize=1,
+                          uniformtext_mode='show', width=1000)
     if show:
         fig.show()
 
