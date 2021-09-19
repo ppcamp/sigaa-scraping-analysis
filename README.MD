@@ -28,13 +28,84 @@ This code uses the following approach:
     alt="Image #1"/>
 </p>
 
+
+
 ## How to run
 
 The project was created and designed under "jupyter researchers" approach. Doing so, you'll need an jupyter
 interface to open it.
 
-> You can install jupyter using:
-> `pip install jupyterlab`
+1. [Install python](https://www.python.org/downloads/)
+
+2. Install pip (only if you're running on linux):
+
+  ```bash
+  sudo apt install python3-pip
+  ```
+
+3. Install all dependencies
+
+  ```bash
+  cd src
+  # if you have the python2 installed too
+  pip3 install -r requirements.txt
+  # or
+  pip install -r requirements.txt
+
+  # uninstall
+  pip3 uninstall -r requirements.txt
+  ```
+
+4. You can install the graphviz by the package [site](https://graphviz.org/download/) or typing:
+    - in debian-based linux:
+
+      ```bash
+      sudo apt install graphviz
+      ```
+
+    - or using a choco (windows)
+
+      ```bash
+      choco install graphviz
+      ```
+5. You also need to install the [plotly support for jupyter][7]:
+
+```bash
+# basic packages
+pip install plotly==4.14.3
+pip install "notebook>=5.3" "ipywidgets>=7.5"
+pip install jupyterlab "ipywidgets>=7.5"
+
+# The following commands needs node to be installed:
+# JupyterLab renderer support
+jupyter labextension install jupyterlab-plotly@4.14.3
+
+# OPTIONAL: Jupyter widgets extension
+jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.14.3
+```
+
+
+* Optionally, you can create an venv (virtual env):
+
+```bash
+# install venv
+sudo apt install python3-venv
+# create a new venv
+python3 -m venv pyenv
+
+# Activate the virtual environment
+source pyenv/bin/activate
+# To deactivate the venv
+deactivate
+```
+
+* You can install jupyter using:
+```bash
+pip3 install jupyterlab
+```
+
+> After that, opens the `./src/main.ipynb` file and run it.
+
 
 ## Documentation
 
@@ -92,43 +163,6 @@ mongorestore --uri URI_CONNECTION_STRING OUTPUT_FOLDER/
 
 > [Why don't use markdown to documentation](https://www.ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/)
 
-## Packages needed
-
-- To install the python packages, type (_inside src directory_):
-
-```bash
-python install -r requirements.txt
-```
-
-- You also need to install the [plotly support for jupyter][7]:
-
-```bash
-# basic packages
-pip install plotly==4.14.3
-pip install "notebook>=5.3" "ipywidgets>=7.5"
-pip install jupyterlab "ipywidgets>=7.5"
-# The following commands needs node to be installed:
-# JupyterLab renderer support
-jupyter labextension install jupyterlab-plotly@4.14.3
-# OPTIONAL: Jupyter widgets extension
-jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.14.3
-```
-
-- Install the graphviz:
-
-  You can install the graphviz by the package [site](https://graphviz.org/download/) or typing:
-
-  - in debian-based linux:
-
-  ```bash
-  sudo apt install graphviz
-  ```
-
-  - or using a choco (windows)
-
-  ```bash
-  choco install graphviz
-  ```
 
 ## See also
 

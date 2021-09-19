@@ -6,22 +6,25 @@
   ],
   "settings": {
     "terminal.integrated.env.windows": {
-      "PYTHONPATH": "${workspaceFolder}/src;"
+      "PYTHONPATH": "${workspaceFolder}/src"
     },
-    "python.pythonPath": "C:\\Program Files\\Python39\\python.exe",
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.autoSearchPaths": true,
+    "python.condaPath": "${workspaceFolder}/pyenv/bin/",
     "jupyter.jupyterServerType": "local",
     "python.autoComplete.extraPaths": ["src"],
+    "python.analysis.extraPaths": ["${workspaceFolder}/src"],
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.testing.unittestArgs": ["-v", "-s", "./src", "-p", "test_*.py"],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true,
+
     "files.exclude": {
       "mongodb/": false,
       "**/__pycache__": true,
       "**/*.ipynb_checkpoints": true
-    },
-    "python.analysis.extraPaths": ["src"],
-    "python.envFile": "${workspaceFolder}/.env",
-    "python.testing.unittestArgs": ["-v", "-s", "./src", "-p", "test_*.py"],
-    "python.testing.pytestEnabled": false,
-    "python.testing.nosetestsEnabled": false,
-    "python.testing.unittestEnabled": true
+    }
   },
   "launch": {
     "configurations": [
@@ -73,6 +76,11 @@
         },
         "problemMatcher": []
       }
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-toolsai.jupyter"
     ]
   }
 }

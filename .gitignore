@@ -44,3 +44,7 @@ out/
 **/__*
 
 **.env
+
+
+# ignore pyenv (environment created)
+**pyenv**
