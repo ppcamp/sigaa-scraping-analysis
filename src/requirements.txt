@@ -6,7 +6,7 @@ wheel>=0.37.0
 ipywidgets>=7.5
 # Others/extras
 pandas>=1.2.1
-numpy==1.19.3
+numpy==1.22.0
 # Plots
 graphviz>=0.16
 matplotlib>=3.3.3
